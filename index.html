@@ -2,181 +2,361 @@
 <html lang="en">
 <head>
 <meta charset="UTF-8">
-<title>The Rainbow Game</title>
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>BrightNest Learning Hub</title>
+
 <style>
+*{
+margin:0;
+padding:0;
+box-sizing:border-box;
+font-family:Arial,sans-serif;
+}
+
 body{
-font-family:Arial;
-background:linear-gradient(skyblue,white);
-text-align:center;
-padding:20px;
+background:#f4f8ff;
 }
-h1{color:darkblue;}
-#card{
-background:white;
-width:80%;
-max-width:600px;
-margin:auto;
-padding:20px;
-border-radius:15px;
-box-shadow:0 0 10px gray;
+
+header{
+background:linear-gradient(135deg,#4facfe,#00f2fe);
+padding:15px 8%;
+display:flex;
+justify-content:space-between;
+align-items:center;
+position:sticky;
+top:0;
+z-index:1000;
 }
-button{
-padding:10px 20px;
-margin:10px;
-font-size:18px;
-border:none;
-border-radius:10px;
-background:orange;
-cursor:pointer;
-}
-button:hover{
-background:green;
+
+.logo{
+font-size:28px;
+font-weight:bold;
 color:white;
 }
-#score{
-font-size:24px;
-color:blue;
+
+nav ul{
+display:flex;
+list-style:none;
+gap:25px;
+}
+
+nav ul li a{
+text-decoration:none;
+color:white;
+font-weight:bold;
+transition:0.3s;
+}
+
+nav ul li a:hover{
+color:yellow;
+}
+
+.hero{
+display:flex;
+justify-content:space-between;
+align-items:center;
+padding:80px 8%;
+background:linear-gradient(to right,#e0f7ff,#ffffff);
+}
+
+.hero-text h1{
+font-size:50px;
+color:#333;
+margin-bottom:20px;
+}
+
+.hero-text p{
+font-size:20px;
+margin-bottom:30px;
+color:#555;
+}
+
+.btn{
+padding:12px 25px;
+border:none;
+border-radius:30px;
+cursor:pointer;
+font-size:16px;
+margin-right:10px;
+transition:0.3s;
+}
+
+.primary{
+background:#4facfe;
+color:white;
+}
+
+.secondary{
+background:#ff9800;
+color:white;
+}
+
+.btn:hover{
+transform:scale(1.05);
+}
+
+.hero-image{
+font-size:120px;
+}
+
+section{
+padding:70px 8%;
+}
+
+.section-title{
+text-align:center;
+font-size:35px;
+margin-bottom:40px;
+color:#333;
+}
+
+.cards{
+display:grid;
+grid-template-columns:repeat(auto-fit,minmax(250px,1fr));
+gap:25px;
+}
+
+.card{
+background:white;
+padding:25px;
+border-radius:20px;
+box-shadow:0 5px 15px rgba(0,0,0,0.1);
+transition:0.4s;
+text-align:center;
+}
+
+.card:hover{
+transform:translateY(-10px);
+}
+
+.subjects{
+margin-top:15px;
+display:grid;
+grid-template-columns:repeat(2,1fr);
+gap:10px;
+}
+
+.subject{
+background:#4facfe;
+color:white;
+padding:10px;
+border-radius:10px;
+cursor:pointer;
+}
+
+.teacher-tools .card{
+background:#fff3e0;
+}
+
+.games .card{
+background:#e8f5e9;
+}
+
+.quiz .card{
+background:#fce4ec;
+}
+
+footer{
+background:#333;
+color:white;
+text-align:center;
+padding:25px;
+margin-top:50px;
+}
+
+.search-box{
+text-align:center;
+margin-bottom:30px;
+}
+
+.search-box input{
+padding:12px;
+width:60%;
+border-radius:30px;
+border:1px solid #ccc;
+}
+
+.dark-mode{
+position:fixed;
+right:20px;
+bottom:20px;
+padding:15px;
+border:none;
+border-radius:50%;
+font-size:20px;
+cursor:pointer;
+background:#333;
+color:white;
+}
+
+.dark{
+background:#121212;
+color:white;
+}
+
+.dark .card{
+background:#222;
+color:white;
 }
 </style>
-</head>
 
+</head>
 <body>
 
-<h1>🌈 THE RAINBOW GAME 🌈</h1>
+<header>
+<div class="logo">🌟 BrightNest Learning Hub</div>
 
-<div id="card">
+<nav>
+<ul>
+<li><a href="#">Home</a></li>
+<li><a href="#">Classes</a></li>
+<li><a href="#">Teacher Tools</a></li>
+<li><a href="#">Quizzes</a></li>
+<li><a href="#">Games</a></li>
+<li><a href="#">Resources</a></li>
+<li><a href="#">Progress</a></li>
+<li><a href="#">Contact</a></li>
+</ul>
+</nav>
 
-<h2 id="question"></h2>
+</header>
 
-<div id="answers"></div>
+<section class="hero">
 
-<h2 id="score"></h2>
+<div class="hero-text">
+<h1>Welcome to BrightNest Learning Hub</h1>
+
+<p>Explore, Learn, Play and Grow — Learning made fun for young minds.</p>
+
+<button class="btn primary">Start Learning</button>
+<button class="btn secondary">Teacher Tools</button>
+</div>
+
+<div class="hero-image">
+📚✏️🎓
+</div>
+
+</section>
+
+<section>
+
+<h2 class="section-title">Choose Your Class</h2>
+
+<div class="search-box">
+<input type="text" placeholder="Search classes or subjects...">
+</div>
+
+<div class="cards">
+
+<div class="card">
+<h3>Class 1</h3>
+<div class="subjects">
+<div class="subject">➗ Maths</div>
+<div class="subject">📘 English</div>
+<div class="subject">📝 Hindi</div>
+<div class="subject">🌍 TWAU</div>
+</div>
+</div>
+
+<div class="card">
+<h3>Class 2</h3>
+<div class="subjects">
+<div class="subject">➗ Maths</div>
+<div class="subject">📘 English</div>
+<div class="subject">📝 Hindi</div>
+<div class="subject">🌍 TWAU</div>
+</div>
+</div>
+
+<div class="card">
+<h3>Class 3</h3>
+<div class="subjects">
+<div class="subject">➗ Maths</div>
+<div class="subject">📘 English</div>
+<div class="subject">📝 Hindi</div>
+<div class="subject">🌍 TWAU</div>
+</div>
+</div>
+
+<div class="card">
+<h3>Class 4</h3>
+<div class="subjects">
+<div class="subject">➗ Maths</div>
+<div class="subject">📘 English</div>
+<div class="subject">📝 Hindi</div>
+<div class="subject">🌍 TWAU</div>
+</div>
+</div>
+
+<div class="card">
+<h3>Class 5</h3>
+<div class="subjects">
+<div class="subject">➗ Maths</div>
+<div class="subject">📘 English</div>
+<div class="subject">📝 Hindi</div>
+<div class="subject">🌍 TWAU</div>
+</div>
+</div>
 
 </div>
 
+</section>
+
+<section class="teacher-tools">
+
+<h2 class="section-title">Teacher Tools</h2>
+
+<div class="cards">
+
+<div class="card">📋 Lesson Planner</div>
+<div class="card">📄 Worksheet Generator</div>
+<div class="card">✅ Attendance Manager</div>
+<div class="card">📊 Student Reports</div>
+
+</div>
+
+</section>
+
+<section class="quiz">
+
+<h2 class="section-title">Quizzes</h2>
+
+<div class="cards">
+
+<div class="card">Maths Quiz</div>
+<div class="card">English Quiz</div>
+<div class="card">Hindi Quiz</div>
+<div class="card">TWAU Quiz</div>
+
+</div>
+
+</section>
+
+<section class="games">
+
+<h2 class="section-title">Games Zone</h2>
+
+<div class="cards">
+
+<div class="card">🧩 Puzzle Games</div>
+<div class="card">🧠 Memory Games</div>
+<div class="card">🔤 Word Games</div>
+<div class="card">🎯 Math Challenge</div>
+
+</div>
+
+</section>
+
+<footer>
+<p>© 2026 BrightNest Learning Hub | Learn • Play • Grow</p>
+</footer>
+
+<button class="dark-mode" onclick="toggleMode()">🌙</button>
+
 <script>
-
-const quiz=[
-
-{
-q:"1. Where do boats sail?",
-options:["Sky","River","Mountain","Forest"],
-answer:1
-},
-
-{
-q:"2. Where do ships sail?",
-options:["Sea","Road","Sky","Desert"],
-answer:0
-},
-
-{
-q:"3. What sails across the sky?",
-options:["Train","Clouds","Car","Bridge"],
-answer:1
-},
-
-{
-q:"4. What is the 'bow' in the poem?",
-options:["Arrow","Rainbow","Boat","Tree"],
-answer:1
-},
-
-{
-q:"5. Which is a natural thing?",
-options:["Bridge","Rainbow","Ship","Boat"],
-answer:1
-},
-
-{
-q:"6. The rainbow connects _____.",
-options:["Earth and Sky","Sea and River","Road and House","Mountain and Tree"],
-answer:0
-},
-
-{
-q:"7. The poet thinks the rainbow is...",
-options:["Ugly","Ordinary","Most Beautiful","Small"],
-answer:2
-},
-
-{
-q:"8. Bridges are built by...",
-options:["Nature","Humans","Birds","Clouds"],
-answer:1
-},
-
-{
-q:"9. Clouds sail in the...",
-options:["River","Sea","Sky","Road"],
-answer:2
-},
-
-{
-q:"10. What is the main message of the poem?",
-options:[
-"Nature is beautiful",
-"Ships are best",
-"Roads are beautiful",
-"Boats are colourful"],
-answer:0
+function toggleMode(){
+document.body.classList.toggle("dark");
 }
-
-];
-
-let current=0;
-let score=0;
-
-function loadQuestion(){
-
-if(current==quiz.length){
-
-document.getElementById("card").innerHTML=
-"<h1>🎉 Game Over 🎉</h1><h2>Your Score: "
-+score+" / "+quiz.length+
-"</h2>";
-
-if(score==10)
-document.getElementById("card").innerHTML+="<h2>🏆 Excellent!</h2>";
-
-else if(score>=8)
-document.getElementById("card").innerHTML+="<h2>🌟 Very Good!</h2>";
-
-else if(score>=5)
-document.getElementById("card").innerHTML+="<h2>👍 Good Job!</h2>";
-
-else
-document.getElementById("card").innerHTML+="<h2>😊 Keep Practising!</h2>";
-
-return;
-}
-
-document.getElementById("question").innerHTML=quiz[current].q;
-
-let html="";
-
-quiz[current].options.forEach((opt,index)=>{
-html+="<button onclick='check("+index+")'>"+opt+"</button><br>";
-});
-
-document.getElementById("answers").innerHTML=html;
-
-}
-
-function check(choice){
-
-if(choice==quiz[current].answer){
-score++;
-}
-
-current++;
-
-loadQuestion();
-
-}
-
-loadQuestion();
-
 </script>
 
 </body>

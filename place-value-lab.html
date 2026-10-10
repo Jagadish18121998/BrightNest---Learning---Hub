@@ -1,0 +1,1660 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Place Value Studio | BrightNest</title>
+
+<style>
+:root {
+  --ink: #202957;
+  --muted: #74809b;
+  --purple: #6545dc;
+  --line: #e5e8f5;
+  --bg: #f5f6fc;
+  --th: #9670df;
+  --hu: #4388ee;
+  --te: #21b69f;
+  --on: #f4b438;
+}
+
+* { box-sizing: border-box; }
+
+body {
+  margin: 0;
+  background: var(--bg);
+  color: var(--ink);
+  font-family: Inter, "Trebuchet MS", Arial, sans-serif;
+}
+
+button, input { font: inherit; }
+button { cursor: pointer; }
+
+button:focus-visible,
+input:focus-visible {
+  outline: 3px solid #f2a72e;
+  outline-offset: 2px;
+}
+
+header {
+  background: white;
+  border-bottom: 1px solid var(--line);
+  padding: 14px 3%;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 12px;
+  flex-wrap: wrap;
+}
+
+.logo {
+  font-weight: 900;
+  color: var(--purple);
+  font-size: 20px;
+}
+
+.logo span { color: #e9a02c; }
+
+.nav {
+  display: flex;
+  gap: 8px;
+  flex-wrap: wrap;
+}
+
+.nav a {
+  padding: 10px 13px;
+  border-radius: 10px;
+  background: #f0edff;
+  color: var(--purple);
+  text-decoration: none;
+  font-size: 12px;
+  font-weight: 800;
+}
+
+.hero {
+  padding: 23px 3%;
+  background: linear-gradient(115deg, #e9e2ff, #e6f5ff 60%, #fff0d8);
+}
+
+.hero-inner {
+  max-width: 1600px;
+  margin: auto;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 18px;
+  flex-wrap: wrap;
+}
+
+.eyebrow {
+  display: inline-block;
+  background: #fff;
+  border-radius: 30px;
+  padding: 6px 11px;
+  color: var(--purple);
+  font-size: 10px;
+  letter-spacing: 1px;
+  font-weight: 900;
+  margin-bottom: 8px;
+}
+
+.hero h1 {
+  font-size: clamp(28px, 3vw, 40px);
+  margin: 0;
+  letter-spacing: -1px;
+}
+
+.hero h1 span { color: #e47736; }
+
+.hero p {
+  color: #5d6984;
+  line-height: 1.6;
+  margin: 8px 0 0;
+  max-width: 720px;
+  font-size: 13px;
+}
+
+.mode-switch {
+  display: flex;
+  gap: 5px;
+  padding: 5px;
+  background: #ffffffc9;
+  border-radius: 13px;
+}
+
+.mode-switch button {
+  border: 0;
+  background: transparent;
+  padding: 11px 15px;
+  border-radius: 9px;
+  color: #58627c;
+  font-weight: 800;
+  font-size: 12px;
+}
+
+.mode-switch button.active {
+  background: var(--purple);
+  color: white;
+}
+
+main {
+  max-width: 1600px;
+  width: 96%;
+  margin: 18px auto 40px;
+}
+
+.top-summary {
+  display: grid;
+  grid-template-columns: 1fr 1fr 1fr;
+  gap: 12px;
+  margin-bottom: 14px;
+}
+
+.summary-card, .panel {
+  background: white;
+  border: 1px solid var(--line);
+  border-radius: 16px;
+  box-shadow: 0 5px 18px #27325c08;
+}
+
+.summary-card {
+  padding: 13px 16px;
+  min-width: 0;
+}
+
+.label {
+  font-size: 10px;
+  letter-spacing: 1px;
+  color: var(--muted);
+  font-weight: 900;
+}
+
+.number {
+  font-size: clamp(27px, 3vw, 38px);
+  font-weight: 900;
+  color: var(--purple);
+  margin-top: 4px;
+  overflow-wrap: anywhere;
+}
+
+.expanded, .name {
+  font-size: 14px;
+  font-weight: 800;
+  line-height: 1.6;
+  margin-top: 8px;
+  overflow-wrap: anywhere;
+}
+
+.pv-mini {
+  display: grid;
+  grid-template-columns: repeat(4, minmax(0, 1fr));
+  margin-top: 8px;
+}
+
+.pv-mini div {
+  text-align: center;
+  padding: 7px 2px;
+  font-size: 10px;
+  border: 1px solid white;
+}
+
+.pv-mini strong {
+  display: block;
+  font-size: 20px;
+  margin-top: 4px;
+}
+
+.pvt { background: #f0e7ff; }
+.pvh { background: #e6f0ff; }
+.pvten { background: #ddf8ef; }
+.pvo { background: #fff0d5; }
+
+/* Main layout: workspace on the left, controls on the right */
+.layout {
+  display: grid;
+  grid-template-columns: minmax(0, 2.2fr) minmax(285px, .85fr);
+  gap: 14px;
+  align-items: start;
+}
+
+.panel {
+  padding: 15px;
+  min-width: 0;
+}
+
+.panel-head {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 10px;
+  flex-wrap: wrap;
+  margin-bottom: 12px;
+}
+
+.panel h2 {
+  font-size: 16px;
+  margin: 0;
+}
+
+.sub {
+  font-size: 11px;
+  color: var(--muted);
+  line-height: 1.6;
+  margin: 5px 0 12px;
+}
+
+.pill {
+  border-radius: 30px;
+  background: #f0edff;
+  color: var(--purple);
+  font-size: 10px;
+  font-weight: 900;
+  padding: 7px 10px;
+}
+
+.columns {
+  display: grid;
+  grid-template-columns: repeat(4, minmax(0, 1fr));
+  gap: 7px;
+}
+
+.column {
+  border: 1px solid var(--line);
+  border-radius: 12px;
+  overflow: hidden;
+  min-width: 0;
+  background: white;
+}
+
+.col-head {
+  padding: 11px 3px;
+  text-align: center;
+  font-size: 12px;
+  font-weight: 900;
+  color: white;
+}
+
+.col-head small {
+  display: block;
+  font-size: 10px;
+  font-weight: 600;
+  margin-top: 4px;
+}
+
+.col-th .col-head { background: var(--th); }
+.col-hu .col-head { background: var(--hu); }
+.col-te .col-head { background: var(--te); }
+
+.col-on .col-head {
+  background: var(--on);
+  color: #604000;
+}
+
+.block-area {
+  min-height: 285px;
+  padding: 10px 4px;
+  display: flex;
+  flex-wrap: wrap;
+  align-content: flex-start;
+  align-items: flex-start;
+  justify-content: center;
+  gap: 5px;
+  background: linear-gradient(#fff, #fafaff);
+  transition: background .15s;
+}
+
+.block-area.drag-over {
+  background: #eae4ff;
+  box-shadow: inset 0 0 0 3px #b6a2f5;
+}
+
+.block {
+  flex: none;
+  cursor: grab;
+  touch-action: manipulation;
+  position: relative;
+}
+
+.block:active { cursor: grabbing; }
+
+.block.selected {
+  outline: 3px solid #f3a629;
+  outline-offset: 3px;
+}
+
+.cube {
+  width: 23px;
+  height: 23px;
+  border: 1px solid #d99414;
+  border-radius: 3px;
+  background: var(--on);
+  box-shadow: inset -2px -2px #e7a027;
+}
+
+.rod {
+  width: 22px;
+  height: 92px;
+  border: 1px solid #119984;
+  border-radius: 3px;
+  background: repeating-linear-gradient(
+    to bottom,
+    #51d4bf 0 8px,
+    #18aa94 8px 10px
+  );
+  box-shadow: inset -2px -2px #159985;
+}
+
+.flat {
+  width: 57px;
+  height: 57px;
+  border: 1px solid #2869d8;
+  border-radius: 3px;
+  background-color: var(--hu);
+  background-image:
+    linear-gradient(#ffffff70 1px, transparent 1px),
+    linear-gradient(90deg, #ffffff70 1px, transparent 1px);
+  background-size: 10% 10%;
+  box-shadow: inset -3px -3px #2e6bd0;
+}
+
+.thousand {
+  width: 59px;
+  height: 59px;
+  border: 1px solid #8052c8;
+  border-radius: 4px;
+  background-color: var(--th);
+  background-image:
+    linear-gradient(#ffffff50 1px, transparent 1px),
+    linear-gradient(90deg, #ffffff50 1px, transparent 1px);
+  background-size: 10% 10%;
+  box-shadow: inset -4px -4px #8052c8;
+}
+
+.count {
+  padding: 9px 2px;
+  border-top: 1px solid var(--line);
+  font-size: 11px;
+  text-align: center;
+  font-weight: 900;
+}
+
+.col-th .count { color: var(--th); }
+.col-hu .count { color: var(--hu); }
+.col-te .count { color: var(--te); }
+.col-on .count { color: #b87b0d; }
+
+.limit-note {
+  font-size: 10px;
+  color: var(--muted);
+  text-align: center;
+  margin: 10px 0 0;
+  line-height: 1.5;
+}
+
+
+.actions {
+  display: flex;
+  gap: 10px;
+  flex-wrap: wrap;
+  margin-top: 15px;
+}
+
+
+
+.btn {
+  border: 0;
+  border-radius: 9px;
+  padding: 12px 15px;
+  font-size: 14px;
+  font-weight: 800;
+  background: #efecff;
+  color: var(--purple);
+  line-height: 1.4;
+}
+
+
+.btn.primary {
+  background: var(--purple);
+  color: white;
+}
+
+.btn.soft {
+  background: #f4f5fb;
+  color: #4e5a77;
+}
+
+.btn.warn {
+  background: #fff1d9;
+  color: #9b620a;
+}
+
+.btn:disabled {
+  opacity: .4;
+  cursor: not-allowed;
+}
+
+.status {
+  min-height: 20px;
+  margin-top: 10px;
+  text-align: center;
+  font-size: 12px;
+  font-weight: 800;
+  color: #5b6884;
+}
+
+.side-stack {
+  display: grid;
+  gap: 14px;
+}
+
+.tray { display: grid; gap: 8px; }
+
+.tray-item {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  text-align: left;
+  width: 100%;
+  padding: 10px;
+  border: 1px solid var(--line);
+  background: #fcfbff;
+  border-radius: 11px;
+  color: var(--ink);
+}
+
+.tray-item:hover {
+  border-color: #b7a8f3;
+  background: #f7f4ff;
+}
+
+.tray-visual {
+  width: 48px;
+  height: 46px;
+  display: grid;
+  place-items: center;
+  flex: none;
+}
+
+.tray-visual .thousand,
+.tray-visual .flat {
+  width: 39px;
+  height: 39px;
+}
+
+.tray-visual .rod {
+  height: 40px;
+  width: 14px;
+}
+
+.tray-visual .cube {
+  width: 22px;
+  height: 22px;
+}
+
+.tray-item strong {
+  font-size: 12px;
+  display: block;
+}
+
+.tray-item small {
+  font-size: 10px;
+  color: var(--muted);
+  display: block;
+  margin-top: 3px;
+}
+
+.divider {
+  border: 0;
+  border-top: 1px solid #eceef7;
+  margin: 14px 0;
+}
+
+.write-grid {
+  display: grid;
+  grid-template-columns: repeat(4, minmax(0, 1fr));
+  gap: 5px;
+}
+
+.digit-label {
+  font-size: 9px;
+  font-weight: 900;
+  text-align: center;
+  padding: 7px 2px;
+  border-radius: 7px;
+}
+
+.digit-label input {
+  display: block;
+  width: 100%;
+  min-width: 0;
+  text-align: center;
+  margin-top: 5px;
+  border: 1px solid #dcdff0;
+  border-radius: 7px;
+  padding: 8px 1px;
+  font-size: 19px;
+  font-weight: 900;
+  color: var(--ink);
+  background: white;
+}
+
+.digit-th { background: #f0e7ff; }
+.digit-hu { background: #e6f0ff; }
+.digit-te { background: #ddf8ef; }
+.digit-on { background: #fff0d5; }
+
+.helper {
+  font-size: 10px;
+  color: var(--muted);
+  line-height: 1.5;
+  margin-top: 8px;
+}
+
+.challenge-box {
+  background: linear-gradient(140deg, #fff5df, #ffedce);
+  border-radius: 12px;
+  padding: 12px;
+  margin-top: 10px;
+}
+
+.challenge-box h3 {
+  margin: 0;
+  font-size: 13px;
+}
+
+.target {
+  font-size: 32px;
+  text-align: center;
+  color: #b74c1b;
+  font-weight: 900;
+  margin: 10px;
+}
+
+.feedback {
+  font-size: 11px;
+  font-weight: 800;
+  line-height: 1.6;
+  text-align: center;
+  margin-top: 8px;
+  min-height: 18px;
+}
+
+.hint {
+  font-size: 11px;
+  line-height: 1.6;
+  color: #786958;
+  margin-top: 8px;
+}
+
+.score {
+  font-size: 27px;
+  color: var(--purple);
+  font-weight: 900;
+}
+
+.challenge-only { display: none; }
+body.challenge-mode .challenge-only { display: block; }
+body.challenge-mode .activity-only { display: none; }
+
+body.challenge-mode .activity-only { display: none; }
+
+/* Hide number-entry panel in Challenge Mode */
+body.challenge-mode #numberEntryPanel {
+  display: none !important;
+}
+
+.success-overlay {
+  position: fixed;
+  inset: 0;
+  background: #171a40b3;
+  z-index: 100;
+  display: none;
+  align-items: center;
+  justify-content: center;
+  padding: 20px;
+}
+
+.success-overlay.show { display: flex; }
+
+.success-box {
+  position: relative;
+  z-index: 2;
+  max-width: 410px;
+  width: 100%;
+  padding: 30px 22px;
+  border-radius: 23px;
+  background: white;
+  text-align: center;
+  box-shadow: 0 25px 80px #0003;
+  animation: pop .3s ease;
+}
+
+.success-box .emoji { font-size: 48px; }
+
+.success-box h2 {
+  color: var(--purple);
+  margin: 10px 0;
+}
+
+.success-box p {
+  font-size: 13px;
+  line-height: 1.7;
+}
+
+.petals {
+  position: fixed;
+  inset: 0;
+  overflow: hidden;
+  pointer-events: none;
+  z-index: 1;
+}
+
+.petal {
+  position: absolute;
+  top: -35px;
+  left: var(--left);
+  font-size: 23px;
+  animation: fall var(--duration) linear var(--delay) forwards;
+  opacity: 0;
+}
+
+@keyframes fall {
+  0% {
+    transform: translateY(-5vh) rotate(0);
+    opacity: 0;
+  }
+  10% { opacity: 1; }
+  100% {
+    transform: translate(var(--drift), 110vh) rotate(650deg);
+    opacity: .9;
+  }
+}
+
+@keyframes pop {
+  from { transform: scale(.85); opacity: 0; }
+  to { transform: scale(1); opacity: 1; }
+}
+
+@media(max-width:950px) {
+  .layout {
+    grid-template-columns: minmax(0, 1.5fr) minmax(260px, .9fr);
+  }
+  .block-area { min-height: 230px; }
+  .top-summary { grid-template-columns: 1fr 1fr; }
+  .top-summary .summary-card:last-child { grid-column: 1 / -1; }
+}
+
+@media(max-width:720px) {
+  main { width: 94%; }
+  .layout { grid-template-columns: 1fr; }
+  .side-stack { grid-template-columns: 1fr; }
+  .block-area { min-height: 180px; }
+  .columns { gap: 4px; }
+  .top-summary { grid-template-columns: 1fr; }
+  .top-summary .summary-card:last-child { grid-column: auto; }
+  .summary-card { padding: 12px; }
+  .hero-inner { align-items: flex-start; }
+}
+
+@media(max-width:430px) {
+  .panel { padding: 10px; }
+  .col-head { font-size: 10px; }
+  .col-head small { font-size: 9px; }
+  .block-area { padding: 8px 2px; gap: 4px; }
+  .cube { width: 17px; height: 17px; }
+  .rod { width: 15px; height: 72px; }
+  .flat, .thousand { width: 39px; height: 39px; }
+  .digit-label { font-size: 8px; }
+  .digit-label input { font-size: 16px; }
+  .mode-switch button { padding: 10px 11px; }
+}
+
+.open-tool-btn {
+    display: inline-block;
+    margin-top: 22px;
+    padding: 14px 22px;
+    background: linear-gradient(135deg, #7054cf, #9478ed);
+    color: white;
+    text-decoration: none;
+    border-radius: 12px;
+    font-size: 15px;
+    font-weight: 800;
+    box-shadow: 0 6px 16px #7054cf30;
+    transition: transform 0.2s ease, box-shadow 0.2s ease;
+}
+
+.open-tool-btn:hover {
+    transform: translateY(-3px);
+    box-shadow: 0 10px 22px #7054cf40;
+}
+
+</style>
+</head>
+
+<body>
+<header>
+  <div class="logo">🌞 BrightNest <span>Learning Hub</span></div>
+  <nav class="nav">
+    <a href="learning-tools.html">Learning Tools</a>
+    <a href="maths.html">← Maths Gallery</a>
+  </nav>
+</header>
+
+<section class="hero">
+  <div class="hero-inner">
+    <div>
+      <div class="eyebrow">INTERACTIVE MATHS MANIPULATIVE</div>
+      <h1>Place Value <span>Studio</span></h1>
+      <p>Build numbers with base-ten blocks, write them in different forms and discover how ten smaller units become one larger unit.</p>
+    </div>
+    <div class="mode-switch">
+      <button id="activityMode" class="active">Activity Mode</button>
+      <button id="challengeMode">Challenge Mode</button>
+    </div>
+  </div>
+</section>
+
+<main>
+  <section class="top-summary">
+    <div class="summary-card">
+      <div class="label">NUMBER BUILT</div>
+      <div class="number" id="numberDisplay">0</div>
+      <div class="label" style="margin-top:10px">EXPANDED FORM</div>
+      <div class="expanded" id="expandedForm">0</div>
+    </div>
+
+    <div class="summary-card">
+      <div class="label">NUMBER NAME</div>
+      <div class="name" id="numberName">Zero</div>
+      <div class="label" style="margin-top:12px">TOTAL VALUE</div>
+      <div class="expanded" id="totalValue">0</div>
+    </div>
+
+    <div class="summary-card">
+      <div class="label">PLACE-VALUE CHART</div>
+      <div class="pv-mini">
+        <div class="pvt">Thousands<strong id="mini-thousands">0</strong></div>
+        <div class="pvh">Hundreds<strong id="mini-hundreds">0</strong></div>
+        <div class="pvten">Tens<strong id="mini-tens">0</strong></div>
+        <div class="pvo">Ones<strong id="mini-ones">0</strong></div>
+      </div>
+    </div>
+  </section>
+
+  <div class="layout">
+    <section class="panel">
+      <div class="panel-head">
+        <div>
+          <h2>Place-Value Workspace</h2>
+          <div class="sub" style="margin-bottom:0">Drag blocks between columns or use the controls to add them.</div>
+        </div>
+        <span class="pill" id="workspaceBadge">MAX 9 BLOCKS PER COLUMN</span>
+      </div>
+
+      <div class="columns">
+        <div class="column col-th">
+          <div class="col-head">Thousands<small>1,000 each</small></div>
+          <div class="block-area" id="area-thousands" data-place="thousands"></div>
+          <div class="count"><span id="count-thousands">0</span> / 9 blocks</div>
+        </div>
+
+        <div class="column col-hu">
+          <div class="col-head">Hundreds<small>100 each</small></div>
+          <div class="block-area" id="area-hundreds" data-place="hundreds"></div>
+          <div class="count"><span id="count-hundreds">0</span> / 9 blocks</div>
+        </div>
+
+        <div class="column col-te">
+          <div class="col-head">Tens<small>10 each</small></div>
+          <div class="block-area" id="area-tens" data-place="tens"></div>
+          <div class="count"><span id="count-tens">0</span> / 9 blocks</div>
+        </div>
+
+        <div class="column col-on">
+          <div class="col-head">Ones<small>1 each</small></div>
+          <div class="block-area" id="area-ones" data-place="ones"></div>
+          <div class="count"><span id="count-ones">0</span> / 9 blocks</div>
+        </div>
+      </div>
+
+      <p class="limit-note">When a column reaches 10 blocks, those blocks are exchanged for 1 block in the next column.</p>
+
+      <div class="actions">
+        <button class="btn" id="exchangeSelected">Exchange selected block</button>
+        <button class="btn" id="regroupButton">Regroup automatically</button>
+        <button class="btn soft" id="removeSelected">Remove selected</button>
+        <button class="btn soft" id="undoButton" disabled>↶ Undo</button>
+        <button class="btn soft" id="redoButton" disabled>↷ Redo</button>
+        <button class="btn warn" id="resetButton">Reset</button>
+      </div>
+
+      <div class="status" id="status" role="status" aria-live="polite">Choose a block on the right to begin.</div>
+    </section>
+
+    <aside class="side-stack">
+      <section class="panel">
+        <div class="panel-head">
+          <h2>Add / Remove Blocks</h2>
+          <span class="pill">Base ten</span>
+        </div>
+        <p class="sub">Add one block at a time. The 10th block triggers an automatic exchange.</p>
+
+        <div class="tray">
+          <button class="tray-item" data-add="thousands">
+            <span class="tray-visual"><span class="thousand"></span></span>
+            <span><strong>Thousand Cube</strong><small>Value: 1,000</small></span>
+          </button>
+
+          <button class="tray-item" data-add="hundreds">
+            <span class="tray-visual"><span class="flat"></span></span>
+            <span><strong>Hundred Flat</strong><small>Value: 100</small></span>
+          </button>
+
+          <button class="tray-item" data-add="tens">
+            <span class="tray-visual"><span class="rod"></span></span>
+            <span><strong>Ten Rod</strong><small>Value: 10</small></span>
+          </button>
+
+          <button class="tray-item" data-add="ones">
+            <span class="tray-visual"><span class="cube"></span></span>
+            <span><strong>Unit Cube</strong><small>Value: 1</small></span>
+          </button>
+        </div>
+
+        <div class="actions">
+          <button class="btn primary" id="randomButton">🎲 Random Number</button>
+          <button class="btn soft" id="clearButton">Clear Blocks</button>
+        </div>
+      </section>
+
+     <section class="panel" id="numberEntryPanel">
+        <div class="panel-head">
+          <h2>Write a Number</h2>
+          <span class="pill">0–9 per digit</span>
+        </div>
+        <p class="sub">Enter one digit in each box. The preview updates as you type.</p>
+
+        <div class="write-grid">
+          <label class="digit-label digit-th">Thousands
+            <input id="digit-thousands" inputmode="numeric" maxlength="1" value="0" aria-label="Thousands digit">
+          </label>
+          <label class="digit-label digit-hu">Hundreds
+            <input id="digit-hundreds" inputmode="numeric" maxlength="1" value="0" aria-label="Hundreds digit">
+          </label>
+          <label class="digit-label digit-te">Tens
+            <input id="digit-tens" inputmode="numeric" maxlength="1" value="0" aria-label="Tens digit">
+          </label>
+          <label class="digit-label digit-on">Ones
+            <input id="digit-ones" inputmode="numeric" maxlength="1" value="0" aria-label="Ones digit">
+          </label>
+        </div>
+
+        <div class="expanded" style="text-align:center" id="digitPreview">0</div>
+        <button class="btn primary" style="width:100%;margin-top:9px" id="buildNumberButton">Build with Blocks</button>
+        <div class="helper">Building from this panel replaces the current blocks with the selected number.</div>
+
+        <hr class="divider">
+        <div class="panel-head"><h2>Quick Tools</h2></div>
+        <button class="btn soft" id="enterNumberButton" style="width:100%">Focus number-entry boxes</button>
+      </section>
+
+      <section class="panel challenge-only">
+        <div class="panel-head">
+          <h2>🎯 Number Challenge</h2>
+          <span class="pill">Earn points</span>
+        </div>
+        <p class="sub">Build the target number using the correct blocks in every column.</p>
+        <div class="target" id="targetNumber">2,345</div>
+        <div class="helper" id="targetBreakdown" style="text-align:center"></div>
+        <div class="actions">
+          <button class="btn primary" id="checkAnswer">Check Answer</button>
+          <button class="btn" id="newChallenge">New Challenge</button>
+          <button class="btn soft" id="showHint">Show Hint</button>
+        </div>
+        <div class="feedback" id="challengeFeedback" aria-live="polite"></div>
+        <p class="hint" id="hintText">Hint: each digit tells you how many blocks belong in that column.</p>
+        <hr class="divider">
+        <div class="label">YOUR SCORE</div>
+        <div class="score" id="scoreDisplay">0 ⭐</div>
+      </section>
+    </aside>
+  </div>
+</main>
+
+<div class="success-overlay" id="successOverlay" role="dialog" aria-modal="true" aria-labelledby="successTitle">
+  <div class="petals" id="petals"></div>
+  <div class="success-box">
+    <div class="emoji">🌟🌸</div>
+    <h2 id="successTitle">Excellent Work!</h2>
+    <p id="successMessage">You built the target number correctly.</p>
+    <p id="scoreMessage"></p>
+    <button class="btn" id="closePopup">Close</button>
+    <button class="btn primary" id="continueButton">Next Challenge →</button>
+  </div>
+</div>
+
+<script>
+const $ = id => document.getElementById(id);
+
+const ORDER = ['ones', 'tens', 'hundreds', 'thousands'];
+const VALUES = { ones: 1, tens: 10, hundreds: 100, thousands: 1000 };
+
+let blocks = [];
+let nextId = 1;
+let selectedId = null;
+let currentMode = 'activity';
+let target = 2345;
+let score = 0;
+let attempts = 0;
+let completed = false;
+let undoStack = [];
+let redoStack = [];
+let draggedId = null;
+let draggedTray = null;
+
+const fmt = n => Number(n).toLocaleString('en-IN');
+
+function count(place) {
+  return blocks.filter(b => b.place === place).length;
+}
+
+function total() {
+  return blocks.reduce((sum, b) => sum + VALUES[b.place], 0);
+}
+
+function digits(n) {
+  return {
+    thousands: Math.floor(n / 1000) % 10,
+    hundreds: Math.floor(n / 100) % 10,
+    tens: Math.floor(n / 10) % 10,
+    ones: n % 10
+  };
+}
+
+function words(n) {
+  if (n === 0) return 'Zero';
+
+  const a = [
+    '', 'One', 'Two', 'Three', 'Four', 'Five', 'Six',
+    'Seven', 'Eight', 'Nine', 'Ten', 'Eleven', 'Twelve',
+    'Thirteen', 'Fourteen', 'Fifteen', 'Sixteen',
+    'Seventeen', 'Eighteen', 'Nineteen'
+  ];
+
+  const t = [
+    '', '', 'Twenty', 'Thirty', 'Forty', 'Fifty',
+    'Sixty', 'Seventy', 'Eighty', 'Ninety'
+  ];
+
+  function under(x) {
+    let s = '';
+
+    if (x >= 100) {
+      s = a[Math.floor(x / 100)] + ' Hundred';
+      x %= 100;
+      if (x) s += ' ';
+    }
+
+    if (x >= 20) {
+      s += t[Math.floor(x / 10)];
+      x %= 10;
+      if (x) s += ' ' + a[x];
+    } else if (x) {
+      s += a[x];
+    }
+
+    return s;
+  }
+
+  let result = '';
+
+  if (n >= 1000) {
+    result = under(Math.floor(n / 1000)) + ' Thousand';
+    n %= 1000;
+    if (n) result += ' ';
+  }
+
+  return result + under(n);
+}
+
+function expanded(n) {
+  if (!n) return '0';
+
+  return [1000, 100, 10, 1]
+    .map(v => Math.floor(n / v) % 10 * v)
+    .filter(Boolean)
+    .map(fmt)
+    .join(' + ');
+}
+
+function status(message) {
+  $('status').textContent = message;
+}
+
+function snapshot() {
+  undoStack.push({
+    blocks: blocks.map(b => ({ ...b })),
+    nextId,
+    selectedId
+  });
+
+  if (undoStack.length > 80) undoStack.shift();
+
+  redoStack = [];
+  buttonsHistory();
+}
+
+function buttonsHistory() {
+  $('undoButton').disabled = !undoStack.length;
+  $('redoButton').disabled = !redoStack.length;
+}
+
+function restore(state) {
+  blocks = state.blocks.map(b => ({ ...b }));
+  nextId = state.nextId;
+  selectedId = state.selectedId;
+  render();
+}
+
+function undo() {
+  if (!undoStack.length) return;
+
+  redoStack.push({
+    blocks: blocks.map(b => ({ ...b })),
+    nextId,
+    selectedId
+  });
+
+  restore(undoStack.pop());
+  buttonsHistory();
+  status('Last action undone.');
+}
+
+function redo() {
+  if (!redoStack.length) return;
+
+  undoStack.push({
+    blocks: blocks.map(b => ({ ...b })),
+    nextId,
+    selectedId
+  });
+
+  restore(redoStack.pop());
+  buttonsHistory();
+  status('Action restored.');
+}
+
+function makeBlock(place) {
+  return { id: nextId++, place };
+}
+
+// Automatically exchange every 10 smaller blocks for 1 larger block.
+function normalizeBlocks() {
+  const changes = [];
+
+  for (let i = 0; i < ORDER.length; i++) {
+    const place = ORDER[i];
+
+    while (count(place) >= 10) {
+      if (place === 'thousands') {
+        return {
+          ok: false,
+          message:
+            'This workspace supports numbers up to 9,999. ' +
+            'The ten-thousands place is not available yet.'
+        };
+      }
+
+      let removed = 0;
+
+      blocks = blocks.filter(block => {
+        if (block.place === place && removed < 10) {
+          removed++;
+          return false;
+        }
+        return true;
+      });
+
+      const largerPlace = ORDER[i + 1];
+      blocks.push(makeBlock(largerPlace));
+
+      changes.push(`10 ${place} → 1 ${largerPlace}`);
+    }
+  }
+
+  return { ok: true, changes };
+}
+
+function addBlock(place) {
+  if (currentMode === 'challenge' && completed) return;
+
+  snapshot();
+  blocks.push(makeBlock(place));
+
+  const result = normalizeBlocks();
+
+  if (!result.ok) {
+    restore(undoStack.pop());
+    buttonsHistory();
+    status(result.message);
+    return;
+  }
+
+  render();
+
+  status(
+    result.changes.length
+      ? 'Exchange! ' + result.changes.join('; ')
+      : 'Added one ' + place + ' block.'
+  );
+}
+
+function removeBlock(id) {
+  snapshot();
+  blocks = blocks.filter(block => block.id !== id);
+  selectedId = null;
+  render();
+  status('Block removed.');
+}
+
+function clearBlocks(keepHistory = true) {
+  if (keepHistory) snapshot();
+
+  blocks = [];
+  selectedId = null;
+  render();
+}
+
+function blockElement(block) {
+  const element = document.createElement('div');
+
+  const classes = {
+    ones: 'cube',
+    tens: 'rod',
+    hundreds: 'flat',
+    thousands: 'thousand'
+  };
+
+  element.className = 'block ' + classes[block.place];
+  element.draggable = true;
+  element.tabIndex = 0;
+  element.dataset.id = block.id;
+  element.title =
+    fmt(VALUES[block.place]) +
+    ' block — click to select, drag to move';
+
+  element.setAttribute(
+    'aria-label',
+    fmt(VALUES[block.place]) + ' block'
+  );
+
+  if (selectedId === block.id) {
+    element.classList.add('selected');
+  }
+
+  element.addEventListener('click', event => {
+    event.stopPropagation();
+    selectedId = block.id;
+    render();
+    status('Selected ' + block.place + ' block.');
+  });
+
+  element.addEventListener('dragstart', event => {
+    draggedId = block.id;
+    draggedTray = null;
+    event.dataTransfer.setData('text/plain', 'block:' + block.id);
+    event.dataTransfer.effectAllowed = 'move';
+  });
+
+  return element;
+}
+
+function syncDigits(number) {
+  const d = digits(number);
+
+  ['thousands', 'hundreds', 'tens', 'ones'].forEach(place => {
+    $('digit-' + place).value = d[place];
+  });
+
+  $('digitPreview').textContent = fmt(number);
+}
+
+function render() {
+  const number = total();
+
+  $('numberDisplay').textContent = fmt(number);
+  $('expandedForm').textContent = expanded(number);
+  $('numberName').textContent = words(number);
+  $('totalValue').textContent = fmt(number);
+
+  ['thousands', 'hundreds', 'tens', 'ones'].forEach(place => {
+    $('mini-' + place).textContent = count(place);
+    $('count-' + place).textContent = count(place);
+
+    const area = $('area-' + place);
+    area.replaceChildren();
+
+    blocks
+      .filter(block => block.place === place)
+      .forEach(block => area.appendChild(blockElement(block)));
+  });
+
+  syncDigits(number);
+  $('scoreDisplay').textContent = score + ' ⭐';
+  buttonsHistory();
+}
+
+function buildFromDigits() {
+  const places = ['thousands', 'hundreds', 'tens', 'ones'];
+  const enteredDigits = [];
+
+  for (const place of places) {
+    const raw = $('digit-' + place).value.trim();
+
+    if (!/^\d$/.test(raw)) {
+      status('Enter one digit from 0 to 9 in every box.');
+      $('digit-' + place).focus();
+      return;
+    }
+
+    enteredDigits.push(Number(raw));
+  }
+
+  if (currentMode === 'challenge') {
+    status('Switch to Activity Mode to build a custom number.');
+    return;
+  }
+
+  snapshot();
+  blocks = [];
+
+  places.forEach((place, index) => {
+    for (let i = 0; i < enteredDigits[index]; i++) {
+      blocks.push(makeBlock(place));
+    }
+  });
+
+  selectedId = null;
+  render();
+
+  status('Built ' + fmt(total()) + ' with base-ten blocks.');
+}
+
+function updateDigitPreview() {
+  const places = ['thousands', 'hundreds', 'tens', 'ones'];
+  let value = '';
+
+  for (const place of places) {
+    const digit = $('digit-' + place).value;
+
+    if (!/^\d$/.test(digit)) {
+      $('digitPreview').textContent = 'Enter digits 0–9';
+      return;
+    }
+
+    value += digit;
+  }
+
+  $('digitPreview').textContent = fmt(Number(value));
+}
+
+function exchangeSelected() {
+  const block = blocks.find(item => item.id === selectedId);
+
+  if (!block) {
+    status('Select a block first.');
+    return;
+  }
+
+  if (block.place === 'thousands') {
+    status('The ten-thousands place is not available yet.');
+    return;
+  }
+
+  snapshot();
+
+  const place = block.place;
+  const largerPlace = ORDER[ORDER.indexOf(place) + 1];
+
+  blocks = blocks.filter(item => item.id !== block.id);
+
+  // One larger block becomes ten smaller blocks.
+  for (let i = 0; i < 10; i++) {
+    blocks.push(makeBlock(place));
+  }
+
+  selectedId = null;
+  render();
+
+  status(
+    'Exchanged 1 ' + largerPlace +
+    ' into 10 ' + place + ' blocks.'
+  );
+}
+
+function regroup() {
+  snapshot();
+
+  const previousTotal = total();
+  const result = normalizeBlocks();
+
+  if (!result.ok) {
+    restore(undoStack.pop());
+    buttonsHistory();
+    status(result.message);
+    return;
+  }
+
+  render();
+
+  if (total() !== previousTotal) {
+    status('Regrouping error: the total value changed. Please undo.');
+    return;
+  }
+
+  status(
+    result.changes.length
+      ? 'Regrouped: ' + result.changes.join('; ')
+      : 'No exchange needed. Each column has fewer than 10 blocks.'
+  );
+}
+
+function moveBlock(id, destination) {
+  const block = blocks.find(item => item.id === id);
+
+  if (!block || block.place === destination) return;
+  if (currentMode === 'challenge' && completed) return;
+
+  snapshot();
+  block.place = destination;
+
+  const result = normalizeBlocks();
+
+  if (!result.ok) {
+    restore(undoStack.pop());
+    buttonsHistory();
+    status(result.message);
+    return;
+  }
+
+  selectedId = null;
+  render();
+
+  status(
+    result.changes.length
+      ? 'Exchange! ' + result.changes.join('; ')
+      : 'Moved block to ' + destination + '.'
+  );
+}
+
+function randomNumber() {
+  if (currentMode === 'challenge') {
+    newChallenge();
+    return;
+  }
+
+  const number = Math.floor(Math.random() * 9999) + 1;
+  const d = digits(number);
+
+  snapshot();
+  blocks = [];
+
+  ['thousands', 'hundreds', 'tens', 'ones'].forEach(place => {
+    for (let i = 0; i < d[place]; i++) {
+      blocks.push(makeBlock(place));
+    }
+  });
+
+  selectedId = null;
+  render();
+  status('Random number generated: ' + fmt(number));
+}
+
+function setMode(mode) {
+  currentMode = mode;
+
+  document.body.classList.toggle(
+    'challenge-mode',
+    mode === 'challenge'
+  );
+
+  $('activityMode').classList.toggle('active', mode === 'activity');
+  $('challengeMode').classList.toggle('active', mode === 'challenge');
+
+  if (mode === 'challenge') {
+    newChallenge();
+  } else {
+    completed = false;
+    render();
+    status('Activity Mode: explore numbers from 0 to 9,999.');
+  }
+}
+
+function newChallenge() {
+  blocks = [];
+  selectedId = null;
+  target = Math.floor(Math.random() * 9999) + 1;
+  attempts = 0;
+  completed = false;
+
+  $('targetNumber').textContent = fmt(target);
+
+  const d = digits(target);
+
+  $('targetBreakdown').textContent =
+    d.thousands + ' thousands • ' +
+    d.hundreds + ' hundreds • ' +
+    d.tens + ' tens • ' +
+    d.ones + ' ones';
+
+  $('challengeFeedback').textContent = '';
+  $('hintText').textContent =
+    'Hint: each digit tells you how many blocks belong in each column.';
+
+  $('checkAnswer').disabled = false;
+
+  render();
+  status('Build the target number: ' + fmt(target));
+}
+
+function checkAnswer() {
+  if (completed) return;
+
+  attempts++;
+
+  const d = digits(target);
+
+  const correct = [
+    'thousands',
+    'hundreds',
+    'tens',
+    'ones'
+  ].every(place => count(place) === d[place]);
+
+  if (!correct) {
+    $('challengeFeedback').textContent =
+      'Not yet! Check the number of blocks in each column.';
+
+    status('Try again. Each column must match the target.');
+    return;
+  }
+
+  completed = true;
+
+  const points = Math.max(10, 30 - (attempts - 1) * 5);
+  score += points;
+
+  $('challengeFeedback').textContent = 'Correct! Great work!';
+
+  $('successMessage').textContent =
+    'You represented ' + fmt(target) +
+    ' correctly with base-ten blocks.';
+
+  $('scoreMessage').textContent =
+    'You earned ' + points +
+    ' points! Total score: ' + score;
+
+  $('successOverlay').classList.add('show');
+
+  releasePetals();
+
+  $('checkAnswer').disabled = true;
+  render();
+}
+
+function releasePetals() {
+  const container = $('petals');
+  container.replaceChildren();
+
+  const flowers = ['🌸', '🌼', '🌺', '🌷', '⭐', '✿'];
+
+  for (let i = 0; i < 48; i++) {
+    const element = document.createElement('span');
+
+    element.className = 'petal';
+    element.textContent =
+      flowers[Math.floor(Math.random() * flowers.length)];
+
+    element.style.setProperty('--left', Math.random() * 100 + '%');
+    element.style.setProperty('--delay', Math.random() * 1.8 + 's');
+    element.style.setProperty(
+      '--duration',
+      3 + Math.random() * 3 + 's'
+    );
+    element.style.setProperty(
+      '--drift',
+      Math.floor(Math.random() * 220 - 110) + 'px'
+    );
+
+    container.appendChild(element);
+  }
+}
+
+function closePopup() {
+  $('successOverlay').classList.remove('show');
+  $('petals').replaceChildren();
+}
+
+// Add-block buttons and draggable block trays.
+document.querySelectorAll('[data-add]').forEach(button => {
+  button.addEventListener('click', () => addBlock(button.dataset.add));
+
+  button.draggable = true;
+
+  button.addEventListener('dragstart', event => {
+    draggedTray = button.dataset.add;
+    draggedId = null;
+
+    event.dataTransfer.setData('text/plain', 'tray:' + draggedTray);
+    event.dataTransfer.effectAllowed = 'copy';
+  });
+});
+
+// Drag blocks between place-value columns.
+document.querySelectorAll('.block-area').forEach(area => {
+  area.addEventListener('dragover', event => {
+    event.preventDefault();
+    area.classList.add('drag-over');
+  });
+
+  area.addEventListener('dragleave', () => {
+    area.classList.remove('drag-over');
+  });
+
+  area.addEventListener('drop', event => {
+    event.preventDefault();
+    area.classList.remove('drag-over');
+
+    const destination = area.dataset.place;
+    const data = event.dataTransfer.getData('text/plain');
+
+    if (data.startsWith('tray:')) {
+      addBlock(destination);
+      draggedTray = null;
+    } else if (data.startsWith('block:')) {
+      moveBlock(Number(data.slice(6)), destination);
+    } else if (draggedId !== null) {
+      moveBlock(draggedId, destination);
+    }
+  });
+});
+
+// Keep digit inputs to a single numeral.
+['thousands', 'hundreds', 'tens', 'ones'].forEach(place => {
+  $('digit-' + place).addEventListener('input', event => {
+    event.target.value = event.target.value
+      .replace(/\D/g, '')
+      .slice(0, 1);
+
+    updateDigitPreview();
+  });
+});
+
+// Connect all controls.
+$('buildNumberButton').addEventListener('click', buildFromDigits);
+
+$('enterNumberButton').addEventListener('click', () => {
+  $('digit-thousands').focus();
+});
+
+$('randomButton').addEventListener('click', randomNumber);
+
+$('clearButton').addEventListener('click', () => {
+  clearBlocks();
+  status('All blocks cleared.');
+});
+
+$('resetButton').addEventListener('click', () => {
+  clearBlocks();
+  status('Workspace reset.');
+});
+
+$('undoButton').addEventListener('click', undo);
+$('redoButton').addEventListener('click', redo);
+
+$('removeSelected').addEventListener('click', () => {
+  if (selectedId === null) {
+    status('Select a block first.');
+  } else {
+    removeBlock(selectedId);
+  }
+});
+
+$('exchangeSelected').addEventListener('click', exchangeSelected);
+$('regroupButton').addEventListener('click', regroup);
+
+$('activityMode').addEventListener('click', () => setMode('activity'));
+$('challengeMode').addEventListener('click', () => setMode('challenge'));
+
+$('checkAnswer').addEventListener('click', checkAnswer);
+$('newChallenge').addEventListener('click', newChallenge);
+
+$('showHint').addEventListener('click', () => {
+  $('hintText').textContent =
+    'Target breakdown: ' + $('targetBreakdown').textContent +
+    '. Build exactly these counts; the block total should equal ' +
+    fmt(target) + '.';
+
+  status('Hint shown.');
+});
+
+$('closePopup').addEventListener('click', closePopup);
+
+$('continueButton').addEventListener('click', () => {
+  closePopup();
+  newChallenge();
+});
+
+$('successOverlay').addEventListener('click', event => {
+  if (event.target === $('successOverlay')) closePopup();
+});
+
+document.addEventListener('keydown', event => {
+  if (event.key === 'Escape') closePopup();
+});
+
+// Start the application.
+render();
+</script>
+</body>
+</html>

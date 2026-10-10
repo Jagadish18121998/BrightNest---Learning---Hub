@@ -1,0 +1,529 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>Learners Zone | BrightNest Learning Hub</title>
+
+    <link rel="stylesheet" href="css/style.css">
+
+    <style>
+        /* =========================================
+           LEARNERS ZONE
+        ========================================= */
+
+        .learners-page {
+            min-height: 100vh;
+            background: linear-gradient(180deg, #f7fbff 0%, #ffffff 100%);
+            padding-bottom: 70px;
+        }
+
+        .learners-hero {
+            text-align: center;
+            padding: 70px 20px 45px;
+        }
+
+        .learners-badge {
+            display: inline-block;
+            background: #fff1d6;
+            color: #d97706;
+            padding: 8px 18px;
+            border-radius: 30px;
+            font-size: 14px;
+            font-weight: 700;
+            margin-bottom: 18px;
+        }
+
+        .learners-hero h1 {
+            font-size: clamp(38px, 6vw, 64px);
+            margin: 0;
+            color: #173b70;
+            line-height: 1.05;
+        }
+
+        .learners-hero h1 span {
+            color: #f28c28;
+        }
+
+        .learners-hero p {
+            max-width: 700px;
+            margin: 18px auto 0;
+            font-size: 18px;
+            color: #5d6b82;
+            line-height: 1.7;
+        }
+
+        /* =========================================
+           CLASS CARDS
+        ========================================= */
+
+        .class-section {
+            max-width: 1150px;
+            margin: 0 auto;
+            padding: 20px;
+        }
+
+        .class-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 28px;
+        }
+
+        .class-card {
+            position: relative;
+            min-height: 230px;
+            padding: 30px;
+            border-radius: 28px;
+            text-decoration: none;
+            overflow: hidden;
+
+            display: flex;
+            flex-direction: column;
+            justify-content: space-between;
+
+            box-shadow: 0 12px 30px rgba(23, 59, 112, 0.10);
+
+            transition:
+                transform 0.25s ease,
+                box-shadow 0.25s ease;
+        }
+
+        .class-card:hover {
+            transform: translateY(-8px);
+            box-shadow: 0 20px 40px rgba(23, 59, 112, 0.18);
+        }
+
+        .class-card::after {
+            content: "";
+            position: absolute;
+            width: 140px;
+            height: 140px;
+            border-radius: 50%;
+            background: rgba(255,255,255,0.25);
+            right: -45px;
+            top: -45px;
+        }
+
+        .class-number {
+            position: relative;
+            z-index: 2;
+
+            width: 70px;
+            height: 70px;
+
+            display: flex;
+            align-items: center;
+            justify-content: center;
+
+            background: rgba(255,255,255,0.92);
+            border-radius: 20px;
+
+            font-size: 30px;
+            font-weight: 800;
+            color: #173b70;
+
+            box-shadow: 0 8px 18px rgba(0,0,0,0.08);
+        }
+
+        .class-info {
+            position: relative;
+            z-index: 2;
+        }
+
+        .class-info h2 {
+            margin: 0;
+            font-size: 28px;
+            color: #173b70;
+        }
+
+        .class-info p {
+            margin: 5px 0 0;
+            color: #526176;
+            font-size: 14px;
+        }
+
+        .class-arrow {
+            position: absolute;
+            right: 25px;
+            bottom: 25px;
+
+            width: 42px;
+            height: 42px;
+
+            border-radius: 50%;
+
+            background: rgba(255,255,255,0.85);
+
+            display: flex;
+            align-items: center;
+            justify-content: center;
+
+            font-size: 20px;
+            color: #173b70;
+
+            z-index: 3;
+        }
+
+        /* Different class colours */
+
+        .class-1 {
+            background: linear-gradient(135deg, #ffe8a3, #ffd166);
+        }
+
+        .class-2 {
+            background: linear-gradient(135deg, #c9f7df, #78dfb0);
+        }
+
+        .class-3 {
+            background: linear-gradient(135deg, #cde9ff, #80c7ff);
+        }
+
+        .class-4 {
+            background: linear-gradient(135deg, #ffd4c4, #ff9f80);
+        }
+
+        .class-5 {
+            background: linear-gradient(135deg, #ddd0ff, #b9a0ff);
+        }
+
+        /* =========================================
+           LOWER MESSAGE
+        ========================================= */
+
+        .learners-note {
+            max-width: 900px;
+            margin: 55px auto 0;
+            padding: 25px 30px;
+
+            background: white;
+            border-radius: 22px;
+
+            border: 1px solid #e5edf7;
+
+            text-align: center;
+
+            box-shadow: 0 8px 25px rgba(23, 59, 112, 0.06);
+        }
+
+        .learners-note h3 {
+            margin: 0 0 8px;
+            color: #173b70;
+            font-size: 22px;
+        }
+
+        .learners-note p {
+            margin: 0;
+            color: #65738a;
+            line-height: 1.6;
+        }
+
+        /* =========================================
+           RESPONSIVE
+        ========================================= */
+
+        @media (max-width: 900px) {
+
+            .class-grid {
+                grid-template-columns: repeat(2, 1fr);
+            }
+        }
+
+        @media (max-width: 600px) {
+
+            .learners-hero {
+                padding: 50px 18px 30px;
+            }
+
+            .learners-hero p {
+                font-size: 16px;
+            }
+
+            .class-grid {
+                grid-template-columns: 1fr;
+                gap: 20px;
+            }
+
+            .class-card {
+                min-height: 190px;
+            }
+        }
+    </style>
+</head>
+
+<body>
+
+<!-- =========================================
+     HEADER
+========================================= -->
+
+<header class="site-header">
+
+    <div class="header-inner">
+
+        <a href="index.html" class="brand">
+
+            <div class="brand-logo">☀️</div>
+
+            <div>
+                <div class="brand-school">
+                    PM SHRI KENDRIYA VIDYALAYA MAHE
+                </div>
+
+                <div class="brand-name">
+                    BrightNest <span>Learning Hub</span>
+                </div>
+            </div>
+
+        </a>
+
+        <button class="menu-btn" id="menuBtn">☰</button>
+
+        <nav class="main-nav" id="mainNav">
+
+            <a href="index.html">🏠 Home</a>
+
+            <a href="teachers.html">
+                👩‍🏫 Teachers Tool
+            </a>
+
+            <a class="active" href="learners.html">
+                👦 Learners Zone
+            </a>
+
+            <a href="resources.html">
+                📚 Learning Resources
+            </a>
+
+            <a href="manipulatives.html">
+                🧩 Manipulatives
+            </a>
+
+            <a href="games.html">
+                🎮 Game Zone
+            </a>
+
+            <a href="worksheets.html">
+                📄 Worksheet
+            </a>
+
+            <a href="quiz.html">
+                💡 Quiz Zone
+            </a>
+
+            <a href="gallery.html">
+                🖼️ Gallery
+            </a>
+
+        </nav>
+
+    </div>
+
+</header>
+
+
+<!-- =========================================
+     LEARNERS PAGE
+========================================= -->
+
+<main class="learners-page">
+
+    <!-- HERO -->
+
+    <section class="learners-hero">
+
+        <div class="learners-badge">
+            🌟 LEARN • EXPLORE • GROW
+        </div>
+
+        <h1>
+            Welcome to the
+            <span>Learners Zone</span>
+        </h1>
+
+        <p>
+            Choose your class and enter your learning space.
+            Explore lessons, activities, games, practice and much more.
+        </p>
+
+    </section>
+
+
+    <!-- CLASS SELECTION -->
+
+    <section class="class-section">
+
+        <div class="class-grid">
+
+            <!-- CLASS 1 -->
+
+            <a href="class1.html" class="class-card class-1">
+
+                <div class="class-number">
+                    1
+                </div>
+
+                <div class="class-info">
+
+                    <h2>Class 1</h2>
+
+                    <p>
+                        Discover • Play • Learn
+                    </p>
+
+                </div>
+
+                <div class="class-arrow">
+                    →
+                </div>
+
+            </a>
+
+
+            <!-- CLASS 2 -->
+
+            <a href="class2.html" class="class-card class-2">
+
+                <div class="class-number">
+                    2
+                </div>
+
+                <div class="class-info">
+
+                    <h2>Class 2</h2>
+
+                    <p>
+                        Explore • Practise • Grow
+                    </p>
+
+                </div>
+
+                <div class="class-arrow">
+                    →
+                </div>
+
+            </a>
+
+
+            <!-- CLASS 3 -->
+
+            <a href="class3.html" class="class-card class-3">
+
+                <div class="class-number">
+                    3
+                </div>
+
+                <div class="class-info">
+
+                    <h2>Class 3</h2>
+
+                    <p>
+                        Learn • Explore • Create
+                    </p>
+
+                </div>
+
+                <div class="class-arrow">
+                    →
+                </div>
+
+            </a>
+
+
+            <!-- CLASS 4 -->
+
+            <a href="class4.html" class="class-card class-4">
+
+                <div class="class-number">
+                    4
+                </div>
+
+                <div class="class-info">
+
+                    <h2>Class 4</h2>
+
+                    <p>
+                        Learn • Practise • Discover
+                    </p>
+
+                </div>
+
+                <div class="class-arrow">
+                    →
+                </div>
+
+            </a>
+
+
+            <!-- CLASS 5 -->
+
+            <a href="class5.html" class="class-card class-5">
+
+                <div class="class-number">
+                    5
+                </div>
+
+                <div class="class-info">
+
+                    <h2>Class 5</h2>
+
+                    <p>
+                        Think • Create • Achieve
+                    </p>
+
+                </div>
+
+                <div class="class-arrow">
+                    →
+                </div>
+
+            </a>
+
+        </div>
+
+
+        <!-- NOTE -->
+
+        <div class="learners-note">
+
+            <h3>🚀 Your Learning Journey Starts Here</h3>
+
+            <p>
+                Select your class to discover your subjects
+                and begin exploring the BrightNest learning world.
+            </p>
+
+        </div>
+
+    </section>
+
+</main>
+
+
+<!-- =========================================
+     FOOTER
+========================================= -->
+
+<footer class="site-footer">
+
+    <div class="footer-inner">
+
+        <div>
+            <strong>PM SHRI KENDRIYA VIDYALAYA MAHE</strong>
+            <p>BrightNest Learning Hub</p>
+        </div>
+
+        <div>
+            Developed by <strong>Jagadish Mishra</strong><br>
+            Primary Teacher
+        </div>
+
+    </div>
+
+</footer>
+
+
+<script src="js/script.js"></script>
+
+</body>
+</html>

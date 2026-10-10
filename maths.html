@@ -1,0 +1,1933 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<title>Maths Manipulatives | BrightNest Learning Hub</title>
+
+<style>
+/* =========================
+   1. GLOBAL STYLES
+========================= */
+* {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+}
+
+:root {
+    --purple: #6548c7;
+    --dark: #293451;
+    --muted: #68738a;
+    --page: #faf9ff;
+}
+
+body {
+    font-family: "Trebuchet MS", Arial, sans-serif;
+    color: var(--dark);
+    background: var(--page);
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+}
+
+a {
+    -webkit-tap-highlight-color: transparent;
+}
+
+/* =========================
+   2. HEADER
+========================= */
+header {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    flex-wrap: wrap;
+    gap: 14px;
+    padding: 17px 5%;
+    background: #fff;
+    box-shadow: 0 3px 18px #2834510d;
+}
+
+.logo {
+    font-size: 23px;
+    font-weight: 900;
+    color: #5d48b5;
+}
+
+.logo span {
+    color: #f2a72e;
+}
+
+.back-link {
+    display: inline-block;
+    padding: 10px 16px;
+    border-radius: 25px;
+    background: #eeeaff;
+    color: #6049b9;
+    text-decoration: none;
+    font-size: 13px;
+    font-weight: 800;
+    transition: background .2s ease;
+}
+
+.back-link:hover {
+    background: #e1d9ff;
+}
+
+/* =========================
+   3. HERO SECTION
+========================= */
+.hero {
+    position: relative;
+    overflow: hidden;
+    padding: 44px 20px 48px;
+    text-align: center;
+    background:
+        radial-gradient(circle at 8% 30%, #ffffffa0 0 45px, transparent 46px),
+        radial-gradient(circle at 91% 68%, #ffffffa0 0 65px, transparent 66px),
+        linear-gradient(125deg, #ded6ff, #e5f5ff 52%, #fff0d7);
+}
+
+.hero-badge {
+    display: inline-block;
+    margin-bottom: 15px;
+    padding: 8px 14px;
+    border-radius: 25px;
+    background: #ffffffdc;
+    color: #6550bb;
+    font-size: 11px;
+    font-weight: 900;
+    letter-spacing: 1px;
+}
+
+.hero h1 {
+    margin-bottom: 13px;
+    font-size: clamp(32px, 4.5vw, 47px);
+    line-height: 1.2;
+    letter-spacing: -1px;
+}
+
+.hero h1 span {
+    color: #7054cf;
+}
+
+.hero p {
+    max-width: 650px;
+    margin: auto;
+    color: #5f6a80;
+    font-size: 15px;
+    line-height: 1.8;
+}
+
+/* =========================
+   4. MAIN CONTENT
+========================= */
+main {
+    width: min(1100px, 92%);
+    margin: 0 auto;
+    padding: 30px 0 60px;
+    flex: 1;
+}
+
+/* Search */
+.search-panel {
+    position: relative;
+    width: min(650px, 100%);
+    margin: 0 auto 30px;
+}
+
+.search-icon {
+    position: absolute;
+    left: 17px;
+    top: 50%;
+    transform: translateY(-50%);
+    font-size: 20px;
+    pointer-events: none;
+}
+
+.search-box {
+    width: 100%;
+    padding: 16px 18px 16px 49px;
+    border: 2px solid #e7e1ff;
+    border-radius: 16px;
+    outline: none;
+    background: #fff;
+    color: var(--dark);
+    font-family: inherit;
+    font-size: 14px;
+    box-shadow: 0 6px 20px #49399b0b;
+    transition: border-color .2s ease, box-shadow .2s ease;
+}
+
+.search-box:focus {
+    border-color: #8a73e3;
+    box-shadow: 0 6px 22px #49399b19;
+}
+
+.search-box::placeholder {
+    color: #969fb0;
+}
+
+/* Section heading */
+.section-heading {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    flex-wrap: wrap;
+    gap: 10px;
+    margin-bottom: 19px;
+}
+
+.section-heading h2 {
+    color: #44377f;
+    font-size: 21px;
+    font-weight: 900;
+}
+
+.tools-count {
+    color: #858da0;
+    font-size: 12px;
+    font-weight: 700;
+}
+
+/* =========================
+   5. CARD GRID
+========================= */
+.maths-tools-grid {
+    display: grid;
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+    gap: 22px;
+    align-items: stretch;
+    justify-content: start;
+}
+
+/* Individual square card */
+.maths-tool-card {
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+    min-width: 0;
+    aspect-ratio: 1 / 1;
+    padding: 17px;
+    overflow: hidden;
+    border: 1px solid #ffffff;
+    border-radius: 22px;
+    color: var(--dark);
+    text-decoration: none;
+    box-shadow: 0 9px 24px #40346d12;
+    transition: transform .22s ease, box-shadow .22s ease;
+}
+
+.maths-tool-card:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 16px 30px #40346d20;
+}
+
+.maths-tool-card:focus-visible {
+    outline: 4px solid #8a73e3;
+    outline-offset: 4px;
+}
+
+/* Individual card colour themes */
+.place-value-card {
+    background: linear-gradient(145deg, #e5ddff, #f5f0ff 52%, #fff0d8);
+}
+
+.maths-tool-card[hidden] {
+    display: none !important;
+}
+
+/* Card top label */
+.card-top {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 8px;
+}
+
+.card-category {
+    display: inline-block;
+    padding: 6px 9px;
+    border-radius: 20px;
+    background: #ffffffd9;
+    color: #6650b7;
+    font-size: 9px;
+    font-weight: 900;
+    letter-spacing: .6px;
+}
+
+.card-star {
+    color: #e7a52b;
+    font-size: 23px;
+}
+
+/* =========================
+   6. PLACE VALUE ILLUSTRATION
+========================= */
+.card-illustration {
+    position: relative;
+    flex: 1;
+    min-height: 0;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 12px;
+    margin: 8px 0;
+}
+
+.number-board {
+    display: flex;
+    gap: 4px;
+    padding: 9px;
+    border: 2px solid #ffffff;
+    border-radius: 14px;
+    background: #ffffffc9;
+    box-shadow: 0 6px 15px #6951b518;
+    transform: rotate(-5deg);
+}
+
+.number-digit {
+    display: grid;
+    place-items: center;
+    width: 33px;
+    height: 42px;
+    border-radius: 8px;
+    background: #eee7ff;
+    color: #6348bd;
+    font-size: 27px;
+    font-weight: 900;
+}
+
+.number-digit:nth-child(2) {
+    background: #ffe7ad;
+    color: #b97716;
+}
+
+.number-digit:nth-child(3) {
+    background: #c8f3df;
+    color: #16845c;
+}
+
+/* Base-ten blocks */
+.base-blocks {
+    display: flex;
+    align-items: flex-end;
+    gap: 4px;
+    transform: rotate(5deg);
+}
+
+.base-block {
+    display: block;
+    flex-shrink: 0;
+    border: 2px solid #ffffffb0;
+    border-radius: 4px;
+    box-shadow: 0 4px 8px #29345118;
+}
+
+.base-block.hundreds {
+    width: 25px;
+    height: 45px;
+    background: repeating-linear-gradient(
+        0deg,
+        #ffad9c 0 7px,
+        #ff806f 7px 9px
+    );
+}
+
+.base-block.tens {
+    width: 14px;
+    height: 35px;
+    background: repeating-linear-gradient(
+        0deg,
+        #9b8bff 0 6px,
+        #7861ed 6px 8px
+    );
+}
+
+.base-block.ones {
+    width: 12px;
+    height: 12px;
+    background: #51cba0;
+}
+
+.art-spark {
+    position: absolute;
+    color: #e5a32b;
+    font-size: 22px;
+    pointer-events: none;
+}
+
+.spark-one {
+    top: 7%;
+    left: 5%;
+}
+
+.spark-two {
+    right: 5%;
+    bottom: 8%;
+    color: #8a73e3;
+    font-size: 27px;
+}
+
+/* =========================
+   7. CARD TEXT AND BUTTON
+========================= */
+.card-content h3 {
+    margin-bottom: 7px;
+    color: #48378e;
+    font-size: 19px;
+    font-weight: 900;
+    line-height: 1.2;
+}
+
+.card-content p {
+    color: #626c83;
+    font-size: 12px;
+    line-height: 1.5;
+}
+
+.card-action {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 8px;
+    margin-top: 10px;
+    padding: 9px 11px;
+    border-radius: 11px;
+    background: #ffffffdf;
+    color: #6049b9;
+    font-size: 12px;
+    font-weight: 900;
+}
+
+.card-action span {
+    font-size: 19px;
+    transition: transform .2s ease;
+}
+
+.maths-tool-card:hover .card-action span {
+    transform: translateX(4px);
+}
+
+/* No results message */
+.no-results {
+    display: none;
+    padding: 35px 15px;
+    text-align: center;
+    color: var(--muted);
+    border: 2px dashed #ddd5f5;
+    border-radius: 18px;
+    background: #ffffff80;
+}
+
+.no-results.visible {
+    display: block;
+}
+
+.no-results strong {
+    display: block;
+    margin-bottom: 8px;
+    color: #51419b;
+    font-size: 18px;
+}
+
+/* =========================
+   8. FOOTER
+========================= */
+footer {
+    padding: 21px 15px;
+    text-align: center;
+    background: #fff;
+    color: #7a8499;
+    font-size: 12px;
+    line-height: 1.8;
+}
+
+footer strong {
+    color: #51419b;
+}
+
+/* =========================
+   9. TABLET
+========================= */
+@media (max-width: 850px) {
+    .maths-tools-grid {
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+        gap: 18px;
+    }
+
+    .maths-tool-card {
+        padding: 16px;
+    }
+}
+
+/* =========================
+   10. MOBILE
+========================= */
+@media (max-width: 560px) {
+    header {
+        padding: 15px 5%;
+    }
+
+    .logo {
+        font-size: 18px;
+    }
+
+    .back-link {
+        padding: 9px 12px;
+        font-size: 12px;
+    }
+
+    .hero {
+        padding: 35px 17px 39px;
+    }
+
+    .hero h1 {
+        font-size: 32px;
+    }
+
+    .hero p {
+        font-size: 13px;
+        line-height: 1.7;
+    }
+
+    main {
+        width: 92%;
+        padding-top: 24px;
+    }
+
+    .search-panel {
+        margin-bottom: 24px;
+    }
+
+    .maths-tools-grid {
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+        gap: 12px;
+    }
+
+    .maths-tool-card {
+        padding: 11px;
+        border-radius: 17px;
+    }
+
+    .card-category {
+        padding: 5px 6px;
+        font-size: 7px;
+        letter-spacing: 0;
+    }
+
+    .card-star {
+        font-size: 19px;
+    }
+
+    .card-illustration {
+        gap: 6px;
+        margin: 6px 0;
+    }
+
+    .number-board {
+        gap: 3px;
+        padding: 5px;
+    }
+
+    .number-digit {
+        width: 23px;
+        height: 31px;
+        border-radius: 6px;
+        font-size: 19px;
+    }
+
+    .base-blocks {
+        gap: 3px;
+    }
+
+    .base-block.hundreds {
+        width: 16px;
+        height: 32px;
+    }
+
+    .base-block.tens {
+        width: 9px;
+        height: 25px;
+    }
+
+    .base-block.ones {
+        width: 8px;
+        height: 8px;
+    }
+
+    .spark-one {
+        left: 0;
+    }
+
+    .spark-two {
+        right: 0;
+    }
+
+    .card-content h3 {
+        font-size: 14px;
+        margin-bottom: 5px;
+    }
+
+    .card-content p {
+        font-size: 10px;
+        line-height: 1.4;
+    }
+
+    .card-action {
+        margin-top: 7px;
+        padding: 7px;
+        font-size: 9px;
+    }
+
+    .card-action span {
+        font-size: 16px;
+    }
+
+    .section-heading h2 {
+        font-size: 18px;
+    }
+}
+
+/* FRACTION BUILDER CARD */
+.fraction-builder-card {
+  display: flex;
+  flex-direction: column;
+  overflow: hidden;
+  text-decoration: none;
+  color: inherit;
+  border-radius: 24px;
+  background: #ffffff;
+  border: 2px solid #eee5ff;
+  box-shadow: 0 8px 24px rgba(70, 43, 140, 0.10);
+  transition: transform 0.25s ease, box-shadow 0.25s ease;
+}
+
+.fraction-builder-card:hover {
+  transform: translateY(-6px);
+  box-shadow: 0 14px 30px rgba(70, 43, 140, 0.17);
+}
+
+.fraction-builder-card .tool-card-art {
+  position: relative;
+  min-height: 210px;
+  padding: 20px;
+  overflow: hidden;
+}
+
+.fraction-builder-card .fraction-art {
+  background: linear-gradient(135deg, #e9d8ff, #fff0cb);
+}
+
+.fraction-badge {
+  display: inline-block;
+  padding: 8px 14px;
+  border-radius: 30px;
+  background: rgba(255,255,255,0.9);
+  color: #5630bd;
+  font-size: 12px;
+  font-weight: 900;
+  letter-spacing: 1px;
+}
+
+.fraction-illustration {
+  position: relative;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  min-height: 145px;
+}
+
+.fraction-pie {
+  position: relative;
+  width: 126px;
+  height: 126px;
+  border: 5px solid #32166f;
+  border-radius: 50%;
+  overflow: hidden;
+  background: conic-gradient(
+    #ff6687 0deg 90deg,
+    #ffda48 90deg 180deg,
+    #55c7ff 180deg 270deg,
+    #ffffff 270deg 360deg
+  );
+  box-shadow: 0 7px 0 rgba(61, 34, 130, 0.12);
+}
+
+.fraction-pie::before,
+.fraction-pie::after {
+  content: "";
+  position: absolute;
+  background: #32166f;
+}
+
+.fraction-pie::before {
+  width: 4px;
+  height: 100%;
+  left: 50%;
+  transform: translateX(-50%);
+}
+
+.fraction-pie::after {
+  width: 100%;
+  height: 4px;
+  top: 50%;
+  transform: translateY(-50%);
+}
+
+.fraction-symbol {
+  position: absolute;
+  font-size: 27px;
+  font-weight: 900;
+  color: #6435d8;
+}
+
+.symbol-left {
+  left: 8%;
+  top: 35%;
+  transform: rotate(-10deg);
+}
+
+.symbol-right {
+  right: 7%;
+  top: 18%;
+  color: #ed8b20;
+  transform: rotate(9deg);
+}
+
+.fraction-star {
+  position: absolute;
+  color: #ffbd28;
+  font-size: 25px;
+}
+
+.star-one {
+  right: 13%;
+  bottom: 7%;
+}
+
+.star-two {
+  left: 15%;
+  bottom: 2%;
+  color: #a778ff;
+}
+
+.fraction-builder-card .tool-card-content {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  gap: 10px;
+  padding: 20px;
+  flex: 1;
+}
+
+.fraction-builder-card .tool-card-content h3 {
+  margin: 0;
+  color: #32166f;
+  font-size: 21px;
+}
+
+.fraction-builder-card .tool-card-content p {
+  margin: 0;
+  color: #62577f;
+  line-height: 1.6;
+  font-size: 14px;
+}
+
+.fraction-builder-card .tool-card-link {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 10px;
+  width: 100%;
+  margin-top: auto;
+  padding: 12px 16px;
+  border-radius: 14px;
+  background: #6036d9;
+  color: white;
+  font-weight: 800;
+}
+
+.fraction-builder-card:focus-visible {
+  outline: 3px solid #6036d9;
+  outline-offset: 4px;
+}
+
+:root {
+  --ink: #24324b;
+  --muted: #68758d;
+  --purple: #7457e8;
+  --blue: #3e8ef7;
+  --green: #20a879;
+  --orange: #ffad42;
+  --pink: #f36d9b;
+  --bg: #f5f7ff;
+  --card: #ffffff;
+}
+
+* {
+  box-sizing: border-box;
+}
+
+body {
+  margin: 0;
+  font-family: "Segoe UI", Arial, sans-serif;
+  color: var(--ink);
+  background:
+    radial-gradient(circle at 5% 10%, #e8e1ff 0, transparent 25%),
+    radial-gradient(circle at 95% 20%, #dff7f0 0, transparent 23%),
+    var(--bg);
+}
+
+button,
+select {
+  font: inherit;
+}
+
+button {
+  cursor: pointer;
+}
+
+/* HEADER */
+
+header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 16px;
+  flex-wrap: wrap;
+  padding: 18px 5%;
+  background: rgba(255, 255, 255, 0.95);
+  border-bottom: 1px solid #e6e9f3;
+}
+
+.brand {
+  display: flex;
+  align-items: center;
+  gap: 11px;
+  font-weight: 850;
+  font-size: 19px;
+}
+
+.logo {
+  display: grid;
+  place-items: center;
+  width: 44px;
+  height: 44px;
+  background: linear-gradient(135deg, #7659eb, #9c7bff);
+  border-radius: 15px;
+  color: white;
+  font-size: 24px;
+}
+
+.back {
+  text-decoration: none;
+  color: var(--purple);
+  background: #f0ecff;
+  border-radius: 12px;
+  padding: 11px 16px;
+  font-weight: 750;
+  transition: 0.2s ease;
+}
+
+.back:hover {
+  background: #e4dcff;
+  transform: translateY(-2px);
+}
+
+/* MAIN LAYOUT */
+
+main {
+  width: 100%;
+  max-width: 1180px;
+  margin: auto;
+  padding: 28px 20px 55px;
+}
+
+/* HERO */
+
+.hero {
+  position: relative;
+  overflow: hidden;
+  background: linear-gradient(
+    125deg,
+    #6248dc,
+    #9677f5 65%,
+    #c2adff
+  );
+  color: white;
+  border-radius: 28px;
+  padding: 36px;
+  box-shadow: 0 15px 35px #7256d82b;
+}
+
+.hero::after {
+  content: "½ ⅓ ¾";
+  position: absolute;
+  right: 25px;
+  bottom: -25px;
+  font-size: clamp(50px, 9vw, 115px);
+  font-weight: 900;
+  opacity: 0.15;
+  transform: rotate(-8deg);
+  pointer-events: none;
+}
+
+.eyebrow {
+  font-size: 12px;
+  text-transform: uppercase;
+  letter-spacing: 2px;
+  font-weight: 850;
+  opacity: 0.85;
+}
+
+.hero h1 {
+  position: relative;
+  z-index: 1;
+  font-size: clamp(30px, 5vw, 48px);
+  line-height: 1.1;
+  margin: 12px 0;
+}
+
+.hero p {
+  position: relative;
+  z-index: 1;
+  max-width: 620px;
+  line-height: 1.8;
+  margin-bottom: 0;
+  color: #f2efff;
+}
+
+.stats {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 10px;
+  margin-top: 22px;
+}
+
+.stat {
+  padding: 9px 13px;
+  border: 1px solid #ffffff4d;
+  background: #ffffff1c;
+  border-radius: 30px;
+  font-size: 13px;
+  font-weight: 700;
+}
+
+/* ACTIVITY NAVIGATION */
+
+.tabs {
+  display: flex;
+  gap: 9px;
+  flex-wrap: wrap;
+  margin: 25px 0 20px;
+}
+
+.tab {
+  border: 1px solid #e0e4f0;
+  background: white;
+  color: #56627b;
+  padding: 12px 17px;
+  border-radius: 13px;
+  font-weight: 800;
+  transition: 0.2s ease;
+}
+
+.tab.active,
+.tab:hover {
+  background: var(--purple);
+  color: white;
+  border-color: var(--purple);
+  transform: translateY(-2px);
+  box-shadow: 0 5px 14px #7457e82b;
+}
+
+.tab:focus-visible,
+.btn:focus-visible,
+.answer:focus-visible,
+.back:focus-visible {
+  outline: 3px solid #ffb547;
+  outline-offset: 3px;
+}
+
+/* PANELS */
+
+.panel {
+  background: var(--card);
+  border: 1px solid #e7eaf4;
+  border-radius: 23px;
+  padding: 25px;
+  box-shadow: 0 8px 24px #26375b0a;
+  margin-bottom: 20px;
+  animation: appear 0.3s ease;
+}
+
+@keyframes appear {
+  from {
+    opacity: 0;
+    transform: translateY(6px);
+  }
+
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.panel h2 {
+  margin: 0 0 8px;
+  font-size: 23px;
+}
+
+.sub {
+  color: var(--muted);
+  line-height: 1.7;
+  margin: 0 0 22px;
+}
+
+/* INPUTS AND BUTTONS */
+
+.controls {
+  display: flex;
+  gap: 15px;
+  align-items: end;
+  flex-wrap: wrap;
+  margin: 20px 0;
+}
+
+.field {
+  display: grid;
+  gap: 7px;
+  font-size: 13px;
+  font-weight: 800;
+  color: #56627b;
+}
+
+select {
+  min-width: 125px;
+  border: 1px solid #dfe4f0;
+  background: #fafbff;
+  color: var(--ink);
+  padding: 11px 13px;
+  border-radius: 11px;
+  outline: none;
+}
+
+select:focus {
+  border-color: var(--purple);
+  box-shadow: 0 0 0 3px #7457e81c;
+}
+
+.btn {
+  border: 0;
+  border-radius: 12px;
+  padding: 12px 17px;
+  background: var(--purple);
+  color: white;
+  font-weight: 800;
+  transition: 0.2s ease;
+}
+
+.btn:hover {
+  filter: brightness(0.95);
+  transform: translateY(-2px);
+  box-shadow: 0 5px 12px #7457e82b;
+}
+
+.btn.secondary {
+  background: #f0edff;
+  color: var(--purple);
+}
+
+.btn.green {
+  background: var(--green);
+}
+
+/* FRACTION STRIPS */
+
+.strip-list {
+  display: grid;
+  gap: 13px;
+  margin: 22px 0;
+}
+
+.strip-row {
+  display: grid;
+  grid-template-columns: 90px minmax(0, 1fr);
+  gap: 13px;
+  align-items: center;
+}
+
+.strip-label {
+  font-size: 13px;
+  font-weight: 850;
+  color: #59657c;
+}
+
+.strip {
+  display: flex;
+  width: 100%;
+  min-height: 47px;
+  border-radius: 9px;
+  overflow: hidden;
+  background: #f0f2fa;
+  border: 1px solid #dfe4f0;
+}
+
+.piece {
+  flex: 1;
+  min-width: 0;
+  border: 1px solid white;
+  background: #e9edf7;
+  color: #35415a;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  font-size: 12px;
+  font-weight: 800;
+  position: relative;
+  transition: background 0.2s ease;
+}
+
+.piece.filled {
+  background: var(--piece-color, #8e78f2);
+  color: white;
+}
+
+.piece.selected {
+  outline: 3px solid #26324a;
+  outline-offset: -4px;
+}
+
+.piece:focus-visible {
+  outline: 3px solid #25324a;
+  outline-offset: -4px;
+  z-index: 1;
+}
+
+.strip-row.whole .piece {
+  background: linear-gradient(90deg, #25b98b, #57d7ac);
+  color: white;
+}
+
+.strip-row.whole .strip {
+  border-color: #25b98b;
+}
+
+/* FRACTION DISPLAY AND FEEDBACK */
+
+.big-fraction {
+  font-size: 27px;
+  font-weight: 900;
+  color: var(--purple);
+  margin: 12px 0;
+}
+
+.result {
+  border-radius: 14px;
+  padding: 14px 16px;
+  margin-top: 16px;
+  background: #f3f0ff;
+  color: #5540b3;
+  line-height: 1.7;
+  font-weight: 750;
+}
+
+.result.good {
+  background: #e7faf2;
+  color: #147c58;
+}
+
+.result.bad {
+  background: #fff0e9;
+  color: #b44b2b;
+}
+
+.explain {
+  color: var(--muted);
+  font-size: 13px;
+  margin-top: 10px;
+  line-height: 1.7;
+}
+
+.legend {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 9px;
+  margin-top: 15px;
+}
+
+.legend span {
+  border-radius: 9px;
+  background: #f4f5fb;
+  padding: 9px 12px;
+  color: #59657c;
+  font-size: 13px;
+  font-weight: 700;
+}
+
+/* COMPARISON CARDS */
+
+.two-col {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 18px;
+}
+
+.mini-card {
+  border: 1px solid #e7eaf4;
+  background: #fcfcff;
+  border-radius: 17px;
+  padding: 18px;
+  min-width: 0;
+  transition: border-color 0.2s ease;
+}
+
+.mini-card:hover {
+  border-color: #cfc4ff;
+}
+
+.mini-card h3 {
+  margin: 0 0 6px;
+}
+
+.compare-buttons {
+  display: flex;
+  gap: 9px;
+  margin-top: 16px;
+  flex-wrap: wrap;
+}
+
+.compare-buttons .btn {
+  flex: 1;
+  min-width: 90px;
+}
+
+/* CHALLENGE AREA */
+
+.question {
+  font-size: 19px;
+  line-height: 1.6;
+  font-weight: 850;
+}
+
+.answers {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 11px;
+  margin-top: 18px;
+}
+
+.answer {
+  border: 2px solid #e5e8f2;
+  background: white;
+  border-radius: 13px;
+  padding: 15px;
+  font-weight: 800;
+  color: var(--ink);
+  transition: 0.2s ease;
+}
+
+.answer:hover:not(:disabled) {
+  border-color: var(--purple);
+  background: #f6f3ff;
+  transform: translateY(-2px);
+}
+
+.answer:disabled {
+  cursor: default;
+  opacity: 0.9;
+}
+
+.scoreline {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  flex-wrap: wrap;
+  gap: 10px;
+  margin-bottom: 15px;
+}
+
+.score {
+  border-radius: 12px;
+  padding: 10px 14px;
+  background: #fff5dd;
+  color: #9a6400;
+  font-weight: 850;
+}
+
+/* FOOTER */
+
+footer {
+  text-align: center;
+  color: #7a8498;
+  font-size: 13px;
+  padding: 20px;
+}
+
+/* HIDDEN SECTIONS */
+
+[hidden] {
+  display: none !important;
+}
+
+/* RESPONSIVE DESIGN */
+
+@media (max-width: 650px) {
+  header {
+    padding: 14px 5%;
+  }
+
+  main {
+    padding: 20px 13px 40px;
+  }
+
+  .hero {
+    padding: 25px 21px;
+  }
+
+  .panel {
+    padding: 18px 14px;
+  }
+
+  .two-col {
+    grid-template-columns: 1fr;
+  }
+
+  .strip-row {
+    grid-template-columns: 62px minmax(0, 1fr);
+    gap: 8px;
+  }
+
+  .piece {
+    font-size: 10px;
+  }
+
+  .strip {
+    min-height: 40px;
+  }
+
+  .tab {
+    padding: 10px 12px;
+    font-size: 13px;
+  }
+
+  .answers {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+
+  .controls {
+    gap: 10px;
+  }
+
+  .controls .btn {
+    padding: 11px 12px;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.01ms !important;
+    transition-duration: 0.01ms !important;
+    scroll-behavior: auto !important;
+  }
+}
+
+/* PREMIUM FRACTION STRIPS CARD */
+
+.fraction-strips-card {
+  display: flex;
+  flex-direction: column;
+  position: relative;
+  overflow: hidden;
+  min-height: 340px;
+  padding: 22px;
+  background: linear-gradient(160deg, #ffffff 50%, #f3efff 100%);
+  border: 1px solid #e6defe;
+  border-radius: 24px;
+  text-decoration: none;
+  color: #25324b;
+  box-shadow: 0 8px 24px rgba(80, 60, 160, 0.07);
+  transition: transform 0.25s ease, box-shadow 0.25s ease;
+}
+
+.fraction-strips-card:hover {
+  transform: translateY(-7px);
+  box-shadow: 0 18px 35px rgba(80, 60, 160, 0.16);
+  border-color: #cfc1ff;
+}
+
+.fraction-card-top {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 10px;
+}
+
+.fraction-icon {
+  display: grid;
+  place-items: center;
+  width: 49px;
+  height: 49px;
+  border-radius: 16px;
+  background: linear-gradient(135deg, #7457e8, #a58bff);
+  color: white;
+  font-size: 25px;
+  box-shadow: 0 6px 14px #7457e82b;
+}
+
+.fraction-tag {
+  background: #ece7ff;
+  color: #6748d5;
+  font-size: 10px;
+  font-weight: 850;
+  letter-spacing: 1px;
+  padding: 8px 10px;
+  border-radius: 30px;
+}
+
+.fraction-preview {
+  margin: 22px 0 17px;
+  padding: 18px;
+  background: rgba(255, 255, 255, 0.9);
+  border: 1px solid #ece8fa;
+  border-radius: 17px;
+}
+
+.fraction-bar {
+  display: flex;
+  gap: 3px;
+  height: 21px;
+  margin-bottom: 7px;
+}
+
+.fraction-bar span {
+  flex: 1;
+  background: #8065ec;
+  border-radius: 4px;
+  border: 1px solid white;
+}
+
+.fraction-bar span:nth-child(even) {
+  background: #c4b5fd;
+}
+
+.fraction-bar.thirds span:nth-child(1) {
+  background: #3d94f6;
+}
+
+.fraction-bar.thirds span:nth-child(2) {
+  background: #75b8ff;
+}
+
+.fraction-bar.thirds span:nth-child(3) {
+  background: #dbeafe;
+}
+
+.fraction-bar.fourths span:nth-child(1),
+.fraction-bar.fourths span:nth-child(2) {
+  background: #22b58a;
+}
+
+.fraction-bar.fourths span:nth-child(3),
+.fraction-bar.fourths span:nth-child(4) {
+  background: #b6efdc;
+}
+
+.fraction-preview-label {
+  text-align: center;
+  margin-top: 12px;
+  font-size: 19px;
+  font-weight: 900;
+  color: #684bd6;
+  letter-spacing: 1px;
+}
+
+.fraction-strips-card h3 {
+  margin: 0 0 9px;
+  font-size: 21px;
+  font-weight: 850;
+  color: #25324b;
+}
+
+.fraction-strips-card p {
+  margin: 0 0 20px;
+  font-size: 14px;
+  line-height: 1.7;
+  color: #6b7690;
+}
+
+.fraction-card-bottom {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 10px;
+  margin-top: auto;
+  padding-top: 14px;
+  border-top: 1px solid #e8e1fb;
+  color: #694bd8;
+  font-size: 14px;
+  font-weight: 850;
+}
+
+.fraction-arrow {
+  display: grid;
+  place-items: center;
+  width: 34px;
+  height: 34px;
+  border-radius: 50%;
+  background: #7457e8;
+  color: white;
+  font-size: 20px;
+  transition: transform 0.2s ease;
+}
+
+.fraction-strips-card:hover .fraction-arrow {
+  transform: translateX(4px);
+}
+
+@media (max-width: 600px) {
+  .fraction-strips-card {
+    min-height: 320px;
+    padding: 18px;
+  }
+
+  .fraction-preview {
+    padding: 14px;
+  }
+}
+
+.number-line-card {
+  overflow: hidden;
+  background: #fff;
+  border: 1px solid #e3e9f4;
+  border-radius: 20px;
+  box-shadow: 0 8px 24px rgba(37, 57, 92, 0.08);
+  transition: transform .25s ease, box-shadow .25s ease;
+}
+
+.number-line-card:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 15px 32px rgba(37, 57, 92, 0.14);
+}
+
+.number-line-preview {
+  padding: 18px 18px 12px;
+  background:
+    radial-gradient(circle at 90% 5%, #e2e8ff, transparent 36%),
+    linear-gradient(135deg, #f5f8ff, #edf6ff);
+}
+
+.number-line-preview .preview-heading {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  color: #5267b8;
+  font-size: 11px;
+  font-weight: 900;
+  letter-spacing: 1px;
+}
+
+.number-line-preview .preview-heading span:first-child {
+  display: grid;
+  place-items: center;
+  width: 33px;
+  height: 33px;
+  background: #fff;
+  border-radius: 10px;
+  font-size: 19px;
+}
+
+.number-line-preview .preview-equation {
+  margin-top: 13px;
+  text-align: center;
+  color: #253957;
+  font-size: 25px;
+  font-weight: 900;
+}
+
+.number-line-preview .preview-equation span {
+  color: #20aa80;
+}
+
+.number-line-art {
+  display: block;
+  width: 100%;
+  max-height: 115px;
+  margin: 2px auto 0;
+}
+
+.number-line-preview .preview-tags {
+  display: flex;
+  justify-content: center;
+  flex-wrap: wrap;
+  gap: 6px;
+  margin-top: 5px;
+}
+
+.number-line-preview .preview-tags span {
+  padding: 6px 8px;
+  color: #526581;
+  background: rgba(255,255,255,.8);
+  border: 1px solid #e1e8f5;
+  border-radius: 20px;
+  font-size: 10px;
+  font-weight: 750;
+}
+
+.number-line-card .card-content {
+  padding: 20px;
+}
+
+.number-line-card .card-category {
+  color: #6b73cf;
+  font-size: 10px;
+  font-weight: 900;
+  letter-spacing: 1px;
+}
+
+.number-line-card h3 {
+  margin: 9px 0;
+  color: #253957;
+  font-size: 21px;
+}
+
+.number-line-card p {
+  color: #71809a;
+  font-size: 13px;
+  line-height: 1.75;
+}
+
+.number-line-card .card-features {
+  display: grid;
+  gap: 8px;
+  margin: 16px 0;
+  color: #4f6983;
+  font-size: 12px;
+}
+
+.number-line-card .card-button {
+  display: block;
+  padding: 12px 15px;
+  text-align: center;
+  text-decoration: none;
+  color: #fff;
+  background: linear-gradient(120deg, #5278ed, #7862dd);
+  border-radius: 11px;
+  font-size: 12px;
+  font-weight: 850;
+  transition: filter .2s ease;
+}
+
+.number-line-card .card-button:hover {
+  filter: brightness(1.08);
+}
+
+</style>
+</head>
+
+<body>
+
+<!-- HEADER -->
+<header>
+    <div class="logo">🌞 BrightNest <span>Learning Hub</span></div>
+    <a class="back-link" href="learning-tools.html">← All Subjects</a>
+</header>
+
+<!-- HERO -->
+<section class="hero">
+    <div class="hero-badge">🧮 THE MATHEMATICS PLAYGROUND</div>
+
+    <h1>Maths <span>Manipulatives</span></h1>
+
+    <p>
+        Welcome to a world where mathematics comes alive!
+        Explore, experiment and discover mathematical ideas
+        through colourful, interactive learning experiences.
+    </p>
+</section>
+
+<!-- MAIN -->
+<main>
+
+    <!-- SEARCH -->
+    <div class="search-panel">
+        <span class="search-icon">🔍</span>
+        <input
+            type="search"
+            class="search-box"
+            id="searchInput"
+            placeholder="Search maths manipulatives..."
+            aria-label="Search maths manipulatives">
+    </div>
+
+    <!-- SECTION TITLE -->
+    <div class="section-heading">
+        <h2>✨ Explore Maths Tools</h2>
+        <span class="tools-count" id="toolsCount">1 manipulative</span>
+    </div>
+
+    <!-- CARD GRID -->
+    <section class="maths-tools-grid" id="mathsToolsGrid">
+
+        <!-- PLACE VALUE STUDIO -->
+        <a
+            href="place-value-lab.html"
+            class="maths-tool-card place-value-card"
+            data-search="place value numbers ones tens hundreds thousands base ten blocks regrouping exchange addition subtraction">
+
+            <div class="card-top">
+                <span class="card-category">NUMBER SENSE</span>
+                <span class="card-star">✦</span>
+            </div>
+
+            <!-- CSS ILLUSTRATION -->
+            <div class="card-illustration place-value-art">
+
+                <div class="number-board">
+                    <div class="number-digit">3</div>
+                    <div class="number-digit">4</div>
+                    <div class="number-digit">2</div>
+                </div>
+
+                <div class="base-blocks">
+                    <span class="base-block hundreds"></span>
+                    <span class="base-block tens"></span>
+                    <span class="base-block ones"></span>
+                </div>
+
+                <span class="art-spark spark-one">✦</span>
+                <span class="art-spark spark-two">✧</span>
+            </div>
+
+            <div class="card-content">
+                <h3>Place Value Studio</h3>
+
+                <p>
+                    Build numbers and explore ones, tens,
+                    hundreds and thousands with interactive blocks.
+                </p>
+
+                <span class="card-action">
+                    <span>Explore Studio</span>
+                    <span>→</span>
+                </span>
+            </div>
+
+        </a>
+
+        <!-- ADD FUTURE MATHS MANIPULATIVES HERE -->
+
+<!-- FRACTION BUILDER CARD -->
+<a href="fraction-builder.html"
+   class="maths-tool-card fraction-builder-card"
+   data-search="fraction builder fractions colouring shaded parts numerator denominator">
+
+  <div class="tool-card-art fraction-art">
+    <span class="fraction-badge">FRACTIONS</span>
+
+    <div class="fraction-illustration" aria-hidden="true">
+      <div class="fraction-pie">
+        <span class="pie-part part-one"></span>
+        <span class="pie-part part-two"></span>
+        <span class="pie-part part-three"></span>
+        <span class="pie-part part-four"></span>
+      </div>
+
+      <span class="fraction-symbol symbol-left">¾</span>
+      <span class="fraction-symbol symbol-right">½</span>
+      <span class="fraction-star star-one">★</span>
+      <span class="fraction-star star-two">✦</span>
+    </div>
+  </div>
+
+  <div class="tool-card-content">
+    <h3>Fraction Builder</h3>
+    <p>
+      Colour the given fraction or identify the fraction
+      by counting the shaded parts.
+    </p>
+
+    <span class="tool-card-link">
+      Open Builder <span aria-hidden="true">→</span>
+    </span>
+  </div>
+</a>
+
+
+<a href="fraction-strips.html" class="maths-tool-card fraction-strips-card">
+  <div class="fraction-card-top">
+    <span class="fraction-icon">🧩</span>
+    <span class="fraction-tag">VISUAL MATHS</span>
+  </div>
+
+  <div class="fraction-preview">
+    <div class="fraction-bar">
+      <span></span><span></span>
+    </div>
+    <div class="fraction-bar thirds">
+      <span></span><span></span><span></span>
+    </div>
+    <div class="fraction-bar fourths">
+      <span></span><span></span><span></span><span></span>
+    </div>
+    <div class="fraction-preview-label">½ = 2/4</div>
+  </div>
+
+  <h3>Fraction Strips Lab</h3>
+  <p>
+    Explore fraction pieces, compare sizes, and discover
+    equivalent fractions through interactive play.
+  </p>
+
+  <div class="fraction-card-bottom">
+    <span>Explore Fractions</span>
+    <span class="fraction-arrow">→</span>
+  </div>
+</a>
+
+<!-- Number Line Master Card -->
+<div class="manipulative-card number-line-card">
+  <div class="card-image number-line-preview">
+    <div class="preview-heading">
+      <span>🔢</span>
+      <span>NUMBER LINE MASTER</span>
+    </div>
+
+    <div class="preview-equation">
+      15 − 7 = <span>8</span>
+    </div>
+
+    <svg class="number-line-art"
+         viewBox="0 0 320 100"
+         role="img"
+         aria-label="Illustration of a number line with a subtraction jump">
+      <path d="M15 58 H305"
+            stroke="#34435e"
+            stroke-width="3"
+            stroke-linecap="round"
+            fill="none"/>
+
+      <g stroke="#71809a" stroke-width="1.5">
+        <path d="M25 49 V67 M52 49 V67 M79 49 V67
+                 M106 49 V67 M133 49 V67 M160 49 V67
+                 M187 49 V67 M214 49 V67 M241 49 V67
+                 M268 49 V67 M295 49 V67"/>
+      </g>
+
+      <path d="M241 56 Q187 -5 133 56"
+            fill="none"
+            stroke="#ed6875"
+            stroke-width="3"
+            stroke-linecap="round"/>
+
+      <circle cx="133" cy="58" r="6" fill="#20aa80"/>
+      <circle cx="241" cy="58" r="6" fill="#4169e1"/>
+
+      <g fill="#53637e" font-size="10" text-anchor="middle">
+        <text x="25" y="83">0</text>
+        <text x="52" y="83">1</text>
+        <text x="79" y="83">2</text>
+        <text x="106" y="83">3</text>
+        <text x="133" y="83">4</text>
+        <text x="160" y="83">5</text>
+        <text x="187" y="83">6</text>
+        <text x="214" y="83">7</text>
+        <text x="241" y="83">8</text>
+        <text x="268" y="83">9</text>
+        <text x="295" y="83">10</text>
+      </g>
+    </svg>
+
+    <div class="preview-tags">
+      <span>➕ Addition</span>
+      <span>➖ Subtraction</span>
+      <span>½ Fractions</span>
+    </div>
+  </div>
+
+  <div class="card-content">
+    <div class="card-category">INTERACTIVE MANIPULATIVE</div>
+    <h3>Number Line Master</h3>
+
+    <p>
+      Explore counting, skip counting, addition, subtraction,
+      multiplication, division, fractions, decimals and negative
+      numbers through interactive number-line visualisations.
+    </p>
+
+    <div class="card-features">
+      <span>✓ 9 Learning Modes</span>
+      <span>✓ Adjustable Values</span>
+      <span>✓ Teacher Demonstration Tool</span>
+    </div>
+
+    <a href="number-line-explorer.html" class="card-button">
+      Open Number Line Master →
+    </a>
+  </div>
+</div>
+
+
+    </section>
+
+    <!-- SEARCH EMPTY STATE -->
+    <div class="no-results" id="noResults">
+        <strong>🔎 No matching tools found</strong>
+        Try another keyword to explore the Maths collection.
+    </div>
+
+</main>
+
+<!-- FOOTER -->
+<footer>
+    <p><strong>PM SHRI Kendriya Vidyalaya Mahe</strong></p>
+    <p>BrightNest Learning Hub · Learn by exploring, grow by discovering ✨</p>
+</footer>
+
+<!-- WORKING SEARCH -->
+<script>
+const searchInput = document.getElementById("searchInput");
+const mathsToolsGrid = document.getElementById("mathsToolsGrid");
+const toolsCount = document.getElementById("toolsCount");
+const noResults = document.getElementById("noResults");
+
+const toolCards = Array.from(
+    mathsToolsGrid.querySelectorAll(".maths-tool-card")
+);
+
+function filterMathsTools() {
+    const query = searchInput.value.trim().toLowerCase();
+    let visibleCount = 0;
+
+    toolCards.forEach(card => {
+        const searchableText = (
+            card.innerText + " " + (card.dataset.search || "")
+        ).toLowerCase();
+
+        const matches = searchableText.includes(query);
+
+        card.hidden = !matches;
+
+        if (matches) {
+            visibleCount++;
+        }
+    });
+
+    toolsCount.textContent =
+        visibleCount + (visibleCount === 1 ? " manipulative" : " manipulatives");
+
+    noResults.classList.toggle("visible", visibleCount === 0);
+}
+
+searchInput.addEventListener("input", filterMathsTools);
+</script>
+
+</body>
+</html>

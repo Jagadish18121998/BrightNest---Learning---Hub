@@ -1,0 +1,1063 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+
+    <meta name="viewport"
+        content="width=device-width, initial-scale=1.0">
+
+    <title>Class 4 English | Santoor Explorer</title>
+
+    <!-- BrightNest main stylesheet -->
+    <link rel="stylesheet"
+        href="../../../css/style.css">
+
+    <style>
+
+        /* =========================================
+           PAGE
+        ========================================= */
+
+        body {
+            margin: 0;
+            font-family: Arial, sans-serif;
+            background:
+                linear-gradient(
+                    135deg,
+                    #fff7d6,
+                    #e9f7ff,
+                    #f7eaff
+                );
+            color: #243047;
+        }
+
+
+        /* =========================================
+           EXPLORER HEADER
+        ========================================= */
+
+        .explorer-header {
+            background:
+                linear-gradient(
+                    135deg,
+                    #ff8a65,
+                    #ffca5c,
+                    #66c7f2
+                );
+
+            padding: 25px 6%;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            gap: 20px;
+
+            box-shadow:
+                0 5px 20px rgba(0,0,0,0.12);
+        }
+
+
+        .brand-area {
+            display: flex;
+            align-items: center;
+            gap: 15px;
+        }
+
+
+        .book-icon {
+            width: 65px;
+            height: 65px;
+
+            background: white;
+
+            border-radius: 18px;
+
+            display: flex;
+            align-items: center;
+            justify-content: center;
+
+            font-size: 36px;
+
+            box-shadow:
+                0 5px 15px rgba(0,0,0,0.15);
+        }
+
+
+        .brand-area h1 {
+            margin: 0;
+            color: white;
+            font-size: 30px;
+        }
+
+
+        .brand-area p {
+            margin: 5px 0 0;
+            color: white;
+            font-weight: bold;
+        }
+
+
+        .class-badge {
+            background: white;
+            padding: 12px 20px;
+            border-radius: 30px;
+            font-weight: bold;
+            color: #ff7043;
+        }
+
+
+        /* =========================================
+           MAIN
+        ========================================= */
+
+        .english-main {
+            width: 90%;
+            max-width: 1200px;
+            margin: 35px auto;
+        }
+
+
+        /* =========================================
+           WELCOME
+        ========================================= */
+
+        .welcome-card {
+            background: white;
+
+            border-radius: 25px;
+
+            padding: 30px;
+
+            margin-bottom: 30px;
+
+            box-shadow:
+                0 10px 30px rgba(0,0,0,0.08);
+
+            text-align: center;
+        }
+
+
+        .welcome-card h2 {
+            margin-top: 0;
+            font-size: 30px;
+            color: #3949ab;
+        }
+
+
+        .welcome-card p {
+            font-size: 17px;
+            color: #596579;
+        }
+
+
+        .explorer-message {
+            display: inline-block;
+
+            margin-top: 12px;
+
+            padding: 12px 20px;
+
+            background: #fff3cd;
+
+            border-radius: 30px;
+
+            font-weight: bold;
+        }
+
+
+        /* =========================================
+           PROGRESS
+        ========================================= */
+
+        .progress-card {
+            background: white;
+
+            border-radius: 22px;
+
+            padding: 25px;
+
+            margin-bottom: 35px;
+
+            box-shadow:
+                0 8px 25px rgba(0,0,0,0.07);
+        }
+
+
+        .progress-top {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 12px;
+        }
+
+
+        .progress-top h3 {
+            margin: 0;
+            color: #3949ab;
+        }
+
+
+        #progressText {
+            font-weight: bold;
+        }
+
+
+        .progress-track {
+            height: 16px;
+
+            background: #e8edf5;
+
+            border-radius: 20px;
+
+            overflow: hidden;
+        }
+
+
+        .progress-fill {
+            height: 100%;
+
+            width: 0%;
+
+            background:
+                linear-gradient(
+                    90deg,
+                    #66bb6a,
+                    #42a5f5,
+                    #ab47bc
+                );
+
+            border-radius: 20px;
+
+            transition: width 0.5s ease;
+        }
+
+
+        /* =========================================
+           CHAPTER SECTION
+        ========================================= */
+
+        .section-title {
+            text-align: center;
+            margin-bottom: 25px;
+        }
+
+
+        .section-title h2 {
+            margin-bottom: 8px;
+            font-size: 30px;
+            color: #283593;
+        }
+
+
+        .section-title p {
+            color: #667085;
+        }
+
+
+        /* =========================================
+           CHAPTER GRID
+        ========================================= */
+
+        .chapter-grid {
+            display: grid;
+
+            grid-template-columns:
+                repeat(3, 1fr);
+
+            gap: 22px;
+        }
+
+
+        /* =========================================
+           CHAPTER CARD
+        ========================================= */
+
+        .chapter-card {
+
+            background: white;
+
+            border-radius: 22px;
+
+            padding: 25px;
+
+            min-height: 245px;
+
+            position: relative;
+
+            display: flex;
+
+            flex-direction: column;
+
+            align-items: center;
+
+            text-align: center;
+
+            cursor: pointer;
+
+            border: 3px solid transparent;
+
+            box-shadow:
+                0 8px 25px rgba(0,0,0,0.08);
+
+            transition:
+                transform 0.25s ease,
+                box-shadow 0.25s ease,
+                border-color 0.25s ease;
+        }
+
+
+        .chapter-card:hover {
+
+            transform:
+                translateY(-7px);
+
+            box-shadow:
+                0 15px 35px rgba(0,0,0,0.13);
+
+            border-color: #64b5f6;
+        }
+
+
+        .chapter-number {
+
+            position: absolute;
+
+            top: 15px;
+            left: 15px;
+
+            width: 38px;
+            height: 38px;
+
+            border-radius: 50%;
+
+            background: #3949ab;
+
+            color: white;
+
+            display: flex;
+            align-items: center;
+            justify-content: center;
+
+            font-weight: bold;
+        }
+
+
+        .chapter-icon {
+
+            width: 80px;
+            height: 80px;
+
+            border-radius: 25px;
+
+            background: #fff3cd;
+
+            display: flex;
+            align-items: center;
+            justify-content: center;
+
+            font-size: 45px;
+
+            margin-top: 10px;
+            margin-bottom: 15px;
+        }
+
+
+        .chapter-title {
+
+            font-size: 20px;
+
+            font-weight: bold;
+
+            color: #263238;
+
+            min-height: 50px;
+
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+
+        .chapter-status {
+
+            margin-top: 12px;
+
+            padding: 7px 15px;
+
+            border-radius: 20px;
+
+            background: #e8f5e9;
+
+            color: #2e7d32;
+
+            font-size: 13px;
+
+            font-weight: bold;
+        }
+
+
+        .completed-badge {
+
+            background: #e3f2fd;
+
+            color: #1565c0;
+        }
+
+
+        .start-button {
+
+            margin-top: auto;
+
+            padding: 10px 22px;
+
+            border: none;
+
+            border-radius: 25px;
+
+            background: #3949ab;
+
+            color: white;
+
+            font-weight: bold;
+
+            cursor: pointer;
+        }
+
+
+        /* =========================================
+           INFORMATION
+        ========================================= */
+
+        .info-box {
+
+            margin-top: 40px;
+
+            background: white;
+
+            padding: 25px;
+
+            border-radius: 22px;
+
+            box-shadow:
+                0 8px 25px rgba(0,0,0,0.07);
+
+            text-align: center;
+        }
+
+
+        .info-box h3 {
+            color: #3949ab;
+        }
+
+
+        /* =========================================
+           FOOTER
+        ========================================= */
+
+        .english-footer {
+
+            margin-top: 50px;
+
+            padding: 25px;
+
+            text-align: center;
+
+            background: #263238;
+
+            color: white;
+        }
+
+
+        .english-footer p {
+            margin: 5px;
+        }
+
+
+        /* =========================================
+           TOAST
+        ========================================= */
+
+        .toast {
+
+            position: fixed;
+
+            bottom: 25px;
+            left: 50%;
+
+            transform:
+                translateX(-50%)
+                translateY(100px);
+
+            background: #263238;
+
+            color: white;
+
+            padding: 15px 25px;
+
+            border-radius: 30px;
+
+            opacity: 0;
+
+            transition: all 0.3s ease;
+
+            z-index: 1000;
+        }
+
+
+        .toast.show {
+
+            opacity: 1;
+
+            transform:
+                translateX(-50%)
+                translateY(0);
+        }
+
+
+        /* =========================================
+           RESPONSIVE
+        ========================================= */
+
+        @media (max-width: 900px) {
+
+            .chapter-grid {
+                grid-template-columns:
+                    repeat(2, 1fr);
+            }
+
+            .explorer-header {
+                flex-direction: column;
+                text-align: center;
+            }
+
+            .brand-area {
+                flex-direction: column;
+            }
+        }
+
+
+        @media (max-width: 600px) {
+
+            .chapter-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .english-main {
+                width: 94%;
+            }
+
+            .brand-area h1 {
+                font-size: 24px;
+            }
+
+            .welcome-card h2 {
+                font-size: 25px;
+            }
+        }
+
+    </style>
+
+</head>
+
+
+<body>
+
+
+<!-- =========================================
+     HEADER
+========================================= -->
+
+<header class="explorer-header">
+
+    <div class="brand-area">
+
+        <div class="book-icon">
+            📖
+        </div>
+
+        <div>
+
+            <h1>
+                Santoor English Explorer
+            </h1>
+
+            <p>
+                PM SHRI Kendriya Vidyalaya Mahe
+            </p>
+
+        </div>
+
+    </div>
+
+
+    <div class="class-badge">
+        CLASS 4 • ENGLISH
+    </div>
+
+</header>
+
+
+
+<!-- =========================================
+     MAIN
+========================================= -->
+
+<main class="english-main">
+
+
+    <!-- WELCOME -->
+
+    <section class="welcome-card">
+
+        <h2>
+            🌟 Welcome to Your English Adventure!
+        </h2>
+
+        <p>
+            Explore the Santoor chapters,
+            learn through activities,
+            practise your skills and
+            complete your learning journey.
+        </p>
+
+        <div class="explorer-message">
+            🚀 Choose ANY chapter and start exploring!
+        </div>
+
+    </section>
+
+
+
+    <!-- PROGRESS -->
+
+    <section class="progress-card">
+
+        <div class="progress-top">
+
+            <h3>
+                🏆 Your Learning Progress
+            </h3>
+
+            <span id="progressText">
+                0 / 12 Chapters Completed
+            </span>
+
+        </div>
+
+
+        <div class="progress-track">
+
+            <div
+                class="progress-fill"
+                id="progressFill">
+            </div>
+
+        </div>
+
+    </section>
+
+
+
+    <!-- CHAPTERS -->
+
+    <section>
+
+        <div class="section-title">
+
+            <h2>
+                🗺️ Santoor Chapters
+            </h2>
+
+            <p>
+                All chapters are open. Choose any chapter
+                whenever you want to learn or revise.
+            </p>
+
+        </div>
+
+
+        <div
+            class="chapter-grid"
+            id="chapterGrid">
+        </div>
+
+    </section>
+
+
+
+    <!-- INFO -->
+
+    <section class="info-box">
+
+        <h3>
+            🎓 Complete • Learn • Achieve
+        </h3>
+
+        <p>
+            Complete a chapter to earn its
+            completion certificate.
+        </p>
+
+        <p>
+            ⭐ Your progress is saved automatically
+            on this device.
+        </p>
+
+    </section>
+
+</main>
+
+
+
+<!-- =========================================
+     FOOTER
+========================================= -->
+
+<footer class="english-footer">
+
+    <p>
+        📖 Santoor English Explorer
+    </p>
+
+    <p>
+        Class 4 English • BrightNest Learning Hub
+    </p>
+
+    <p>
+        PM SHRI Kendriya Vidyalaya Mahe
+    </p>
+
+</footer>
+
+
+
+<!-- TOAST -->
+
+<div
+    class="toast"
+    id="toast">
+</div>
+
+
+
+<script>
+
+/* =========================================
+   CHAPTER DATA
+========================================= */
+
+const chapters = [
+
+    {
+        number: 1,
+        title: "Together We Can",
+        icon: "🤝",
+        file: "chapter1.html"
+    },
+
+    {
+        number: 2,
+        title: "The Tinkling Bells",
+        icon: "🔔",
+        file: "chapter2.html"
+    },
+
+    {
+        number: 3,
+        title: "Be Smart, Be Safe",
+        icon: "🛡️",
+        file: null
+    },
+
+    {
+        number: 4,
+        title: "One Thing at a Time",
+        icon: "🎯",
+        file: null
+    },
+
+    {
+        number: 5,
+        title: "The Old Stag",
+        icon: "🦌",
+        file: null
+    },
+
+    {
+        number: 6,
+        title: "Braille",
+        icon: "⠿",
+        file: null
+    },
+
+    {
+        number: 7,
+        title: "Fit Body, Fit Mind, Fit Nation",
+        icon: "🏃",
+        file: null
+    },
+
+    {
+        number: 8,
+        title: "The Lagori Champions",
+        icon: "🏆",
+        file: null
+    },
+
+    {
+        number: 9,
+        title: "Hekko",
+        icon: "🎮",
+        file: null
+    },
+
+    {
+        number: 10,
+        title: "The Swing",
+        icon: "🎡",
+        file: null
+    },
+
+    {
+        number: 11,
+        title: "A Journey to the Magical Mountains",
+        icon: "🏔️",
+        file: null
+    },
+
+    {
+        number: 12,
+        title: "Maheshwar",
+        icon: "🏛️",
+        file: null
+    }
+
+];
+
+
+
+/* =========================================
+   COMPLETED CHAPTERS
+========================================= */
+
+let completedChapters =
+    JSON.parse(
+        localStorage.getItem(
+            "santoorCompletedChapters"
+        )
+    ) || [];
+
+
+
+/* =========================================
+   CREATE CHAPTER CARDS
+========================================= */
+
+function createChapters() {
+
+    const grid =
+        document.getElementById(
+            "chapterGrid"
+        );
+
+    grid.innerHTML = "";
+
+
+    chapters.forEach(chapter => {
+
+        const completed =
+            completedChapters.includes(
+                chapter.number
+            );
+
+
+        const card =
+            document.createElement("div");
+
+
+        card.className =
+            "chapter-card";
+
+
+        card.innerHTML = `
+
+            <div class="chapter-number">
+                ${chapter.number}
+            </div>
+
+            <div class="chapter-icon">
+                ${chapter.icon}
+            </div>
+
+            <div class="chapter-title">
+                ${chapter.title}
+            </div>
+
+            ${
+                completed
+
+                ? `
+
+                    <div class="chapter-status completed-badge">
+                        ✅ Completed
+                    </div>
+
+                    <button
+                        class="start-button">
+                        🔄 Explore Again
+                    </button>
+
+                  `
+
+                : `
+
+                    <div class="chapter-status">
+                        🌟 Ready to Explore
+                    </div>
+
+                    <button
+                        class="start-button">
+                        🚀 Start Chapter
+                    </button>
+
+                  `
+            }
+
+        `;
+
+
+        /*
+            IMPORTANT:
+
+            There is NO locked condition.
+
+            Every chapter card can be clicked.
+        */
+
+        card.addEventListener(
+            "click",
+            () => openChapter(chapter)
+        );
+
+
+        grid.appendChild(card);
+
+    });
+
+}
+
+
+
+/* =========================================
+   OPEN CHAPTER
+========================================= */
+
+function openChapter(chapter) {
+
+    /*
+       Chapters 1 and 2 already have
+       their Santoor content available.
+    */
+
+    if (chapter.file) {
+
+        window.location.href =
+            chapter.file;
+
+        return;
+    }
+
+
+    /*
+       Chapters 3–12 will be connected
+       when we add their actual chapter files.
+
+       They are NOT locked.
+    */
+
+    showToast(
+        `Chapter ${chapter.number} is open in the dashboard. Its activities will be added next. 📖`
+    );
+
+}
+
+
+
+/* =========================================
+   UPDATE PROGRESS
+========================================= */
+
+function updateProgress() {
+
+    const completed =
+        completedChapters.length;
+
+
+    const total =
+        chapters.length;
+
+
+    const percentage =
+        Math.round(
+            (completed / total) * 100
+        );
+
+
+    document.getElementById(
+        "progressText"
+    ).textContent =
+        `${completed} / ${total} Chapters Completed`;
+
+
+    document.getElementById(
+        "progressFill"
+    ).style.width =
+        percentage + "%";
+
+}
+
+
+
+/* =========================================
+   TOAST
+========================================= */
+
+function showToast(message) {
+
+    const toast =
+        document.getElementById(
+            "toast"
+        );
+
+
+    toast.textContent =
+        message;
+
+
+    toast.classList.add("show");
+
+
+    setTimeout(() => {
+
+        toast.classList.remove("show");
+
+    }, 2500);
+
+}
+
+
+
+/* =========================================
+   START
+========================================= */
+
+createChapters();
+
+updateProgress();
+
+</script>
+
+
+</body>
+
+</html>

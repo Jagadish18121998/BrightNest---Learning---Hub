@@ -1,0 +1,446 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Teachers' Toolkit | BrightNest Learning Hub</title>
+<link rel="stylesheet" href="css/style.css">
+
+<style>
+* {
+    box-sizing: border-box;
+}
+
+body {
+    margin: 0;
+    font-family: "Trebuchet MS", Arial, sans-serif;
+    color: #24304a;
+    min-height: 100vh;
+    background:
+        radial-gradient(circle at 8% 15%, #ffffff80 0 90px, transparent 91px),
+        radial-gradient(circle at 92% 75%, #ffffff70 0 120px, transparent 121px),
+        linear-gradient(135deg, #dbeafe 0%, #e9e3ff 38%, #ffe7ef 70%, #dcfce7 100%);
+    background-attachment: fixed;
+}
+
+/* Header */
+header {
+    padding: 23px 6%;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    flex-wrap: wrap;
+    gap: 12px;
+    background: #ffffffd9;
+    backdrop-filter: blur(12px);
+    border-bottom: 1px solid #ffffff;
+    box-shadow: 0 5px 24px #34415a12;
+}
+
+header h1 {
+    margin: 0;
+    color: #5543a5;
+    font-size: clamp(21px, 3vw, 29px);
+    font-weight: 900;
+}
+
+header p {
+    margin: 5px 0 0;
+    color: #68748b;
+    font-size: 14px;
+}
+
+/* Main container */
+.container {
+    width: min(1180px, 92%);
+    margin: 0 auto;
+    padding: 25px 0 60px;
+}
+
+.teacher-back {
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    padding: 10px 17px;
+    margin-bottom: 22px;
+    color: #5746a4;
+    background: #ffffffc9;
+    border: 1px solid #ffffff;
+    border-radius: 30px;
+    text-decoration: none;
+    font-size: 14px;
+    font-weight: bold;
+    transition: .2s ease;
+}
+
+.teacher-back:hover {
+    background: white;
+    transform: translateX(-4px);
+}
+
+/* Hero section */
+.teacher-hero {
+    position: relative;
+    overflow: hidden;
+    text-align: center;
+    padding: 43px 24px;
+    margin-bottom: 38px;
+    border-radius: 30px;
+    background: linear-gradient(125deg, #6956c9, #8971e8 50%, #bb83d9);
+    color: white;
+    box-shadow: 0 15px 35px #6653bb35;
+}
+
+.teacher-hero::before,
+.teacher-hero::after {
+    content: "";
+    position: absolute;
+    border: 2px solid #ffffff30;
+    border-radius: 50%;
+    pointer-events: none;
+}
+
+.teacher-hero::before {
+    width: 210px;
+    height: 210px;
+    top: -115px;
+    left: -55px;
+}
+
+.teacher-hero::after {
+    width: 260px;
+    height: 260px;
+    right: -90px;
+    bottom: -170px;
+}
+
+.hero-icon {
+    display: inline-flex;
+    width: 74px;
+    height: 74px;
+    align-items: center;
+    justify-content: center;
+    margin-bottom: 15px;
+    background: #ffffff28;
+    border: 1px solid #ffffff55;
+    border-radius: 23px;
+    font-size: 42px;
+    box-shadow: 0 8px 20px #372a7520;
+}
+
+.teacher-hero h2 {
+    position: relative;
+    z-index: 1;
+    margin: 0 0 13px;
+    font-size: clamp(29px, 4vw, 43px);
+    letter-spacing: -1px;
+}
+
+.teacher-hero p {
+    position: relative;
+    z-index: 1;
+    max-width: 650px;
+    margin: 0 auto;
+    color: #f7f4ff;
+    font-size: 16px;
+    line-height: 1.8;
+}
+
+/* Section heading */
+.section-heading {
+    text-align: center;
+    margin: 0 0 25px;
+}
+
+.section-heading h2 {
+    margin: 0 0 9px;
+    font-size: clamp(23px, 3vw, 30px);
+    color: #34345e;
+}
+
+.section-heading p {
+    margin: 0;
+    color: #66718a;
+    line-height: 1.7;
+}
+
+/* Toolkit cards */
+.teacher-grid {
+    display: grid;
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: 24px;
+}
+
+.teacher-card {
+    --accent: #6654c7;
+    --soft: #eeeaff;
+    position: relative;
+    overflow: hidden;
+    display: flex;
+    align-items: flex-start;
+    gap: 20px;
+    min-width: 0;
+    padding: 27px;
+    color: #29334d;
+    text-decoration: none;
+    background: #ffffffed;
+    border: 1px solid #ffffff;
+    border-radius: 25px;
+    box-shadow: 0 9px 25px #35415a12;
+    transition: transform .25s ease, box-shadow .25s ease;
+}
+
+.teacher-card::after {
+    content: "";
+    position: absolute;
+    left: 0;
+    top: 0;
+    bottom: 0;
+    width: 5px;
+    background: var(--accent);
+    transition: width .25s ease;
+}
+
+.teacher-card:hover {
+    transform: translateY(-7px);
+    box-shadow: 0 18px 35px #35415a20;
+}
+
+.teacher-card:hover::after {
+    width: 8px;
+}
+
+.card-icon {
+    flex: 0 0 78px;
+    width: 78px;
+    height: 78px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border-radius: 23px;
+    background: var(--soft);
+    font-size: 39px;
+    transition: transform .25s ease;
+}
+
+.teacher-card:hover .card-icon {
+    transform: rotate(-6deg) scale(1.06);
+}
+
+.card-content {
+    flex: 1;
+    min-width: 0;
+}
+
+.card-tag {
+    display: inline-block;
+    padding: 5px 10px;
+    margin-bottom: 9px;
+    color: var(--accent);
+    background: var(--soft);
+    border-radius: 20px;
+    font-size: 10px;
+    font-weight: 900;
+    letter-spacing: 1px;
+    text-transform: uppercase;
+}
+
+.teacher-card h3 {
+    margin: 0 0 10px;
+    color: var(--accent);
+    font-size: 22px;
+    line-height: 1.3;
+}
+
+.teacher-card p {
+    margin: 0;
+    color: #69748a;
+    font-size: 14px;
+    line-height: 1.8;
+}
+
+.explore {
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    margin-top: 17px;
+    color: var(--accent);
+    font-size: 14px;
+    font-weight: 900;
+}
+
+.maths-tools {
+    --accent: #6654c7;
+    --soft: #eeeaff;
+}
+
+.lesson-tools {
+    --accent: #df8138;
+    --soft: #fff0df;
+}
+
+.assessment-tools {
+    --accent: #d44f82;
+    --soft: #ffebf2;
+}
+
+.tlm-tools {
+    --accent: #239777;
+    --soft: #e2f8ed;
+}
+
+/* Footer */
+footer {
+    padding: 23px 15px;
+    text-align: center;
+    color: #626d83;
+    background: #ffffffa8;
+    border-top: 1px solid #ffffff;
+    line-height: 1.8;
+    font-size: 13px;
+}
+
+footer p {
+    margin: 3px;
+}
+
+@media (max-width: 760px) {
+    .teacher-grid {
+        grid-template-columns: 1fr;
+        gap: 17px;
+    }
+
+    .teacher-card {
+        padding: 23px;
+    }
+
+    .teacher-hero {
+        padding: 35px 20px;
+    }
+}
+
+@media (max-width: 420px) {
+    header {
+        padding: 18px 5%;
+    }
+
+    .container {
+        width: 94%;
+    }
+
+    .teacher-card {
+        gap: 14px;
+        padding: 20px 16px;
+    }
+
+    .card-icon {
+        flex-basis: 57px;
+        width: 57px;
+        height: 57px;
+        border-radius: 17px;
+        font-size: 30px;
+    }
+
+    .teacher-card h3 {
+        font-size: 19px;
+    }
+}
+</style>
+</head>
+
+<body>
+
+<header>
+    <div>
+        <h1>🌞 BrightNest Learning Hub</h1>
+        <p>Empowering Teachers, Inspiring Learners</p>
+    </div>
+</header>
+
+<main class="container">
+
+    <a class="teacher-back" href="index.html">← Back to Home</a>
+
+    <section class="teacher-hero">
+        <div class="hero-icon">👩‍🏫</div>
+        <h2>Teachers' Toolkit</h2>
+        <p>
+            Plan better lessons, make learning interactive, and inspire
+            every child. Your collection of creative classroom resources
+            starts here!
+        </p>
+    </section>
+
+    <section>
+        <div class="section-heading">
+            <h2>✨ Your Teaching Workspace</h2>
+            <p>Choose a toolkit and bring joyful learning into your classroom.</p>
+        </div>
+
+        <div class="teacher-grid">
+
+            <a href="learning-tools.html" class="teacher-card maths-tools">
+                <div class="card-icon">🧩</div>
+                <div class="card-content">
+                    <span class="card-tag">Hands-on Learning</span>
+                    <h3>Manipulatives Library</h3>
+                    <p>
+                        Explore interactive Maths, English, Hindi and TWAU
+                        manipulatives that help children learn by doing.
+                    </p>
+                    <span class="explore">Explore Library <span>→</span></span>
+                </div>
+            </a>
+
+            <a href="#" class="teacher-card lesson-tools">
+                <div class="card-icon">📘</div>
+                <div class="card-content">
+                    <span class="card-tag">Plan & Prepare</span>
+                    <h3>Lesson Plans</h3>
+                    <p>
+                        Organise lesson plans, learning outcomes, classroom
+                        activities and competency-based teaching strategies.
+                    </p>
+                    <span class="explore">Coming Soon <span>→</span></span>
+                </div>
+            </a>
+
+            <a href="#" class="teacher-card assessment-tools">
+                <div class="card-icon">📝</div>
+                <div class="card-content">
+                    <span class="card-tag">Check Progress</span>
+                    <h3>Assessment Resources</h3>
+                    <p>
+                        Prepare competency-based questions, quizzes and
+                        engaging activities to assess children's learning.
+                    </p>
+                    <span class="explore">Coming Soon <span>→</span></span>
+                </div>
+            </a>
+
+            <a href="#" class="teacher-card tlm-tools">
+                <div class="card-icon">🎨</div>
+                <div class="card-content">
+                    <span class="card-tag">Create & Discover</span>
+                    <h3>Teaching-Learning Materials</h3>
+                    <p>
+                        Discover creative TLM ideas, classroom games and
+                        hands-on resources for joyful learning experiences.
+                    </p>
+                    <span class="explore">Coming Soon <span>→</span></span>
+                </div>
+            </a>
+
+        </div>
+    </section>
+
+</main>
+
+<footer>
+    <p><strong>PM SHRI Kendriya Vidyalaya Mahe</strong></p>
+    <p>BrightNest Learning Hub · Learn, Create, Inspire ✨</p>
+</footer>
+
+</body>
+</html>

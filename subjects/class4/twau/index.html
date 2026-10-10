@@ -1,0 +1,1068 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+<meta charset="UTF-8">
+
+<meta
+    name="viewport"
+    content="width=device-width, initial-scale=1.0"
+>
+
+<title>Class 4 TWAU | BrightNest</title>
+
+<style>
+
+*{
+    box-sizing:border-box;
+    margin:0;
+    padding:0;
+}
+
+body{
+
+    font-family:
+        "Trebuchet MS",
+        "Segoe UI",
+        Arial,
+        sans-serif;
+
+    min-height:100vh;
+
+    background:
+        linear-gradient(
+            180deg,
+            #d9f99d 0%,
+            #ecfccb 45%,
+            #dbeafe 100%
+        );
+
+    color:#172554;
+
+}
+
+
+/* ================= HEADER ================= */
+
+.top-header{
+
+    width:94%;
+
+    max-width:1400px;
+
+    margin:18px auto;
+
+    background:white;
+
+    border-radius:24px;
+
+    padding:15px 22px;
+
+    display:flex;
+
+    align-items:center;
+
+    justify-content:space-between;
+
+    gap:20px;
+
+    box-shadow:
+        0 8px 22px rgba(0,0,0,.14);
+
+}
+
+
+.brand{
+
+    display:flex;
+
+    align-items:center;
+
+    gap:12px;
+
+}
+
+
+.brand-icon{
+
+    width:58px;
+
+    height:58px;
+
+    border-radius:18px;
+
+    display:flex;
+
+    align-items:center;
+
+    justify-content:center;
+
+    background:#dcfce7;
+
+    font-size:34px;
+
+}
+
+
+.brand-title{
+
+    font-size:22px;
+
+    font-weight:900;
+
+    color:#14532d;
+
+}
+
+
+.school-name{
+
+    margin-top:3px;
+
+    font-size:12px;
+
+    font-weight:800;
+
+    color:#166534;
+
+}
+
+
+.home-btn{
+
+    display:inline-flex;
+
+    align-items:center;
+
+    justify-content:center;
+
+    padding:10px 17px;
+
+    background:#2563eb;
+
+    color:white;
+
+    text-decoration:none;
+
+    border-radius:15px;
+
+    font-weight:900;
+
+    box-shadow:
+        0 4px 0 #1e40af;
+
+}
+
+
+.home-btn:hover{
+
+    transform:translateY(-2px);
+
+}
+
+
+/* ================= HERO ================= */
+
+.hero{
+
+    width:94%;
+
+    max-width:1400px;
+
+    margin:20px auto;
+
+    padding:45px 30px;
+
+    border-radius:30px;
+
+    background:
+
+        linear-gradient(
+            135deg,
+            #166534,
+            #15803d,
+            #0f766e
+        );
+
+    color:white;
+
+    display:flex;
+
+    align-items:center;
+
+    justify-content:space-between;
+
+    gap:30px;
+
+    box-shadow:
+        0 12px 30px rgba(0,0,0,.16);
+
+}
+
+
+.hero-text{
+
+    max-width:800px;
+
+}
+
+
+.hero h1{
+
+    font-size:42px;
+
+    margin-bottom:10px;
+
+}
+
+
+.hero h2{
+
+    font-size:24px;
+
+    margin-bottom:15px;
+
+    color:#dcfce7;
+
+}
+
+
+.hero p{
+
+    font-size:17px;
+
+    line-height:1.6;
+
+}
+
+
+.hero-icons{
+
+    font-size:90px;
+
+    white-space:nowrap;
+
+}
+
+
+/* ================= UNIT ================= */
+
+.unit{
+
+    width:94%;
+
+    max-width:1400px;
+
+    margin:30px auto;
+
+}
+
+
+.unit-header{
+
+    display:flex;
+
+    align-items:center;
+
+    gap:15px;
+
+    margin-bottom:15px;
+
+}
+
+
+.unit-number{
+
+    background:#166534;
+
+    color:white;
+
+    padding:9px 15px;
+
+    border-radius:14px;
+
+    font-weight:900;
+
+    font-size:14px;
+
+}
+
+
+.unit-title{
+
+    font-size:25px;
+
+    font-weight:900;
+
+    color:#14532d;
+
+}
+
+
+/* ================= CHAPTER GRID ================= */
+
+.chapter-grid{
+
+    display:grid;
+
+    grid-template-columns:
+        repeat(2,1fr);
+
+    gap:20px;
+
+}
+
+
+.chapter-card{
+
+    background:white;
+
+    border-radius:22px;
+
+    padding:22px;
+
+    display:flex;
+
+    align-items:center;
+
+    gap:18px;
+
+    border:3px solid #dcfce7;
+
+    box-shadow:
+        0 7px 18px rgba(0,0,0,.08);
+
+    transition:.2s;
+
+}
+
+
+.chapter-card:hover{
+
+    transform:translateY(-5px);
+
+    border-color:#86efac;
+
+}
+
+
+.chapter-icon{
+
+    width:65px;
+
+    height:65px;
+
+    flex-shrink:0;
+
+    border-radius:18px;
+
+    background:#f0fdf4;
+
+    display:flex;
+
+    align-items:center;
+
+    justify-content:center;
+
+    font-size:35px;
+
+}
+
+
+.chapter-info{
+
+    flex:1;
+
+}
+
+
+.chapter-number{
+
+    font-size:12px;
+
+    font-weight:900;
+
+    color:#15803d;
+
+    margin-bottom:4px;
+
+}
+
+
+.chapter-title{
+
+    font-size:19px;
+
+    font-weight:900;
+
+    color:#172554;
+
+}
+
+
+.open-btn{
+
+    display:inline-block;
+
+    margin-top:10px;
+
+    padding:8px 15px;
+
+    border-radius:13px;
+
+    background:#16a34a;
+
+    color:white;
+
+    text-decoration:none;
+
+    font-size:13px;
+
+    font-weight:900;
+
+}
+
+
+.open-btn:hover{
+
+    background:#15803d;
+
+}
+
+
+/* ================= FOOTER ================= */
+
+footer{
+
+    width:94%;
+
+    max-width:1400px;
+
+    margin:40px auto 25px;
+
+    padding:20px;
+
+    background:white;
+
+    border-radius:20px;
+
+    text-align:center;
+
+    box-shadow:
+        0 6px 18px rgba(0,0,0,.08);
+
+    color:#475569;
+
+    font-size:13px;
+
+}
+
+
+footer strong{
+
+    color:#14532d;
+
+}
+
+
+/* ================= MOBILE ================= */
+
+@media(max-width:750px){
+
+    .top-header{
+
+        flex-wrap:wrap;
+
+    }
+
+
+    .hero{
+
+        flex-direction:column;
+
+        text-align:center;
+
+    }
+
+
+    .hero h1{
+
+        font-size:32px;
+
+    }
+
+
+    .hero-icons{
+
+        font-size:65px;
+
+    }
+
+
+    .chapter-grid{
+
+        grid-template-columns:1fr;
+
+    }
+
+}
+
+
+@media(max-width:500px){
+
+    .brand-title{
+
+        font-size:18px;
+
+    }
+
+
+    .school-name{
+
+        font-size:10px;
+
+    }
+
+
+    .chapter-card{
+
+        padding:17px;
+
+    }
+
+
+    .chapter-title{
+
+        font-size:16px;
+
+    }
+
+}
+
+</style>
+
+</head>
+
+
+<body>
+
+
+<!-- ================= HEADER ================= -->
+
+<header class="top-header">
+
+    <div class="brand">
+
+        <div class="brand-icon">
+            🌍
+        </div>
+
+        <div>
+
+            <div class="brand-title">
+                Our Wondrous World
+            </div>
+
+            <div class="school-name">
+                CLASS 4 • TWAU • PM SHRI KV MAHE
+            </div>
+
+        </div>
+
+    </div>
+
+
+    <a
+        href="../../../index.html"
+        class="home-btn"
+    >
+        🏠 BrightNest Home
+    </a>
+
+</header>
+
+
+<!-- ================= HERO ================= -->
+
+<section class="hero">
+
+    <div class="hero-text">
+
+        <h1>
+            🌍 Our Wondrous World
+        </h1>
+
+        <h2>
+            Class 4 • The World Around Us
+        </h2>
+
+        <p>
+            Explore your community, discover nature,
+            understand health, investigate how things
+            work and learn about the wonderful world
+            around you.
+        </p>
+
+    </div>
+
+
+    <div class="hero-icons">
+        🌱🏘️🔍🌎
+    </div>
+
+</section>
+
+
+<!-- ================= UNIT 1 ================= -->
+
+<section class="unit">
+
+    <div class="unit-header">
+
+        <div class="unit-number">
+            UNIT 1
+        </div>
+
+        <div class="unit-title">
+            Our Community
+        </div>
+
+    </div>
+
+
+    <div class="chapter-grid">
+
+
+        <div class="chapter-card">
+
+            <div class="chapter-icon">
+                🏘️
+            </div>
+
+            <div class="chapter-info">
+
+                <div class="chapter-number">
+                    CHAPTER 1
+                </div>
+
+                <div class="chapter-title">
+                    Living Together
+                </div>
+
+                <a
+                    href="#"
+                    class="open-btn"
+                    onclick="comingSoon(event)"
+                >
+                    Explore Chapter →
+                </a>
+
+            </div>
+
+        </div>
+
+
+        <div class="chapter-card">
+
+            <div class="chapter-icon">
+                🧭
+            </div>
+
+            <div class="chapter-info">
+
+                <div class="chapter-number">
+                    CHAPTER 2
+                </div>
+
+                <div class="chapter-title">
+                    Exploring Our Neighbourhood
+                </div>
+
+                <a
+                    href="#"
+                    class="open-btn"
+                    onclick="comingSoon(event)"
+                >
+                    Explore Chapter →
+                </a>
+
+            </div>
+
+        </div>
+
+
+    </div>
+
+</section>
+
+
+<!-- ================= UNIT 2 ================= -->
+
+<section class="unit">
+
+    <div class="unit-header">
+
+        <div class="unit-number">
+            UNIT 2
+        </div>
+
+        <div class="unit-title">
+            Life Around Us
+        </div>
+
+    </div>
+
+
+    <div class="chapter-grid">
+
+
+        <div class="chapter-card">
+
+            <div class="chapter-icon">
+                🌿
+            </div>
+
+            <div class="chapter-info">
+
+                <div class="chapter-number">
+                    CHAPTER 3
+                </div>
+
+                <div class="chapter-title">
+                    Nature Trail
+                </div>
+
+                <a
+                    href="#"
+                    class="open-btn"
+                    onclick="comingSoon(event)"
+                >
+                    Explore Chapter →
+                </a>
+
+            </div>
+
+        </div>
+
+
+        <div class="chapter-card">
+
+            <div class="chapter-icon">
+                🌳
+            </div>
+
+            <div class="chapter-info">
+
+                <div class="chapter-number">
+                    CHAPTER 4
+                </div>
+
+                <div class="chapter-title">
+                    Growing up with Nature
+                </div>
+
+                <a
+                    href="#"
+                    class="open-btn"
+                    onclick="comingSoon(event)"
+                >
+                    Explore Chapter →
+                </a>
+
+            </div>
+
+        </div>
+
+
+    </div>
+
+</section>
+
+
+<!-- ================= UNIT 3 ================= -->
+
+<section class="unit">
+
+    <div class="unit-header">
+
+        <div class="unit-number">
+            UNIT 3
+        </div>
+
+        <div class="unit-title">
+            Health and Well-being
+        </div>
+
+    </div>
+
+
+    <div class="chapter-grid">
+
+
+        <div class="chapter-card">
+
+            <div class="chapter-icon">
+                🍎
+            </div>
+
+            <div class="chapter-info">
+
+                <div class="chapter-number">
+                    CHAPTER 5
+                </div>
+
+                <div class="chapter-title">
+                    Food for Health
+                </div>
+
+                <a
+                    href="#"
+                    class="open-btn"
+                    onclick="comingSoon(event)"
+                >
+                    Explore Chapter →
+                </a>
+
+            </div>
+
+        </div>
+
+
+        <div class="chapter-card">
+
+            <div class="chapter-icon">
+                ❤️
+            </div>
+
+            <div class="chapter-info">
+
+                <div class="chapter-number">
+                    CHAPTER 6
+                </div>
+
+                <div class="chapter-title">
+                    Happy and Healthy Living
+                </div>
+
+                <a
+                    href="#"
+                    class="open-btn"
+                    onclick="comingSoon(event)"
+                >
+                    Explore Chapter →
+                </a>
+
+            </div>
+
+        </div>
+
+
+    </div>
+
+</section>
+
+
+<!-- ================= UNIT 4 ================= -->
+
+<section class="unit">
+
+    <div class="unit-header">
+
+        <div class="unit-number">
+            UNIT 4
+        </div>
+
+        <div class="unit-title">
+            Things Around Us
+        </div>
+
+    </div>
+
+
+    <div class="chapter-grid">
+
+
+        <div class="chapter-card">
+
+            <div class="chapter-icon">
+                ⚙️
+            </div>
+
+            <div class="chapter-info">
+
+                <div class="chapter-number">
+                    CHAPTER 7
+                </div>
+
+                <div class="chapter-title">
+                    How Things Work
+                </div>
+
+                <a
+                    href="#"
+                    class="open-btn"
+                    onclick="comingSoon(event)"
+                >
+                    Explore Chapter →
+                </a>
+
+            </div>
+
+        </div>
+
+
+        <div class="chapter-card">
+
+            <div class="chapter-icon">
+                🛠️
+            </div>
+
+            <div class="chapter-info">
+
+                <div class="chapter-number">
+                    CHAPTER 8
+                </div>
+
+                <div class="chapter-title">
+                    How Things are Made
+                </div>
+
+                <a
+                    href="#"
+                    class="open-btn"
+                    onclick="comingSoon(event)"
+                >
+                    Explore Chapter →
+                </a>
+
+            </div>
+
+        </div>
+
+
+    </div>
+
+</section>
+
+
+<!-- ================= UNIT 5 ================= -->
+
+<section class="unit">
+
+    <div class="unit-header">
+
+        <div class="unit-number">
+            UNIT 5
+        </div>
+
+        <div class="unit-title">
+            Our Environment
+        </div>
+
+    </div>
+
+
+    <div class="chapter-grid">
+
+
+        <div class="chapter-card">
+
+            <div class="chapter-icon">
+                🌍
+            </div>
+
+            <div class="chapter-info">
+
+                <div class="chapter-number">
+                    CHAPTER 9
+                </div>
+
+                <div class="chapter-title">
+                    Different Lands, Different Lives
+                </div>
+
+                <a
+                    href="#"
+                    class="open-btn"
+                    onclick="comingSoon(event)"
+                >
+                    Explore Chapter →
+                </a>
+
+            </div>
+
+        </div>
+
+
+        <div class="chapter-card">
+
+            <div class="chapter-icon">
+                ☀️
+            </div>
+
+            <div class="chapter-info">
+
+                <div class="chapter-number">
+                    CHAPTER 10
+                </div>
+
+                <div class="chapter-title">
+                    Our Sky
+                </div>
+
+                <a
+                    href="#"
+                    class="open-btn"
+                    onclick="comingSoon(event)"
+                >
+                    Explore Chapter →
+                </a>
+
+            </div>
+
+        </div>
+
+
+    </div>
+
+</section>
+
+
+<!-- ================= FOOTER ================= -->
+
+<footer>
+
+    <strong>
+        🌟 BrightNest Learning Hub
+    </strong>
+
+    <br><br>
+
+    PM SHRI Kendriya Vidyalaya Mahe
+
+    <br>
+
+    Class 4 • TWAU • Our Wondrous World
+
+</footer>
+
+
+<script>
+
+function comingSoon(event){
+
+    event.preventDefault();
+
+    alert(
+        "🌱 This chapter is coming soon!"
+    );
+
+}
+
+</script>
+
+
+</body>
+
+</html>

@@ -1,0 +1,876 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<title>Class 1 Mathematics | BrightNest</title>
+
+<style>
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: "Segoe UI", Arial, sans-serif;
+    background: #f7f9ff;
+    color: #24324a;
+}
+
+/* ================= HEADER ================= */
+
+header {
+    background: linear-gradient(135deg, #5b5be7, #7b4de8, #ef70b5);
+    color: white;
+    padding: 22px 7%;
+    position: relative;
+    overflow: hidden;
+}
+
+header::before {
+    content: "➕  ✦  🔢  ➖  ⭐  ×  🧩";
+    position: absolute;
+    top: 8px;
+    right: 25px;
+    font-size: 24px;
+    opacity: 0.18;
+    word-spacing: 20px;
+}
+
+.header-content {
+    max-width: 1200px;
+    margin: auto;
+    position: relative;
+    z-index: 2;
+}
+
+.school-name {
+    font-size: 14px;
+    font-weight: 700;
+    letter-spacing: 1.5px;
+    margin-bottom: 7px;
+}
+
+.brand {
+    font-size: 30px;
+    font-weight: 800;
+}
+
+.brand span {
+    color: #ffe66d;
+}
+
+.header-subtitle {
+    margin-top: 5px;
+    font-size: 14px;
+    opacity: 0.92;
+}
+
+/* ================= HERO ================= */
+
+.hero {
+    max-width: 1200px;
+    margin: 35px auto 20px;
+    padding: 45px 30px;
+    border-radius: 30px;
+    background: linear-gradient(135deg, #fff4c7, #e9f7ff, #f8e8ff);
+    position: relative;
+    overflow: hidden;
+    text-align: center;
+    box-shadow: 0 12px 35px rgba(61, 72, 120, 0.12);
+}
+
+.hero::before {
+    content: "🔢";
+    position: absolute;
+    left: 35px;
+    top: 25px;
+    font-size: 65px;
+    opacity: 0.18;
+}
+
+.hero::after {
+    content: "🧮";
+    position: absolute;
+    right: 35px;
+    bottom: 20px;
+    font-size: 70px;
+    opacity: 0.18;
+}
+
+.hero-icon {
+    font-size: 65px;
+    margin-bottom: 10px;
+}
+
+.hero h1 {
+    font-size: 44px;
+    color: #4936b8;
+    margin-bottom: 8px;
+}
+
+.hero h2 {
+    font-size: 20px;
+    color: #e35491;
+    margin-bottom: 15px;
+}
+
+.hero p {
+    max-width: 700px;
+    margin: auto;
+    font-size: 17px;
+    line-height: 1.6;
+    color: #59657c;
+}
+
+.hero-tags {
+    margin-top: 22px;
+    display: flex;
+    justify-content: center;
+    gap: 10px;
+    flex-wrap: wrap;
+}
+
+.hero-tags span {
+    background: white;
+    padding: 9px 16px;
+    border-radius: 25px;
+    font-size: 14px;
+    font-weight: 700;
+    box-shadow: 0 5px 15px rgba(0,0,0,0.07);
+}
+
+/* ================= CONTENT ================= */
+
+.container {
+    max-width: 1200px;
+    margin: 30px auto 60px;
+    padding: 0 20px;
+}
+
+.section-title {
+    text-align: center;
+    margin: 35px 0 25px;
+}
+
+.section-title h2 {
+    font-size: 28px;
+    color: #4033a3;
+}
+
+.section-title p {
+    color: #6d778c;
+    margin-top: 6px;
+}
+
+/* ================= CHAPTER GRID ================= */
+
+.chapter-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 22px;
+}
+
+/* ================= CARD ================= */
+
+.chapter-card {
+    background: white;
+    border-radius: 22px;
+    padding: 24px;
+    min-height: 245px;
+    position: relative;
+    overflow: hidden;
+    box-shadow: 0 8px 25px rgba(45, 57, 100, 0.10);
+    transition: 0.3s ease;
+    border: 3px solid transparent;
+}
+
+.chapter-card:hover {
+    transform: translateY(-8px);
+    box-shadow: 0 15px 32px rgba(45, 57, 100, 0.17);
+}
+
+.chapter-number {
+    position: absolute;
+    right: 16px;
+    top: 14px;
+    font-size: 13px;
+    font-weight: 800;
+    background: rgba(255,255,255,0.75);
+    padding: 7px 11px;
+    border-radius: 20px;
+}
+
+.chapter-icon {
+    font-size: 46px;
+    margin-bottom: 14px;
+}
+
+.chapter-card h3 {
+    font-size: 20px;
+    margin-bottom: 10px;
+    color: #26345b;
+    line-height: 1.3;
+}
+
+.chapter-card p {
+    font-size: 14px;
+    line-height: 1.5;
+    color: #667085;
+    min-height: 43px;
+}
+
+.explore-btn {
+    display: inline-block;
+    margin-top: 18px;
+    text-decoration: none;
+    padding: 10px 17px;
+    border-radius: 25px;
+    background: #ffffff;
+    color: #3d35a4;
+    font-weight: 800;
+    font-size: 13px;
+    transition: 0.2s;
+    cursor: pointer;
+}
+
+.explore-btn:hover {
+    transform: scale(1.05);
+}
+
+/* ================= CARD COLORS ================= */
+
+.card1 {
+    background: linear-gradient(135deg, #fff1d6, #fff8ec);
+    border-color: #ffd58a;
+}
+
+.card2 {
+    background: linear-gradient(135deg, #e8f4ff, #f5fbff);
+    border-color: #9ed7ff;
+}
+
+.card3 {
+    background: linear-gradient(135deg, #fff4a8, #fffbe3);
+    border-color: #f5d85a;
+}
+
+.card4 {
+    background: linear-gradient(135deg, #eee8ff, #f8f5ff);
+    border-color: #c4b4ff;
+}
+
+.card5 {
+    background: linear-gradient(135deg, #e6fff1, #f5fff9);
+    border-color: #91e2b2;
+}
+
+.card6 {
+    background: linear-gradient(135deg, #ffe8ef, #fff5f8);
+    border-color: #ffadc4;
+}
+
+.card7 {
+    background: linear-gradient(135deg, #e4f9ff, #f4fdff);
+    border-color: #91dce9;
+}
+
+.card8 {
+    background: linear-gradient(135deg, #fff0dc, #fff8ef);
+    border-color: #ffc17a;
+}
+
+.card9 {
+    background: linear-gradient(135deg, #f0e8ff, #faf7ff);
+    border-color: #c6a9ff;
+}
+
+.card10 {
+    background: linear-gradient(135deg, #e8f8ff, #f6fcff);
+    border-color: #9ed9ef;
+}
+
+.card11 {
+    background: linear-gradient(135deg, #e8ffe8, #f6fff6);
+    border-color: #a7dfa7;
+}
+
+.card12 {
+    background: linear-gradient(135deg, #fff0f5, #fff8fb);
+    border-color: #f4aec7;
+}
+
+.card13 {
+    background: linear-gradient(135deg, #fff8d8, #fffdf0);
+    border-color: #f0d878;
+}
+
+/* ================= MATH MAGIC ================= */
+
+.math-magic {
+    margin-top: 45px;
+    padding: 28px;
+    border-radius: 25px;
+    background: linear-gradient(135deg, #4034a6, #7448d8);
+    color: white;
+    text-align: center;
+    position: relative;
+    overflow: hidden;
+}
+
+.math-magic h2 {
+    font-size: 25px;
+    margin-bottom: 8px;
+}
+
+.math-magic p {
+    opacity: 0.9;
+    margin-bottom: 18px;
+}
+
+.math-symbols {
+    display: flex;
+    justify-content: center;
+    gap: 14px;
+    flex-wrap: wrap;
+}
+
+.math-symbols span {
+    background: rgba(255,255,255,0.15);
+    padding: 12px 18px;
+    border-radius: 15px;
+    font-size: 20px;
+    font-weight: bold;
+}
+
+/* ================= FOOTER ================= */
+
+footer {
+    background: #202642;
+    color: white;
+    text-align: center;
+    padding: 28px 20px;
+}
+
+footer h3 {
+    color: #ffe66d;
+    margin-bottom: 8px;
+}
+
+footer p {
+    font-size: 13px;
+    opacity: 0.8;
+    margin: 5px;
+}
+
+.home-btn {
+    display: inline-block;
+    margin-top: 18px;
+    padding: 10px 20px;
+    border-radius: 25px;
+    background: white;
+    color: #4034a6;
+    text-decoration: none;
+    font-weight: 700;
+}
+
+/* ================= MOBILE ================= */
+
+@media (max-width: 900px) {
+
+    .chapter-grid {
+        grid-template-columns: repeat(2, 1fr);
+    }
+
+    .hero h1 {
+        font-size: 36px;
+    }
+}
+
+@media (max-width: 600px) {
+
+    header {
+        padding: 18px 20px;
+    }
+
+    .brand {
+        font-size: 24px;
+    }
+
+    .hero {
+        margin: 20px 15px;
+        padding: 35px 20px;
+    }
+
+    .hero h1 {
+        font-size: 30px;
+    }
+
+    .hero h2 {
+        font-size: 17px;
+    }
+
+    .hero p {
+        font-size: 15px;
+    }
+
+    .chapter-grid {
+        grid-template-columns: 1fr;
+    }
+
+    .chapter-card {
+        min-height: auto;
+    }
+
+    .container {
+        padding: 0 15px;
+    }
+
+    .section-title h2 {
+        font-size: 24px;
+    }
+}
+</style>
+</head>
+
+<body>
+
+<!-- ================= HEADER ================= -->
+
+<header>
+    <div class="header-content">
+
+        <div class="school-name">
+            PM SHRI KENDRIYA VIDYALAYA MAHE
+        </div>
+
+        <div class="brand">
+            🌞 Bright<span>Nest</span> Learning Hub
+        </div>
+
+        <div class="header-subtitle">
+            Class 1 • Mathematics
+        </div>
+
+    </div>
+</header>
+
+
+<!-- ================= HERO ================= -->
+
+<section class="hero">
+
+    <div class="hero-icon">🧮</div>
+
+    <h1>Maths World</h1>
+
+    <h2>Class 1 Mathematics</h2>
+
+    <p>
+        Welcome to a colourful world of numbers, shapes, patterns,
+        measurements, money and fun mathematical thinking!
+    </p>
+
+    <div class="hero-tags">
+        <span>🔢 Count</span>
+        <span>🔷 Explore Shapes</span>
+        <span>➕ Add</span>
+        <span>➖ Subtract</span>
+        <span>⏰ Discover Time</span>
+        <span>🪙 Learn Money</span>
+    </div>
+
+</section>
+
+
+<!-- ================= CHAPTERS ================= -->
+
+<div class="container">
+
+    <div class="section-title">
+
+        <h2>🌈 Explore Mathematics</h2>
+
+        <p>
+            Choose a chapter and begin your mathematical adventure!
+        </p>
+
+    </div>
+
+
+    <div class="chapter-grid">
+
+
+        <!-- 1 -->
+
+        <div class="chapter-card card1">
+
+            <div class="chapter-number">CHAPTER 1</div>
+
+            <div class="chapter-icon">🐱</div>
+
+            <h3>Finding the Furry Cat</h3>
+
+            <p>
+                Pre-number concepts
+            </p>
+
+            <a href="#"
+               class="explore-btn"
+               onclick="comingSoon(event)">
+               Explore →
+            </a>
+
+        </div>
+
+
+        <!-- 2 -->
+
+        <div class="chapter-card card2">
+
+            <div class="chapter-number">CHAPTER 2</div>
+
+            <div class="chapter-icon">🔷</div>
+
+            <h3>Shapes Around Us</h3>
+
+            <p>
+                2D and 3D shapes
+            </p>
+
+            <a href="#"
+               class="explore-btn"
+               onclick="comingSoon(event)">
+               Explore →
+            </a>
+
+        </div>
+
+
+        <!-- 3 -->
+
+        <div class="chapter-card card3">
+
+            <div class="chapter-number">CHAPTER 3</div>
+
+            <div class="chapter-icon">🥭</div>
+
+            <h3>Mango Treat</h3>
+
+            <p>
+                Numbers 1 to 9
+            </p>
+
+            <a href="#"
+               class="explore-btn"
+               onclick="comingSoon(event)">
+               Explore →
+            </a>
+
+        </div>
+
+
+        <!-- 4 -->
+
+        <div class="chapter-card card4">
+
+            <div class="chapter-number">CHAPTER 4</div>
+
+            <div class="chapter-icon">🔟</div>
+
+            <h3>Making 10</h3>
+
+            <p>
+                Numbers 10 to 20 and place value
+            </p>
+
+            <a href="#"
+               class="explore-btn"
+               onclick="comingSoon(event)">
+               Explore →
+            </a>
+
+        </div>
+
+
+        <!-- 5 -->
+
+        <div class="chapter-card card5">
+
+            <div class="chapter-number">CHAPTER 5</div>
+
+            <div class="chapter-icon">🔢</div>
+
+            <h3>How Many?</h3>
+
+            <p>
+                Single-digit addition and subtraction
+            </p>
+
+            <a href="#"
+               class="explore-btn"
+               onclick="comingSoon(event)">
+               Explore →
+            </a>
+
+        </div>
+
+
+        <!-- 6 -->
+
+        <div class="chapter-card card6">
+
+            <div class="chapter-number">CHAPTER 6</div>
+
+            <div class="chapter-icon">🥕</div>
+
+            <h3>Vegetable Farm</h3>
+
+            <p>
+                Addition and subtraction up to 20
+            </p>
+
+            <a href="#"
+               class="explore-btn"
+               onclick="comingSoon(event)">
+               Explore →
+            </a>
+
+        </div>
+
+
+        <!-- 7 -->
+
+        <div class="chapter-card card7">
+
+            <div class="chapter-number">CHAPTER 7</div>
+
+            <div class="chapter-icon">👨‍👩‍👧</div>
+
+            <h3>Lina's Family</h3>
+
+            <p>
+                Measurement of length, height, and weight
+            </p>
+
+            <a href="#"
+               class="explore-btn"
+               onclick="comingSoon(event)">
+               Explore →
+            </a>
+
+        </div>
+
+
+        <!-- 8 -->
+
+        <div class="chapter-card card8">
+
+            <div class="chapter-number">CHAPTER 8</div>
+
+            <div class="chapter-icon">🎲</div>
+
+            <h3>Fun with Numbers</h3>
+
+            <p>
+                Numbers 21 to 99
+            </p>
+
+            <a href="#"
+               class="explore-btn"
+               onclick="comingSoon(event)">
+               Explore →
+            </a>
+
+        </div>
+
+
+        <!-- 9 -->
+
+        <div class="chapter-card card9">
+
+            <div class="chapter-number">CHAPTER 9</div>
+
+            <div class="chapter-icon">🎨</div>
+
+            <h3>Utsav</h3>
+
+            <p>
+                Patterns
+            </p>
+
+            <a href="#"
+               class="explore-btn"
+               onclick="comingSoon(event)">
+               Explore →
+            </a>
+
+        </div>
+
+
+        <!-- 10 -->
+
+        <div class="chapter-card card10">
+
+            <div class="chapter-number">CHAPTER 10</div>
+
+            <div class="chapter-icon">⏰</div>
+
+            <h3>How Do I Spend My Day?</h3>
+
+            <p>
+                Time and daily routines
+            </p>
+
+            <a href="#"
+               class="explore-btn"
+               onclick="comingSoon(event)">
+               Explore →
+            </a>
+
+        </div>
+
+
+        <!-- 11 -->
+
+        <div class="chapter-card card11">
+
+            <div class="chapter-number">CHAPTER 11</div>
+
+            <div class="chapter-icon">🔢</div>
+
+            <h3>How Many Times?</h3>
+
+            <p>
+                Introduction to multiplication concepts/repeated addition
+            </p>
+
+            <a href="#"
+               class="explore-btn"
+               onclick="comingSoon(event)">
+               Explore →
+            </a>
+
+        </div>
+
+
+        <!-- 12 -->
+
+        <div class="chapter-card card12">
+
+            <div class="chapter-number">CHAPTER 12</div>
+
+            <div class="chapter-icon">🪙</div>
+
+            <h3>How Much Can We Spend?</h3>
+
+            <p>
+                Money - currency notes and coins
+            </p>
+
+            <a href="#"
+               class="explore-btn"
+               onclick="comingSoon(event)">
+               Explore →
+            </a>
+
+        </div>
+
+
+        <!-- 13 -->
+
+        <div class="chapter-card card13">
+
+            <div class="chapter-number">CHAPTER 13</div>
+
+            <div class="chapter-icon">🧸</div>
+
+            <h3>So Many Toys</h3>
+
+            <p>
+                Data handling and collection
+            </p>
+
+            <a href="#"
+               class="explore-btn"
+               onclick="comingSoon(event)">
+               Explore →
+            </a>
+
+        </div>
+
+
+    </div>
+
+
+    <!-- ================= MATH MAGIC ================= -->
+
+    <section class="math-magic">
+
+        <h2>✨ Maths Magic Zone ✨</h2>
+
+        <p>
+            Count • Think • Match • Solve • Discover
+        </p>
+
+        <div class="math-symbols">
+            <span>1 2 3</span>
+            <span>➕</span>
+            <span>➖</span>
+            <span>🔷</span>
+            <span>⏰</span>
+            <span>🪙</span>
+            <span>×</span>
+        </div>
+
+    </section>
+
+</div>
+
+
+<!-- ================= FOOTER ================= -->
+
+<footer>
+
+    <h3>🌞 BrightNest Learning Hub</h3>
+
+    <p>
+        PM SHRI Kendriya Vidyalaya Mahe
+    </p>
+
+    <p>
+        Class 1 • Mathematics
+    </p>
+
+    <a href="../../../index.html" class="home-btn">
+        🏠 BrightNest Home
+    </a>
+
+    <p style="margin-top:18px;">
+        Developed by Jagadish Mishra • Primary Teacher
+    </p>
+
+</footer>
+
+
+<!-- ================= JAVASCRIPT ================= -->
+
+<script>
+
+function comingSoon(event) {
+
+    event.preventDefault();
+
+    alert(
+        "🚀 This Maths Adventure is coming soon!\n\n" +
+        "Interactive activities, games and challenges are being prepared."
+    );
+
+}
+
+</script>
+
+</body>
+</html>

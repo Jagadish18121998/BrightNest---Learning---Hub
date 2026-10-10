@@ -1,0 +1,1482 @@
+<!DOCTYPE html>
+<html lang="hi">
+
+<head>
+
+<meta charset="UTF-8">
+
+<meta
+    name="viewport"
+    content="width=device-width, initial-scale=1.0"
+>
+
+<title>Class 4 Hindi | Veena | BrightNest</title>
+
+<style>
+
+/* ================= BASIC ================= */
+
+*{
+    margin:0;
+    padding:0;
+    box-sizing:border-box;
+}
+
+body{
+
+    font-family:
+        "Noto Sans Devanagari",
+        "Segoe UI",
+        Arial,
+        sans-serif;
+
+    min-height:100vh;
+
+    color:#24324a;
+
+    background:
+        linear-gradient(
+            180deg,
+            #fff7ed 0%,
+            #fefce8 40%,
+            #eff6ff 100%
+        );
+}
+
+
+/* ================= HEADER ================= */
+
+header{
+
+    width:94%;
+    max-width:1400px;
+
+    margin:18px auto;
+
+    padding:15px 22px;
+
+    background:white;
+
+    border-radius:24px;
+
+    display:flex;
+
+    align-items:center;
+
+    justify-content:space-between;
+
+    gap:20px;
+
+    box-shadow:
+        0 8px 22px rgba(0,0,0,.13);
+}
+
+
+.header-left{
+
+    display:flex;
+
+    align-items:center;
+
+    gap:13px;
+}
+
+
+.logo-icon{
+
+    width:58px;
+    height:58px;
+
+    border-radius:18px;
+
+    display:flex;
+
+    align-items:center;
+
+    justify-content:center;
+
+    font-size:32px;
+
+    background:#fef3c7;
+}
+
+
+.logo-title{
+
+    font-size:21px;
+
+    font-weight:900;
+
+    color:#9a3412;
+}
+
+
+.school-name{
+
+    margin-top:3px;
+
+    font-size:12px;
+
+    font-weight:800;
+
+    color:#ea580c;
+}
+
+
+.home-btn{
+
+    text-decoration:none;
+
+    color:white;
+
+    background:#2563eb;
+
+    padding:11px 18px;
+
+    border-radius:15px;
+
+    font-weight:900;
+
+    box-shadow:
+        0 4px 0 #1e40af;
+
+    transition:.2s;
+}
+
+
+.home-btn:hover{
+
+    transform:translateY(-2px);
+
+}
+
+
+/* ================= HERO ================= */
+
+.hero{
+
+    width:94%;
+    max-width:1400px;
+
+    margin:20px auto;
+
+    padding:45px 30px;
+
+    border-radius:30px;
+
+    color:white;
+
+    background:
+
+        linear-gradient(
+            135deg,
+            #7c3aed,
+            #db2777,
+            #f97316
+        );
+
+    display:flex;
+
+    align-items:center;
+
+    justify-content:space-between;
+
+    gap:30px;
+
+    box-shadow:
+        0 12px 30px rgba(0,0,0,.16);
+
+    overflow:hidden;
+
+    position:relative;
+}
+
+
+.hero::before{
+
+    content:"अ";
+
+    position:absolute;
+
+    right:170px;
+    top:-65px;
+
+    font-size:190px;
+
+    font-weight:900;
+
+    color:rgba(255,255,255,.10);
+
+}
+
+
+.hero::after{
+
+    content:"क";
+
+    position:absolute;
+
+    left:45%;
+
+    bottom:-100px;
+
+    font-size:180px;
+
+    font-weight:900;
+
+    color:rgba(255,255,255,.08);
+
+}
+
+
+.hero-content{
+
+    position:relative;
+
+    z-index:2;
+
+    max-width:800px;
+}
+
+
+.hero-badge{
+
+    display:inline-block;
+
+    background:rgba(255,255,255,.18);
+
+    border:1px solid rgba(255,255,255,.35);
+
+    padding:8px 17px;
+
+    border-radius:25px;
+
+    font-weight:900;
+
+    margin-bottom:14px;
+}
+
+
+.hero h1{
+
+    font-size:46px;
+
+    margin-bottom:10px;
+}
+
+
+.hero h2{
+
+    font-size:23px;
+
+    margin-bottom:15px;
+
+    color:#fef3c7;
+}
+
+
+.hero p{
+
+    font-size:17px;
+
+    line-height:1.7;
+
+}
+
+
+.hero-symbols{
+
+    position:relative;
+
+    z-index:2;
+
+    font-size:72px;
+
+    white-space:nowrap;
+}
+
+
+/* ================= BOOK INFO ================= */
+
+.book-info{
+
+    width:94%;
+    max-width:1200px;
+
+    margin:25px auto;
+
+    display:grid;
+
+    grid-template-columns:
+        repeat(3,1fr);
+
+    gap:18px;
+}
+
+
+.info-card{
+
+    background:white;
+
+    border-radius:20px;
+
+    padding:18px;
+
+    text-align:center;
+
+    font-weight:900;
+
+    box-shadow:
+        0 7px 20px rgba(60,40,90,.09);
+
+    transition:.2s;
+}
+
+
+.info-card:hover{
+
+    transform:translateY(-4px);
+
+}
+
+
+.info-card:nth-child(1){
+
+    border-top:5px solid #f97316;
+
+}
+
+
+.info-card:nth-child(2){
+
+    border-top:5px solid #7c3aed;
+
+}
+
+
+.info-card:nth-child(3){
+
+    border-top:5px solid #2563eb;
+
+}
+
+
+/* ================= SECTION TITLE ================= */
+
+.container{
+
+    width:94%;
+
+    max-width:1400px;
+
+    margin:35px auto 50px;
+}
+
+
+.section-title{
+
+    text-align:center;
+
+    margin-bottom:28px;
+}
+
+
+.section-title h2{
+
+    font-size:31px;
+
+    color:#6d28d9;
+
+    margin-bottom:7px;
+}
+
+
+.section-title p{
+
+    color:#64748b;
+
+    font-size:15px;
+}
+
+
+/* ================= CHAPTER GRID ================= */
+
+.chapter-grid{
+
+    display:grid;
+
+    grid-template-columns:
+        repeat(4,1fr);
+
+    gap:22px;
+}
+
+
+/* ================= CARD ================= */
+
+.chapter-card{
+
+    background:white;
+
+    border-radius:24px;
+
+    padding:24px 18px 20px;
+
+    text-align:center;
+
+    position:relative;
+
+    overflow:hidden;
+
+    border:3px solid transparent;
+
+    box-shadow:
+        0 8px 22px rgba(50,40,80,.10);
+
+    transition:.25s;
+}
+
+
+.chapter-card::before{
+
+    content:"";
+
+    position:absolute;
+
+    top:0;
+    left:0;
+
+    width:100%;
+    height:7px;
+
+}
+
+
+.chapter-card:hover{
+
+    transform:
+        translateY(-7px)
+        rotate(-0.5deg);
+
+    box-shadow:
+        0 16px 32px rgba(50,40,80,.16);
+}
+
+
+/* ================= CARD COLOURS ================= */
+
+.chapter-card:nth-child(1)::before{
+    background:#7c3aed;
+}
+
+.chapter-card:nth-child(2)::before{
+    background:#2563eb;
+}
+
+.chapter-card:nth-child(3)::before{
+    background:#059669;
+}
+
+.chapter-card:nth-child(4)::before{
+    background:#f97316;
+}
+
+.chapter-card:nth-child(5)::before{
+    background:#dc2626;
+}
+
+.chapter-card:nth-child(6)::before{
+    background:#db2777;
+}
+
+.chapter-card:nth-child(7)::before{
+    background:#0891b2;
+}
+
+.chapter-card:nth-child(8)::before{
+    background:#eab308;
+}
+
+.chapter-card:nth-child(9)::before{
+    background:#8b5cf6;
+}
+
+.chapter-card:nth-child(10)::before{
+    background:#16a34a;
+}
+
+.chapter-card:nth-child(11)::before{
+    background:#ea580c;
+}
+
+.chapter-card:nth-child(12)::before{
+    background:#4f46e5;
+}
+
+.chapter-card:nth-child(13)::before{
+    background:#ec4899;
+}
+
+
+/* ================= NUMBER ================= */
+
+.chapter-number{
+
+    position:absolute;
+
+    top:16px;
+    left:16px;
+
+    width:37px;
+    height:37px;
+
+    border-radius:50%;
+
+    display:flex;
+
+    align-items:center;
+
+    justify-content:center;
+
+    color:white;
+
+    font-weight:900;
+
+    font-size:14px;
+}
+
+
+.chapter-card:nth-child(1) .chapter-number{
+    background:#7c3aed;
+}
+
+.chapter-card:nth-child(2) .chapter-number{
+    background:#2563eb;
+}
+
+.chapter-card:nth-child(3) .chapter-number{
+    background:#059669;
+}
+
+.chapter-card:nth-child(4) .chapter-number{
+    background:#f97316;
+}
+
+.chapter-card:nth-child(5) .chapter-number{
+    background:#dc2626;
+}
+
+.chapter-card:nth-child(6) .chapter-number{
+    background:#db2777;
+}
+
+.chapter-card:nth-child(7) .chapter-number{
+    background:#0891b2;
+}
+
+.chapter-card:nth-child(8) .chapter-number{
+    background:#ca8a04;
+}
+
+.chapter-card:nth-child(9) .chapter-number{
+    background:#8b5cf6;
+}
+
+.chapter-card:nth-child(10) .chapter-number{
+    background:#16a34a;
+}
+
+.chapter-card:nth-child(11) .chapter-number{
+    background:#ea580c;
+}
+
+.chapter-card:nth-child(12) .chapter-number{
+    background:#4f46e5;
+}
+
+.chapter-card:nth-child(13) .chapter-number{
+    background:#ec4899;
+}
+
+
+/* ================= ICON ================= */
+
+.icon{
+
+    width:78px;
+    height:78px;
+
+    margin:14px auto 15px;
+
+    border-radius:24px;
+
+    display:flex;
+
+    align-items:center;
+
+    justify-content:center;
+
+    font-size:40px;
+}
+
+
+.chapter-card:nth-child(1) .icon{
+    background:#f3e8ff;
+}
+
+.chapter-card:nth-child(2) .icon{
+    background:#dbeafe;
+}
+
+.chapter-card:nth-child(3) .icon{
+    background:#d1fae5;
+}
+
+.chapter-card:nth-child(4) .icon{
+    background:#ffedd5;
+}
+
+.chapter-card:nth-child(5) .icon{
+    background:#fee2e2;
+}
+
+.chapter-card:nth-child(6) .icon{
+    background:#fce7f3;
+}
+
+.chapter-card:nth-child(7) .icon{
+    background:#cffafe;
+}
+
+.chapter-card:nth-child(8) .icon{
+    background:#fef9c3;
+}
+
+.chapter-card:nth-child(9) .icon{
+    background:#ede9fe;
+}
+
+.chapter-card:nth-child(10) .icon{
+    background:#dcfce7;
+}
+
+.chapter-card:nth-child(11) .icon{
+    background:#ffedd5;
+}
+
+.chapter-card:nth-child(12) .icon{
+    background:#e0e7ff;
+}
+
+.chapter-card:nth-child(13) .icon{
+    background:#fce7f3;
+}
+
+
+/* ================= TITLE ================= */
+
+.chapter-card h3{
+
+    min-height:58px;
+
+    display:flex;
+
+    align-items:center;
+
+    justify-content:center;
+
+    color:#26324a;
+
+    font-size:18px;
+
+    line-height:1.45;
+
+}
+
+
+/* ================= TYPE ================= */
+
+.chapter-type{
+
+    display:inline-block;
+
+    margin:10px 0 15px;
+
+    padding:6px 13px;
+
+    border-radius:20px;
+
+    font-size:12px;
+
+    font-weight:900;
+
+    background:#f1f5f9;
+
+    color:#475569;
+}
+
+
+/* ================= BUTTON ================= */
+
+.open-btn{
+
+    display:inline-block;
+
+    text-decoration:none;
+
+    color:white;
+
+    padding:10px 20px;
+
+    border-radius:25px;
+
+    font-weight:900;
+
+    font-size:13px;
+
+    transition:.2s;
+}
+
+
+.chapter-card:nth-child(1) .open-btn{
+    background:#7c3aed;
+}
+
+.chapter-card:nth-child(2) .open-btn{
+    background:#2563eb;
+}
+
+.chapter-card:nth-child(3) .open-btn{
+    background:#059669;
+}
+
+.chapter-card:nth-child(4) .open-btn{
+    background:#f97316;
+}
+
+.chapter-card:nth-child(5) .open-btn{
+    background:#dc2626;
+}
+
+.chapter-card:nth-child(6) .open-btn{
+    background:#db2777;
+}
+
+.chapter-card:nth-child(7) .open-btn{
+    background:#0891b2;
+}
+
+.chapter-card:nth-child(8) .open-btn{
+    background:#ca8a04;
+}
+
+.chapter-card:nth-child(9) .open-btn{
+    background:#8b5cf6;
+}
+
+.chapter-card:nth-child(10) .open-btn{
+    background:#16a34a;
+}
+
+.chapter-card:nth-child(11) .open-btn{
+    background:#ea580c;
+}
+
+.chapter-card:nth-child(12) .open-btn{
+    background:#4f46e5;
+}
+
+.chapter-card:nth-child(13) .open-btn{
+    background:#ec4899;
+}
+
+
+.open-btn:hover{
+
+    transform:
+        translateY(-2px)
+        scale(1.04);
+
+}
+
+
+/* ================= FOOTER ================= */
+
+footer{
+
+    margin-top:30px;
+
+    padding:28px 15px;
+
+    background:
+        linear-gradient(
+            135deg,
+            #4c1d95,
+            #7e22ce,
+            #be185d
+        );
+
+    color:white;
+
+    text-align:center;
+}
+
+
+footer p{
+
+    margin:6px;
+}
+
+
+footer strong{
+
+    color:#fef3c7;
+
+    font-size:16px;
+}
+
+
+/* ================= MOBILE ================= */
+
+@media(max-width:1000px){
+
+    .chapter-grid{
+
+        grid-template-columns:
+            repeat(3,1fr);
+
+    }
+
+}
+
+
+@media(max-width:750px){
+
+    header{
+
+        flex-wrap:wrap;
+
+    }
+
+
+    .home-btn{
+
+        width:100%;
+
+        text-align:center;
+
+    }
+
+
+    .hero{
+
+        flex-direction:column;
+
+        text-align:center;
+
+        padding:38px 22px;
+
+    }
+
+
+    .hero h1{
+
+        font-size:36px;
+
+    }
+
+
+    .hero-symbols{
+
+        font-size:58px;
+
+    }
+
+
+    .book-info{
+
+        grid-template-columns:1fr;
+
+    }
+
+
+    .chapter-grid{
+
+        grid-template-columns:
+            repeat(2,1fr);
+
+    }
+
+}
+
+
+@media(max-width:500px){
+
+    .logo-title{
+
+        font-size:18px;
+
+    }
+
+
+    .school-name{
+
+        font-size:10px;
+
+    }
+
+
+    .chapter-grid{
+
+        grid-template-columns:1fr;
+
+    }
+
+
+    .chapter-card{
+
+        padding:22px 17px;
+
+    }
+
+
+    .chapter-card h3{
+
+        font-size:17px;
+
+    }
+
+}
+
+</style>
+
+</head>
+
+
+<body>
+
+
+<!-- ================= HEADER ================= -->
+
+<header>
+
+    <div class="header-left">
+
+        <div class="logo-icon">
+            📖
+        </div>
+
+        <div>
+
+            <div class="logo-title">
+                BrightNest Learning Hub
+            </div>
+
+            <div class="school-name">
+                कक्षा 4 • हिंदी • PM SHRI KV MAHE
+            </div>
+
+        </div>
+
+    </div>
+
+
+    <a
+        href="../../../index.html"
+        class="home-btn"
+    >
+        🏠 BrightNest Home
+    </a>
+
+</header>
+
+
+
+<!-- ================= HERO ================= -->
+
+<section class="hero">
+
+    <div class="hero-content">
+
+        <div class="hero-badge">
+            📚 कक्षा 4 • हिंदी
+        </div>
+
+        <h1>
+            📖 वीणा
+        </h1>
+
+        <h2>
+            पढ़ें • समझें • सोचें • रचें
+        </h2>
+
+        <p>
+            कक्षा 4 हिंदी की पाठ्यपुस्तक
+            <strong>वीणा</strong> के साथ
+            अपनी सीखने की यात्रा शुरू करें।
+            कहानियों, कविताओं और रोचक पाठों के
+            माध्यम से पढ़ें, समझें और नई बातें खोजें।
+        </p>
+
+    </div>
+
+
+    <div class="hero-symbols">
+        अ आ क ख 📖 ✏️
+    </div>
+
+</section>
+
+
+
+<!-- ================= BOOK INFO ================= -->
+
+<div class="book-info">
+
+    <div class="info-card">
+        🏫 PM SHRI Kendriya Vidyalaya Mahe
+    </div>
+
+    <div class="info-card">
+        📖 हिंदी • वीणा
+    </div>
+
+    <div class="info-card">
+        🌈 13 पाठ
+    </div>
+
+</div>
+
+
+
+<!-- ================= CHAPTERS ================= -->
+
+<main class="container">
+
+    <div class="section-title">
+
+        <h2>
+            🌈 पाठ यात्रा
+        </h2>
+
+        <p>
+            अपना पाठ चुनिए और सीखने की यात्रा शुरू कीजिए।
+        </p>
+
+    </div>
+
+
+    <div class="chapter-grid">
+
+
+        <!-- 1 -->
+
+        <div class="chapter-card">
+
+            <div class="chapter-number">1</div>
+
+            <div class="icon">🙏</div>
+
+            <h3>
+                ऐसा वर दो
+            </h3>
+
+            <span class="chapter-type">
+                कविता
+            </span>
+
+            <a
+                href="#"
+                class="open-btn"
+                onclick="comingSoon(event)"
+            >
+                पढ़ें →
+            </a>
+
+        </div>
+
+
+
+        <!-- 2 -->
+
+        <div class="chapter-card">
+
+            <div class="chapter-number">2</div>
+
+            <div class="icon">🐌</div>
+
+            <h3>
+                बगीचे का घोंघा
+            </h3>
+
+            <span class="chapter-type">
+                कहानी
+            </span>
+
+            <a
+                href="#"
+                class="open-btn"
+                onclick="comingSoon(event)"
+            >
+                पढ़ें →
+            </a>
+
+        </div>
+
+
+
+        <!-- 3 -->
+
+        <div class="chapter-card">
+
+            <div class="chapter-number">3</div>
+
+            <div class="icon">🌳</div>
+
+            <h3>
+                नीम
+            </h3>
+
+            <span class="chapter-type">
+                कविता
+            </span>
+
+            <a
+                href="#"
+                class="open-btn"
+                onclick="comingSoon(event)"
+            >
+                पढ़ें →
+            </a>
+
+        </div>
+
+
+
+        <!-- 4 -->
+
+        <div class="chapter-card">
+
+            <div class="chapter-number">4</div>
+
+            <div class="icon">🥗</div>
+
+            <h3>
+                हमारा आहार
+            </h3>
+
+            <span class="chapter-type">
+                कविता
+            </span>
+
+            <a
+                href="#"
+                class="open-btn"
+                onclick="comingSoon(event)"
+            >
+                पढ़ें →
+            </a>
+
+        </div>
+
+
+
+        <!-- 5 -->
+
+        <div class="chapter-card">
+
+            <div class="chapter-number">5</div>
+
+            <div class="icon">🐰</div>
+
+            <h3>
+                आसमान गिरा
+            </h3>
+
+            <span class="chapter-type">
+                कहानी
+            </span>
+
+            <a
+                href="#"
+                class="open-btn"
+                onclick="comingSoon(event)"
+            >
+                पढ़ें →
+            </a>
+
+        </div>
+
+
+
+        <!-- 6 -->
+
+        <div class="chapter-card">
+
+            <div class="chapter-number">6</div>
+
+            <div class="icon">✉️</div>
+
+            <h3>
+                जयपुर से पत्र
+            </h3>
+
+            <span class="chapter-type">
+                पत्र
+            </span>
+
+            <a
+                href="#"
+                class="open-btn"
+                onclick="comingSoon(event)"
+            >
+                पढ़ें →
+            </a>
+
+        </div>
+
+
+
+        <!-- 7 -->
+
+        <div class="chapter-card">
+
+            <div class="chapter-number">7</div>
+
+            <div class="icon">💎</div>
+
+            <h3>
+                नकली हीरे
+            </h3>
+
+            <span class="chapter-type">
+                चित्रकथा
+            </span>
+
+            <a
+                href="#"
+                class="open-btn"
+                onclick="comingSoon(event)"
+            >
+                पढ़ें →
+            </a>
+
+        </div>
+
+
+
+        <!-- 8 -->
+
+        <div class="chapter-card">
+
+            <div class="chapter-number">8</div>
+
+            <div class="icon">🌼</div>
+
+            <h3>
+                ओणम के रंग
+            </h3>
+
+            <span class="chapter-type">
+                निबंध
+            </span>
+
+            <a
+                href="#"
+                class="open-btn"
+                onclick="comingSoon(event)"
+            >
+                पढ़ें →
+            </a>
+
+        </div>
+
+
+
+        <!-- 9 -->
+
+        <div class="chapter-card">
+
+            <div class="chapter-number">9</div>
+
+            <div class="icon">🍬</div>
+
+            <h3>
+                मिठाइयों का सम्मेलन
+            </h3>
+
+            <span class="chapter-type">
+                पाठ
+            </span>
+
+            <a
+                href="#"
+                class="open-btn"
+                onclick="comingSoon(event)"
+            >
+                पढ़ें →
+            </a>
+
+        </div>
+
+
+
+        <!-- 10 -->
+
+        <div class="chapter-card">
+
+            <div class="chapter-number">10</div>
+
+            <div class="icon">📷</div>
+
+            <h3>
+                कैमरा
+            </h3>
+
+            <span class="chapter-type">
+                कविता
+            </span>
+
+            <a
+                href="#"
+                class="open-btn"
+                onclick="comingSoon(event)"
+            >
+                पढ़ें →
+            </a>
+
+        </div>
+
+
+
+        <!-- 11 -->
+
+        <div class="chapter-card">
+
+            <div class="chapter-number">11</div>
+
+            <div class="icon">🏆</div>
+
+            <h3>
+                कविता का कमाल
+            </h3>
+
+            <span class="chapter-type">
+                लोककथा
+            </span>
+
+            <a
+                href="#"
+                class="open-btn"
+                onclick="comingSoon(event)"
+            >
+                पढ़ें →
+            </a>
+
+        </div>
+
+
+
+        <!-- 12 -->
+
+        <div class="chapter-card">
+
+            <div class="chapter-number">12</div>
+
+            <div class="icon">♟️</div>
+
+            <h3>
+                शतरंज में मात
+            </h3>
+
+            <span class="chapter-type">
+                नाटक
+            </span>
+
+            <a
+                href="#"
+                class="open-btn"
+                onclick="comingSoon(event)"
+            >
+                पढ़ें →
+            </a>
+
+        </div>
+
+
+
+        <!-- 13 -->
+
+        <div class="chapter-card">
+
+            <div class="chapter-number">13</div>
+
+            <div class="icon">☀️</div>
+
+            <h3>
+                हमारा आदित्य
+            </h3>
+
+            <span class="chapter-type">
+                विज्ञानकथा
+            </span>
+
+            <a
+                href="#"
+                class="open-btn"
+                onclick="comingSoon(event)"
+            >
+                पढ़ें →
+            </a>
+
+        </div>
+
+
+    </div>
+
+</main>
+
+
+
+<!-- ================= FOOTER ================= -->
+
+<footer>
+
+    <p>
+        <strong>
+            📖 वीणा • कक्षा 4 हिंदी
+        </strong>
+    </p>
+
+    <p>
+        🌟 BrightNest Learning Hub
+    </p>
+
+    <p>
+        PM SHRI Kendriya Vidyalaya Mahe
+    </p>
+
+</footer>
+
+
+
+<!-- ================= SCRIPT ================= -->
+
+<script>
+
+function comingSoon(event){
+
+    event.preventDefault();
+
+    alert(
+        "🚀 यह पाठ जल्द ही Learning Zone में उपलब्ध होगा!"
+    );
+
+}
+
+</script>
+
+
+</body>
+
+</html>

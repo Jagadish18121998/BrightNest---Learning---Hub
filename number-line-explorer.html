@@ -1,0 +1,2238 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Number Line Master | BrightNest Learning Hub</title>
+
+<style>
+:root {
+  --ink:#26354d;
+  --muted:#728096;
+  --blue:#2563eb;
+  --blue-light:#eaf1ff;
+  --green:#20a66b;
+  --red:#d9534f;
+  --purple:#7954db;
+  --orange:#e58a43;
+  --border:#e0e6ed;
+  --surface:#ffffff;
+  --background:#f3f6fa;
+}
+
+* { box-sizing:border-box; }
+
+body {
+  margin:0;
+  font-family:Arial,Helvetica,sans-serif;
+  color:var(--ink);
+  background:var(--background);
+}
+
+button,input,select { font:inherit; }
+button { cursor:pointer; }
+button:focus-visible,input:focus-visible,select:focus-visible {
+  outline:3px solid #b6c8ff;
+  outline-offset:2px;
+}
+
+.app-header {
+  min-height:65px;
+  background:white;
+  border-bottom:1px solid var(--border);
+  padding:12px 22px;
+  display:flex;
+  align-items:center;
+  justify-content:space-between;
+  gap:15px;
+  flex-wrap:wrap;
+}
+
+.brand {
+  display:flex;
+  align-items:center;
+  gap:10px;
+  font-weight:800;
+  font-size:19px;
+}
+
+.brand-icon {
+  width:36px;
+  height:36px;
+  display:grid;
+  place-items:center;
+  background:#eaf1ff;
+  border-radius:10px;
+}
+
+.header-right {
+  display:flex;
+  gap:9px;
+  align-items:center;
+}
+
+.header-btn {
+  border:1px solid var(--border);
+  border-radius:9px;
+  padding:9px 13px;
+  background:white;
+  color:var(--ink);
+  font-size:13px;
+  font-weight:700;
+  text-decoration:none;
+}
+
+.header-btn.primary {
+  background:var(--blue);
+  color:white;
+  border-color:var(--blue);
+}
+
+.app-layout {
+  display:grid;
+  grid-template-columns:244px minmax(0,1fr);
+  min-height:calc(100vh - 65px);
+}
+
+.sidebar {
+  background:white;
+  border-right:1px solid var(--border);
+  padding:18px 13px;
+}
+
+.sidebar-heading {
+  font-size:12px;
+  text-transform:uppercase;
+  letter-spacing:.6px;
+  font-weight:800;
+  color:#7a8799;
+  margin:0 7px 11px;
+}
+
+.sidebar-heading.advanced { margin-top:23px; }
+
+.mode-button {
+  width:100%;
+  display:flex;
+  align-items:center;
+  gap:9px;
+  text-align:left;
+  border:1px solid transparent;
+  border-radius:9px;
+  background:white;
+  color:#40516b;
+  padding:11px 10px;
+  margin:4px 0;
+  font-size:13px;
+  font-weight:700;
+  transition:background .15s,border-color .15s;
+}
+
+.mode-button:hover {
+  background:#f3f6fc;
+}
+
+.mode-button.active {
+  color:white;
+  background:var(--blue);
+  box-shadow:0 3px 8px #2563eb25;
+}
+
+.mode-icon {
+  width:17px;
+  text-align:center;
+  flex-shrink:0;
+}
+
+.sidebar-note {
+  margin:24px 5px 0;
+  border-radius:10px;
+  padding:12px;
+  background:#f2f7ff;
+  color:#65748b;
+  font-size:12px;
+  line-height:1.6;
+}
+
+.main {
+  min-width:0;
+  padding:22px;
+}
+
+.workspace {
+  max-width:1500px;
+  margin:0 auto;
+}
+
+.workspace-header {
+  display:flex;
+  justify-content:space-between;
+  align-items:center;
+  gap:12px;
+  flex-wrap:wrap;
+  margin-bottom:16px;
+}
+
+.workspace-title {
+  margin:0;
+  font-size:22px;
+  font-weight:800;
+}
+
+.workspace-subtitle {
+  margin:6px 0 0;
+  color:var(--muted);
+  font-size:13px;
+  line-height:1.5;
+}
+
+.mode-badge {
+  background:#e9f2ff;
+  color:#2455b5;
+  font-size:12px;
+  font-weight:800;
+  border-radius:20px;
+  padding:8px 12px;
+}
+
+.visual-card {
+  background:white;
+  border:1px solid var(--border);
+  border-radius:15px;
+  overflow:hidden;
+  box-shadow:0 3px 12px #1d31500a;
+}
+
+.visual-top {
+  display:flex;
+  justify-content:space-between;
+  align-items:center;
+  gap:12px;
+  padding:14px 18px;
+  border-bottom:1px solid #edf0f5;
+  flex-wrap:wrap;
+}
+
+.visual-label {
+  font-size:13px;
+  font-weight:800;
+}
+
+.visual-hint {
+  color:var(--muted);
+  font-size:12px;
+}
+
+.equation {
+  text-align:center;
+  font-size:clamp(25px,3vw,34px);
+  font-weight:900;
+  padding:24px 10px 0;
+  min-height:69px;
+  letter-spacing:.3px;
+}
+
+.equation .start-number { color:#245bc6; }
+.equation .operator { color:#66758b; }
+.equation .answer-number { color:var(--red); }
+.equation .equals { color:#7a8797; }
+
+.line-stage {
+  position:relative;
+  width:100%;
+  padding:4px 24px 4px;
+  overflow:hidden;
+}
+
+#lineSvg {
+  display:block;
+  width:100%;
+  height:220px;
+  overflow:visible;
+  touch-action:pan-y;
+}
+
+.line-base {
+  stroke:#344257;
+  stroke-width:2.5;
+  stroke-linecap:round;
+}
+
+.tick {
+  stroke:#344257;
+  stroke-width:1.5;
+}
+
+.tick.major { stroke-width:2; }
+
+.tick-text {
+  font-size:12px;
+  fill:#344257;
+  text-anchor:middle;
+}
+
+.tick-text.minor-label {
+  fill:#748197;
+  font-size:10px;
+}
+
+.jump-arc {
+  fill:none;
+  stroke:var(--red);
+  stroke-width:2.5;
+  stroke-linecap:round;
+}
+
+.jump-arc.addition { stroke:var(--green); }
+
+.marker {
+  stroke:white;
+  stroke-width:2;
+}
+
+.marker-label {
+  font-size:11px;
+  font-weight:800;
+  text-anchor:middle;
+  fill:white;
+}
+
+.range-controls {
+  display:flex;
+  align-items:center;
+  justify-content:space-between;
+  gap:12px;
+  padding:14px 18px 17px;
+  border-top:1px solid #edf0f5;
+  flex-wrap:wrap;
+}
+
+.control-group {
+  display:flex;
+  align-items:center;
+  flex-wrap:wrap;
+  gap:7px;
+}
+
+.small-label {
+  font-size:11px;
+  color:var(--muted);
+  font-weight:700;
+  margin-right:3px;
+}
+
+.preset {
+  padding:7px 10px;
+  background:#f7f9fc;
+  border:1px solid #e1e7f0;
+  border-radius:7px;
+  color:#58677c;
+  font-size:11px;
+  font-weight:700;
+}
+
+.preset:hover,.preset.active {
+  background:#eaf1ff;
+  border-color:#a9c3ff;
+  color:#245bc6;
+}
+
+.zoom-button {
+  border:1px solid #e0e6ee;
+  border-radius:8px;
+  padding:8px 11px;
+  background:white;
+  font-size:12px;
+  font-weight:700;
+  color:#506079;
+}
+
+.deck {
+  margin-top:18px;
+  background:white;
+  border:1px solid var(--border);
+  border-radius:15px;
+  overflow:hidden;
+}
+
+.deck-header {
+  padding:17px 20px;
+  background:#f9fafc;
+  border-bottom:1px solid var(--border);
+}
+
+.deck-header h2 {
+  margin:0;
+  font-size:16px;
+}
+
+.deck-header p {
+  margin:5px 0 0;
+  font-size:12px;
+  color:var(--muted);
+  line-height:1.5;
+}
+
+.deck-body {
+  padding:19px 20px;
+}
+
+.mode-description {
+  background:#f3f7ff;
+  border:1px solid #e1eaff;
+  border-radius:10px;
+  padding:12px 14px;
+  margin-bottom:18px;
+  color:#53647e;
+  font-size:12px;
+  line-height:1.6;
+}
+
+.config-grid {
+  display:grid;
+  grid-template-columns:repeat(4,minmax(0,1fr));
+  gap:15px;
+  align-items:end;
+}
+
+.field {
+  min-width:0;
+  display:flex;
+  flex-direction:column;
+  gap:7px;
+}
+
+.field label {
+  font-size:11px;
+  font-weight:800;
+  color:#65748a;
+}
+
+.field input,.field select {
+  width:100%;
+  min-width:0;
+  padding:11px 10px;
+  border:1px solid #dbe2ec;
+  background:white;
+  border-radius:8px;
+  color:var(--ink);
+}
+
+.field input:focus,.field select:focus {
+  border-color:#82a7ff;
+}
+
+.action-row {
+  display:flex;
+  align-items:center;
+  gap:9px;
+  flex-wrap:wrap;
+  margin-top:18px;
+}
+
+.action-button {
+  border:0;
+  border-radius:9px;
+  background:var(--blue);
+  color:white;
+  padding:11px 16px;
+  font-weight:800;
+  font-size:12px;
+}
+
+.action-button.secondary {
+  background:#f0f3f8;
+  border:1px solid #e0e5ed;
+  color:#52627a;
+}
+
+.action-button.green { background:var(--green); }
+
+.status {
+  padding:12px 14px;
+  background:#f6f8fb;
+  border-radius:9px;
+  color:#596980;
+  font-size:12px;
+  line-height:1.6;
+  margin-top:17px;
+}
+
+.status.success {
+  background:#eaf8ef;
+  color:#226b44;
+}
+
+.status.error {
+  background:#fff0ee;
+  color:#a6372f;
+}
+
+.mode-extra {
+  margin-top:15px;
+}
+
+.mode-extra:empty { display:none; }
+
+.mode-extra .info-box {
+  padding:12px;
+  background:#fafbfe;
+  border:1px solid var(--border);
+  border-radius:9px;
+  font-size:12px;
+  line-height:1.7;
+}
+
+.table-wrap {
+  width:100%;
+  overflow-x:auto;
+  margin-top:14px;
+}
+
+.data-table {
+  width:100%;
+  border-collapse:collapse;
+  font-size:12px;
+}
+
+.data-table th,.data-table td {
+  padding:10px;
+  border-bottom:1px solid #edf0f5;
+  text-align:left;
+}
+
+.data-table th {
+  color:#69778b;
+  background:#f8fafd;
+}
+
+.footer {
+  text-align:center;
+  padding:20px;
+  color:#8a96a8;
+  font-size:11px;
+}
+
+@media(max-width:1050px) {
+  .app-layout { grid-template-columns:205px minmax(0,1fr); }
+  .main { padding:16px; }
+  .config-grid { grid-template-columns:repeat(2,minmax(0,1fr)); }
+  #lineSvg { height:205px; }
+}
+
+@media(max-width:680px) {
+  .app-header { padding:11px 13px; }
+  .brand { font-size:16px; }
+  .app-layout { grid-template-columns:1fr; }
+  .sidebar {
+    border-right:0;
+    border-bottom:1px solid var(--border);
+    padding:12px;
+  }
+  .sidebar-heading.advanced { margin-top:12px; }
+  .sidebar-note { display:none; }
+  .mode-list {
+    display:grid;
+    grid-template-columns:repeat(2,minmax(0,1fr));
+    gap:4px;
+  }
+  .mode-button { margin:0; padding:10px 8px; font-size:11px; }
+  .main { padding:12px; }
+  .workspace-title { font-size:19px; }
+  .line-stage { padding:4px 8px; }
+  #lineSvg { height:180px; }
+  .range-controls { padding:12px; }
+  .deck-body { padding:14px; }
+  .config-grid { gap:11px; }
+}
+
+@media(max-width:390px) {
+  .config-grid { grid-template-columns:1fr 1fr; }
+  .control-group { gap:5px; }
+  .preset { padding:7px; }
+  .header-btn { padding:8px; font-size:11px; }
+}
+
+:root {
+  --ink: #20304a;
+  --muted: #72819a;
+  --blue: #4169e1;
+  --green: #20aa80;
+  --orange: #f4a340;
+  --purple: #8a65d6;
+  --red: #ed6875;
+  --border: #e4eaf4;
+  --background: #f4f7ff;
+  --surface: #ffffff;
+}
+
+* { box-sizing: border-box; }
+
+body {
+  margin: 0;
+  color: var(--ink);
+  font-family: "Segoe UI", Arial, sans-serif;
+  background:
+    radial-gradient(circle at 90% 5%, #e5eaff 0, transparent 26%),
+    linear-gradient(145deg, #f7f9ff, #eef5ff);
+}
+
+button, input, select { font: inherit; }
+button { cursor: pointer; }
+
+button:focus-visible, input:focus-visible, select:focus-visible {
+  outline: 3px solid #b6c8ff;
+  outline-offset: 3px;
+}
+
+.app-header {
+  min-height: 76px;
+  padding: 14px 26px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  flex-wrap: wrap;
+  gap: 14px;
+  background: rgba(255,255,255,.94);
+  border-bottom: 1px solid var(--border);
+  box-shadow: 0 4px 18px #263e6410;
+}
+
+.brand {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  font-size: 20px;
+  font-weight: 850;
+  letter-spacing: -.4px;
+}
+
+.brand-icon {
+  width: 44px;
+  height: 44px;
+  display: grid;
+  place-items: center;
+  border-radius: 14px;
+  font-size: 24px;
+  background: linear-gradient(135deg,#dbe8ff,#e8e0ff);
+  box-shadow: inset 0 0 0 1px #ffffff;
+}
+
+.header-right {
+  display: flex;
+  gap: 9px;
+  align-items: center;
+}
+
+.header-btn {
+  padding: 10px 14px;
+  border-radius: 11px;
+  border: 1px solid var(--border);
+  background: white;
+  color: var(--ink);
+  font-size: 12px;
+  font-weight: 800;
+  text-decoration: none;
+  transition: transform .2s, box-shadow .2s;
+}
+
+.header-btn:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 5px 14px #263e6414;
+}
+
+.header-btn.primary {
+  background: linear-gradient(135deg,#5278ee,#7659d9);
+  color: white;
+  border-color: transparent;
+}
+
+.app-layout {
+  display: grid;
+  grid-template-columns: 255px minmax(0,1fr);
+  min-height: calc(100vh - 76px);
+}
+
+.sidebar {
+  padding: 20px 14px;
+  background: rgba(255,255,255,.86);
+  border-right: 1px solid var(--border);
+}
+
+.sidebar-heading {
+  margin: 0 8px 11px;
+  color: #8995aa;
+  font-size: 10px;
+  font-weight: 900;
+  letter-spacing: 1.3px;
+  text-transform: uppercase;
+}
+
+.sidebar-heading.advanced { margin-top: 25px; }
+
+.mode-list {
+  display: grid;
+  gap: 6px;
+}
+
+.mode-button {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  width: 100%;
+  padding: 12px 10px;
+  text-align: left;
+  color: #50617d;
+  background: transparent;
+  border: 1px solid transparent;
+  border-radius: 12px;
+  font-size: 12px;
+  font-weight: 750;
+  transition: .2s ease;
+}
+
+.mode-button:hover {
+  background: #f1f4ff;
+  color: #355bd0;
+  transform: translateX(2px);
+}
+
+.mode-button.active {
+  color: white;
+  background: linear-gradient(120deg,#5278ed,#7862dd);
+  box-shadow: 0 7px 18px #6176df38;
+}
+
+.mode-icon {
+  width: 29px;
+  height: 29px;
+  display: grid;
+  place-items: center;
+  flex-shrink: 0;
+  border-radius: 9px;
+  background: #edf2ff;
+  color: #4767d4;
+  font-size: 15px;
+}
+
+.mode-button.active .mode-icon {
+  background: #ffffff2b;
+  color: white;
+}
+
+.sidebar-note {
+  margin: 26px 2px 0;
+  padding: 15px;
+  color: #5c6c88;
+  font-size: 12px;
+  line-height: 1.7;
+  background: linear-gradient(135deg,#e9f4ff,#f0ebff);
+  border: 1px solid #e0e8ff;
+  border-radius: 15px;
+}
+
+.sidebar-note strong {
+  display: block;
+  margin-bottom: 4px;
+  color: #354f9c;
+}
+
+.main {
+  min-width: 0;
+  padding: 25px;
+}
+
+.workspace {
+  max-width: 1500px;
+  margin: auto;
+}
+
+.workspace-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  flex-wrap: wrap;
+  gap: 14px;
+  margin-bottom: 20px;
+}
+
+.workspace-title {
+  margin: 0;
+  font-size: clamp(23px,2.4vw,32px);
+  letter-spacing: -.8px;
+  font-weight: 900;
+}
+
+.workspace-subtitle {
+  max-width: 680px;
+  margin: 8px 0 0;
+  color: var(--muted);
+  font-size: 13px;
+  line-height: 1.7;
+}
+
+.mode-badge {
+  padding: 9px 13px;
+  color: #28785d;
+  background: #e0f8ed;
+  border: 1px solid #c8f0df;
+  border-radius: 30px;
+  font-size: 10px;
+  font-weight: 900;
+  letter-spacing: .8px;
+}
+
+.visual-card, .deck, .idea-card, .tips-card {
+  overflow: hidden;
+  background: rgba(255,255,255,.96);
+  border: 1px solid var(--border);
+  border-radius: 19px;
+  box-shadow: 0 8px 26px #334c7310;
+}
+
+.visual-top {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 12px;
+  flex-wrap: wrap;
+  padding: 16px 20px;
+  border-bottom: 1px solid #edf0f8;
+  background: linear-gradient(110deg,#ffffff,#f8f9ff);
+}
+
+.visual-label {
+  font-size: 11px;
+  font-weight: 900;
+  letter-spacing: .8px;
+}
+
+.visual-hint {
+  color: #72819a;
+  font-size: 11px;
+}
+
+.equation {
+  min-height: 82px;
+  padding: 25px 10px 10px;
+  text-align: center;
+  font-size: clamp(25px,3.2vw,38px);
+  font-weight: 900;
+  letter-spacing: -.5px;
+}
+
+.start-number { color: #4169e1; }
+.operator { color: #78869d; }
+.answer-number { color: #e75f70; }
+.equals { color: #8a65d6; }
+
+.line-stage {
+  padding: 8px 24px 0;
+  overflow: hidden;
+  background:
+    radial-gradient(circle at 50% 55%,#f1f5ff 0,transparent 62%);
+}
+
+#lineSvg {
+  display: block;
+  width: 100%;
+  height: 245px;
+  overflow: visible;
+}
+
+.line-base {
+  stroke: #34435e;
+  stroke-width: 3;
+  stroke-linecap: round;
+}
+
+.tick {
+  stroke: #687993;
+  stroke-width: 1.5;
+}
+
+.tick.major { stroke-width: 2.1; }
+
+.tick-text {
+  font-size: 12px;
+  fill: #53637e;
+  text-anchor: middle;
+  font-weight: 600;
+}
+
+.jump-arc {
+  fill: none;
+  stroke: var(--red);
+  stroke-width: 3.2;
+  stroke-linecap: round;
+  filter: drop-shadow(0 2px 2px #ed68752a);
+}
+
+.jump-arc.addition { stroke: var(--green); }
+
+.marker {
+  stroke: white;
+  stroke-width: 3;
+  filter: drop-shadow(0 3px 4px #263b6028);
+}
+
+.marker-label {
+  font-size: 11px;
+  font-weight: 900;
+  text-anchor: middle;
+  fill: white;
+}
+
+.range-controls {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 14px;
+  flex-wrap: wrap;
+  padding: 15px 20px 19px;
+  border-top: 1px solid #edf0f8;
+}
+
+.control-group {
+  display: flex;
+  align-items: center;
+  gap: 7px;
+  flex-wrap: wrap;
+}
+
+.small-label {
+  margin-right: 3px;
+  color: #7b88a0;
+  font-size: 11px;
+  font-weight: 800;
+}
+
+.preset, .zoom-button {
+  padding: 9px 11px;
+  color: #586a87;
+  background: #f8faff;
+  border: 1px solid #e0e7f3;
+  border-radius: 9px;
+  font-size: 11px;
+  font-weight: 800;
+  transition: .2s ease;
+}
+
+.preset:hover, .preset.active {
+  color: #3c5ec9;
+  background: #e9efff;
+  border-color: #b8c8ff;
+}
+
+.zoom-button:hover {
+  background: #e9efff;
+  border-color: #b8c8ff;
+  transform: translateY(-1px);
+}
+
+.deck {
+  margin-top: 21px;
+}
+
+.deck-header {
+  padding: 19px 21px;
+  background: linear-gradient(115deg,#f7f8ff,#f0f6ff);
+  border-bottom: 1px solid var(--border);
+}
+
+.deck-header h2 {
+  margin: 0;
+  font-size: 17px;
+  font-weight: 900;
+}
+
+.deck-header p {
+  margin: 7px 0 0;
+  color: var(--muted);
+  font-size: 12px;
+  line-height: 1.6;
+}
+
+.deck-body { padding: 21px; }
+
+.mode-description {
+  margin-bottom: 20px;
+  padding: 14px 16px;
+  color: #4e6286;
+  background: #f0f5ff;
+  border: 1px solid #dce7ff;
+  border-radius: 12px;
+  font-size: 12px;
+  line-height: 1.8;
+}
+
+.config-grid {
+  display: grid;
+  grid-template-columns: repeat(4,minmax(0,1fr));
+  gap: 15px;
+  align-items: end;
+}
+
+.field {
+  min-width: 0;
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+
+.field label {
+  color: #667691;
+  font-size: 11px;
+  font-weight: 850;
+}
+
+.field input, .field select {
+  width: 100%;
+  min-width: 0;
+  padding: 12px;
+  color: #283954;
+  background: #fbfcff;
+  border: 1px solid #dfe6f2;
+  border-radius: 10px;
+  transition: border .2s, box-shadow .2s;
+}
+
+.field input:focus, .field select:focus {
+  border-color: #8ca6ff;
+  box-shadow: 0 0 0 3px #8ca6ff22;
+}
+
+.action-row {
+  display: flex;
+  gap: 10px;
+  align-items: center;
+  flex-wrap: wrap;
+  margin-top: 21px;
+}
+
+.action-button {
+  padding: 12px 17px;
+  color: white;
+  background: linear-gradient(120deg,#4f76e9,#735bd7);
+  border: 0;
+  border-radius: 10px;
+  font-size: 12px;
+  font-weight: 850;
+  box-shadow: 0 5px 12px #5976dd2b;
+  transition: .2s ease;
+}
+
+.action-button:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 8px 17px #5976dd38;
+}
+
+.action-button.secondary {
+  color: #596985;
+  background: #f2f5fb;
+  border: 1px solid #e0e6f0;
+  box-shadow: none;
+}
+
+.action-button.green { background: linear-gradient(120deg,#1fa77b,#2fbd91); }
+
+.status {
+  margin-top: 18px;
+  padding: 14px 15px;
+  color: #5a6c89;
+  background: #f7f9fe;
+  border: 1px solid #edf0f7;
+  border-radius: 11px;
+  font-size: 12px;
+  line-height: 1.8;
+}
+
+.status.success {
+  color: #24724f;
+  background: #eaf9f1;
+  border-color: #d2f0e0;
+}
+
+.status.error {
+  color: #a13b43;
+  background: #fff0f1;
+  border-color: #f9d7da;
+}
+
+.mode-extra { margin-top: 16px; }
+.mode-extra:empty { display: none; }
+
+.mode-extra .info-box {
+  padding: 15px;
+  color: #566783;
+  background: #fffbef;
+  border: 1px solid #f6e8bf;
+  border-radius: 12px;
+  font-size: 12px;
+  line-height: 1.8;
+}
+
+.extra-panels {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 18px;
+  margin-top: 21px;
+}
+
+.idea-card, .tips-card { padding: 20px; }
+
+.panel-title {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  margin: 0 0 15px;
+  font-size: 15px;
+  font-weight: 900;
+}
+
+.panel-icon {
+  display: grid;
+  place-items: center;
+  width: 35px;
+  height: 35px;
+  border-radius: 11px;
+  font-size: 18px;
+  background: #eaf0ff;
+}
+
+.idea-list, .tips-list {
+  display: grid;
+  gap: 11px;
+  padding: 0;
+  margin: 0;
+  list-style: none;
+}
+
+.idea-list li, .tips-list li {
+  display: flex;
+  gap: 10px;
+  align-items: flex-start;
+  color: #65748c;
+  font-size: 12px;
+  line-height: 1.7;
+}
+
+.idea-list li::before {
+  content: "✓";
+  display: grid;
+  place-items: center;
+  flex-shrink: 0;
+  width: 20px;
+  height: 20px;
+  color: #16845e;
+  background: #e0f8ed;
+  border-radius: 50%;
+  font-size: 11px;
+  font-weight: 900;
+}
+
+.tips-list li::before {
+  content: "✦";
+  color: #e5a02f;
+  flex-shrink: 0;
+  font-size: 16px;
+}
+
+.footer {
+  padding: 25px 10px 10px;
+  text-align: center;
+  color: #929db0;
+  font-size: 11px;
+}
+
+@media(max-width:1050px) {
+  .app-layout { grid-template-columns: 220px minmax(0,1fr); }
+  .main { padding: 18px; }
+  .config-grid { grid-template-columns: repeat(2,minmax(0,1fr)); }
+}
+
+@media(max-width:700px) {
+  .app-header { padding: 12px 15px; }
+  .brand { font-size: 17px; }
+  .app-layout { grid-template-columns: 1fr; }
+  .sidebar {
+    padding: 13px;
+    border-right: 0;
+    border-bottom: 1px solid var(--border);
+  }
+  .mode-list { grid-template-columns: repeat(2,minmax(0,1fr)); }
+  .sidebar-heading.advanced { margin-top: 18px; }
+  .sidebar-note { display: none; }
+  .mode-button { padding: 9px; font-size: 11px; }
+  .main { padding: 13px; }
+  .line-stage { padding: 5px 8px 0; }
+  #lineSvg { height: 195px; }
+  .extra-panels { grid-template-columns: 1fr; }
+  .range-controls { padding: 13px; }
+  .deck-body { padding: 15px; }
+}
+
+@media(max-width:400px) {
+  .config-grid { grid-template-columns: 1fr 1fr; gap: 10px; }
+  .header-btn { padding: 8px; font-size: 10px; }
+  .preset, .zoom-button { padding: 8px; }
+}
+
+</style>
+</head>
+
+<body>
+
+<header class="app-header">
+  <div class="brand">
+    <span class="brand-icon">📏</span>
+    <span>Number Line Master</span>
+  </div>
+  <div class="header-right">
+    <a class="header-btn" href="maths.html">← Maths Tools</a>
+    <button class="header-btn primary" id="resetAll">Reset</button>
+  </div>
+</header>
+
+<div class="app-layout">
+
+  <aside class="sidebar">
+    <div class="sidebar-heading">Standard Modes</div>
+    <div class="mode-list" id="standardModes"></div>
+
+    <div class="sidebar-heading advanced">Advanced Realms</div>
+    <div class="mode-list" id="advancedModes"></div>
+
+    <div class="sidebar-note">
+      <strong>Teacher's Workspace</strong><br>
+      Select a mode, configure the values, and demonstrate mathematical ideas on the number line.
+    </div>
+  </aside>
+
+  <main class="main">
+    <div class="workspace">
+
+      <div class="workspace-header">
+        <div>
+          <h1 class="workspace-title" id="workspaceTitle">Counting Exploration</h1>
+          <p class="workspace-subtitle" id="workspaceSubtitle">
+            Demonstrate counting and number order visually.
+          </p>
+        </div>
+        <span class="mode-badge">TEACHER TOOL</span>
+      </div>
+
+      <section class="visual-card">
+        <div class="visual-top">
+          <span class="visual-label">NUMBER LINE VISUALISATION</span>
+          <span class="visual-hint" id="visualHint">Select a mode to begin</span>
+        </div>
+
+        <div class="equation" id="equation"></div>
+
+        <div class="line-stage">
+          <svg id="lineSvg" viewBox="0 0 1000 220"
+               role="img" aria-label="Interactive number line"></svg>
+        </div>
+
+        <div class="range-controls">
+          <div class="control-group">
+            <span class="small-label">Presets:</span>
+            <button class="preset" data-range="0,10">0 to 10</button>
+            <button class="preset" data-range="0,20">0 to 20</button>
+            <button class="preset" data-range="0,50">0 to 50</button>
+            <button class="preset" data-range="0,100">0 to 100</button>
+            <button class="preset" data-range="-20,20">-20 to 20</button>
+          </div>
+          <div class="control-group">
+            <button class="zoom-button" id="zoomIn">＋ Zoom In</button>
+            <button class="zoom-button" id="zoomOut">－ Zoom Out</button>
+          </div>
+        </div>
+      </section>
+
+      <section class="deck">
+        <div class="deck-header">
+          <h2 id="deckTitle">Configuration Deck: COUNTING</h2>
+          <p id="deckSubtitle">Adjust the values and generate the visualisation.</p>
+        </div>
+        <div class="deck-body">
+          <div class="mode-description" id="modeDescription"></div>
+          <div class="config-grid" id="configGrid"></div>
+          <div class="action-row" id="actionRow"></div>
+          <div class="status" id="status" aria-live="polite">
+            Configure the number line and select Create Visualisation.
+          </div>
+          <div class="mode-extra" id="modeExtra"></div>
+        </div>
+      </section>
+
+<section class="extra-panels">
+
+  <article class="idea-card">
+    <h2 class="panel-title">
+      <span class="panel-icon">💡</span>
+      Key Mathematical Ideas
+    </h2>
+    <ul class="idea-list" id="keyIdeas">
+      <li>Every number has a definite position on the number line.</li>
+      <li>Moving to the right represents increasing values.</li>
+      <li>Moving to the left represents decreasing values.</li>
+    </ul>
+  </article>
+
+  <article class="tips-card">
+    <h2 class="panel-title">
+      <span class="panel-icon" style="background:#fff1d9">👩‍🏫</span>
+      Teacher's Demonstration Tips
+    </h2>
+    <ul class="tips-list" id="teacherTips">
+      <li>Ask learners to predict the final position before creating a jump.</li>
+      <li>Invite learners to explain the movement shown by the curved arc.</li>
+      <li>Connect the visual movement with the corresponding mathematical expression.</li>
+    </ul>
+  </article>
+
+</section>
+
+      <div class="footer">
+        BrightNest Learning Hub · Interactive Mathematics Teaching Tools
+      </div>
+    </div>
+  </main>
+</div>
+
+<script>
+"use strict";
+
+const $ = id => document.getElementById(id);
+
+const MODES = [
+  {
+    id:"counting", name:"Counting Exploration", icon:"▦",
+    group:"standard",
+    subtitle:"Demonstrate counting forwards, backwards and number order.",
+    description:"Use the number line to demonstrate counting sequences, number positions and the relationship between consecutive numbers."
+  },
+  {
+    id:"skip", name:"Skip Counting", icon:"↗",
+    group:"standard",
+    subtitle:"Show repeated jumps in a counting sequence.",
+    description:"Choose a starting number and a skip size. Each jump demonstrates repeated addition or subtraction."
+  },
+  {
+    id:"addition", name:"Visual Addition", icon:"+",
+    group:"standard",
+    subtitle:"Demonstrate addition as movement to the right.",
+    description:"Start at a number and move to the right by the selected amount. The arc illustrates the addition jump."
+  },
+  {
+    id:"subtraction", name:"Visual Subtraction", icon:"−",
+    group:"standard",
+    subtitle:"Demonstrate subtraction as movement to the left.",
+    description:"Start at a number and move to the left. The arc shows the amount being subtracted."
+  },
+  {
+    id:"multiplication", name:"Multiplication Jumps", icon:"×",
+    group:"standard",
+    subtitle:"Represent multiplication as equal repeated jumps.",
+    description:"Choose the number of jumps and the size of each jump to demonstrate multiplication as repeated addition."
+  },
+  {
+    id:"division", name:"Equal Division Sharing", icon:"÷",
+    group:"standard",
+    subtitle:"Explore equal groups and equal intervals.",
+    description:"Divide a total into equal groups. The number line marks each group boundary and helps learners see the quotient."
+  },
+  {
+    id:"fractions", name:"Fraction Splits", icon:"◒",
+    group:"advanced",
+    subtitle:"Divide a whole into equal fractional parts.",
+    description:"Choose a denominator to split the unit interval into equal parts, then highlight a numerator to demonstrate a fraction."
+  },
+  {
+    id:"decimals", name:"Decimal Ticks", icon:"·",
+    group:"advanced",
+    subtitle:"Explore tenths, hundredths and decimal positions.",
+    description:"Adjust decimal precision and locate a decimal value on the number line."
+  },
+  {
+    id:"negative", name:"Negative Numbers", icon:"±",
+    group:"advanced",
+    subtitle:"Demonstrate integers on both sides of zero.",
+    description:"Explore positive and negative integers, compare their positions, and demonstrate movement across zero."
+  }
+];
+
+let activeMode = "counting";
+let viewStart = 0;
+let viewEnd = 10;
+let lastRendered = null;
+
+function numberField(id,label,value,min=-1000,max=1000,step=1) {
+  return `
+    <div class="field">
+      <label for="${id}">${label}</label>
+      <input id="${id}" type="number" value="${value}"
+        min="${min}" max="${max}" step="${step}">
+    </div>`;
+}
+
+function selectField(id,label,options) {
+  return `
+    <div class="field">
+      <label for="${id}">${label}</label>
+      <select id="${id}">
+        ${options.map(o =>
+          `<option value="${o.value}">${o.label}</option>`
+        ).join("")}
+      </select>
+    </div>`;
+}
+
+function button(label,id,kind="") {
+  return `<button type="button" class="action-button ${kind}" id="${id}">${label}</button>`;
+}
+
+function buildMenus() {
+  $("standardModes").innerHTML = MODES.filter(m=>m.group==="standard")
+    .map(m=>modeButton(m)).join("");
+  $("advancedModes").innerHTML = MODES.filter(m=>m.group==="advanced")
+    .map(m=>modeButton(m)).join("");
+
+  document.querySelectorAll(".mode-button").forEach(b=>{
+    b.addEventListener("click",()=>setMode(b.dataset.mode));
+  });
+}
+
+function modeButton(m) {
+  return `<button class="mode-button ${m.id===activeMode?"active":""}"
+    data-mode="${m.id}">
+    <span class="mode-icon">${m.icon}</span>
+    <span>${m.name}</span>
+  </button>`;
+}
+
+function setMode(id) {
+  activeMode=id;
+  const mode=MODES.find(m=>m.id===id);
+
+  document.querySelectorAll(".mode-button").forEach(b=>{
+    b.classList.toggle("active",b.dataset.mode===id);
+  });
+
+  $("workspaceTitle").textContent=mode.name;
+  $("workspaceSubtitle").textContent=mode.subtitle;
+  $("modeDescription").textContent=mode.description;
+  $("deckTitle").textContent="Configuration Deck: "+mode.name.toUpperCase();
+  $("deckSubtitle").textContent="Adjust the settings for this teaching demonstration.";
+
+  buildConfiguration();
+  createVisual();
+}
+
+function buildConfiguration() {
+  let fields="";
+  let actions="";
+  let hint="";
+
+  switch(activeMode) {
+    case "counting":
+      fields=
+        numberField("startValue","Start Number",0,-100,100)+
+        numberField("endValue","End Number",10,-100,100)+
+        numberField("countStep","Counting Step",1,1,20);
+      actions=button("Create Number Line","createVisual")+
+        button("Reset Values","resetMode","secondary");
+      hint="Counting sequence";
+      break;
+
+    case "skip":
+      fields=
+        numberField("startValue","Start Number",0,-100,100)+
+        numberField("jumpAmount","Skip Size",2,1,100)+
+        numberField("jumpCount","Number of Jumps",5,1,30)+
+        selectField("direction","Direction",[
+          {value:"forward",label:"Forward →"},
+          {value:"backward",label:"Backward ←"}
+        ]);
+      actions=button("Create Jumps","createVisual")+
+        button("Reset Values","resetMode","secondary");
+      hint="Equal counting jumps";
+      break;
+
+    case "addition":
+    case "subtraction":
+      fields=
+        numberField("startValue","Start Number",activeMode==="addition"?3:15,-100,100)+
+        numberField("amountValue",activeMode==="addition"?"Add Amount":"Subtract Amount",activeMode==="addition"?4:7,0,100)+
+        selectField("jumpStyle","Jump Display",[
+          {value:"single",label:"One large jump"},
+          {value:"individual",label:"Individual steps"}
+        ]);
+      actions=button("Create Jumps","createVisual")+
+        button("Reset Values","resetMode","secondary");
+      hint=activeMode==="addition"?"Forward movement":"Backward movement";
+      break;
+
+    case "multiplication":
+      fields=
+        numberField("factorValue","Number of Jumps",4,1,30)+
+        numberField("multiplierValue","Size of Each Jump",3,1,100)+
+        numberField("startValue","Starting Number",0,-100,100);
+      actions=button("Show Multiplication","createVisual")+
+        button("Reset Values","resetMode","secondary");
+      hint="Repeated addition";
+      break;
+
+    case "division":
+      fields=
+        numberField("totalValue","Total",24,0,1000)+
+        numberField("groupsValue","Number of Groups",4,1,100);
+      actions=button("Show Equal Groups","createVisual")+
+        button("Reset Values","resetMode","secondary");
+      hint="Equal intervals";
+      break;
+
+    case "fractions":
+      fields=
+        numberField("fractionNumerator","Numerator",3,0,100)+
+        numberField("fractionDenominator","Denominator",4,1,100);
+      actions=button("Create Fraction Line","createVisual")+
+        button("Show One Whole","showWhole","secondary");
+      hint="Fractional parts of one whole";
+      break;
+
+    case "decimals":
+      fields=
+        numberField("decimalValue","Decimal Value",0.6,0,1,0.01)+
+        selectField("decimalPrecision","Precision",[
+          {value:"10",label:"Tenths"},
+          {value:"20",label:"Twentieths"},
+          {value:"100",label:"Hundredths"}
+        ]);
+      actions=button("Locate Decimal","createVisual")+
+        button("Reset Values","resetMode","secondary");
+      hint="Decimal positions";
+      break;
+
+    case "negative":
+      fields=
+        numberField("negativeStart","Starting Number",-5,-100,100)+
+        numberField("negativeEnd","Ending Number",5,-100,100)+
+        numberField("negativeTarget","Highlight Number",-2,-100,100);
+      actions=button("Show Integers","createVisual")+
+        button("Reset Values","resetMode","secondary");
+      hint="Integers around zero";
+      break;
+  }
+
+  $("visualHint").textContent=hint;
+  $("configGrid").innerHTML=fields;
+  $("actionRow").innerHTML=actions;
+  $("modeExtra").innerHTML="";
+  $("status").className="status";
+  $("status").textContent="Adjust the values and select the action button.";
+
+  $("createVisual")?.addEventListener("click",createVisual);
+  $("resetMode")?.addEventListener("click",()=>setMode(activeMode));
+  $("showWhole")?.addEventListener("click",()=>{
+    $("fractionNumerator").value=$("fractionDenominator").value;
+    createVisual();
+  });
+}
+
+function read(id) {
+  const el=$(id);
+  if(!el) return NaN;
+  return Number(el.value);
+}
+
+function setStatus(message,type="") {
+  $("status").className="status"+(type?" "+type:"");
+  $("status").textContent=message;
+}
+
+function fmt(n) {
+  if(Math.abs(n)<1e-9) n=0;
+  return Number(n.toFixed(4)).toString();
+}
+
+function configureRange(start,end,step=1) {
+  if(!Number.isFinite(start)||!Number.isFinite(end)||end<=start) {
+    setStatus("The ending value must be greater than the starting value.","error");
+    return false;
+  }
+  if(end-start>2000) {
+    setStatus("Please choose a smaller range so the number line remains readable.","error");
+    return false;
+  }
+  viewStart=start;
+  viewEnd=end;
+  lastRendered={start,end,step};
+  return true;
+}
+
+function svgEl(tag,attrs={},textContent="") {
+  const node=document.createElementNS("http://www.w3.org/2000/svg",tag);
+  Object.entries(attrs).forEach(([k,v])=>node.setAttribute(k,v));
+  if(textContent!=="") node.textContent=textContent;
+  return node;
+}
+
+function renderLine(options={}) {
+  const svg=$("lineSvg");
+  svg.innerHTML="";
+
+  const start=options.start ?? viewStart;
+  const end=options.end ?? viewEnd;
+  const step=options.step ?? 1;
+  const marks=options.marks || [];
+  const arcs=options.arcs || [];
+  const highlights=options.highlights || [];
+  const labels=options.labels || {};
+  const W=1000,H=220;
+  const left=38,right=962;
+  const y=125;
+  const width=right-left;
+  const span=end-start;
+
+  if(!(span>0)) return;
+
+  const x=v=>left+(v-start)/span*width;
+  const inside=v=>v>=start-1e-8&&v<=end+1e-8;
+
+  svg.appendChild(svgEl("line",{
+    x1:left,y1:y,x2:right,y2:y,class:"line-base"
+  }));
+
+  // Arrowheads
+  svg.appendChild(svgEl("path",{
+    d:`M ${left+8} ${y-6} L ${left} ${y} L ${left+8} ${y+6}`,
+    fill:"none",stroke:"#344257","stroke-width":"2"
+  }));
+  svg.appendChild(svgEl("path",{
+    d:`M ${right-8} ${y-6} L ${right} ${y} L ${right-8} ${y+6}`,
+    fill:"none",stroke:"#344257","stroke-width":"2"
+  }));
+
+  // Ticks
+  let values=[];
+  if(options.tickValues) {
+    values=options.tickValues.filter(inside);
+  } else {
+    const count=Math.floor(span/step+1e-8);
+    if(count<=2000) {
+      for(let i=0;i<=count;i++) values.push(Number((start+i*step).toFixed(8)));
+    }
+  }
+
+  const maxLabels=21;
+  const labelStride=Math.max(1,Math.ceil(values.length/maxLabels));
+
+  values.forEach((v,i)=>{
+    const px=x(v);
+    const major=(i%labelStride===0||i===values.length-1);
+    const highlighted=highlights.some(h=>Math.abs(h.value-v)<1e-7);
+    const tickColor=highlighted?"#2563eb":"#344257";
+
+    svg.appendChild(svgEl("line",{
+      x1:px,y1:y-(major?10:6),
+      x2:px,y2:y+(major?10:6),
+      class:"tick"+(major?" major":""),
+      stroke:tickColor
+    }));
+
+    if(major||highlighted) {
+      let text=labels[v]??fmt(v);
+      svg.appendChild(svgEl("text",{
+        x:px,y:y+27,class:"tick-text",
+        fill:highlighted?"#2563eb":"#344257",
+        "font-weight":highlighted?"900":"500"
+      },String(text)));
+    }
+  });
+
+  // Draw arcs before markers so markers sit on top.
+  arcs.forEach((arc,index)=>{
+    if(!inside(arc.from)||!inside(arc.to)) return;
+    const x1=x(arc.from),x2=x(arc.to);
+    const distance=Math.abs(x2-x1);
+    const lift=Math.min(90,Math.max(23,distance*.27));
+    const top=y-lift-(arc.level||0)*12;
+    const color=arc.color||(arc.type==="addition"?"#20a66b":"#d9534f");
+
+    svg.appendChild(svgEl("path",{
+      d:`M ${x1} ${y-4} Q ${(x1+x2)/2} ${top*2-y} ${x2} ${y-4}`,
+      class:"jump-arc"+(arc.type==="addition"?" addition":""),
+      stroke:color
+    }));
+
+    if(arc.label) {
+      svg.appendChild(svgEl("text",{
+        x:(x1+x2)/2,y:top-2,
+        "text-anchor":"middle",
+        "font-size":"13",
+        "font-weight":"800",
+        fill:color
+      },arc.label));
+    }
+  });
+
+  // Highlight points and labels.
+  highlights.forEach(h=>{
+    if(!inside(h.value)) return;
+    const px=x(h.value);
+    const color=h.color||"#20a66b";
+    const cy=y-19;
+
+    svg.appendChild(svgEl("circle",{
+      cx:px,cy:cy,r:11,fill:color,class:"marker"
+    }));
+
+    if(h.label!==false) {
+      svg.appendChild(svgEl("text",{
+        x:px,y:cy+4,class:"marker-label"
+      },h.labelText||fmt(h.value)));
+    }
+
+    if(h.caption) {
+      svg.appendChild(svgEl("text",{
+        x:px,y:y+48,
+        "text-anchor":"middle",
+        "font-size":"12",
+        "font-weight":"800",
+        fill:color
+      },h.caption));
+    }
+  });
+
+  // Zero line is emphasised for negative number demonstrations.
+  if(start<0&&end>0) {
+    const zx=x(0);
+    svg.appendChild(svgEl("line",{
+      x1:zx,y1:y-19,x2:zx,y2:y+17,
+      stroke:"#2563eb","stroke-width":"2.5"
+    }));
+  }
+}
+
+function showEquation(html) {
+  $("equation").innerHTML=html;
+}
+
+function createVisual() {
+  try {
+    switch(activeMode) {
+      case "counting": return renderCounting();
+      case "skip": return renderSkip();
+      case "addition": return renderOperation(true);
+      case "subtraction": return renderOperation(false);
+      case "multiplication": return renderMultiplication();
+      case "division": return renderDivision();
+      case "fractions": return renderFractions();
+      case "decimals": return renderDecimals();
+      case "negative": return renderNegative();
+    }
+  } catch(e) {
+    setStatus("Please check the entered values and try again.","error");
+  }
+}
+
+function renderCounting() {
+  const start=read("startValue"),end=read("endValue"),step=read("countStep");
+  if(!Number.isInteger(start)||!Number.isInteger(end)||!Number.isInteger(step)||
+    step<1||end<=start||end-start>200) {
+    setStatus("Enter whole-number endpoints, with the end greater than the start and a positive counting step.","error");
+    return;
+  }
+  if(!configureRange(start,end,step))return;
+
+  renderLine({start,end,step});
+  showEquation(`<span class="start-number">${fmt(start)}</span>
+    <span class="operator"> → </span>
+    <span class="answer-number">${fmt(end)}</span>`);
+
+  setStatus(`Number line created from ${start} to ${end}, counting in steps of ${step}.`,"success");
+  $("modeExtra").innerHTML=`
+    <div class="info-box">
+      <strong>Teaching idea:</strong> Ask learners to predict the next number before moving along the line.
+      Discuss which numbers are between the start and end points.
+    </div>`;
+}
+
+function renderSkip() {
+  const start=read("startValue"),size=read("jumpAmount"),count=read("jumpCount");
+  const direction=$("direction").value;
+  if(!Number.isInteger(start)||!Number.isInteger(size)||!Number.isInteger(count)||
+    size<1||count<1||count>30) {
+    setStatus("Use whole numbers. Skip size must be positive and the number of jumps must be between 1 and 30.","error");
+    return;
+  }
+
+  const sign=direction==="forward"?1:-1;
+  const end=start+sign*size*count;
+  const low=Math.min(start,end),high=Math.max(start,end);
+  const pad=Math.max(1,size*.5);
+  const a=low-pad,b=high+pad;
+
+  if(!configureRange(a,b))return;
+
+  const arcs=[];
+  for(let i=0;i<count;i++) {
+    const from=start+sign*size*i;
+    const to=start+sign*size*(i+1);
+    arcs.push({from,to,type:sign>0?"addition":"subtraction",
+      label:i===0?`+${sign*size}`:null,level:i%3});
+  }
+
+  renderLine({
+    start:a,end:b,step:1,arcs,
+    highlights:[
+      {value:start,color:"#2563eb",labelText:fmt(start)},
+      {value:end,color:"#20a66b",labelText:fmt(end)}
+    ]
+  });
+
+  showEquation(`${fmt(start)} <span class="operator">${sign>0?"+":"−"}</span>
+    ${fmt(size)} × ${count} <span class="equals">=</span>
+    <span class="answer-number">${fmt(end)}</span>`);
+
+  setStatus(`${count} equal jumps of ${size} from ${start} finish at ${end}.`,"success");
+}
+
+function renderOperation(isAddition) {
+  const start=read("startValue"),amount=read("amountValue");
+  if(!Number.isInteger(start)||!Number.isInteger(amount)||amount<0||amount>100) {
+    setStatus("Enter a whole starting number and a jump amount from 0 to 100.","error");
+    return;
+  }
+
+  const end=start+(isAddition?amount:-amount);
+  const low=Math.min(start,end),high=Math.max(start,end);
+  const padding=Math.max(1,amount*.18);
+  const a=low-padding,b=high+padding;
+
+  if(!configureRange(a,b))return;
+
+  const arcs=[];
+  if($("jumpStyle").value==="individual"&&amount>0&&amount<=30) {
+    const sign=isAddition?1:-1;
+    for(let i=0;i<amount;i++) {
+      arcs.push({
+        from:start+sign*i,to:start+sign*(i+1),
+        type:isAddition?"addition":"subtraction",
+        level:i%3
+      });
+    }
+  } else if(amount>0) {
+    arcs.push({
+      from:start,to:end,
+      type:isAddition?"addition":"subtraction",
+      label:isAddition?`+${amount}`:`−${amount}`
+    });
+  }
+
+  renderLine({
+    start:a,end:b,step:1,arcs,
+    highlights:[
+      {value:start,color:"#2563eb",labelText:fmt(start)},
+      {value:end,color:"#20a66b",labelText:fmt(end)}
+    ]
+  });
+
+  showEquation(`<span class="start-number">${fmt(start)}</span>
+    <span class="operator">${isAddition?"+":"−"}</span>
+    ${fmt(amount)} <span class="equals">=</span>
+    <span class="answer-number">${fmt(end)}</span>`);
+
+  setStatus(`${start} ${isAddition?"+":"−"} ${amount} = ${end}. ${
+    isAddition?"Move to the right":"Move to the left"
+  } by ${amount}.`,"success");
+}
+
+function renderMultiplication() {
+  const count=read("factorValue"),size=read("multiplierValue"),start=read("startValue");
+  if(!Number.isInteger(count)||!Number.isInteger(size)||!Number.isInteger(start)||
+    count<1||count>30||size<1) {
+    setStatus("Enter a positive jump size, 1–30 jumps, and a whole starting number.","error");
+    return;
+  }
+
+  const end=start+count*size;
+ const padding = Math.max(1, Math.ceil(size * 0.4));
+const a = Math.floor(Math.min(start, end)) - padding;
+const b = Math.ceil(Math.max(start, end)) + padding;
+  if(!configureRange(a,b))return;
+
+  const arcs=[];
+  for(let i=0;i<count;i++) {
+    arcs.push({
+      from:start+i*size,to:start+(i+1)*size,
+      type:"addition",level:i%3
+    });
+  }
+
+  renderLine({
+    start:a,end:b,step:1,arcs,
+    highlights:[
+      {value:start,color:"#2563eb",labelText:fmt(start)},
+      {value:end,color:"#20a66b",labelText:fmt(end)}
+    ]
+  });
+
+  showEquation(`${count} × ${size} <span class="equals">=</span>
+    <span class="answer-number">${count*size}</span>`);
+
+  setStatus(`${count} jumps of ${size} make ${count*size}. ${
+    start!==0?`Starting at ${start}, the final position is ${end}.`:""
+  }`,"success");
+}
+
+function renderDivision() {
+  const total=read("totalValue"),groups=read("groupsValue");
+  if(!Number.isInteger(total)||!Number.isInteger(groups)||
+    total<0||groups<1||groups>100) {
+    setStatus("Enter a non-negative whole total and a positive number of groups.","error");
+    return;
+  }
+
+  const each=total/groups;
+  const padding = Math.max(1, Math.ceil(total * 0.08));
+const a = Math.floor(Math.min(0, total)) - padding;
+const b = Math.ceil(Math.max(1, total)) + padding;
+  if(!configureRange(a,b))return;
+
+  const arcs=[];
+  const highlights=[];
+  for(let i=0;i<=groups;i++) {
+    const v=i*each;
+    highlights.push({
+      value:v,
+      color:i===0||i===groups?"#2563eb":"#20a66b",
+      labelText:fmt(v),
+      label:i===0||i===groups
+    });
+    if(i<groups) arcs.push({
+      from:v,to:(i+1)*each,type:"addition",level:i%3
+    });
+  }
+
+  renderLine({start:a,end:b,step:1,arcs,highlights});
+  showEquation(`${total} <span class="operator">÷</span> ${groups}
+    <span class="equals">=</span>
+    <span class="answer-number">${fmt(each)}</span>`);
+
+  setStatus(`${total} divided into ${groups} equal groups gives ${fmt(each)} per group.`,"success");
+
+  $("modeExtra").innerHTML=`
+    <div class="info-box">
+      <strong>Equal groups:</strong> Each interval represents ${fmt(each)}.
+      ${Number.isInteger(each)?"The quotient is a whole number.":"The quotient is not a whole number."}
+    </div>`;
+}
+
+function renderFractions() {
+  const n=read("fractionNumerator"),d=read("fractionDenominator");
+  if(!Number.isInteger(n)||!Number.isInteger(d)||d<1||d>100||n<0||n>100) {
+    setStatus("Numerator must be 0–100 and denominator must be 1–100.","error");
+    return;
+  }
+
+  const wholeCount=Math.max(1,Math.ceil(n/d));
+  const improper=n>d;
+  const value=n/d;
+
+  // Keep the unit interval central. For improper fractions, show
+  // the corresponding value across as many whole units as necessary.
+  const a=0,b=Math.max(1,wholeCount);
+  if(!configureRange(a,b,1/d))return;
+
+  const tickValues=[];
+  for(let i=0;i<=wholeCount*d;i++) {
+    tickValues.push(Number((i/d).toFixed(8)));
+  }
+
+  const highlights=[{
+    value, color:"#20a66b",
+    labelText:`${n}/${d}`,
+    caption:"Fraction"
+  }];
+
+  renderLine({
+    start:a,end:b,step:1/d,tickValues,highlights
+  });
+
+  showEquation(`<span class="start-number">${n}</span>
+    <span class="operator">/</span> ${d}
+    <span class="equals">=</span>
+    <span class="answer-number">${fmt(value)}</span>`);
+
+  setStatus(improper
+    ?`${n}/${d} is an improper fraction. It represents ${wholeCount-1} whole${wholeCount-1===1?"":"s"} and a remaining fractional part.`
+    :`${n} of ${d} equal parts are selected. Each interval represents 1/${d}.`,
+    "success");
+
+  const pieces=Array.from({length:d},(_,i)=>
+    `<span style="display:inline-block;flex:1;min-width:0;height:22px;
+    background:${i<n%d?"#20a66b":"#f0f3f8"};
+    border-right:1px solid white"></span>`).join("");
+
+  $("modeExtra").innerHTML=`
+    <div class="info-box">
+      <strong>Fraction interpretation:</strong> ${n}/${d} = ${fmt(value)}.
+      The denominator shows the number of equal parts in one whole.
+      The numerator shows how many parts are selected.
+      <div style="display:flex;gap:0;margin-top:12px;border:1px solid #dbe3ed;
+      border-radius:6px;overflow:hidden">${pieces}</div>
+    </div>`;
+}
+
+function renderDecimals() {
+  let value=read("decimalValue");
+  const precision=Number($("decimalPrecision").value);
+  if(!Number.isFinite(value)||value<0||value>1) {
+    setStatus("Enter a decimal between 0 and 1.","error");
+    return;
+  }
+
+  const step=1/precision;
+  value=Math.round(value/step)*step;
+  value=Number(value.toFixed(4));
+  $("decimalValue").value=value;
+
+  const tickValues=[];
+  for(let i=0;i<=precision;i++) {
+    tickValues.push(Number((i/precision).toFixed(6)));
+  }
+
+  if(!configureRange(0,1,step))return;
+
+  renderLine({
+    start:0,end:1,step,tickValues,
+    highlights:[{
+      value,color:"#20a66b",
+      labelText:value.toFixed(precision===100?2:precision===20?2:1),
+      caption:"Selected decimal"
+    }]
+  });
+
+  showEquation(`<span class="start-number">${value.toFixed(2)}</span>
+    <span class="operator"> on the line from 0 to 1</span>`);
+
+  setStatus(`${value} is located at ${Math.round(value*precision)} of ${precision} equal intervals from zero to one.`,"success");
+}
+
+function renderNegative() {
+  const start=read("negativeStart"),end=read("negativeEnd"),target=read("negativeTarget");
+  if(!Number.isInteger(start)||!Number.isInteger(end)||!Number.isInteger(target)||
+    end<=start||end-start>200||target<start||target>end) {
+    setStatus("Enter whole-number endpoints in increasing order. The highlighted number must be within the range.","error");
+    return;
+  }
+
+  if(!configureRange(start,end))return;
+
+  const tickValues=[];
+  for(let v=start;v<=end;v++)tickValues.push(v);
+
+  renderLine({
+    start,end,step:1,tickValues,
+    highlights:[{
+      value:target,
+      color:target<0?"#d9534f":target>0?"#20a66b":"#2563eb",
+      labelText:fmt(target),
+      caption:target<0?"Negative":target>0?"Positive":"Zero"
+    }]
+  });
+
+  showEquation(`<span class="start-number">${fmt(target)}</span>
+    <span class="operator"> ${target<0?"is less than":target>0?"is greater than":"is equal to"} zero</span>`);
+
+  setStatus(target<0
+    ?`${target} is to the left of zero. Its distance from zero is ${Math.abs(target)} units.`
+    :target>0
+      ?`${target} is to the right of zero. Its distance from zero is ${target} units.`
+      :"Zero is the boundary between negative and positive numbers.",
+    "success");
+}
+
+// Preset range buttons.
+document.querySelectorAll(".preset").forEach(btn=>{
+  btn.addEventListener("click",()=>{
+    const [a,b]=btn.dataset.range.split(",").map(Number);
+    viewStart=a;viewEnd=b;
+    document.querySelectorAll(".preset").forEach(p=>
+      p.classList.toggle("active",p===btn));
+
+    // Presets affect the displayed range without changing the mode's settings.
+    renderLine({
+      start:viewStart,end:viewEnd,step:1
+    });
+    showEquation(`<span class="start-number">${fmt(a)}</span>
+      <span class="operator"> to </span>
+      <span class="answer-number">${fmt(b)}</span>`);
+    setStatus(`Display range changed to ${a} through ${b}. Select your mode's action button to rebuild its demonstration.`,"success");
+  });
+});
+
+// Zoom by changing the visible range while keeping it centred.
+function zoom(factor) {
+  const centre=(viewStart+viewEnd)/2;
+  const half=(viewEnd-viewStart)/2*factor;
+  viewStart=Number((centre-half).toFixed(5));
+  viewEnd=Number((centre+half).toFixed(5));
+  renderLine({start:viewStart,end:viewEnd,step:1});
+  showEquation(`<span class="start-number">${fmt(viewStart)}</span>
+    <span class="operator"> to </span>
+    <span class="answer-number">${fmt(viewEnd)}</span>`);
+  setStatus(`Zoom adjusted. Visible range: ${fmt(viewStart)} to ${fmt(viewEnd)}.`,"success");
+}
+
+$("zoomIn").addEventListener("click",()=>zoom(.65));
+$("zoomOut").addEventListener("click",()=>zoom(1.5));
+
+$("resetAll").addEventListener("click",()=>{
+  viewStart=0;viewEnd=10;
+  document.querySelectorAll(".preset").forEach(p=>
+    p.classList.toggle("active",p.dataset.range==="0,10"));
+  setMode("counting");
+});
+
+buildMenus();
+document.querySelector('[data-range="0,10"]').classList.add("active");
+setMode("counting");
+
+const teachingGuides = {
+  counting: {
+    ideas: [
+      "Numbers are arranged in a fixed order on the line.",
+      "The distance between adjacent integers is one unit.",
+      "Counting steps can reveal number patterns."
+    ],
+    tips: [
+      "Ask learners to predict the next number before revealing it.",
+      "Use the line to discuss numbers between two endpoints.",
+      "Change the step size to demonstrate different counting patterns."
+    ]
+  },
+  skip: {
+    ideas: [
+      "Skip counting is repeated addition or subtraction.",
+      "Each equal jump represents the same numerical amount.",
+      "The endpoint depends on the start, jump size and number of jumps."
+    ],
+    tips: [
+      "Ask learners to say the sequence aloud as each jump is followed.",
+      "Compare counting by twos, fives and tens.",
+      "Ask how the endpoint changes when one more jump is added."
+    ]
+  },
+  addition: {
+    ideas: [
+      "Addition can be represented as movement to the right.",
+      "The starting point represents the first addend.",
+      "The final position represents the sum."
+    ],
+    tips: [
+      "Begin at the first number and trace the arc towards the right.",
+      "Ask learners to estimate the answer before creating the jump.",
+      "Compare a large jump with several individual steps."
+    ]
+  },
+  subtraction: {
+    ideas: [
+      "Subtraction can be represented as movement to the left.",
+      "The jump length represents the amount removed.",
+      "The final position represents the difference."
+    ],
+    tips: [
+      "Start at the larger number when demonstrating basic subtraction.",
+      "Ask learners to count the units travelled backwards.",
+      "Connect the visual jump with the subtraction sentence."
+    ]
+  },
+  multiplication: {
+    ideas: [
+      "Multiplication can be represented by equal repeated jumps.",
+      "The jump size represents the number being repeated.",
+      "The final position gives the product when starting at zero."
+    ],
+    tips: [
+      "Count each jump aloud to connect multiplication and repeated addition.",
+      "Ask learners to write the matching repeated-addition sentence.",
+      "Change the number of jumps while keeping the jump size fixed."
+    ]
+  },
+  division: {
+    ideas: [
+      "Division can split a total into equal groups.",
+      "Equal intervals represent equal shares.",
+      "The interval size represents the amount in each group."
+    ],
+    tips: [
+      "Ask learners to explain why the intervals are equal.",
+      "Compare the number of groups with the size of each share.",
+      "Discuss cases where the quotient is not a whole number."
+    ]
+  },
+  fractions: {
+    ideas: [
+      "The denominator tells how many equal parts make one whole.",
+      "The numerator tells how many parts are selected.",
+      "Equivalent fractions can represent the same position."
+    ],
+    tips: [
+      "Begin with one whole and identify the equal intervals.",
+      "Compare fractions with the same denominator.",
+      "Ask learners to locate one-half and discuss equivalent fractions."
+    ]
+  },
+  decimals: {
+    ideas: [
+      "Decimals represent values between whole numbers as well as whole numbers.",
+      "Tenths and hundredths divide intervals into equal parts.",
+      "Decimal values can be compared by their positions."
+    ],
+    tips: [
+      "Zoom in to show the distance between nearby decimal values.",
+      "Compare tenths and hundredths using the same unit interval.",
+      "Ask learners to estimate a decimal's position before locating it."
+    ]
+  },
+  negative: {
+    ideas: [
+      "Zero separates positive and negative numbers.",
+      "Negative numbers lie to the left of zero.",
+      "A number farther right is greater than a number farther left."
+    ],
+    tips: [
+      "Locate zero first, then identify positive and negative values.",
+      "Compare two negative numbers by their positions.",
+      "Use movement across zero to discuss changes in value."
+    ]
+  }
+};
+
+function updateTeachingGuides() {
+  const guide = teachingGuides[activeMode];
+  if (!guide) return;
+
+  $("keyIdeas").innerHTML = guide.ideas
+    .map(item => `<li>${item}</li>`).join("");
+
+  $("teacherTips").innerHTML = guide.tips
+    .map(item => `<li>${item}</li>`).join("");
+}
+
+// Wrap the existing mode selector so the guidance updates as well.
+const originalSetMode = setMode;
+setMode = function(id) {
+  originalSetMode(id);
+  updateTeachingGuides();
+};
+
+</script>
+</body>
+</html>

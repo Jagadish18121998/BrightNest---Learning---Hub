@@ -1,0 +1,307 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Manipulatives | BrightNest Learning Hub</title>
+
+<style>
+* {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+}
+
+:root {
+    --ink: #243451;
+    --purple: #7256c9;
+    --cream: #fffaf1;
+}
+
+body {
+    font-family: "Trebuchet MS", Arial, sans-serif;
+    background: var(--cream);
+    color: var(--ink);
+    min-height: 100vh;
+}
+
+header {
+    background: white;
+    padding: 16px 6%;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    gap: 18px;
+    flex-wrap: wrap;
+    box-shadow: 0 3px 15px #2936530d;
+}
+
+.logo {
+    color: #5e49b5;
+    font-size: 23px;
+    font-weight: 900;
+}
+
+.logo span {
+    color: #f5a623;
+}
+
+.home-link {
+    text-decoration: none;
+    color: #55459b;
+    background: #f0ebff;
+    padding: 10px 17px;
+    border-radius: 25px;
+    font-weight: bold;
+}
+
+.hero {
+    text-align: center;
+    padding: 48px 20px 30px;
+    background:
+        radial-gradient(circle at 12% 35%, #ffe6a8 0 45px, transparent 46px),
+        radial-gradient(circle at 88% 25%, #dcd3ff 0 55px, transparent 56px),
+        linear-gradient(135deg, #fff3d5, #f2edff 55%, #e6f7ff);
+}
+
+.hero .eyebrow {
+    display: inline-block;
+    background: white;
+    color: #6d52bb;
+    border-radius: 30px;
+    padding: 8px 16px;
+    font-size: 13px;
+    font-weight: bold;
+    margin-bottom: 16px;
+}
+
+.hero h1 {
+    font-size: clamp(32px, 5vw, 49px);
+    margin-bottom: 13px;
+    letter-spacing: -1px;
+}
+
+.hero h1 span {
+    color: #7256c9;
+}
+
+.hero p {
+    max-width: 650px;
+    margin: auto;
+    font-size: 17px;
+    line-height: 1.7;
+    color: #58647a;
+}
+
+.subject-section {
+    max-width: 1150px;
+    margin: 0 auto;
+    padding: 35px 22px 65px;
+}
+
+.section-heading {
+    text-align: center;
+    margin-bottom: 27px;
+}
+
+.section-heading h2 {
+    font-size: 27px;
+    margin-bottom: 8px;
+}
+
+.section-heading p {
+    color: #68748a;
+    line-height: 1.6;
+}
+
+.subject-grid {
+    display: grid;
+    grid-template-columns: repeat(4, minmax(0, 1fr));
+    gap: 20px;
+}
+
+.subject-card {
+    --accent: #7256c9;
+    --soft: #eee8ff;
+    background: white;
+    border: 2px solid #eeeaf5;
+    border-radius: 25px;
+    padding: 23px 17px 20px;
+    text-align: center;
+    text-decoration: none;
+    color: var(--ink);
+    box-shadow: 0 8px 20px #34415a0a;
+    transition: transform 0.25s ease, box-shadow 0.25s ease;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    min-height: 290px;
+}
+
+.subject-card:hover {
+    transform: translateY(-8px);
+    box-shadow: 0 16px 30px #34415a1a;
+    border-color: var(--accent);
+}
+
+.maths {
+    --accent: #6554ce;
+    --soft: #eeeaff;
+}
+
+.english {
+    --accent: #e67b37;
+    --soft: #fff0df;
+}
+
+.hindi {
+    --accent: #df5d82;
+    --soft: #ffedf3;
+}
+
+.twau {
+    --accent: #269d7a;
+    --soft: #e3f8ed;
+}
+
+.illustration {
+    width: 115px;
+    height: 115px;
+    background: var(--soft);
+    border-radius: 35px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-size: 63px;
+    margin-bottom: 20px;
+    transition: transform 0.25s ease;
+}
+
+.subject-card:hover .illustration {
+    transform: rotate(-5deg) scale(1.06);
+}
+
+.subject-card h3 {
+    font-size: 23px;
+    color: var(--accent);
+    margin-bottom: 10px;
+}
+
+.subject-card p {
+    font-size: 14px;
+    line-height: 1.6;
+    color: #68748a;
+    flex-grow: 1;
+}
+
+.explore {
+    margin-top: 18px;
+    padding: 10px 17px;
+    background: var(--soft);
+    color: var(--accent);
+    border-radius: 25px;
+    font-weight: bold;
+    font-size: 13px;
+}
+
+footer {
+    text-align: center;
+    padding: 20px;
+    color: #798399;
+    font-size: 13px;
+}
+
+@media (max-width: 900px) {
+    .subject-grid {
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+    }
+}
+
+@media (max-width: 480px) {
+    header {
+        padding: 15px 5%;
+    }
+
+    .logo {
+        font-size: 19px;
+    }
+
+    .hero {
+        padding-top: 35px;
+    }
+
+    .subject-grid {
+        grid-template-columns: 1fr;
+    }
+
+    .subject-card {
+        min-height: 260px;
+    }
+}
+</style>
+</head>
+
+<body>
+
+<header>
+    <div class="logo">🌞 BrightNest <span>Learning Hub</span></div>
+    <a class="home-link" href="index.html">← Back to Home</a>
+</header>
+
+<main>
+    <section class="hero">
+        <div class="eyebrow">🎨 TOUCH • EXPLORE • LEARN</div>
+        <h1>Welcome to the <span>Manipulatives!</span></h1>
+        <p>
+            Learning becomes magical when children can see it, touch it,
+            move it and explore it. Choose a subject and discover a world
+            of playful learning activities.
+        </p>
+    </section>
+
+    <section class="subject-section">
+        <div class="section-heading">
+            <h2>🌈 Choose Your Learning World</h2>
+            <p>Four subjects, endless discoveries!</p>
+        </div>
+
+        <div class="subject-grid">
+
+            <a class="subject-card maths" href="maths.html">
+                <div class="illustration">🔢</div>
+                <h3>Maths</h3>
+                <p>Play with numbers, discover patterns and understand mathematical ideas.</p>
+                <span class="explore">Explore Maths →</span>
+            </a>
+
+            <a class="subject-card english" href="english.html">
+                <div class="illustration">📚</div>
+                <h3>English</h3>
+                <p>Explore letters, words, sounds and sentences through playful activities.</p>
+                <span class="explore">Explore English →</span>
+            </a>
+
+            <a class="subject-card hindi" href="hindi.html">
+                <div class="illustration">अ</div>
+                <h3>Hindi</h3>
+                <p>Discover वर्ण, शब्द and भाषा through colourful, interactive learning.</p>
+                <span class="explore">Explore Hindi →</span>
+            </a>
+
+            <a class="subject-card twau" href="twau.html">
+                <div class="illustration">🌍</div>
+                <h3>TWAU</h3>
+                <p>Explore nature, animals, our surroundings and the world around us.</p>
+                <span class="explore">Explore TWAU →</span>
+            </a>
+
+        </div>
+    </section>
+</main>
+
+<footer>
+    BrightNest Learning Hub • Learn by exploring, grow by discovering ✨
+</footer>
+
+</body>
+</html>

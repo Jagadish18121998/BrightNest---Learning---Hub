@@ -1,0 +1,1499 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+<meta charset="UTF-8">
+
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<title>Class 1 English | Mridang | BrightNest</title>
+
+<style>
+
+/* ================= BASIC ================= */
+
+*{
+    margin:0;
+    padding:0;
+    box-sizing:border-box;
+}
+
+body{
+
+    font-family:
+        "Trebuchet MS",
+        "Segoe UI",
+        Arial,
+        sans-serif;
+
+    min-height:100vh;
+
+    color:#26324a;
+
+    background:
+        linear-gradient(
+            180deg,
+            #fff7ed 0%,
+            #fefce8 42%,
+            #eff6ff 100%
+        );
+}
+
+
+/* ================= HEADER ================= */
+
+header{
+
+    width:94%;
+    max-width:1400px;
+
+    margin:18px auto;
+
+    padding:15px 22px;
+
+    background:white;
+
+    border-radius:24px;
+
+    display:flex;
+
+    align-items:center;
+
+    justify-content:space-between;
+
+    gap:20px;
+
+    box-shadow:
+        0 8px 22px rgba(0,0,0,.13);
+}
+
+
+.header-left{
+
+    display:flex;
+
+    align-items:center;
+
+    gap:13px;
+}
+
+
+.logo-icon{
+
+    width:58px;
+    height:58px;
+
+    border-radius:18px;
+
+    display:flex;
+
+    align-items:center;
+
+    justify-content:center;
+
+    font-size:32px;
+
+    background:#dbeafe;
+}
+
+
+.logo-title{
+
+    font-size:21px;
+
+    font-weight:900;
+
+    color:#1d4ed8;
+}
+
+
+.school-name{
+
+    margin-top:3px;
+
+    font-size:12px;
+
+    font-weight:800;
+
+    color:#2563eb;
+}
+
+
+.home-btn{
+
+    text-decoration:none;
+
+    color:white;
+
+    background:#2563eb;
+
+    padding:11px 18px;
+
+    border-radius:15px;
+
+    font-weight:900;
+
+    box-shadow:
+        0 4px 0 #1e40af;
+
+    transition:.2s;
+}
+
+
+.home-btn:hover{
+
+    transform:translateY(-2px);
+
+}
+
+
+/* ================= HERO ================= */
+
+.hero{
+
+    width:94%;
+    max-width:1400px;
+
+    margin:20px auto;
+
+    padding:45px 30px;
+
+    border-radius:30px;
+
+    color:white;
+
+    background:
+
+        linear-gradient(
+            135deg,
+            #2563eb,
+            #7c3aed,
+            #ec4899
+        );
+
+    display:flex;
+
+    align-items:center;
+
+    justify-content:space-between;
+
+    gap:30px;
+
+    box-shadow:
+        0 12px 30px rgba(0,0,0,.16);
+
+    overflow:hidden;
+
+    position:relative;
+}
+
+
+.hero::before{
+
+    content:"A";
+
+    position:absolute;
+
+    right:180px;
+    top:-70px;
+
+    font-size:200px;
+
+    font-weight:900;
+
+    color:rgba(255,255,255,.09);
+}
+
+
+.hero::after{
+
+    content:"a";
+
+    position:absolute;
+
+    left:48%;
+
+    bottom:-110px;
+
+    font-size:190px;
+
+    font-weight:900;
+
+    color:rgba(255,255,255,.08);
+}
+
+
+.hero-content{
+
+    position:relative;
+
+    z-index:2;
+
+    max-width:800px;
+}
+
+
+.hero-badge{
+
+    display:inline-block;
+
+    background:rgba(255,255,255,.18);
+
+    border:1px solid rgba(255,255,255,.35);
+
+    padding:8px 17px;
+
+    border-radius:25px;
+
+    font-weight:900;
+
+    margin-bottom:14px;
+}
+
+
+.hero h1{
+
+    font-size:46px;
+
+    margin-bottom:10px;
+}
+
+
+.hero h2{
+
+    font-size:23px;
+
+    margin-bottom:15px;
+
+    color:#fef3c7;
+}
+
+
+.hero p{
+
+    font-size:17px;
+
+    line-height:1.7;
+}
+
+
+.hero-symbols{
+
+    position:relative;
+
+    z-index:2;
+
+    font-size:72px;
+
+    white-space:nowrap;
+}
+
+
+/* ================= BOOK INFO ================= */
+
+.book-info{
+
+    width:94%;
+    max-width:1200px;
+
+    margin:25px auto;
+
+    display:grid;
+
+    grid-template-columns:
+        repeat(3,1fr);
+
+    gap:18px;
+}
+
+
+.info-card{
+
+    background:white;
+
+    border-radius:20px;
+
+    padding:18px;
+
+    text-align:center;
+
+    font-weight:900;
+
+    box-shadow:
+        0 7px 20px rgba(60,40,90,.09);
+
+    transition:.2s;
+}
+
+
+.info-card:hover{
+
+    transform:translateY(-4px);
+
+}
+
+
+.info-card:nth-child(1){
+
+    border-top:5px solid #2563eb;
+
+}
+
+
+.info-card:nth-child(2){
+
+    border-top:5px solid #7c3aed;
+
+}
+
+
+.info-card:nth-child(3){
+
+    border-top:5px solid #ec4899;
+
+}
+
+
+/* ================= UNIT ================= */
+
+.unit{
+
+    width:94%;
+
+    max-width:1400px;
+
+    margin:35px auto;
+}
+
+
+.unit-header{
+
+    display:flex;
+
+    align-items:center;
+
+    gap:14px;
+
+    margin-bottom:17px;
+}
+
+
+.unit-badge{
+
+    color:white;
+
+    padding:9px 15px;
+
+    border-radius:14px;
+
+    font-size:13px;
+
+    font-weight:900;
+
+    box-shadow:
+        0 4px 0 rgba(0,0,0,.12);
+}
+
+
+.unit-title{
+
+    font-size:26px;
+
+    font-weight:900;
+}
+
+
+/* ================= UNIT COLOURS ================= */
+
+.unit:nth-of-type(1) .unit-badge{
+    background:#2563eb;
+}
+
+.unit:nth-of-type(1) .unit-title{
+    color:#1d4ed8;
+}
+
+
+.unit:nth-of-type(2) .unit-badge{
+    background:#059669;
+}
+
+.unit:nth-of-type(2) .unit-title{
+    color:#047857;
+}
+
+
+.unit:nth-of-type(3) .unit-badge{
+    background:#f97316;
+}
+
+.unit:nth-of-type(3) .unit-title{
+    color:#c2410c;
+}
+
+
+.unit:nth-of-type(4) .unit-badge{
+    background:#db2777;
+}
+
+.unit:nth-of-type(4) .unit-title{
+    color:#be185d;
+}
+
+
+/* ================= CHAPTER GRID ================= */
+
+.chapter-grid{
+
+    display:grid;
+
+    grid-template-columns:
+        repeat(3,1fr);
+
+    gap:22px;
+}
+
+
+/* ================= CHAPTER CARD ================= */
+
+.chapter-card{
+
+    background:white;
+
+    border-radius:24px;
+
+    padding:25px 20px 22px;
+
+    text-align:center;
+
+    position:relative;
+
+    overflow:hidden;
+
+    border:3px solid transparent;
+
+    box-shadow:
+        0 8px 22px rgba(50,40,80,.10);
+
+    transition:.25s;
+}
+
+
+.chapter-card::before{
+
+    content:"";
+
+    position:absolute;
+
+    top:0;
+    left:0;
+
+    width:100%;
+    height:7px;
+}
+
+
+.chapter-card:hover{
+
+    transform:
+        translateY(-7px)
+        rotate(-0.4deg);
+
+    box-shadow:
+        0 16px 32px rgba(50,40,80,.16);
+}
+
+
+/* ================= CARD COLOURS ================= */
+
+/* Unit 1 */
+
+.unit:nth-of-type(1)
+.chapter-card:nth-child(1)::before{
+    background:#2563eb;
+}
+
+.unit:nth-of-type(1)
+.chapter-card:nth-child(2)::before{
+    background:#7c3aed;
+}
+
+
+/* Unit 2 */
+
+.unit:nth-of-type(2)
+.chapter-card:nth-child(1)::before{
+    background:#059669;
+}
+
+.unit:nth-of-type(2)
+.chapter-card:nth-child(2)::before{
+    background:#0891b2;
+}
+
+.unit:nth-of-type(2)
+.chapter-card:nth-child(3)::before{
+    background:#f59e0b;
+}
+
+
+/* Unit 3 */
+
+.unit:nth-of-type(3)
+.chapter-card:nth-child(1)::before{
+    background:#f97316;
+}
+
+.unit:nth-of-type(3)
+.chapter-card:nth-child(2)::before{
+    background:#dc2626;
+}
+
+
+/* Unit 4 */
+
+.unit:nth-of-type(4)
+.chapter-card:nth-child(1)::before{
+    background:#db2777;
+}
+
+.unit:nth-of-type(4)
+.chapter-card:nth-child(2)::before{
+    background:#7c3aed;
+}
+
+
+/* ================= CHAPTER ICON ================= */
+
+.icon{
+
+    width:82px;
+    height:82px;
+
+    margin:13px auto 16px;
+
+    border-radius:26px;
+
+    display:flex;
+
+    align-items:center;
+
+    justify-content:center;
+
+    font-size:43px;
+}
+
+
+.unit:nth-of-type(1)
+.chapter-card:nth-child(1) .icon{
+    background:#dbeafe;
+}
+
+.unit:nth-of-type(1)
+.chapter-card:nth-child(2) .icon{
+    background:#ede9fe;
+}
+
+
+.unit:nth-of-type(2)
+.chapter-card:nth-child(1) .icon{
+    background:#d1fae5;
+}
+
+.unit:nth-of-type(2)
+.chapter-card:nth-child(2) .icon{
+    background:#cffafe;
+}
+
+.unit:nth-of-type(2)
+.chapter-card:nth-child(3) .icon{
+    background:#fef3c7;
+}
+
+
+.unit:nth-of-type(3)
+.chapter-card:nth-child(1) .icon{
+    background:#ffedd5;
+}
+
+.unit:nth-of-type(3)
+.chapter-card:nth-child(2) .icon{
+    background:#fee2e2;
+}
+
+
+.unit:nth-of-type(4)
+.chapter-card:nth-child(1) .icon{
+    background:#fce7f3;
+}
+
+.unit:nth-of-type(4)
+.chapter-card:nth-child(2) .icon{
+    background:#ede9fe;
+}
+
+
+/* ================= CHAPTER NUMBER ================= */
+
+.chapter-number{
+
+    position:absolute;
+
+    top:15px;
+    left:15px;
+
+    width:37px;
+    height:37px;
+
+    border-radius:50%;
+
+    display:flex;
+
+    align-items:center;
+
+    justify-content:center;
+
+    color:white;
+
+    font-weight:900;
+
+    font-size:14px;
+}
+
+
+.unit:nth-of-type(1)
+.chapter-card:nth-child(1) .chapter-number{
+    background:#2563eb;
+}
+
+.unit:nth-of-type(1)
+.chapter-card:nth-child(2) .chapter-number{
+    background:#7c3aed;
+}
+
+.unit:nth-of-type(2)
+.chapter-card:nth-child(1) .chapter-number{
+    background:#059669;
+}
+
+.unit:nth-of-type(2)
+.chapter-card:nth-child(2) .chapter-number{
+    background:#0891b2;
+}
+
+.unit:nth-of-type(2)
+.chapter-card:nth-child(3) .chapter-number{
+    background:#d97706;
+}
+
+.unit:nth-of-type(3)
+.chapter-card:nth-child(1) .chapter-number{
+    background:#f97316;
+}
+
+.unit:nth-of-type(3)
+.chapter-card:nth-child(2) .chapter-number{
+    background:#dc2626;
+}
+
+.unit:nth-of-type(4)
+.chapter-card:nth-child(1) .chapter-number{
+    background:#db2777;
+}
+
+.unit:nth-of-type(4)
+.chapter-card:nth-child(2) .chapter-number{
+    background:#7c3aed;
+}
+
+
+/* ================= TITLE ================= */
+
+.chapter-title{
+
+    min-height:60px;
+
+    display:flex;
+
+    align-items:center;
+
+    justify-content:center;
+
+    color:#26324a;
+
+    font-size:19px;
+
+    font-weight:900;
+
+    line-height:1.35;
+}
+
+
+/* ================= SUBTITLE ================= */
+
+.chapter-subtitle{
+
+    margin-top:8px;
+
+    margin-bottom:16px;
+
+    font-size:12px;
+
+    color:#64748b;
+
+    font-weight:700;
+}
+
+
+/* ================= BUTTON ================= */
+
+.open-btn{
+
+    display:inline-block;
+
+    text-decoration:none;
+
+    color:white;
+
+    padding:10px 20px;
+
+    border-radius:25px;
+
+    font-weight:900;
+
+    font-size:13px;
+
+    transition:.2s;
+}
+
+
+.unit:nth-of-type(1)
+.chapter-card:nth-child(1) .open-btn{
+    background:#2563eb;
+}
+
+.unit:nth-of-type(1)
+.chapter-card:nth-child(2) .open-btn{
+    background:#7c3aed;
+}
+
+.unit:nth-of-type(2)
+.chapter-card:nth-child(1) .open-btn{
+    background:#059669;
+}
+
+.unit:nth-of-type(2)
+.chapter-card:nth-child(2) .open-btn{
+    background:#0891b2;
+}
+
+.unit:nth-of-type(2)
+.chapter-card:nth-child(3) .open-btn{
+    background:#d97706;
+}
+
+.unit:nth-of-type(3)
+.chapter-card:nth-child(1) .open-btn{
+    background:#f97316;
+}
+
+.unit:nth-of-type(3)
+.chapter-card:nth-child(2) .open-btn{
+    background:#dc2626;
+}
+
+.unit:nth-of-type(4)
+.chapter-card:nth-child(1) .open-btn{
+    background:#db2777;
+}
+
+.unit:nth-of-type(4)
+.chapter-card:nth-child(2) .open-btn{
+    background:#7c3aed;
+}
+
+
+.open-btn:hover{
+
+    transform:
+        translateY(-2px)
+        scale(1.04);
+}
+
+
+/* ================= FOOTER ================= */
+
+footer{
+
+    margin-top:40px;
+
+    padding:28px 15px;
+
+    background:
+
+        linear-gradient(
+            135deg,
+            #1e3a8a,
+            #5b21b6,
+            #9d174d
+        );
+
+    color:white;
+
+    text-align:center;
+}
+
+
+footer p{
+
+    margin:6px;
+}
+
+
+footer strong{
+
+    color:#fef3c7;
+
+    font-size:16px;
+}
+
+
+/* ================= MOBILE ================= */
+
+@media(max-width:950px){
+
+    .chapter-grid{
+
+        grid-template-columns:
+            repeat(2,1fr);
+
+    }
+
+}
+
+
+@media(max-width:750px){
+
+    header{
+
+        flex-wrap:wrap;
+
+    }
+
+
+    .home-btn{
+
+        width:100%;
+
+        text-align:center;
+
+    }
+
+
+    .hero{
+
+        flex-direction:column;
+
+        text-align:center;
+
+        padding:38px 22px;
+
+    }
+
+
+    .hero h1{
+
+        font-size:36px;
+
+    }
+
+
+    .hero-symbols{
+
+        font-size:55px;
+
+    }
+
+
+    .book-info{
+
+        grid-template-columns:1fr;
+
+    }
+
+
+    .unit-title{
+
+        font-size:22px;
+
+    }
+
+}
+
+
+@media(max-width:500px){
+
+    .logo-title{
+
+        font-size:18px;
+
+    }
+
+
+    .school-name{
+
+        font-size:10px;
+
+    }
+
+
+    .chapter-grid{
+
+        grid-template-columns:1fr;
+
+    }
+
+
+    .chapter-card{
+
+        padding:22px 17px;
+
+    }
+
+
+    .chapter-title{
+
+        font-size:17px;
+
+    }
+
+}
+
+</style>
+
+</head>
+
+
+<body>
+
+
+<!-- ================= HEADER ================= -->
+
+<header>
+
+    <div class="header-left">
+
+        <div class="logo-icon">
+            📚
+        </div>
+
+        <div>
+
+            <div class="logo-title">
+                BrightNest Learning Hub
+            </div>
+
+            <div class="school-name">
+                CLASS 1 • ENGLISH • PM SHRI KV MAHE
+            </div>
+
+        </div>
+
+    </div>
+
+
+    <a
+        href="../../../index.html"
+        class="home-btn"
+    >
+        🏠 BrightNest Home
+    </a>
+
+</header>
+
+
+
+<!-- ================= HERO ================= -->
+
+<section class="hero">
+
+    <div class="hero-content">
+
+        <div class="hero-badge">
+            📚 Class 1 • English
+        </div>
+
+        <h1>
+            🌈 Mridang
+        </h1>
+
+        <h2>
+            Listen • Speak • Read • Play
+        </h2>
+
+        <p>
+            Welcome to the colourful world of
+            <strong>Mridang</strong>!
+            Explore stories, poems, songs,
+            pictures, animals, food and seasons
+            through fun learning adventures.
+        </p>
+
+    </div>
+
+
+    <div class="hero-symbols">
+        👋 📖 🐒 🌈
+    </div>
+
+</section>
+
+
+
+<!-- ================= BOOK INFO ================= -->
+
+<div class="book-info">
+
+    <div class="info-card">
+        🏫 PM SHRI Kendriya Vidyalaya Mahe
+    </div>
+
+    <div class="info-card">
+        📖 English • Mridang
+    </div>
+
+    <div class="info-card">
+        🌈 4 Units • 9 Chapters
+    </div>
+
+</div>
+
+
+
+<!-- ================= UNIT 1 ================= -->
+
+<section class="unit">
+
+    <div class="unit-header">
+
+        <div class="unit-badge">
+            UNIT 1
+        </div>
+
+        <div class="unit-title">
+            👨‍👩‍👧 My Family and Me
+        </div>
+
+    </div>
+
+
+    <div class="chapter-grid">
+
+
+        <!-- CHAPTER 1 -->
+
+        <div class="chapter-card">
+
+            <div class="chapter-number">
+                1
+            </div>
+
+            <div class="icon">
+                👋
+            </div>
+
+            <div class="chapter-title">
+                Two Little Hands
+            </div>
+
+            <div class="chapter-subtitle">
+                🎵 Sing • Move • Learn
+            </div>
+
+            <a
+                href="#"
+                class="open-btn"
+                onclick="comingSoon(event)"
+            >
+                Explore →
+            </a>
+
+        </div>
+
+
+
+        <!-- CHAPTER 2 -->
+
+        <div class="chapter-card">
+
+            <div class="chapter-number">
+                2
+            </div>
+
+            <div class="icon">
+                🙏
+            </div>
+
+            <div class="chapter-title">
+                Greetings
+            </div>
+
+            <div class="chapter-subtitle">
+                👋 Speak • Greet • Share
+            </div>
+
+            <a
+                href="#"
+                class="open-btn"
+                onclick="comingSoon(event)"
+            >
+                Explore →
+            </a>
+
+        </div>
+
+    </div>
+
+</section>
+
+
+
+<!-- ================= UNIT 2 ================= -->
+
+<section class="unit">
+
+    <div class="unit-header">
+
+        <div class="unit-badge">
+            UNIT 2
+        </div>
+
+        <div class="unit-title">
+            🌿 Life Around Us
+        </div>
+
+    </div>
+
+
+    <div class="chapter-grid">
+
+
+        <!-- CHAPTER 1 -->
+
+        <div class="chapter-card">
+
+            <div class="chapter-number">
+                3
+            </div>
+
+            <div class="icon">
+                🐟
+            </div>
+
+            <div class="chapter-title">
+                Picture Time
+            </div>
+
+            <div class="chapter-subtitle">
+                👀 Look • Speak • Discover
+            </div>
+
+            <a
+                href="#"
+                class="open-btn"
+                onclick="comingSoon(event)"
+            >
+                Explore →
+            </a>
+
+        </div>
+
+
+
+        <!-- CHAPTER 2 -->
+
+        <div class="chapter-card">
+
+            <div class="chapter-number">
+                4
+            </div>
+
+            <div class="icon">
+                🐒
+            </div>
+
+            <div class="chapter-title">
+                The Cap-seller and the Monkeys
+            </div>
+
+            <div class="chapter-subtitle">
+                📖 Story • Think • Imagine
+            </div>
+
+            <a
+                href="#"
+                class="open-btn"
+                onclick="comingSoon(event)"
+            >
+                Explore →
+            </a>
+
+        </div>
+
+
+
+        <!-- CHAPTER 3 -->
+
+        <div class="chapter-card">
+
+            <div class="chapter-number">
+                5
+            </div>
+
+            <div class="icon">
+                🐄
+            </div>
+
+            <div class="chapter-title">
+                A Farm
+            </div>
+
+            <div class="chapter-subtitle">
+                🎵 Sing • Animals • Sounds
+            </div>
+
+            <a
+                href="#"
+                class="open-btn"
+                onclick="comingSoon(event)"
+            >
+                Explore →
+            </a>
+
+        </div>
+
+    </div>
+
+</section>
+
+
+
+<!-- ================= UNIT 3 ================= -->
+
+<section class="unit">
+
+    <div class="unit-header">
+
+        <div class="unit-badge">
+            UNIT 3
+        </div>
+
+        <div class="unit-title">
+            🍎 Food
+        </div>
+
+    </div>
+
+
+    <div class="chapter-grid">
+
+
+        <!-- CHAPTER 1 -->
+
+        <div class="chapter-card">
+
+            <div class="chapter-number">
+                6
+            </div>
+
+            <div class="icon">
+                🍎
+            </div>
+
+            <div class="chapter-title">
+                Fun with Pictures
+            </div>
+
+            <div class="chapter-subtitle">
+                🍓 Look • Count • Name
+            </div>
+
+            <a
+                href="#"
+                class="open-btn"
+                onclick="comingSoon(event)"
+            >
+                Explore →
+            </a>
+
+        </div>
+
+
+
+        <!-- CHAPTER 2 -->
+
+        <div class="chapter-card">
+
+            <div class="chapter-number">
+                7
+            </div>
+
+            <div class="icon">
+                🍱
+            </div>
+
+            <div class="chapter-title">
+                The Food we Eat
+            </div>
+
+            <div class="chapter-subtitle">
+                🥗 Share • Eat • Learn
+            </div>
+
+            <a
+                href="#"
+                class="open-btn"
+                onclick="comingSoon(event)"
+            >
+                Explore →
+            </a>
+
+        </div>
+
+    </div>
+
+</section>
+
+
+
+<!-- ================= UNIT 4 ================= -->
+
+<section class="unit">
+
+    <div class="unit-header">
+
+        <div class="unit-badge">
+            UNIT 4
+        </div>
+
+        <div class="unit-title">
+            🌈 Seasons
+        </div>
+
+    </div>
+
+
+    <div class="chapter-grid">
+
+
+        <!-- CHAPTER 1 -->
+
+        <div class="chapter-card">
+
+            <div class="chapter-number">
+                8
+            </div>
+
+            <div class="icon">
+                ☀️
+            </div>
+
+            <div class="chapter-title">
+                The Four Seasons
+            </div>
+
+            <div class="chapter-subtitle">
+                ☀️🌧️🌸❄️ Discover Seasons
+            </div>
+
+            <a
+                href="#"
+                class="open-btn"
+                onclick="comingSoon(event)"
+            >
+                Explore →
+            </a>
+
+        </div>
+
+
+
+        <!-- CHAPTER 2 -->
+
+        <div class="chapter-card">
+
+            <div class="chapter-number">
+                9
+            </div>
+
+            <div class="icon">
+                🌈
+            </div>
+
+            <div class="chapter-title">
+                Anandi's Rainbow
+            </div>
+
+            <div class="chapter-subtitle">
+                🎨 Colours • Sky • Imagine
+            </div>
+
+            <a
+                href="#"
+                class="open-btn"
+                onclick="comingSoon(event)"
+            >
+                Explore →
+            </a>
+
+        </div>
+
+    </div>
+
+</section>
+
+
+
+<!-- ================= FOOTER ================= -->
+
+<footer>
+
+    <p>
+        <strong>
+            🌈 Mridang • Class 1 English
+        </strong>
+    </p>
+
+    <p>
+        🌟 BrightNest Learning Hub
+    </p>
+
+    <p>
+        PM SHRI Kendriya Vidyalaya Mahe
+    </p>
+
+</footer>
+
+
+
+<!-- ================= SCRIPT ================= -->
+
+<script>
+
+function comingSoon(event){
+
+    event.preventDefault();
+
+    alert(
+        "🌈 This chapter adventure is coming soon!"
+    );
+
+}
+
+</script>
+
+
+</body>
+
+</html>

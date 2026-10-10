@@ -1,408 +1,866 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-<title>BrightNest Learning Hub</title>
+    <title>BrightNest Learning Hub | PM SHRI Kendriya Vidyalaya Mahe</title>
 
-<style>
-
-*{
-margin:0;
-padding:0;
-box-sizing:border-box;
-font-family:Segoe UI,Arial,sans-serif;
-}
-
-body{
-background:#f5f9ff;
-color:#333;
-}
-
-header{
-background:linear-gradient(90deg,#1e88e5,#26c6da);
-padding:15px 40px;
-display:flex;
-justify-content:space-between;
-align-items:center;
-position:sticky;
-top:0;
-z-index:999;
-}
-
-.logo{
-font-size:28px;
-font-weight:bold;
-color:white;
-}
-
-nav ul{
-display:flex;
-list-style:none;
-gap:20px;
-}
-
-nav ul li a{
-color:white;
-text-decoration:none;
-font-weight:bold;
-transition:.3s;
-}
-
-nav ul li a:hover{
-color:yellow;
-}
-
-.hero{
-display:flex;
-justify-content:space-between;
-align-items:center;
-padding:70px 8%;
-background:linear-gradient(to right,#eef8ff,#ffffff);
-flex-wrap:wrap;
-}
-
-.hero-text{
-max-width:600px;
-}
-
-.hero-text h1{
-font-size:48px;
-margin-bottom:20px;
-color:#1565c0;
-}
-
-.hero-text p{
-font-size:20px;
-line-height:1.6;
-margin-bottom:30px;
-}
-
-.btn{
-display:inline-block;
-padding:14px 28px;
-border-radius:30px;
-text-decoration:none;
-font-weight:bold;
-margin-right:10px;
-}
-
-.primary{
-background:#1e88e5;
-color:white;
-}
-
-.secondary{
-background:#ff9800;
-color:white;
-}
-
-.hero-image{
-font-size:120px;
-}
-
-section{
-padding:70px 8%;
-}
-
-.section-title{
-text-align:center;
-font-size:38px;
-margin-bottom:40px;
-color:#1565c0;
-}
-
-.cards{
-display:grid;
-grid-template-columns:repeat(auto-fit,minmax(220px,1fr));
-gap:25px;
-}
-
-.card{
-background:white;
-padding:25px;
-border-radius:20px;
-box-shadow:0 10px 25px rgba(0,0,0,.1);
-text-align:center;
-transition:.3s;
-}
-
-.card:hover{
-transform:translateY(-8px);
-}
-
-</style>
-
+    <link rel="stylesheet" href="css/style.css">
 </head>
 
 <body>
 
-<header>
+<!-- ================= HEADER ================= -->
 
-<div class="logo">
-🌟 BrightNest Learning Hub
-</div>
+<header class="site-header">
 
-<nav>
+    <div class="header-inner">
 
-<ul>
+        <a href="index.html" class="brand">
 
-<li><a href="index.html">Home</a></li>
+            <div class="brand-logo">☀️</div>
 
-<li><a href="classes.html">Classes</a></li>
+            <div>
+                <div class="brand-school">
+                    PM SHRI KENDRIYA VIDYALAYA MAHE
+                </div>
 
-<li><a href="games.html">Games</a></li>
+                <div class="brand-name">
+                    BrightNest <span>Learning Hub</span>
+                </div>
+            </div>
 
-<li><a href="quizzes.html">Quizzes</a></li>
+        </a>
 
-<li><a href="resources.html">Resources</a></li>
 
-<li><a href="teacher-tools.html">Teacher Tools</a></li>
+        <button class="menu-btn" id="menuBtn">
+            ☰
+        </button>
 
-<li><a href="progress.html">Progress</a></li>
 
-<li><a href="contact.html">Contact</a></li>
+        <nav class="main-nav" id="mainNav">
 
-</ul>
+            <a class="active" href="index.html">
+                🏠 Home
+            </a>
 
-</nav>
+            <a href="teachers.html">
+                👩‍🏫 Teachers Tool
+            </a>
+
+            <a href="learners.html">
+                👦 Learners Zone
+            </a>
+
+            <a href="resources.html">
+                📚 Learning Resources
+            </a>
+
+            <a href="games.html">
+                🎮 Game Zone
+            </a>
+
+            <a href="worksheets.html">
+                📄 Worksheet
+            </a>
+
+            <a href="quiz.html">
+                💡 Quiz Zone
+            </a>
+
+            <a href="gallery.html">
+                🖼️ Gallery
+            </a>
+
+        </nav>
+
+    </div>
 
 </header>
 
+
+<!-- ================= HERO ================= -->
+
 <section class="hero">
 
-<div class="hero-text">
+    <div class="hero-inner">
 
-<h1>Learn • Play • Grow</h1>
+        <!-- LEFT SIDE -->
 
-<p>
+        <div class="hero-content">
 
-Welcome to <strong>BrightNest Learning Hub</strong> —
-your digital classroom for interactive learning,
-educational games, worksheets, quizzes,
-teacher resources and much more.
+            <div class="welcome-label">
+                WELCOME TO
+            </div>
 
-</p>
 
-<a href="classes.html" class="btn primary">
-Start Learning
-</a>
+            <h1>
+                Bright<span>Nest</span>
 
-<a href="games.html" class="btn secondary">
-Explore Games
-</a>
+                <small>
+                    Learning Hub
+                </small>
+            </h1>
 
-</div>
 
-<div class="hero-image">
+            <div class="school-pill">
+                PM SHRI KENDRIYA VIDYALAYA MAHE
+            </div>
 
-📚🌈🎮
 
-</div>
+            <p class="hero-text">
 
-</section>
-<section>
+                A digital space for learning, practice,
+                exploration and creativity — bringing
+                engaging educational resources together
+                for learners and teachers.
 
-<h2 class="section-title">Choose Your Class</h2>
+            </p>
 
-<div class="cards">
 
-<div class="card">
-<h3>📘 Class 1</h3>
-<p>English • Hindi • Maths • EVS</p>
-<a href="classes.html" class="btn primary">Open</a>
-</div>
+            <div class="hero-buttons">
 
-<div class="card">
-<h3>📗 Class 2</h3>
-<p>English • Hindi • Maths • EVS</p>
-<a href="classes.html" class="btn primary">Open</a>
-</div>
+                <a href="learners.html"
+                   class="btn btn-blue">
 
-<div class="card">
-<h3>📙 Class 3</h3>
-<p>English • Hindi • Maths • EVS</p>
-<a href="classes.html" class="btn primary">Open</a>
-</div>
+                    📖 Explore Learners Zone
 
-<div class="card">
-<h3>📕 Class 4</h3>
-<p>English • Hindi • Maths • EVS</p>
-<a href="classes.html" class="btn primary">Open</a>
-</div>
+                </a>
 
-<div class="card">
-<h3>📒 Class 5</h3>
-<p>English • Hindi • Maths • EVS</p>
-<a href="classes.html" class="btn primary">Open</a>
-</div>
 
-</div>
+                <a href="teachers.html"
+                   class="btn btn-orange">
 
-</section>
+                    👩‍🏫 Teachers Tool
 
-<section>
+                </a>
 
-<h2 class="section-title">🎮 Featured Games</h2>
+            </div>
 
-<div class="cards">
 
-<div class="card">
-<h3>🌈 Rainbow Game</h3>
-<p>Learn colours and poetry through fun activities.</p>
-<a href="games.html" class="btn secondary">Play</a>
-</div>
+            <div class="hero-motto">
 
-<div class="card">
-<h3>🚦 Traffic Safety</h3>
-<p>Learn road safety through interactive challenges.</p>
-<a href="games.html" class="btn secondary">Play</a>
-</div>
+                <span>Learn</span>
 
-<div class="card">
-<h3>🐄 Animal Legs</h3>
-<p>Identify animals and count their legs.</p>
-<a href="games.html" class="btn secondary">Play</a>
-</div>
+                <b>•</b>
 
-<div class="card">
-<h3>➕ More Games</h3>
-<p>Many more educational games are coming soon.</p>
-<a href="games.html" class="btn secondary">Explore</a>
-</div>
+                <span>Explore</span>
 
-</div>
+                <b>•</b>
 
-</section>
+                <span>Create</span>
 
-<section>
+                <b>•</b>
 
-<h2 class="section-title">👨‍🏫 Teacher Tools</h2>
+                <span>Grow</span>
 
-<div class="cards">
+            </div>
 
-<div class="card">
-📋 Lesson Planner
-</div>
+        </div>
 
-<div class="card">
-📝 Worksheet Creator
-</div>
 
-<div class="card">
-📊 Student Progress
-</div>
+        <!-- RIGHT SIDE -->
 
-<div class="card">
-📚 Question Bank
-</div>
+        <div class="hero-art">
 
-</div>
+            <div class="sun"></div>
 
-</section>
-<section>
+            <div class="cloud cloud-a"></div>
 
-<h2 class="section-title">📝 Latest Quizzes</h2>
+            <div class="cloud cloud-b"></div>
 
-<div class="cards">
 
-<div class="card">
-<h3>📘 English Quiz</h3>
-<p>Practice grammar, vocabulary and reading skills.</p>
-<a href="quizzes.html" class="btn primary">Start Quiz</a>
-</div>
+            <div class="school-illustration">
 
-<div class="card">
-<h3>➗ Maths Quiz</h3>
-<p>Test your mathematical thinking and problem-solving.</p>
-<a href="quizzes.html" class="btn primary">Start Quiz</a>
-</div>
+                <div class="flag">
+                    🇮🇳
+                </div>
 
-<div class="card">
-<h3>📝 Hindi Quiz</h3>
-<p>Improve Hindi language skills through fun quizzes.</p>
-<a href="quizzes.html" class="btn primary">Start Quiz</a>
-</div>
 
-<div class="card">
-<h3>🌍 EVS Quiz</h3>
-<p>Learn about the world around you with interactive questions.</p>
-<a href="quizzes.html" class="btn primary">Start Quiz</a>
-</div>
+                <div class="school-roof"></div>
 
-</div>
+
+                <div class="school-building">
+
+                    <div class="school-sign">
+
+                        पी एम श्री केंद्रीय विद्यालय माहे
+
+                        <br>
+
+                        <strong>
+                            PM SHRI KENDRIYA VIDYALAYA MAHE
+                        </strong>
+
+                    </div>
+
+
+                    <div class="school-columns">
+
+                        <i></i>
+                        <i></i>
+                        <i></i>
+                        <i></i>
+                        <i></i>
+
+                    </div>
+
+                </div>
+
+            </div>
+
+
+            <!-- BOOK STACK -->
+
+            <div class="book-stack">
+
+                <div>READ</div>
+
+                <div>PRACTICE</div>
+
+                <div>PLAY</div>
+
+                <div>GROW</div>
+
+            </div>
+
+        </div>
+
+    </div>
 
 </section>
 
-<section>
 
-<h2 class="section-title">📖 Learning Resources</h2>
+<!-- ================= MAIN AREAS ================= -->
 
-<div class="cards">
+<section class="areas section">
 
-<div class="card">
-📚 NCERT Books
-</div>
+    <div class="section-heading">
 
-<div class="card">
-📄 Worksheets
-</div>
+        <span>
+            EXPLORE BRIGHTNEST
+        </span>
 
-<div class="card">
-🎥 Learning Videos
-</div>
+        <h2>
+            Everything You Need to
+            <em>Learn & Grow</em>
+        </h2>
 
-<div class="card">
-🧩 Activity Sheets
-</div>
+        <p>
+            Choose a space and begin your learning journey.
+        </p>
 
-</div>
+    </div>
+
+
+    <div class="area-grid">
+
+
+        <!-- LEARNERS -->
+
+        <a href="learners.html"
+           class="area-card blue">
+
+            <div class="area-icon">
+                👦
+            </div>
+
+            <h3>
+                Learners Zone
+            </h3>
+
+            <p>
+                Explore learning materials,
+                activities and chapter-based resources.
+            </p>
+
+            <strong>
+                Explore →
+            </strong>
+
+        </a>
+
+
+        <!-- TEACHERS -->
+
+        <a href="teachers.html"
+           class="area-card orange">
+
+            <div class="area-icon">
+                👩‍🏫
+            </div>
+
+            <h3>
+                Teachers Tool
+            </h3>
+
+            <p>
+                Useful resources and ready-to-use
+                support for classroom teaching.
+            </p>
+
+            <strong>
+                Open Tools →
+            </strong>
+
+        </a>
+
+
+        
+
+        <!-- GAMES -->
+
+        <a href="games.html"
+           class="area-card green">
+
+            <div class="area-icon">
+                🎮
+            </div>
+
+            <h3>
+                Game Zone
+            </h3>
+
+            <p>
+                Learn through interactive games,
+                challenges and playful practice.
+            </p>
+
+            <strong>
+                Play & Learn →
+            </strong>
+
+        </a>
+
+
+        <!-- WORKSHEETS -->
+
+        <a href="worksheets.html"
+           class="area-card purple">
+
+            <div class="area-icon">
+                📄
+            </div>
+
+            <h3>
+                Worksheet
+            </h3>
+
+            <p>
+                Practice sheets and printable
+                learning activities for learners.
+            </p>
+
+            <strong>
+                View Worksheets →
+            </strong>
+
+        </a>
+
+
+        <!-- QUIZ -->
+
+        <a href="quiz.html"
+           class="area-card yellow">
+
+            <div class="area-icon">
+                💡
+            </div>
+
+            <h3>
+                Quiz Zone
+            </h3>
+
+            <p>
+                Test understanding, practise skills
+                and discover what you know.
+            </p>
+
+            <strong>
+                Start Quiz →
+            </strong>
+
+        </a>
+
+    </div>
 
 </section>
 
-<footer>
 
-<h2>🌟 BrightNest Learning Hub</h2>
+<!-- ================= ABOUT ================= -->
 
-<p>
-Learn • Play • Grow
-</p>
+<section class="about section">
 
-<br>
+    <div class="about-inner">
 
-<p>
-Designed for Students, Teachers and Parents
-</p>
 
-<br>
+        <div class="about-copy">
 
-<p>
-© 2026 BrightNest Learning Hub. All Rights Reserved.
-</p>
+            <span class="section-kicker">
+                ABOUT BRIGHTNEST
+            </span>
+
+            <h2>
+                A Little Nest for
+                <em>Big Ideas</em>
+            </h2>
+
+
+            <p>
+                BrightNest Learning Hub is a digital
+                learning initiative of PM SHRI
+                Kendriya Vidyalaya Mahe.
+            </p>
+
+
+            <p>
+                It brings learning resources,
+                classroom support, interactive
+                activities and practice tools
+                into one accessible space.
+            </p>
+
+
+            <p>
+                The platform is designed to support
+                both learners and teachers while
+                keeping learning simple, engaging
+                and joyful.
+            </p>
+
+        </div>
+
+
+        <div class="about-visual">
+
+            <div class="nest-card">
+
+                <div class="nest-icon">
+                    🌱
+                </div>
+
+                <h3>
+                    Learn
+                </h3>
+
+                <p>
+                    Build knowledge step by step.
+                </p>
+
+            </div>
+
+
+            <div class="nest-card">
+
+                <div class="nest-icon">
+                    🔎
+                </div>
+
+                <h3>
+                    Explore
+                </h3>
+
+                <p>
+                    Discover new ideas and activities.
+                </p>
+
+            </div>
+
+
+            <div class="nest-card">
+
+                <div class="nest-icon">
+                    ✨
+                </div>
+
+                <h3>
+                    Create
+                </h3>
+
+                <p>
+                    Think, make and express.
+                </p>
+
+            </div>
+
+
+            <div class="nest-card">
+
+                <div class="nest-icon">
+                    🌟
+                </div>
+
+                <h3>
+                    Grow
+                </h3>
+
+                <p>
+                    Practise and build confidence.
+                </p>
+
+            </div>
+
+        </div>
+
+    </div>
+
+</section>
+
+
+<!-- ================= HOW TO USE ================= -->
+
+<section class="steps section">
+
+    <div class="section-heading">
+
+        <span>
+            HOW TO USE BRIGHTNEST
+        </span>
+
+        <h2>
+            Your Learning Journey in
+            <em>4 Simple Steps</em>
+        </h2>
+
+    </div>
+
+
+    <div class="steps-grid">
+
+
+        <div class="step-card">
+
+            <div class="step-number">
+                1
+            </div>
+
+            <div class="step-icon">
+                ☝️
+            </div>
+
+            <h3>
+                Choose
+            </h3>
+
+            <p>
+                Select Learners Zone or
+                Teachers Tool.
+            </p>
+
+        </div>
+
+
+        <div class="step-card">
+
+            <div class="step-number">
+                2
+            </div>
+
+            <div class="step-icon">
+                🔍
+            </div>
+
+            <h3>
+                Explore
+            </h3>
+
+            <p>
+                Find activities, games,
+                worksheets and resources.
+            </p>
+
+        </div>
+
+
+        <div class="step-card">
+
+            <div class="step-number">
+                3
+            </div>
+
+            <div class="step-icon">
+                📖
+            </div>
+
+            <h3>
+                Learn & Practise
+            </h3>
+
+            <p>
+                Work with the resources
+                at your own pace.
+            </p>
+
+        </div>
+
+
+        <div class="step-card">
+
+            <div class="step-number">
+                4
+            </div>
+
+            <div class="step-icon">
+                📈
+            </div>
+
+            <h3>
+                Grow
+            </h3>
+
+            <p>
+                Build confidence through
+                regular practice.
+            </p>
+
+        </div>
+
+    </div>
+
+</section>
+
+
+<!-- ================= INSTRUCTIONS ================= -->
+
+<section class="instructions section">
+
+    <div class="instructions-inner">
+
+
+        <div>
+
+            <span class="section-kicker">
+                IMPORTANT INSTRUCTIONS
+            </span>
+
+            <h2>
+                Use BrightNest
+                <em>Meaningfully</em>
+            </h2>
+
+        </div>
+
+
+        <div class="instruction-list">
+
+            <p>
+                <span>✓</span>
+                Use the appropriate section
+                for your learning need.
+            </p>
+
+            <p>
+                <span>✓</span>
+                Read the instructions provided
+                with each activity.
+            </p>
+
+            <p>
+                <span>✓</span>
+                Use the resources responsibly
+                and respectfully.
+            </p>
+
+            <p>
+                <span>✓</span>
+                Teachers and parents may guide
+                learners when required.
+            </p>
+
+            <p>
+                <span>✓</span>
+                Do not share personal information
+                on the platform.
+            </p>
+
+            <p>
+                <span>✓</span>
+                BrightNest is intended for
+                educational purposes.
+            </p>
+
+        </div>
+
+    </div>
+
+</section>
+
+
+<!-- ================= SCHOOL / DEVELOPER ================= -->
+
+<section class="school section">
+
+    <div class="school-card">
+
+        <div class="school-emblem">
+            ☀️
+        </div>
+
+        <span>
+            PM SHRI
+        </span>
+
+        <h2>
+            KENDRIYA VIDYALAYA MAHE
+        </h2>
+
+        <p>
+            BrightNest Learning Hub
+        </p>
+
+        <div class="school-line"></div>
+
+
+        <div class="developer">
+
+            <small>
+                DEVELOPED BY
+            </small>
+
+            <strong>
+                Jagadish Mishra
+            </strong>
+
+            <span>
+                Primary Teacher
+            </span>
+
+        </div>
+
+    </div>
+
+</section>
+
+
+<!-- ================= FOOTER ================= -->
+
+<footer class="footer">
+
+    <div class="footer-inner">
+
+
+        <!-- BRAND -->
+
+        <div class="footer-brand">
+
+            <div class="footer-logo">
+                ☀️
+            </div>
+
+            <h3>
+                PM SHRI<br>
+                KENDRIYA VIDYALAYA MAHE
+            </h3>
+
+            <p>
+                BrightNest Learning Hub
+            </p>
+
+            <small>
+                Empowering Learners • Supporting Teachers
+                • Building Brighter Futures
+            </small>
+
+        </div>
+
+
+        <!-- LINKS -->
+
+        <div class="footer-links">
+
+            <h4>
+                Quick Links
+            </h4>
+
+            <a href="index.html">
+                Home
+            </a>
+
+            <a href="teachers.html">
+                Teachers Tool
+            </a>
+
+            <a href="learners.html">
+                Learners Zone
+            </a>
+
+            
+
+            <a href="games.html">
+                Game Zone
+            </a>
+
+            <a href="worksheets.html">
+                Worksheet
+            </a>
+
+            <a href="quiz.html">
+                Quiz Zone
+            </a>
+
+        </div>
+
+
+        <!-- CONTACT -->
+
+        <div class="footer-contact">
+
+            <h4>
+                Contact
+            </h4>
+
+            <p>
+                📍 PM SHRI Kendriya Vidyalaya Mahe
+            </p>
+
+            <p>
+                📧 Contact details to be added
+            </p>
+
+            <p>
+                📞 Contact number to be added
+            </p>
+
+        </div>
+
+
+        <!-- DEVELOPER -->
+
+        <div class="footer-developer">
+
+            <div class="code-circle">
+                &lt;/&gt;
+            </div>
+
+            <p>
+                Developed by
+            </p>
+
+            <strong>
+                Jagadish Mishra
+            </strong>
+
+            <span>
+                Primary Teacher
+            </span>
+
+        </div>
+
+    </div>
+
+
+    <div class="footer-bottom">
+
+        © 2026 BrightNest Learning Hub
+        • PM SHRI Kendriya Vidyalaya Mahe
+
+    </div>
 
 </footer>
 
-<script>
 
-document.querySelectorAll(".card").forEach(card=>{
-
-card.addEventListener("mouseenter",()=>{
-
-card.style.transform="translateY(-10px)";
-
-});
-
-card.addEventListener("mouseleave",()=>{
-
-card.style.transform="translateY(0px)";
-
-});
-
-});
-
-</script>
+<script src="js/script.js"></script>
 
 </body>
-
 </html>

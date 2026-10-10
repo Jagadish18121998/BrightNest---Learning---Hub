@@ -1,0 +1,839 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Fraction Strips | BrightNest Learning Hub</title>
+
+<style>
+:root {
+  --bg: #f3f6fa;
+  --ink: #202b3d;
+  --muted: #718096;
+  --line: #dce3ed;
+  --blue: #2f67d8;
+}
+
+* { box-sizing: border-box; }
+
+body {
+  margin: 0;
+  background: var(--bg);
+  color: var(--ink);
+  font-family: Arial, sans-serif;
+}
+
+button, input { font: inherit; }
+button { cursor: pointer; }
+
+.topbar {
+  padding: 14px 22px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 12px;
+  flex-wrap: wrap;
+  background: white;
+  border-bottom: 1px solid var(--line);
+}
+
+.brand {
+  font-size: 21px;
+  font-weight: 900;
+}
+
+.hint {
+  padding: 9px 12px;
+  border: 1px solid var(--line);
+  background: #f8faff;
+  border-radius: 9px;
+  color: #52637a;
+  font-size: 12px;
+  font-weight: 700;
+}
+
+.layout {
+  max-width: 1700px;
+  margin: auto;
+  padding: 12px;
+  display: grid;
+  grid-template-columns: 205px minmax(0, 1fr);
+  gap: 12px;
+}
+
+.palette, .board, .panel {
+  background: white;
+  border: 1px solid var(--line);
+  border-radius: 14px;
+}
+
+.palette {
+  padding: 12px;
+  height: max-content;
+  position: sticky;
+  top: 12px;
+}
+
+.palette h2 {
+  font-size: 13px;
+  text-transform: uppercase;
+  margin: 3px 0 12px;
+}
+
+.palette p {
+  color: var(--muted);
+  font-size: 11px;
+  line-height: 1.5;
+}
+
+.piece-list {
+  display: grid;
+  gap: 6px;
+}
+
+.piece-tool {
+  width: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 6px;
+  padding: 8px;
+  background: white;
+  border: 1px solid var(--line);
+  border-radius: 9px;
+  text-align: left;
+  font-size: 12px;
+  font-weight: 700;
+}
+
+.piece-tool:hover, .piece-tool.selected {
+  background: #eff5ff;
+  border-color: #88a9ed;
+}
+
+.sample {
+  min-width: 40px;
+  height: 25px;
+  display: grid;
+  place-items: center;
+  border: 1px solid #222;
+  border-radius: 3px;
+  color: #111;
+}
+
+.workspace {
+  min-width: 0;
+  display: grid;
+  gap: 10px;
+  align-content: start;
+}
+
+.toolbar {
+  display: flex;
+  align-items: center;
+  flex-wrap: wrap;
+  gap: 8px;
+  padding: 10px;
+  background: white;
+  border: 1px solid var(--line);
+  border-radius: 12px;
+}
+
+.mode-pill, .tool-btn {
+  padding: 9px 12px;
+  border-radius: 9px;
+  font-size: 12px;
+  font-weight: 750;
+}
+
+.mode-pill {
+  background: #eaf2ff;
+  color: #285ac4;
+  border: 1px solid #c9dcff;
+}
+
+.tool-btn {
+  background: white;
+  color: #3b4b60;
+  border: 1px solid #d8e0eb;
+}
+
+.tool-btn:hover { background: #f2f6fc; }
+
+.tool-btn.active {
+  background: #e9f1ff;
+  border-color: #9eb8f1;
+  color: #285ac4;
+}
+
+.tool-btn.primary {
+  color: white;
+  background: var(--blue);
+  border-color: var(--blue);
+}
+
+.tool-btn.danger {
+  margin-left: auto;
+  background: #fff0f0;
+  color: #a93e3e;
+  border-color: #f4caca;
+}
+
+.board { overflow: hidden; }
+
+.board-head {
+  padding: 13px 15px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 10px;
+  flex-wrap: wrap;
+  background: #f8faff;
+  border-bottom: 1px solid #e3e8ef;
+}
+
+.board-head strong { font-size: 13px; }
+.board-head span { font-size: 11px; color: var(--muted); }
+
+.strip-list {
+  padding: 12px;
+  display: grid;
+  gap: 8px;
+  min-height: 350px;
+  align-content: start;
+}
+
+.strip-row {
+  position: relative;
+  padding-right: 30px;
+}
+
+.strip-track {
+  display: flex;
+  width: 100%;
+  height: 58px;
+  overflow: hidden;
+  border: 1.5px solid #202020;
+  background: white;
+}
+
+.strip-piece {
+  flex: 1;
+  min-width: 0;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  border-right: 1.5px solid #202020;
+  color: #111;
+  font-weight: 800;
+  text-align: center;
+}
+
+.strip-piece:last-child { border-right: 0; }
+
+.fraction {
+  display: inline-flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 2px;
+  font-size: 12px;
+  line-height: 1;
+}
+
+.fraction .bar {
+  height: 1px;
+  width: 18px;
+  background: #111;
+}
+
+.whole .fraction { font-size: 16px; }
+
+.strip-remove {
+  position: absolute;
+  right: 0;
+  top: 50%;
+  transform: translateY(-50%);
+  width: 24px;
+  height: 24px;
+  border: 1px solid #aab4c1;
+  border-radius: 50%;
+  background: white;
+  color: #596579;
+  font-size: 16px;
+  padding: 0;
+}
+
+.strip-remove:hover {
+  background: #ffe6e6;
+  color: #b52d2d;
+}
+
+.empty-state {
+  text-align: center;
+  padding: 55px 15px;
+  color: #8794a6;
+  font-size: 13px;
+  line-height: 1.8;
+}
+
+.board-footer {
+  padding: 11px 14px;
+  border-top: 1px solid #e3e8ef;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 8px;
+  flex-wrap: wrap;
+}
+
+.board-footer span {
+  font-size: 11px;
+  color: var(--muted);
+}
+
+.lower-grid {
+  display: grid;
+  grid-template-columns: 1.2fr .8fr;
+  gap: 10px;
+}
+
+.panel { padding: 15px; }
+.panel h3 { font-size: 14px; margin: 0 0 13px; }
+
+.controls {
+  display: flex;
+  align-items: end;
+  flex-wrap: wrap;
+  gap: 10px;
+}
+
+.field {
+  display: grid;
+  gap: 6px;
+  min-width: 85px;
+}
+
+.field label {
+  color: #66758a;
+  font-size: 11px;
+  font-weight: 800;
+}
+
+.field input {
+  width: 100%;
+  min-width: 75px;
+  padding: 9px;
+  border: 1px solid #d6dfeb;
+  border-radius: 8px;
+}
+
+.compare-result {
+  margin-top: 12px;
+  padding: 12px;
+  background: #f2f6ff;
+  border-radius: 9px;
+  color: #405c91;
+  font-size: 13px;
+  line-height: 1.7;
+}
+
+.explain {
+  color: var(--muted);
+  font-size: 12px;
+  line-height: 1.7;
+}
+
+.canvas-wrap {
+  border: 1px dashed #cbd5e1;
+  border-radius: 9px;
+  overflow: hidden;
+}
+
+#inkCanvas {
+  width: 100%;
+  height: 120px;
+  display: block;
+  touch-action: none;
+  cursor: crosshair;
+}
+
+.annotation-controls {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 7px;
+  margin-top: 9px;
+}
+
+.footer-note {
+  text-align: center;
+  color: #98a3b2;
+  font-size: 10px;
+  padding: 5px;
+}
+
+@media(max-width:850px) {
+  .layout { grid-template-columns: 1fr; }
+  .palette { position: static; }
+  .piece-list { grid-template-columns: repeat(2, minmax(0,1fr)); }
+  .lower-grid { grid-template-columns: 1fr; }
+}
+
+@media(max-width:480px) {
+  .layout { padding: 7px; }
+  .strip-track { height: 44px; }
+  .strip-piece .fraction { font-size: 10px; }
+  .tool-btn, .mode-pill { padding: 8px; font-size: 11px; }
+  .tool-btn.danger { margin-left: 0; }
+}
+</style>
+</head>
+
+<body>
+<header class="topbar">
+  <div class="brand">🧩 Fraction Strips | BrightNest</div>
+  <div class="hint">Click or drag a fraction piece into the workspace</div>
+</header>
+
+<div class="layout">
+
+  <aside class="palette">
+    <h2>Fraction Pieces</h2>
+    <p>Select a piece and click the workspace to add a strip.</p>
+    <div class="piece-list" id="pieceList"></div>
+    <p><strong>Teacher tip:</strong> Compare rows of equal length to demonstrate equivalent fractions.</p>
+  </aside>
+
+  <main class="workspace">
+
+    <div class="toolbar">
+      <span class="mode-pill" id="modeLabel">Mode: 1 Whole</span>
+      <button class="tool-btn active" id="drawMode">🖍 Draw</button>
+      <button class="tool-btn" id="eraseMode">🧽 Erase</button>
+      <button class="tool-btn" id="clearInk">Clear Ink</button>
+      <button class="tool-btn danger" id="resetAll">↻ Reset All Strips</button>
+    </div>
+
+    <section class="board">
+      <div class="board-head">
+        <strong>FRACTION STRIP WORKSPACE</strong>
+        <span id="stripCount">0 strips created</span>
+      </div>
+
+      <div class="strip-list" id="stripList"></div>
+
+      <div class="board-footer">
+        <span>Every row represents one whole.</span>
+        <span id="workspaceStatus">Ready to explore</span>
+      </div>
+    </section>
+
+    <div class="lower-grid">
+
+      <section class="panel">
+        <h3>🔍 Compare Fractions</h3>
+
+        <div class="controls">
+          <div class="field">
+            <label for="numA">Fraction A — numerator</label>
+            <input id="numA" type="number" min="0" max="100" value="1">
+          </div>
+
+          <div class="field">
+            <label for="denA">Denominator</label>
+            <input id="denA" type="number" min="1" max="20" value="2">
+          </div>
+
+          <div class="field">
+            <label for="numB">Fraction B — numerator</label>
+            <input id="numB" type="number" min="0" max="100" value="2">
+          </div>
+
+          <div class="field">
+            <label for="denB">Denominator</label>
+            <input id="denB" type="number" min="1" max="20" value="4">
+          </div>
+
+          <button class="tool-btn primary" id="compareBtn">Compare</button>
+          <button class="tool-btn" id="addCompareBtn">Add Both Strips</button>
+        </div>
+
+        <div class="compare-result" id="compareResult">
+          Enter two fractions and select Compare.
+        </div>
+      </section>
+
+      <section class="panel">
+        <h3>✏️ Classroom Annotation</h3>
+        <p class="explain">Draw arrows, circles or notes with a mouse or touch screen.</p>
+
+        <div class="canvas-wrap">
+          <canvas id="inkCanvas"></canvas>
+        </div>
+
+        <div class="annotation-controls">
+          <button class="tool-btn active" id="inkDraw">🖍 Draw</button>
+          <button class="tool-btn" id="inkErase">🧽 Erase</button>
+          <button class="tool-btn" id="inkClear">Clear Drawing</button>
+        </div>
+      </section>
+
+    </div>
+
+    <div class="footer-note">
+      Teacher-focused visual manipulative — no scores, timers or quiz modes.
+    </div>
+
+  </main>
+</div>
+
+<script>
+(() => {
+  const pieces = [
+    {label:"1 Whole", den:1, color:"#f0442f"},
+    {label:"Halves", den:2, color:"#ff9d19"},
+    {label:"Thirds", den:3, color:"#f5df26"},
+    {label:"Fourths", den:4, color:"#20b85a"},
+    {label:"Fifths", den:5, color:"#12b86a"},
+    {label:"Sixths", den:6, color:"#20a9ed"},
+    {label:"Sevenths", den:7, color:"#3978e8"},
+    {label:"Eighths", den:8, color:"#9270e8"},
+    {label:"Ninths", den:9, color:"#e24aa8"},
+    {label:"Tenths", den:10, color:"#a88af1"}
+  ];
+
+  const $ = id => document.getElementById(id);
+  let selectedDen = 1;
+  let selectedColor = pieces[0].color;
+  let stripId = 0;
+  let inkTool = "draw";
+  let drawing = false;
+  let lastPoint = null;
+
+  function fractionMarkup(n, d) {
+    return `<span class="fraction">
+      <span>${n}</span>
+      <span class="bar"></span>
+      <span>${d}</span>
+    </span>`;
+  }
+
+  function createPalette() {
+    $("pieceList").innerHTML = "";
+
+    pieces.forEach(p => {
+      const button = document.createElement("button");
+      button.className = "piece-tool" +
+        (p.den === selectedDen ? " selected" : "");
+      button.draggable = true;
+
+      button.innerHTML = `
+        <span>${p.label}</span>
+        <span class="sample" style="background:${p.color}">
+          ${p.den === 1 ? "1" : fractionMarkup(1, p.den)}
+        </span>`;
+
+      button.addEventListener("click", () => selectPiece(p));
+
+      button.addEventListener("dragstart", event => {
+        event.dataTransfer.setData("text/plain", String(p.den));
+        selectPiece(p);
+      });
+
+      $("pieceList").appendChild(button);
+    });
+  }
+
+  function selectPiece(piece) {
+    selectedDen = piece.den;
+    selectedColor = piece.color;
+
+    $("modeLabel").textContent =
+      piece.den === 1 ? "Mode: 1 Whole" :
+      `Mode: 1/${piece.den} Piece`;
+
+    createPalette();
+    $("workspaceStatus").textContent =
+      piece.den === 1 ? "Whole selected" :
+      `${piece.den} equal parts selected`;
+  }
+
+  function clearEmptyState() {
+    const empty = $("stripList").querySelector(".empty-state");
+    if (empty) empty.remove();
+  }
+
+  function updateStripCount() {
+    const count = $("stripList").querySelectorAll(".strip-row").length;
+
+    $("stripCount").textContent =
+      `${count} strip${count === 1 ? "" : "s"} created`;
+
+    if (count === 0) {
+      $("stripList").innerHTML = `
+        <div class="empty-state">
+          <div style="font-size:36px">🧩</div>
+          <strong>Your fraction workspace is ready</strong><br>
+          Select a fraction piece on the left, then click this area
+          to add a strip.
+        </div>`;
+    }
+  }
+
+  function addStrip(den, color, numerator = den) {
+    clearEmptyState();
+
+    stripId++;
+
+    const row = document.createElement("div");
+    row.className = "strip-row";
+    row.dataset.stripId = String(stripId);
+
+    const track = document.createElement("div");
+    track.className = "strip-track";
+
+    // Draw one whole divided into equal parts.
+    for (let i = 0; i < den; i++) {
+      const piece = document.createElement("div");
+      piece.className = "strip-piece" + (den === 1 ? " whole" : "");
+      piece.style.background = i < numerator ? color : "#ffffff";
+      piece.innerHTML = fractionMarkup(1, den);
+      piece.title = `Part ${i + 1} of ${den}`;
+      track.appendChild(piece);
+    }
+
+    const remove = document.createElement("button");
+    remove.className = "strip-remove";
+    remove.type = "button";
+    remove.title = "Remove this strip";
+    remove.setAttribute("aria-label", "Remove this strip");
+    remove.textContent = "×";
+
+    remove.addEventListener("click", () => {
+      row.remove();
+      updateStripCount();
+    });
+
+    row.append(track, remove);
+    $("stripList").appendChild(row);
+
+    updateStripCount();
+    $("workspaceStatus").textContent =
+      `${Math.min(numerator, den)}/${den} strip added`;
+
+    return row;
+  }
+
+  function addSelectedStrip() {
+    addStrip(selectedDen, selectedColor, selectedDen);
+  }
+
+  $("stripList").addEventListener("click", event => {
+    if (event.target.closest(".strip-remove")) return;
+    if (event.target.closest(".strip-row")) return;
+    addSelectedStrip();
+  });
+
+  $("stripList").addEventListener("dragover", event => {
+    event.preventDefault();
+  });
+
+  $("stripList").addEventListener("drop", event => {
+    event.preventDefault();
+
+    const den = Number(event.dataTransfer.getData("text/plain"));
+    const piece = pieces.find(p => p.den === den);
+
+    if (piece) addStrip(piece.den, piece.color, piece.den);
+  });
+
+  $("resetAll").addEventListener("click", () => {
+    $("stripList").innerHTML = "";
+    updateStripCount();
+    $("workspaceStatus").textContent = "Workspace reset";
+  });
+
+  function readFraction(numId, denId) {
+    const n = Number($(numId).value);
+    const d = Number($(denId).value);
+
+    if (
+      !Number.isInteger(n) ||
+      !Number.isInteger(d) ||
+      n < 0 || n > 100 ||
+      d < 1 || d > 20
+    ) return null;
+
+    return {n, d, value: n / d};
+  }
+
+  function compareFractions() {
+    const a = readFraction("numA", "denA");
+    const b = readFraction("numB", "denB");
+    const output = $("compareResult");
+
+    if (!a || !b) {
+      output.textContent =
+        "Enter whole-number numerators from 0 to 100 and denominators from 1 to 20.";
+      return;
+    }
+
+    const symbol =
+      a.value < b.value ? "<" :
+      a.value > b.value ? ">" : "=";
+
+    let explanation;
+
+    if (symbol === "=") {
+      explanation = "Both fractions have the same value.";
+    } else if (symbol === ">") {
+      explanation = `${a.n}/${a.d} is greater than ${b.n}/${b.d}.`;
+    } else {
+      explanation = `${a.n}/${a.d} is less than ${b.n}/${b.d}.`;
+    }
+
+    output.innerHTML = `
+      <strong>${a.n}/${a.d} ${symbol} ${b.n}/${b.d}</strong><br>
+      ${explanation}`;
+  }
+
+  $("compareBtn").addEventListener("click", compareFractions);
+
+  $("addCompareBtn").addEventListener("click", () => {
+    const a = readFraction("numA", "denA");
+    const b = readFraction("numB", "denB");
+
+    if (!a || !b) {
+      $("compareResult").textContent = "Please enter valid fractions first.";
+      return;
+    }
+
+    const pa = pieces.find(p => p.den === a.d);
+    const pb = pieces.find(p => p.den === b.d);
+
+    addStrip(a.d, pa ? pa.color : "#5e8ce8", Math.min(a.n, a.d));
+    addStrip(b.d, pb ? pb.color : "#e24aa8", Math.min(b.n, b.d));
+
+    compareFractions();
+  });
+
+  // Annotation canvas
+  const canvas = $("inkCanvas");
+  const ctx = canvas.getContext("2d");
+
+  function resizeCanvas() {
+    const rect = canvas.getBoundingClientRect();
+    const dpr = window.devicePixelRatio || 1;
+
+    const saved = document.createElement("canvas");
+    saved.width = canvas.width;
+    saved.height = canvas.height;
+
+    if (canvas.width && canvas.height) {
+      saved.getContext("2d").drawImage(canvas, 0, 0);
+    }
+
+    canvas.width = Math.max(1, Math.round(rect.width * dpr));
+    canvas.height = Math.max(1, Math.round(rect.height * dpr));
+
+    ctx.setTransform(dpr, 0, 0, dpr, 0, 0);
+
+    if (saved.width && saved.height) {
+      ctx.drawImage(
+        saved, 0, 0, saved.width, saved.height,
+        0, 0, rect.width, rect.height
+      );
+    }
+
+    ctx.lineCap = "round";
+    ctx.lineJoin = "round";
+  }
+
+  function pointFromEvent(event) {
+    const rect = canvas.getBoundingClientRect();
+    return {
+      x: event.clientX - rect.left,
+      y: event.clientY - rect.top
+    };
+  }
+
+  canvas.addEventListener("pointerdown", event => {
+    drawing = true;
+    lastPoint = pointFromEvent(event);
+    canvas.setPointerCapture(event.pointerId);
+    drawSegment(lastPoint, {
+      x: lastPoint.x + 0.1,
+      y: lastPoint.y + 0.1
+    });
+  });
+
+  canvas.addEventListener("pointermove", event => {
+    if (!drawing) return;
+
+    const point = pointFromEvent(event);
+    drawSegment(lastPoint, point);
+    lastPoint = point;
+  });
+
+  function drawSegment(from, to) {
+    ctx.beginPath();
+    ctx.moveTo(from.x, from.y);
+    ctx.lineTo(to.x, to.y);
+
+    if (inkTool === "draw") {
+      ctx.globalCompositeOperation = "source-over";
+      ctx.strokeStyle = "#e34f42";
+      ctx.lineWidth = 3;
+    } else {
+      ctx.globalCompositeOperation = "destination-out";
+      ctx.lineWidth = 18;
+    }
+
+    ctx.stroke();
+  }
+
+  function stopDrawing() {
+    drawing = false;
+    lastPoint = null;
+  }
+
+  canvas.addEventListener("pointerup", stopDrawing);
+  canvas.addEventListener("pointercancel", stopDrawing);
+
+  function setInkTool(tool) {
+    inkTool = tool;
+
+    $("inkDraw").classList.toggle("active", tool === "draw");
+    $("inkErase").classList.toggle("active", tool === "erase");
+    $("drawMode").classList.toggle("active", tool === "draw");
+    $("eraseMode").classList.toggle("active", tool === "erase");
+  }
+
+  $("inkDraw").addEventListener("click", () => setInkTool("draw"));
+  $("inkErase").addEventListener("click", () => setInkTool("erase"));
+  $("drawMode").addEventListener("click", () => setInkTool("draw"));
+  $("eraseMode").addEventListener("click", () => setInkTool("erase"));
+
+  function clearInk() {
+    ctx.clearRect(0, 0, canvas.width, canvas.height);
+  }
+
+  $("inkClear").addEventListener("click", clearInk);
+  $("clearInk").addEventListener("click", clearInk);
+
+  window.addEventListener("resize", resizeCanvas);
+
+  // Initial classroom examples
+  createPalette();
+  updateStripCount();
+  resizeCanvas();
+
+  addStrip(1, pieces[0].color, 1);
+  addStrip(2, pieces[1].color, 2);
+  addStrip(4, pieces[3].color, 4);
+
+  compareFractions();
+})();
+</script>
+</body>
+</html>

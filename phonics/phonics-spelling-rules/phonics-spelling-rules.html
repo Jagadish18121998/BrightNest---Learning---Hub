@@ -1,0 +1,367 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Phonics & Spelling Rules | BrightNest</title>
+
+<style>
+* {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+}
+
+body {
+    font-family: Arial, sans-serif;
+    background: #f4f8fc;
+    color: #263449;
+    line-height: 1.6;
+}
+
+header {
+    background: linear-gradient(135deg, #173f5f, #287ca0);
+    color: white;
+    padding: 30px 20px;
+    text-align: center;
+}
+
+.logo {
+    font-size: 15px;
+    font-weight: bold;
+    margin-bottom: 12px;
+}
+
+header h1 {
+    font-size: clamp(26px, 4vw, 38px);
+    margin-bottom: 10px;
+}
+
+header p {
+    max-width: 720px;
+    margin: auto;
+    color: #e2f1fa;
+}
+
+.container {
+    max-width: 1200px;
+    margin: 30px auto;
+    padding: 0 20px;
+}
+
+.intro {
+    background: white;
+    padding: 22px;
+    border-radius: 14px;
+    margin-bottom: 28px;
+    box-shadow: 0 3px 12px #173f5f10;
+}
+
+.intro h2, .section-title {
+    color: #173f5f;
+}
+
+.intro h2 {
+    margin-bottom: 8px;
+}
+
+.section-title {
+    font-size: 23px;
+    margin: 28px 0 16px;
+}
+
+.card-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(245px, 1fr));
+    gap: 20px;
+}
+
+.card {
+    display: flex;
+    flex-direction: column;
+    background: white;
+    padding: 22px;
+    border: 1px solid #e2eaf2;
+    border-radius: 15px;
+    text-decoration: none;
+    color: inherit;
+    box-shadow: 0 4px 12px #173f5f0b;
+    transition: transform 0.2s, box-shadow 0.2s;
+}
+
+.card:hover {
+    transform: translateY(-4px);
+    box-shadow: 0 8px 20px #173f5f18;
+}
+
+.card-icon {
+    font-size: 36px;
+    margin-bottom: 12px;
+}
+
+.card h3 {
+    font-size: 18px;
+    color: #173f5f;
+    margin-bottom: 9px;
+}
+
+.card p {
+    font-size: 14px;
+    color: #5d6b7b;
+    margin-bottom: 14px;
+}
+
+.topics {
+    padding-left: 19px;
+    margin-bottom: 18px;
+    font-size: 13px;
+    color: #526174;
+}
+
+.explore {
+    display: inline-block;
+    margin-top: auto;
+    background: #e7f4fb;
+    color: #17658c;
+    font-size: 13px;
+    font-weight: bold;
+    padding: 8px 12px;
+    border-radius: 8px;
+    text-align: center;
+}
+
+.note {
+    margin-top: 30px;
+    padding: 18px;
+    border-left: 4px solid #287ca0;
+    background: #eaf5fb;
+    border-radius: 8px;
+    font-size: 14px;
+}
+
+footer {
+    text-align: center;
+    padding: 25px 15px;
+    color: #64748b;
+    font-size: 13px;
+}
+
+@media (max-width: 500px) {
+    .container {
+        padding: 0 14px;
+    }
+    .card-grid {
+        grid-template-columns: 1fr;
+    }
+}
+</style>
+</head>
+
+<body>
+
+<header>
+    <div class="logo">🌞 BrightNest Learning Hub</div>
+    <h1>Phonics & Spelling Rules</h1>
+    <p>Discover spelling patterns, understand common rules and exceptions, and become a confident reader and writer.</p>
+</header>
+
+<main class="container">
+
+<section class="intro">
+    <h2>Welcome to the Spelling Learning Centre!</h2>
+    <p>
+        English spelling becomes easier when we recognize patterns.
+        Explore each rule, understand when it applies, study examples,
+        learn common exceptions and practise through interactive activities.
+    </p>
+</section>
+
+<h2 class="section-title">Explore the Spelling Rules</h2>
+
+<div class="card-grid">
+
+<a class="card" href="floss-rule.html">
+    <div class="card-icon">🧦</div>
+    <h3>1. The FLOSS Rule</h3>
+    <p>Learn why some short-vowel words end with doubled consonants.</p>
+    <ul class="topics">
+        <li>Words ending in ff, ll, ss and sometimes zz</li>
+        <li>Examples: hill, miss, puff</li>
+        <li>Common exceptions</li>
+    </ul>
+    <span class="explore">Explore Rule →</span>
+</a>
+
+<a class="card" href="ck-k-c-rule.html">
+    <div class="card-icon">🔤</div>
+    <h3>2. The CK, K & C Rule</h3>
+    <p>Explore common spellings of the /k/ sound.</p>
+    <ul class="topics">
+        <li>Examples: cat, kit, duck</li>
+        <li>Common spelling patterns</li>
+        <li>Choose the correct spelling</li>
+    </ul>
+    <span class="explore">Explore Rule →</span>
+</a>
+
+<a class="card" href="magic-e-rule.html">
+    <div class="card-icon">✨</div>
+    <h3>3. The Magic E Rule</h3>
+    <p>Discover how a final silent e often changes a vowel sound.</p>
+    <ul class="topics">
+        <li>cap → cape</li>
+        <li>kit → kite</li>
+        <li>Recognize exceptions</li>
+    </ul>
+    <span class="explore">Explore Rule →</span>
+</a>
+
+<a class="card" href="doubling-rule.html">
+    <div class="card-icon">🔁</div>
+    <h3>4. The Doubling Rule</h3>
+    <p>Learn when to double a final consonant before adding an ending.</p>
+    <ul class="topics">
+        <li>hop → hopping</li>
+        <li>run → running</li>
+        <li>When doubling is not needed</li>
+    </ul>
+    <span class="explore">Explore Rule →</span>
+</a>
+
+<a class="card" href="drop-final-e.html">
+    <div class="card-icon">📝</div>
+    <h3>5. Drop the Final E</h3>
+    <p>Learn when a final e is dropped before adding a suffix.</p>
+    <ul class="topics">
+        <li>make → making</li>
+        <li>hope → hoping</li>
+        <li>Common exceptions</li>
+    </ul>
+    <span class="explore">Explore Rule →</span>
+</a>
+
+<a class="card" href="y-to-i-rule.html">
+    <div class="card-icon">🔄</div>
+    <h3>6. The Y-to-I Rule</h3>
+    <p>Explore spelling changes in words ending in consonant + y.</p>
+    <ul class="topics">
+        <li>happy → happier</li>
+        <li>carry → carried</li>
+        <li>Words that keep y</li>
+    </ul>
+    <span class="explore">Explore Rule →</span>
+</a>
+
+<a class="card" href="plurals-s-es.html">
+    <div class="card-icon">👥</div>
+    <h3>7. Plurals: S and ES</h3>
+    <p>Learn how to spell common plural nouns.</p>
+    <ul class="topics">
+        <li>cat → cats</li>
+        <li>bus → buses</li>
+        <li>Words ending in s, x, ch and sh</li>
+    </ul>
+    <span class="explore">Explore Rule →</span>
+</a>
+
+<a class="card" href="ed-ing-rule.html">
+    <div class="card-icon">✍️</div>
+    <h3>8. Adding ED and ING</h3>
+    <p>Practise adding endings to verbs correctly.</p>
+    <ul class="topics">
+        <li>jump → jumped</li>
+        <li>make → making</li>
+        <li>Doubling and dropping e</li>
+    </ul>
+    <span class="explore">Explore Rule →</span>
+</a>
+
+<a class="card" href="soft-c-soft-g.html">
+    <div class="card-icon">🎵</div>
+    <h3>9. Soft C and Soft G</h3>
+    <p>Discover how c and g can represent different sounds.</p>
+    <ul class="topics">
+        <li>city and cent</li>
+        <li>giant and giraffe</li>
+        <li>Hard c and hard g comparison</li>
+    </ul>
+    <span class="explore">Explore Rule →</span>
+</a>
+
+<a class="card" href="qu-rule.html">
+    <div class="card-icon">👑</div>
+    <h3>10. The QU Rule</h3>
+    <p>Explore the common qu spelling pattern.</p>
+    <ul class="topics">
+        <li>queen and quick</li>
+        <li>quilt and question</li>
+        <li>Read and complete words</li>
+    </ul>
+    <span class="explore">Explore Rule →</span>
+</a>
+
+<a class="card" href="words-ending-y.html">
+    <div class="card-icon">🌟</div>
+    <h3>11. Words Ending in Y</h3>
+    <p>Understand how the letter y behaves before different endings.</p>
+    <ul class="topics">
+        <li>baby → babies</li>
+        <li>play → played</li>
+        <li>Compare consonant + y and vowel + y</li>
+    </ul>
+    <span class="explore">Explore Rule →</span>
+</a>
+
+<a class="card" href="common-spelling-patterns.html">
+    <div class="card-icon">🧩</div>
+    <h3>12. Common Spelling Patterns</h3>
+    <p>Recognize letter patterns that appear in many English words.</p>
+    <ul class="topics">
+        <li>Common word families</li>
+        <li>Recurring letter patterns</li>
+        <li>Choose the right spelling</li>
+    </ul>
+    <span class="explore">Explore Patterns →</span>
+</a>
+
+<a class="card" href="tricky-words.html">
+    <div class="card-icon">🧠</div>
+    <h3>13. Tricky Words & Exceptions</h3>
+    <p>Practise frequently used words that may not follow expected patterns.</p>
+    <ul class="topics">
+        <li>because, friend and said</li>
+        <li>Notice unusual spellings</li>
+        <li>Remember words through practice</li>
+    </ul>
+    <span class="explore">Explore Words →</span>
+</a>
+
+<a class="card" href="spelling-challenge.html">
+    <div class="card-icon">🏆</div>
+    <h3>14. Spelling Challenge</h3>
+    <p>Apply your knowledge in quizzes and spelling games.</p>
+    <ul class="topics">
+        <li>Multiple-choice questions</li>
+        <li>Correct spelling mistakes</li>
+        <li>Mixed-rule challenges</li>
+    </ul>
+    <span class="explore">Start Challenge →</span>
+</a>
+
+</div>
+
+<section class="note">
+    <strong>Remember:</strong>
+    English spelling rules describe common patterns, not every word.
+    Always practise examples and learn important exceptions.
+</section>
+
+</main>
+
+<footer>
+    BrightNest Learning Hub | Learn · Practise · Discover
+</footer>
+
+</body>
+</html>

@@ -1,0 +1,340 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Word Families & Word Building | BrightNest</title>
+
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: "Segoe UI", Arial, sans-serif;
+            background: #f4f8fc;
+            color: #243447;
+        }
+
+        header {
+            background: linear-gradient(135deg, #173f5f, #287ca0);
+            color: white;
+            padding: 28px 20px;
+            text-align: center;
+        }
+
+        header h1 {
+            font-size: 30px;
+            margin-bottom: 8px;
+        }
+
+        header p {
+            font-size: 15px;
+            line-height: 1.6;
+        }
+
+        .back {
+            display: inline-block;
+            margin-top: 16px;
+            padding: 9px 16px;
+            border: 1px solid white;
+            border-radius: 8px;
+            color: white;
+            text-decoration: none;
+        }
+
+        .back:hover {
+            background: white;
+            color: #173f5f;
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: auto;
+            padding: 30px 20px;
+        }
+
+        .intro {
+            text-align: center;
+            margin-bottom: 28px;
+        }
+
+        .intro h2 {
+            color: #173f5f;
+            font-size: 25px;
+            margin-bottom: 10px;
+        }
+
+        .intro p {
+            color: #5c6b7a;
+            line-height: 1.7;
+        }
+
+        .modules {
+            display: grid;
+            grid-template-columns: repeat(3, minmax(0, 1fr));
+            gap: 22px;
+        }
+
+        .module {
+            display: flex;
+            flex-direction: column;
+            background: white;
+            padding: 22px;
+            border-radius: 15px;
+            border: 1px solid #e1eaf2;
+            box-shadow: 0 5px 15px rgba(23, 63, 95, 0.07);
+            text-decoration: none;
+            color: inherit;
+            transition: transform 0.2s, box-shadow 0.2s;
+            min-height: 270px;
+        }
+
+        .module:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 10px 24px rgba(23, 63, 95, 0.14);
+        }
+
+        .module-icon {
+            font-size: 36px;
+            margin-bottom: 13px;
+        }
+
+        .module h3 {
+            font-size: 19px;
+            color: #173f5f;
+            margin-bottom: 10px;
+        }
+
+        .module p {
+            font-size: 14px;
+            line-height: 1.6;
+            color: #5c6b7a;
+            margin-bottom: 12px;
+        }
+
+        .module ul {
+            padding-left: 19px;
+            margin-bottom: 18px;
+            color: #435568;
+            font-size: 13px;
+            line-height: 1.8;
+        }
+
+        .explore {
+            display: inline-block;
+            margin-top: auto;
+            padding: 10px 12px;
+            border-radius: 8px;
+            background: #eaf4fa;
+            color: #17628a;
+            font-size: 14px;
+            font-weight: 600;
+            text-align: center;
+        }
+
+        footer {
+            text-align: center;
+            padding: 22px;
+            color: #657586;
+            font-size: 13px;
+        }
+
+        @media (max-width: 900px) {
+            .modules {
+                grid-template-columns: repeat(2, minmax(0, 1fr));
+            }
+        }
+
+        @media (max-width: 600px) {
+            header h1 {
+                font-size: 24px;
+            }
+
+            .modules {
+                grid-template-columns: 1fr;
+            }
+
+            .container {
+                padding: 22px 14px;
+            }
+        }
+    </style>
+</head>
+
+<body>
+
+<header>
+    <h1>🌞 BrightNest Learning Hub</h1>
+    <p>Phonics Centre | Word Families & Word Building</p>
+    <a class="back" href="../phonics.html">← Back to Phonics Centre</a>
+</header>
+
+<main class="container">
+
+    <section class="intro">
+        <h2>Word Families & Word Building 🧩</h2>
+        <p>
+            Discover words that share similar spelling patterns and sounds.
+            Build new words, explore rhymes and strengthen reading and spelling skills.
+        </p>
+    </section>
+
+    <section class="modules">
+
+        <a class="module" href="introduction-word-families.html">
+            <div class="module-icon">👨‍👩‍👧‍👦</div>
+            <h3>1. Introduction to Word Families</h3>
+            <p>Discover how words belong to families.</p>
+            <ul>
+                <li>Cat, bat, mat and hat</li>
+                <li>Recognise common endings</li>
+                <li>Explore similar sounds</li>
+            </ul>
+            <span class="explore">Explore Activities →</span>
+        </a>
+
+        <a class="module" href="short-a-families.html">
+            <div class="module-icon">🍎</div>
+            <h3>2. Short A Word Families</h3>
+            <p>Build words using short A sounds.</p>
+            <ul>
+                <li>-at, -an and -ap</li>
+                <li>-ag, -am and -ad</li>
+                <li>Read and build words</li>
+            </ul>
+            <span class="explore">Explore Activities →</span>
+        </a>
+
+        <a class="module" href="short-e-families.html">
+            <div class="module-icon">🐔</div>
+            <h3>3. Short E Word Families</h3>
+            <p>Explore words with the short E sound.</p>
+            <ul>
+                <li>-et, -en and -ed</li>
+                <li>-eg and -ell</li>
+                <li>Picture and word activities</li>
+            </ul>
+            <span class="explore">Explore Activities →</span>
+        </a>
+
+        <a class="module" href="short-i-families.html">
+            <div class="module-icon">🐷</div>
+            <h3>4. Short I Word Families</h3>
+            <p>Practise words with the short I sound.</p>
+            <ul>
+                <li>-it, -in and -ip</li>
+                <li>-ig and -ick</li>
+                <li>Build and read words</li>
+            </ul>
+            <span class="explore">Explore Activities →</span>
+        </a>
+
+        <a class="module" href="short-o-families.html">
+            <div class="module-icon">🐶</div>
+            <h3>5. Short O Word Families</h3>
+            <p>Discover words with the short O sound.</p>
+            <ul>
+                <li>-ot, -op and -og</li>
+                <li>-ox and -ock</li>
+                <li>Match words with pictures</li>
+            </ul>
+            <span class="explore">Explore Activities →</span>
+        </a>
+
+        <a class="module" href="short-u-families.html">
+            <div class="module-icon">☀️</div>
+            <h3>6. Short U Word Families</h3>
+            <p>Build words with the short U sound.</p>
+            <ul>
+                <li>-un, -ug and -ut</li>
+                <li>-ub and -ump</li>
+                <li>Practise word patterns</li>
+            </ul>
+            <span class="explore">Explore Activities →</span>
+        </a>
+
+        <a class="module" href="rhyming-words-lab.html">
+            <div class="module-icon">🎵</div>
+            <h3>7. Rhyming Words Lab</h3>
+            <p>Listen to and identify rhyming words.</p>
+            <ul>
+                <li>Find words that rhyme</li>
+                <li>Match rhyming pairs</li>
+                <li>Complete rhyme patterns</li>
+            </ul>
+            <span class="explore">Start Rhyming →</span>
+        </a>
+
+        <a class="module" href="build-a-word.html">
+            <div class="module-icon">🧱</div>
+            <h3>8. Build a Word</h3>
+            <p>Combine sounds and word endings to make words.</p>
+            <ul>
+                <li>Beginning sound + word family</li>
+                <li>Change letters to form words</li>
+                <li>Read each new word</li>
+            </ul>
+            <span class="explore">Build Words →</span>
+        </a>
+
+        <a class="module" href="complete-the-word.html">
+            <div class="module-icon">✏️</div>
+            <h3>9. Complete the Word</h3>
+            <p>Fill in missing letters to complete words.</p>
+            <ul>
+                <li>Missing beginning sounds</li>
+                <li>Missing middle vowels</li>
+                <li>Missing ending letters</li>
+            </ul>
+            <span class="explore">Complete Words →</span>
+        </a>
+
+        <a class="module" href="word-family-sorting.html">
+            <div class="module-icon">🗂️</div>
+            <h3>10. Word Family Sorting</h3>
+            <p>Organise words into the correct families.</p>
+            <ul>
+                <li>Sort by spelling patterns</li>
+                <li>Group words with similar sounds</li>
+                <li>Check your answers</li>
+            </ul>
+            <span class="explore">Start Sorting →</span>
+        </a>
+
+        <a class="module" href="picture-word-match.html">
+            <div class="module-icon">🖼️</div>
+            <h3>11. Picture–Word Match</h3>
+            <p>Connect pictures with their correct words.</p>
+            <ul>
+                <li>Identify pictures</li>
+                <li>Match words and meanings</li>
+                <li>Discover related words</li>
+            </ul>
+            <span class="explore">Match & Learn →</span>
+        </a>
+
+        <a class="module" href="word-families-challenge.html">
+            <div class="module-icon">🏆</div>
+            <h3>12. Word Families Challenge</h3>
+            <p>Test your word-building skills.</p>
+            <ul>
+                <li>Word puzzles</li>
+                <li>Mixed-level questions</li>
+                <li>Score and improve</li>
+            </ul>
+            <span class="explore">Take the Challenge →</span>
+        </a>
+
+    </section>
+</main>
+
+<footer>
+    BrightNest Learning Hub | Learn • Practise • Grow
+</footer>
+
+</body>
+</html>

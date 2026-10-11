@@ -1,0 +1,898 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Letter Formation Studio | BrightNest</title>
+
+<style>
+:root {
+  --navy: #243b63;
+  --blue: #3977d5;
+  --yellow: #ffcf57;
+  --green: #21865b;
+  --paper: #ffffff;
+  --ink: #25334b;
+  --muted: #66758b;
+  --line: #dfe7f1;
+}
+
+* { box-sizing: border-box; }
+
+body {
+  margin: 0;
+  font-family: "Trebuchet MS", Arial, sans-serif;
+  color: var(--ink);
+  background: #f3f7fc;
+}
+
+header {
+  background: linear-gradient(120deg, #203b69, #477ed1);
+  color: white;
+  padding: 22px 5%;
+}
+
+.brand {
+  font-size: 24px;
+  font-weight: 800;
+}
+
+header p { margin: 7px 0 0; color: #e6efff; }
+
+main {
+  max-width: 1100px;
+  margin: auto;
+  padding: 24px 16px 45px;
+}
+
+h1 { margin: 0 0 8px; color: var(--navy); }
+h2 { color: var(--navy); font-size: 21px; }
+.intro { color: var(--muted); line-height: 1.6; }
+
+.panel {
+  background: white;
+  border: 1px solid var(--line);
+  border-radius: 18px;
+  padding: 20px;
+  margin-top: 20px;
+  box-shadow: 0 5px 18px #263d6410;
+}
+
+.controls {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 10px;
+  align-items: center;
+  margin: 15px 0;
+}
+
+label { font-weight: 700; }
+
+select, button {
+  font: inherit;
+  border-radius: 10px;
+  padding: 11px 14px;
+}
+
+select {
+  border: 1px solid #cbd7e8;
+  background: white;
+  color: var(--ink);
+}
+
+button {
+  border: 0;
+  background: var(--blue);
+  color: white;
+  font-weight: 700;
+  cursor: pointer;
+  transition: transform .15s, opacity .15s;
+}
+
+button:hover { transform: translateY(-1px); }
+button:disabled { opacity: .45; cursor: not-allowed; transform: none; }
+button.secondary { background: #eaf1fb; color: var(--navy); }
+button.green { background: var(--green); }
+button.yellow { background: var(--yellow); color: #493a11; }
+
+.workspace {
+  display: grid;
+  grid-template-columns: minmax(0, 1.5fr) minmax(230px, .8fr);
+  gap: 20px;
+  align-items: start;
+}
+
+.canvas-wrap {
+  width: 100%;
+  max-width: 440px;
+  margin: 12px auto;
+}
+
+canvas {
+  display: block;
+  width: 100%;
+  aspect-ratio: 1;
+  background: white;
+  border: 2px solid #dce6f3;
+  border-radius: 14px;
+  touch-action: none;
+  cursor: crosshair;
+}
+
+.letter-heading {
+  text-align: center;
+  color: var(--navy);
+  font-weight: 800;
+  font-size: 21px;
+}
+
+.status {
+  min-height: 45px;
+  padding: 12px;
+  border-radius: 10px;
+  background: #f1f6ff;
+  line-height: 1.5;
+  color: var(--navy);
+}
+
+.steps {
+  padding-left: 22px;
+  line-height: 1.9;
+}
+
+.note { color: var(--muted); font-size: 14px; line-height: 1.6; }
+
+.letter-strip {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 7px;
+}
+
+.letter-strip button {
+  min-width: 38px;
+  padding: 9px;
+}
+
+hr { border: 0; border-top: 1px solid var(--line); margin: 20px 0; }
+
+.print-preview {
+  border: 1px dashed #b9c9dd;
+  border-radius: 12px;
+  padding: 12px;
+  background: #fbfdff;
+}
+
+#printArea { display: none; }
+
+/* The print-only A4 worksheet */
+@media print {
+  @page {
+    size: A4 portrait;
+    margin: 10mm;
+  }
+
+  body { background: white !important; }
+
+  body * { visibility: hidden !important; }
+
+  #printArea, #printArea * {
+    visibility: visible !important;
+  }
+
+  #printArea {
+    display: block !important;
+    position: absolute;
+    left: 0;
+    top: 0;
+    width: 100%;
+    color: #222;
+    background: white;
+  }
+
+  .print-header {
+    text-align: center;
+    margin-bottom: 7mm;
+  }
+
+  .print-header h1 {
+    color: #333;
+    font-size: 19pt;
+    margin: 0 0 4mm;
+  }
+
+  .print-header p {
+    font-size: 10pt;
+    margin: 2mm 0;
+  }
+
+  .print-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    grid-template-rows: repeat(8, 1fr);
+    gap: 2mm;
+    height: 245mm;
+  }
+
+  .print-cell {
+    border-bottom: 1px solid #dedede;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    min-height: 0;
+    overflow: hidden;
+  }
+
+  .print-cell svg {
+    width: 100%;
+    height: 100%;
+    max-height: 28mm;
+  }
+
+  .print-cell svg text {
+    font-family: "Trebuchet MS", Arial, sans-serif;
+    font-weight: 700;
+    fill: none;
+    stroke: #999;
+    stroke-width: 1.6;
+    stroke-dasharray: 1 3;
+    stroke-linecap: round;
+    stroke-linejoin: round;
+  }
+
+  .print-cell .writing-line {
+    stroke: #e4e4e4;
+    stroke-width: 1;
+  }
+
+  .print-footer {
+    text-align: center;
+    font-size: 9pt;
+    margin-top: 3mm;
+  }
+}
+
+@media (max-width: 700px) {
+  .workspace { grid-template-columns: 1fr; }
+  .panel { padding: 15px; }
+  .brand { font-size: 21px; }
+}
+</style>
+</head>
+
+<body>
+
+<header>
+  <div class="brand">🌞 BrightNest Learning Hub</div>
+  <p>Letter Formation Studio · Watch, Trace, Practise and Print</p>
+</header>
+
+<main>
+  <h1>✏️ Letter Formation Studio</h1>
+  <p class="intro">
+    Watch the pencil move along each stroke. Follow the arrows, trace the
+    letter yourself, and print a worksheet for handwriting practice.
+  </p>
+
+  <section class="panel">
+    <h2>1. Choose Your Letter</h2>
+
+    <div class="controls">
+      <label for="letterSelect">Letter:</label>
+      <select id="letterSelect"></select>
+
+      <label for="caseSelect">Style:</label>
+      <select id="caseSelect">
+        <option value="upper">Uppercase (A, B, C)</option>
+        <option value="lower">Lowercase (a, b, c)</option>
+      </select>
+    </div>
+
+    <div class="letter-strip" id="letterStrip"></div>
+  </section>
+
+  <section class="panel">
+    <h2>2. Watch the Pencil Demonstration</h2>
+
+    <div class="workspace">
+      <div>
+        <div class="letter-heading" id="letterHeading">Letter A</div>
+
+        <div class="canvas-wrap">
+          <canvas id="demoCanvas" width="400" height="400"
+                  aria-label="Animated letter formation demonstration"></canvas>
+        </div>
+
+        <div class="controls">
+          <button id="playBtn">▶ Show Me</button>
+          <button id="pauseBtn" class="secondary">Ⅱ Pause</button>
+          <button id="replayBtn" class="secondary">↻ Replay</button>
+          <button id="nextBtn" class="secondary">Next Stroke →</button>
+        </div>
+
+        <div class="controls">
+          <button id="arrowBtn" class="secondary">Hide Arrows</button>
+          <button id="guideBtn" class="secondary">Hide Guide</button>
+        </div>
+
+        <div class="status" id="demoStatus" aria-live="polite">
+          Select a letter and press Show Me.
+        </div>
+      </div>
+
+      <div>
+        <h2>How to write it</h2>
+        <ol class="steps" id="strokeSteps">
+          <li>Select a letter to see its writing instructions.</li>
+        </ol>
+
+        <p class="note">
+          The numbered instructions show the order of the strokes.
+          The pencil follows the prepared paths. Follow the arrows to
+          understand the writing direction.
+        </p>
+
+        <hr>
+
+        <h2>3. Practise on Screen</h2>
+        <p class="note">
+          Trace the faint letter using your mouse or finger. Choose
+          Clear to try again.
+        </p>
+
+        <div class="canvas-wrap">
+          <canvas id="practiceCanvas" width="400" height="400"
+                  aria-label="Draw and trace a letter"></canvas>
+        </div>
+
+        <div class="controls">
+          <button id="clearBtn" class="secondary">Clear Practice</button>
+          <button id="hidePracticeGuide" class="secondary">Hide Trace Guide</button>
+        </div>
+
+        <div class="status" id="practiceStatus" aria-live="polite">
+          Your practice area is ready!
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="panel">
+    <h2>4. Print an A4 Tracing Worksheet</h2>
+    <p class="intro">
+      Print a page containing 24 copies of your selected letter in a
+      dotted outline. Students can trace the letters with a pencil.
+    </p>
+
+    <div class="controls">
+      <label for="printCase">Worksheet style:</label>
+      <select id="printCase">
+        <option value="upper">Uppercase</option>
+        <option value="lower">Lowercase</option>
+      </select>
+
+      <button class="green" id="previewBtn">Preview Worksheet</button>
+      <button class="yellow" id="printBtn">🖨 Print A4 Worksheet</button>
+    </div>
+
+    <div class="print-preview" id="previewArea">
+      Your selected letter will appear here when you preview the worksheet.
+    </div>
+
+    <p class="note">
+      Printing tip: choose A4 paper and Portrait orientation in your
+      browser's print window.
+    </p>
+  </section>
+</main>
+
+<!-- This section is visible only when printing -->
+<div id="printArea"></div>
+
+<script>
+const $ = id => document.getElementById(id);
+
+const upperLetters = "ABCDEFGHIJKLMNOPQRSTUVWXYZ".split("");
+
+// Each letter is drawn using a series of manually prepared strokes.
+// Coordinates use a 0–100 grid. These are simplified teaching paths
+// for a basic print-style alphabet, not a universal handwriting standard.
+const paths = {
+ A:[[[15,90],[50,10],[85,90]],[[30,60],[70,60]]],
+ B:[[[25,90],[25,10]],[[25,10],[58,10],[75,20],[75,35],[60,48],[25,48]],[[25,48],[62,48],[80,62],[80,78],[63,90],[25,90]]],
+ C:[[[80,20],[65,10],[43,10],[25,25],[18,48],[25,72],[43,90],[65,90],[80,80]]],
+ D:[[[25,90],[25,10]],[[25,10],[50,10],[73,25],[82,50],[73,75],[50,90],[25,90]]],
+ E:[[[75,10],[25,10],[25,90],[77,90]],[[25,49],[65,49]]],
+ F:[[[25,90],[25,10],[78,10]],[[25,48],[65,48]]],
+ G:[[[80,22],[65,10],[43,10],[25,25],[18,50],[25,75],[43,90],[66,90],[80,76],[80,55],[55,55]]],
+ H:[[[25,10],[25,90]],[[78,10],[78,90]],[[25,50],[78,50]]],
+ I:[[[30,10],[70,10]],[[50,10],[50,90]],[[30,90],[70,90]]],
+ J:[[[30,10],[78,10]],[[65,10],[65,70],[55,88],[35,90],[20,78]]],
+ K:[[[25,10],[25,90]],[[77,10],[28,52],[80,90]]],
+ L:[[[25,10],[25,90],[78,90]]],
+ M:[[[18,90],[18,10],[50,52],[82,10],[82,90]]],
+ N:[[[22,90],[22,10],[80,90],[80,10]]],
+ O:[[[50,10],[70,14],[82,32],[85,50],[80,72],[65,88],[50,90],[33,86],[20,68],[17,50],[20,32],[33,14],[50,10]]],
+ P:[[[25,90],[25,10],[58,10],[77,22],[77,38],[60,50],[25,50]]],
+ Q:[[[50,10],[70,14],[82,32],[85,50],[80,72],[65,88],[50,90],[33,86],[20,68],[17,50],[20,32],[33,14],[50,10]],[[58,68],[85,95]]],
+ R:[[[25,90],[25,10],[58,10],[77,22],[77,38],[60,50],[25,50]],[[52,50],[82,90]]],
+ S:[[[78,20],[62,10],[40,10],[24,23],[25,39],[42,48],[61,53],[77,64],[76,79],[60,90],[38,90],[22,80]]],
+ T:[[[15,10],[85,10]],[[50,10],[50,90]]],
+ U:[[[22,10],[22,65],[31,84],[50,90],[69,84],[78,65],[78,10]]],
+ V:[[[18,10],[50,90],[82,10]]],
+ W:[[[12,10],[28,90],[50,48],[72,90],[88,10]]],
+ X:[[[20,10],[80,90]],[[80,10],[20,90]]],
+ Y:[[[18,10],[50,48],[82,10]],[[50,48],[50,90]]],
+ Z:[[[20,10],[80,10],[20,90],[80,90]]],
+
+ a:[[[72,45],[59,32],[42,33],[29,45],[26,63],[33,80],[47,86],[61,78],[72,63]],[[72,34],[72,86]]],
+ b:[[[27,10],[27,86]],[[27,61],[39,37],[55,33],[69,43],[74,60],[68,77],[54,86],[39,81],[27,61]]],
+ c:[[[72,43],[59,33],[43,33],[30,44],[27,62],[35,79],[49,86],[64,81],[72,75]]],
+ d:[[[72,10],[72,86]],[[72,61],[60,37],[44,33],[30,44],[27,62],[34,79],[48,86],[61,80],[72,61]]],
+ e:[[[28,60],[70,60],[68,46],[56,34],[42,34],[29,45],[27,63],[36,80],[51,86],[67,80]]],
+ f:[[[65,15],[55,10],[44,18],[41,35],[41,86]],[[28,43],[59,43]]],
+ g:[[[70,39],[58,33],[43,34],[30,45],[28,62],[36,77],[50,82],[64,75],[70,60]],[[70,38],[70,84],[61,97],[43,99],[31,93]]],
+ h:[[[27,10],[27,86]],[[27,53],[41,37],[55,34],[68,42],[72,54],[72,86]]],
+ i:[[[49,37],[49,86]],[[49,17],[49,18]]],
+ j:[[[60,37],[60,86],[51,97],[39,96]],[[60,17],[60,18]]],
+ k:[[[29,10],[29,86]],[[69,35],[30,62],[72,86]]],
+ l:[[[48,10],[48,86]]],
+ m:[[[20,86],[20,36]],[[20,51],[32,36],[43,36],[51,46],[51,86]],[[51,51],[63,36],[74,38],[81,48],[81,86]]],
+ n:[[[27,86],[27,36]],[[27,52],[42,36],[56,36],[69,45],[72,55],[72,86]]],
+ o:[[[50,33],[65,38],[73,51],[73,68],[63,82],[49,86],[35,81],[27,67],[28,51],[37,38],[50,33]]],
+ p:[[[28,99],[28,36]],[[28,53],[40,37],[55,34],[68,44],[73,60],[68,76],[54,84],[40,79],[28,63]]],
+ q:[[[72,99],[72,36]],[[72,53],[60,37],[45,34],[32,44],[27,60],[33,76],[47,84],[61,79],[72,63]]],
+ r:[[[29,86],[29,36]],[[29,52],[42,37],[56,36],[65,41]]],
+ s:[[[68,41],[57,33],[42,34],[31,42],[35,52],[53,59],[67,66],[67,76],[55,85],[39,85],[28,78]]],
+ t:[[[48,19],[48,73],[55,85],[66,84]],[[31,39],[64,39]]],
+ u:[[[28,36],[28,67],[36,81],[48,85],[62,77],[72,63]],[[72,36],[72,86]]],
+ v:[[[26,36],[49,86],[74,36]]],
+ w:[[[17,36],[30,86],[48,57],[63,86],[83,36]]],
+ x:[[[29,36],[70,86]],[[70,36],[29,86]]],
+ y:[[[27,36],[49,81],[72,36]],[[49,81],[38,99]]],
+ z:[[[29,38],[70,38],[29,84],[71,84]]]
+};
+
+let selected = "A";
+let showArrows = true;
+let showGuide = true;
+let showPracticeGuide = true;
+let animationFrame = null;
+let animationPaused = false;
+let animationProgress = 0;
+let activeStroke = 0;
+let lastTimestamp = 0;
+let practiceDrawing = false;
+let userHasDrawn = false;
+let lastPoint = null;
+
+const demo = $("demoCanvas");
+const dctx = demo.getContext("2d");
+const practice = $("practiceCanvas");
+const pctx = practice.getContext("2d");
+
+function getLetter() {
+  return selected;
+}
+
+function getPaths() {
+  return paths[selected] || [];
+}
+
+function populateLetters() {
+  $("letterSelect").innerHTML = upperLetters
+    .map(l => `<option value="${l}">${l}</option>`).join("");
+
+  $("letterStrip").innerHTML = upperLetters
+    .map(l => `<button class="secondary" data-letter="${l}">${l}</button>`)
+    .join("");
+
+  $("letterStrip").querySelectorAll("button").forEach(btn => {
+    btn.addEventListener("click", () => {
+      $("letterSelect").value = btn.dataset.letter;
+      selected = $("caseSelect").value === "lower"
+        ? btn.dataset.letter.toLowerCase()
+        : btn.dataset.letter;
+      updateLetter();
+    });
+  });
+}
+
+function pointToCanvas(point, canvas) {
+  const pad = 48;
+  const range = 100;
+  const scale = (canvas.width - pad * 2) / range;
+  return {
+    x: pad + point[0] * scale,
+    y: pad + point[1] * scale
+  };
+}
+
+function drawBackground(ctx, canvas, letter, isPractice = false) {
+  ctx.clearRect(0, 0, canvas.width, canvas.height);
+  ctx.fillStyle = "#ffffff";
+  ctx.fillRect(0, 0, canvas.width, canvas.height);
+
+  // Handwriting guide lines
+  ctx.strokeStyle = "#e9eff8";
+  ctx.lineWidth = 1.5;
+  [80, 200, 320].forEach(y => {
+    ctx.beginPath();
+    ctx.moveTo(20, y);
+    ctx.lineTo(380, y);
+    ctx.stroke();
+  });
+
+  if (showGuide && !isPractice) {
+    ctx.font = "bold 320px Arial";
+    ctx.textAlign = "center";
+    ctx.textBaseline = "middle";
+    ctx.fillStyle = "#edf1f6";
+    ctx.fillText(letter, 200, 210);
+  }
+
+  if (isPractice && showPracticeGuide) {
+    const letterPaths = getPaths();
+    ctx.save();
+    ctx.lineWidth = 3;
+    ctx.strokeStyle = "#d9e1ec";
+    ctx.lineCap = "round";
+    ctx.lineJoin = "round";
+    ctx.setLineDash([3, 8]);
+
+    letterPaths.forEach(stroke => {
+      ctx.beginPath();
+      stroke.forEach((p, i) => {
+        const pt = pointToCanvas(p, canvas);
+        if (i === 0) ctx.moveTo(pt.x, pt.y);
+        else ctx.lineTo(pt.x, pt.y);
+      });
+      ctx.stroke();
+    });
+
+    ctx.restore();
+  }
+}
+
+function drawStroke(ctx, canvas, stroke, progress = 1, color = "#3778d5", width = 7) {
+  if (!stroke || stroke.length < 2) return;
+
+  const lengths = [];
+  let total = 0;
+
+  for (let i = 1; i < stroke.length; i++) {
+    const a = pointToCanvas(stroke[i - 1], canvas);
+    const b = pointToCanvas(stroke[i], canvas);
+    const len = Math.hypot(b.x - a.x, b.y - a.y);
+    lengths.push(len);
+    total += len;
+  }
+
+  let remaining = total * Math.max(0, Math.min(1, progress));
+
+  ctx.beginPath();
+  ctx.lineCap = "round";
+  ctx.lineJoin = "round";
+  ctx.strokeStyle = color;
+  ctx.lineWidth = width;
+
+  let first = pointToCanvas(stroke[0], canvas);
+  ctx.moveTo(first.x, first.y);
+
+  let current = first;
+
+  for (let i = 0; i < lengths.length; i++) {
+    const end = pointToCanvas(stroke[i + 1], canvas);
+    const len = lengths[i];
+
+    if (remaining >= len) {
+      ctx.lineTo(end.x, end.y);
+      current = end;
+      remaining -= len;
+    } else if (remaining > 0) {
+      const t = remaining / len;
+      const x = current.x + (end.x - current.x) * t;
+      const y = current.y + (end.y - current.y) * t;
+      ctx.lineTo(x, y);
+      current = {x, y};
+      remaining = 0;
+      break;
+    } else {
+      break;
+    }
+  }
+
+  ctx.stroke();
+
+  if (showArrows && progress >= 1) {
+    drawArrow(ctx, canvas, stroke[0], stroke[Math.min(1, stroke.length - 1)]);
+  }
+
+  return current;
+}
+
+function drawArrow(ctx, canvas, from, to) {
+  const a = pointToCanvas(from, canvas);
+  const b = pointToCanvas(to, canvas);
+  const angle = Math.atan2(b.y - a.y, b.x - a.x);
+  const size = 11;
+
+  ctx.save();
+  ctx.fillStyle = "#e28a24";
+  ctx.beginPath();
+  ctx.moveTo(a.x, a.y);
+  ctx.lineTo(
+    a.x + size * Math.cos(angle + Math.PI * .78),
+    a.y + size * Math.sin(angle + Math.PI * .78)
+  );
+  ctx.lineTo(
+    a.x + size * Math.cos(angle - Math.PI * .78),
+    a.y + size * Math.sin(angle - Math.PI * .78)
+  );
+  ctx.closePath();
+  ctx.fill();
+  ctx.restore();
+}
+
+function drawPencil(ctx, x, y, angle) {
+  ctx.save();
+  ctx.translate(x, y);
+  ctx.rotate(angle);
+  ctx.font = "30px Arial";
+  ctx.textAlign = "center";
+  ctx.textBaseline = "middle";
+  ctx.fillText("✏️", 0, -14);
+  ctx.restore();
+}
+
+function renderDemo(progress, strokeIndex) {
+  drawBackground(dctx, demo, selected, false);
+  const allStrokes = getPaths();
+
+  allStrokes.forEach((stroke, i) => {
+    if (i < strokeIndex) {
+      drawStroke(dctx, demo, stroke, 1, "#3778d5", 7);
+    } else if (i === strokeIndex) {
+      const end = drawStroke(dctx, demo, stroke, progress, "#3778d5", 7);
+
+      if (end && progress < 1) {
+        let angle = 0;
+        const idx = Math.min(stroke.length - 1, 1);
+        const p0 = pointToCanvas(stroke[Math.max(0, idx - 1)], demo);
+        const p1 = pointToCanvas(stroke[idx], demo);
+        angle = Math.atan2(p1.y - p0.y, p1.x - p0.x);
+        drawPencil(dctx, end.x, end.y, angle);
+      }
+    }
+  });
+
+  if (showArrows && strokeIndex < allStrokes.length) {
+    const stroke = allStrokes[strokeIndex];
+    const p = pointToCanvas(stroke[0], demo);
+    dctx.fillStyle = "#e28a24";
+    dctx.beginPath();
+    dctx.arc(p.x, p.y, 6, 0, Math.PI * 2);
+    dctx.fill();
+  }
+}
+
+function updateSteps() {
+  const allStrokes = getPaths();
+  $("strokeSteps").innerHTML = allStrokes.map((s, i) =>
+    `<li>Stroke ${i + 1}: start at the orange dot and follow the path.</li>`
+  ).join("");
+}
+
+function stopAnimation() {
+  if (animationFrame) cancelAnimationFrame(animationFrame);
+  animationFrame = null;
+}
+
+function animate(timestamp) {
+  if (animationPaused) return;
+
+  if (!lastTimestamp) lastTimestamp = timestamp;
+  const delta = timestamp - lastTimestamp;
+  lastTimestamp = timestamp;
+
+  animationProgress += delta / 1100;
+
+  if (animationProgress >= 1) {
+    animationProgress = 0;
+    activeStroke++;
+
+    if (activeStroke >= getPaths().length) {
+      activeStroke = getPaths().length - 1;
+      animationProgress = 1;
+      renderDemo(1, activeStroke);
+      $("demoStatus").textContent = "Great! You have watched all the strokes. Press Replay to see them again.";
+      stopAnimation();
+      return;
+    }
+  }
+
+  renderDemo(animationProgress, activeStroke);
+  $("demoStatus").textContent =
+    `Watch stroke ${activeStroke + 1} of ${getPaths().length}. Follow the pencil!`;
+
+  animationFrame = requestAnimationFrame(animate);
+}
+
+function startAnimation(fromBeginning = true) {
+  stopAnimation();
+
+  if (fromBeginning) {
+    activeStroke = 0;
+    animationProgress = 0;
+  }
+
+  animationPaused = false;
+  lastTimestamp = 0;
+  $("demoStatus").textContent = "Watch the pencil follow the stroke!";
+  animationFrame = requestAnimationFrame(animate);
+}
+
+function updateLetter() {
+  stopAnimation();
+  animationPaused = false;
+  selected = $("caseSelect").value === "lower"
+    ? $("letterSelect").value.toLowerCase()
+    : $("letterSelect").value;
+
+  $("letterHeading").textContent = `Letter ${selected}`;
+  activeStroke = 0;
+  animationProgress = 0;
+  updateSteps();
+  renderDemo(0, 0);
+  drawPractice();
+  $("demoStatus").textContent = "Press Show Me to watch the pencil.";
+  $("practiceStatus").textContent = "Ready to trace!";
+}
+
+function drawPractice() {
+  drawBackground(pctx, practice, selected, true);
+}
+
+function getPointerPosition(event, canvas) {
+  const rect = canvas.getBoundingClientRect();
+  return {
+    x: (event.clientX - rect.left) * canvas.width / rect.width,
+    y: (event.clientY - rect.top) * canvas.height / rect.height
+  };
+}
+
+practice.addEventListener("pointerdown", event => {
+  event.preventDefault();
+  practice.setPointerCapture(event.pointerId);
+  practiceDrawing = true;
+  userHasDrawn = true;
+  lastPoint = getPointerPosition(event, practice);
+  $("practiceStatus").textContent = "Keep going! Follow the letter shape.";
+});
+
+practice.addEventListener("pointermove", event => {
+  if (!practiceDrawing || !lastPoint) return;
+  event.preventDefault();
+
+  const point = getPointerPosition(event, practice);
+  pctx.strokeStyle = "#e05252";
+  pctx.lineWidth = 7;
+  pctx.lineCap = "round";
+  pctx.lineJoin = "round";
+  pctx.beginPath();
+  pctx.moveTo(lastPoint.x, lastPoint.y);
+  pctx.lineTo(point.x, point.y);
+  pctx.stroke();
+  lastPoint = point;
+});
+
+function endPractice() {
+  if (practiceDrawing) {
+    practiceDrawing = false;
+    lastPoint = null;
+    $("practiceStatus").textContent =
+      "Well done! Clear the area and practise again, or try without the guide.";
+  }
+}
+practice.addEventListener("pointerup", endPractice);
+practice.addEventListener("pointercancel", endPractice);
+practice.addEventListener("lostpointercapture", endPractice);
+
+$("playBtn").addEventListener("click", () => startAnimation(true));
+
+$("pauseBtn").addEventListener("click", () => {
+  if (animationFrame) {
+    animationPaused = true;
+    stopAnimation();
+    $("demoStatus").textContent = "Paused. Press Show Me or Replay to continue.";
+  }
+});
+
+$("replayBtn").addEventListener("click", () => startAnimation(true));
+
+$("nextBtn").addEventListener("click", () => {
+  stopAnimation();
+  activeStroke = Math.min(activeStroke + 1, getPaths().length - 1);
+  animationProgress = 1;
+  renderDemo(1, activeStroke);
+  $("demoStatus").textContent = `Showing stroke ${activeStroke + 1} of ${getPaths().length}.`;
+});
+
+$("arrowBtn").addEventListener("click", () => {
+  showArrows = !showArrows;
+  $("arrowBtn").textContent = showArrows ? "Hide Arrows" : "Show Arrows";
+  renderDemo(animationProgress, activeStroke);
+});
+
+$("guideBtn").addEventListener("click", () => {
+  showGuide = !showGuide;
+  $("guideBtn").textContent = showGuide ? "Hide Guide" : "Show Guide";
+  renderDemo(animationProgress, activeStroke);
+});
+
+$("hidePracticeGuide").addEventListener("click", () => {
+  showPracticeGuide = !showPracticeGuide;
+  $("hidePracticeGuide").textContent =
+    showPracticeGuide ? "Hide Trace Guide" : "Show Trace Guide";
+  drawPractice();
+});
+
+$("clearBtn").addEventListener("click", () => {
+  userHasDrawn = false;
+  drawPractice();
+  $("practiceStatus").textContent = "Practice cleared. Try tracing the letter again!";
+});
+
+$("letterSelect").addEventListener("change", updateLetter);
+$("caseSelect").addEventListener("change", updateLetter);
+
+function worksheetLetter() {
+  return $("printCase").value === "lower"
+    ? $("letterSelect").value.toLowerCase()
+    : $("letterSelect").value;
+}
+
+function createPrintWorksheet() {
+  const letter = worksheetLetter();
+  const cells = Array.from({length: 24}, () => `
+    <div class="print-cell">
+      <svg viewBox="0 0 100 100" aria-hidden="true">
+        <line class="writing-line" x1="5" y1="78" x2="95" y2="78"/>
+        <text x="50" y="77" text-anchor="middle"
+          font-size="${letter === letter.toLowerCase() && letter !== letter.toUpperCase() ? 68 : 78}"
+          stroke-dasharray="1 3">${letter}</text>
+      </svg>
+    </div>
+  `).join("");
+
+  $("printArea").innerHTML = `
+    <div class="print-header">
+      <h1>BrightNest Letter Tracing Worksheet</h1>
+      <p>Name: ___________________________ &nbsp; Date: ______________</p>
+      <p>Trace each letter carefully. Then try writing it on your own.</p>
+      <p><strong>Letter: ${letter}</strong></p>
+    </div>
+    <div class="print-grid">${cells}</div>
+    <div class="print-footer">BrightNest Learning Hub · Keep practising!</div>
+  `;
+
+  $("previewArea").innerHTML = `
+    <strong>Worksheet ready: Letter ${letter}</strong>
+    <p>24 tracing letters · A4 portrait · 3 columns × 8 rows</p>
+    <p>Choose Print A4 Worksheet to open the print window.</p>
+  `;
+}
+
+$("previewBtn").addEventListener("click", createPrintWorksheet);
+
+$("printBtn").addEventListener("click", () => {
+  createPrintWorksheet();
+  window.print();
+});
+
+populateLetters();
+updateLetter();
+createPrintWorksheet();
+</script>
+</body>
+</html>

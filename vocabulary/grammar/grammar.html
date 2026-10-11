@@ -1,0 +1,428 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Grammar Studio | BrightNest Learning Hub</title>
+
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    body {
+      font-family: "Segoe UI", Arial, sans-serif;
+      background: #f4f8fc;
+      color: #243447;
+      line-height: 1.6;
+    }
+
+    header {
+      background: linear-gradient(135deg, #173f5f, #287ca0);
+      color: white;
+      padding: 28px 20px;
+      text-align: center;
+    }
+
+    .brand {
+      font-size: 1.15rem;
+      font-weight: 700;
+      letter-spacing: 0.4px;
+    }
+
+    header h1 {
+      font-size: clamp(1.8rem, 4vw, 2.6rem);
+      margin: 12px 0 5px;
+    }
+
+    header p {
+      color: #e4f3ff;
+    }
+
+    .back-link {
+      display: inline-block;
+      margin-top: 18px;
+      padding: 9px 16px;
+      border: 1px solid #ffffff80;
+      border-radius: 8px;
+      color: white;
+      text-decoration: none;
+    }
+
+    .back-link:hover {
+      background: #ffffff20;
+    }
+
+    .intro {
+      max-width: 900px;
+      margin: 30px auto 22px;
+      padding: 0 20px;
+      text-align: center;
+    }
+
+    .intro h2 {
+      color: #173f5f;
+      font-size: 1.7rem;
+      margin-bottom: 8px;
+    }
+
+    .intro p {
+      color: #5b6b7b;
+    }
+
+    .container {
+      max-width: 1250px;
+      margin: 0 auto;
+      padding: 15px 22px 45px;
+    }
+
+    .grid {
+      display: grid;
+      grid-template-columns: repeat(3, minmax(0, 1fr));
+      gap: 22px;
+    }
+
+    .module {
+      display: flex;
+      flex-direction: column;
+      background: white;
+      border: 1px solid #e1eaf2;
+      border-radius: 16px;
+      padding: 23px;
+      box-shadow: 0 5px 16px #173f5f0c;
+      transition: transform 0.2s, box-shadow 0.2s;
+      min-width: 0;
+    }
+
+    .module:hover {
+      transform: translateY(-4px);
+      box-shadow: 0 10px 24px #173f5f18;
+    }
+
+    .module-icon {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      width: 55px;
+      height: 55px;
+      border-radius: 14px;
+      background: #e7f2fb;
+      font-size: 29px;
+      margin-bottom: 15px;
+    }
+
+    .module h3 {
+      color: #173f5f;
+      font-size: 1.12rem;
+      margin-bottom: 8px;
+    }
+
+    .module p {
+      color: #617181;
+      font-size: 0.94rem;
+      margin-bottom: 14px;
+      flex-grow: 1;
+    }
+
+    .module ul {
+      padding-left: 19px;
+      margin-bottom: 18px;
+      color: #46586a;
+      font-size: 0.88rem;
+    }
+
+    .module li {
+      margin-bottom: 4px;
+    }
+
+    .explore {
+      display: inline-block;
+      align-self: flex-start;
+      color: #17658b;
+      font-weight: 700;
+      text-decoration: none;
+      margin-top: auto;
+    }
+
+    .explore:hover {
+      text-decoration: underline;
+    }
+
+    footer {
+      text-align: center;
+      padding: 22px;
+      background: #e8f0f7;
+      color: #526779;
+      font-size: 0.9rem;
+    }
+
+    @media (max-width: 900px) {
+      .grid {
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+      }
+    }
+
+    @media (max-width: 580px) {
+      .grid {
+        grid-template-columns: 1fr;
+      }
+
+      .container {
+        padding: 10px 16px 30px;
+      }
+
+      .module {
+        padding: 20px;
+      }
+    }
+  </style>
+</head>
+
+<body>
+
+  <header>
+    <div class="brand">🌞 BrightNest Learning Hub</div>
+    <h1>📚 Grammar Studio</h1>
+    <p>Explore grammar, build sentences and become a confident communicator!</p>
+   <a class="back-link" href="../../english.html">← Back to English Learning</a>
+  </header>
+
+  <section class="intro">
+    <h2>Welcome to Grammar Studio!</h2>
+    <p>
+      Discover grammar through interactive activities, puzzles, sentence
+      challenges and quizzes. Choose a learning zone and start exploring.
+    </p>
+  </section>
+
+  <main class="container">
+    <div class="grid">
+
+      <article class="module">
+        <div class="module-icon">📦</div>
+        <h3>1. Nouns Lab</h3>
+        <p>Discover naming words and learn to identify nouns in sentences.</p>
+        <ul>
+          <li>Common and proper nouns</li>
+          <li>Abstract and material nouns</li>
+          <li>Find the noun</li>
+        </ul>
+        <a class="explore" href="nouns-lab.html">Explore Nouns →</a>
+      </article>
+
+      <article class="module">
+        <div class="module-icon">👥</div>
+        <h3>2. Pronouns Playground</h3>
+        <p>Replace repeated nouns with the right pronouns.</p>
+        <ul>
+          <li>Personal pronouns</li>
+          <li>Possessive pronouns</li>
+          <li>Demonstrative pronouns</li>
+        </ul>
+        <a class="explore" href="pronouns-playground.html">Explore Pronouns →</a>
+      </article>
+
+      <article class="module">
+        <div class="module-icon">🔢</div>
+        <h3>3. Singular & Plural Studio</h3>
+        <p>Learn how words change when we talk about one or many.</p>
+        <ul>
+          <li>Regular plurals</li>
+          <li>Irregular plurals</li>
+          <li>Word transformation</li>
+        </ul>
+        <a class="explore" href="singular-plural.html">Explore Singular & Plural →</a>
+      </article>
+
+      <article class="module">
+        <div class="module-icon">🧑‍🤝‍🧑</div>
+        <h3>4. Gender Words Lab</h3>
+        <p>Explore gender-related word forms and their usage.</p>
+        <ul>
+          <li>Masculine and feminine</li>
+          <li>Common gender</li>
+          <li>Word matching</li>
+        </ul>
+        <a class="explore" href="gender-words.html">Explore Gender Words →</a>
+      </article>
+
+      <article class="module">
+        <div class="module-icon">🅰️</div>
+        <h3>5. Articles & Determiners</h3>
+        <p>Choose the words that make sentences clear and meaningful.</p>
+        <ul>
+          <li>A, an and the</li>
+          <li>This, that, these, those</li>
+          <li>Some and any</li>
+        </ul>
+        <a class="explore" href="articles-determiners.html">Explore Articles →</a>
+      </article>
+
+      <article class="module">
+        <div class="module-icon">🎨</div>
+        <h3>6. Adjectives Adventure</h3>
+        <p>Make descriptions more interesting with describing words.</p>
+        <ul>
+          <li>Identify adjectives</li>
+          <li>Degrees of comparison</li>
+          <li>Picture-based descriptions</li>
+        </ul>
+        <a class="explore" href="adjectives-adventure.html">Explore Adjectives →</a>
+      </article>
+
+      <article class="module">
+        <div class="module-icon">🏃</div>
+        <h3>7. Verbs & Action Words</h3>
+        <p>Discover action words and learn how verbs work in sentences.</p>
+        <ul>
+          <li>Action and helping verbs</li>
+          <li>Verb forms</li>
+          <li>Complete the sentence</li>
+        </ul>
+        <a class="explore" href="verbs-action-words.html">Explore Verbs →</a>
+      </article>
+
+      <article class="module">
+        <div class="module-icon">⏰</div>
+        <h3>8. Tenses Time Machine</h3>
+        <p>Travel through time using present, past and future tense.</p>
+        <ul>
+          <li>Present tense</li>
+          <li>Past tense</li>
+          <li>Future tense</li>
+        </ul>
+        <a class="explore" href="tenses-time-machine.html">Explore Tenses →</a>
+      </article>
+
+      <article class="module">
+        <div class="module-icon">📍</div>
+        <h3>9. Prepositions Playground</h3>
+        <p>Describe where, when and how things happen.</p>
+        <ul>
+          <li>Place and position</li>
+          <li>Time and direction</li>
+          <li>Picture-based challenges</li>
+        </ul>
+        <a class="explore" href="prepositions-playground.html">Explore Prepositions →</a>
+      </article>
+
+      <article class="module">
+        <div class="module-icon">💨</div>
+        <h3>10. Adverbs Lab</h3>
+        <p>Learn words that tell us more about actions and descriptions.</p>
+        <ul>
+          <li>How actions happen</li>
+          <li>Time and place</li>
+          <li>Choose the correct adverb</li>
+        </ul>
+        <a class="explore" href="adverbs-lab.html">Explore Adverbs →</a>
+      </article>
+
+      <article class="module">
+        <div class="module-icon">🔗</div>
+        <h3>11. Conjunctions & Joining Words</h3>
+        <p>Connect words and ideas to make better sentences.</p>
+        <ul>
+          <li>And, but and or</li>
+          <li>Because and so</li>
+          <li>Join two sentences</li>
+        </ul>
+        <a class="explore" href="conjunctions-joining-words.html">Explore Conjunctions →</a>
+      </article>
+
+      <article class="module">
+        <div class="module-icon">💬</div>
+        <h3>12. Sentences & Sentence Types</h3>
+        <p>Understand different sentences and how they communicate ideas.</p>
+        <ul>
+          <li>Statements and questions</li>
+          <li>Commands and exclamations</li>
+          <li>Identify sentence types</li>
+        </ul>
+        <a class="explore" href="sentences-types.html">Explore Sentences →</a>
+      </article>
+
+      <article class="module">
+        <div class="module-icon">🧩</div>
+        <h3>13. Subject & Predicate</h3>
+        <p>Find who or what a sentence is about and what is said about it.</p>
+        <ul>
+          <li>Identify the subject</li>
+          <li>Identify the predicate</li>
+          <li>Sentence analysis</li>
+        </ul>
+        <a class="explore" href="subject-predicate.html">Explore Subject & Predicate →</a>
+      </article>
+
+      <article class="module">
+        <div class="module-icon">🛠️</div>
+        <h3>14. Sentence Building & Word Order</h3>
+        <p>Arrange words and build clear, meaningful sentences.</p>
+        <ul>
+          <li>Rearrange jumbled words</li>
+          <li>Complete sentences</li>
+          <li>Expand simple sentences</li>
+        </ul>
+        <a class="explore" href="sentence-building.html">Build Sentences →</a>
+      </article>
+
+      <article class="module">
+        <div class="module-icon">✍️</div>
+        <h3>15. Punctuation & Capitalization</h3>
+        <p>Use punctuation marks and capital letters correctly.</p>
+        <ul>
+          <li>Full stops and commas</li>
+          <li>Question and exclamation marks</li>
+          <li>Capitalization practice</li>
+        </ul>
+        <a class="explore" href="punctuation-capitalization.html">Explore Punctuation →</a>
+      </article>
+
+      <article class="module">
+        <div class="module-icon">✅</div>
+        <h3>16. Subject–Verb Agreement</h3>
+        <p>Make sure subjects and verbs agree in every sentence.</p>
+        <ul>
+          <li>Is, am and are</li>
+          <li>Was and were</li>
+          <li>Choose the correct verb</li>
+        </ul>
+        <a class="explore" href="subject-verb-agreement.html">Practise Agreement →</a>
+      </article>
+
+      <article class="module">
+        <div class="module-icon">🔍</div>
+        <h3>17. Grammar Error Detective</h3>
+        <p>Become a grammar detective by finding and correcting mistakes.</p>
+        <ul>
+          <li>Spot the error</li>
+          <li>Correct the sentence</li>
+          <li>Explain your answer</li>
+        </ul>
+        <a class="explore" href="grammar-error-detective.html">Start Detecting →</a>
+      </article>
+
+      <article class="module">
+        <div class="module-icon">🏆</div>
+        <h3>18. Grammar Games, Quizzes & Teacher Toolkit</h3>
+        <p>Practise grammar and support classroom teaching and assessment.</p>
+        <ul>
+          <li>Grammar games and quizzes</li>
+          <li>Competency-based questions</li>
+          <li>Worksheets and assessment tools</li>
+        </ul>
+        <a class="explore" href="grammar-games-teacher-toolkit.html">Enter the Challenge Zone →</a>
+      </article>
+
+    </div>
+  </main>
+
+  <footer>
+    BrightNest Learning Hub | Learn • Practise • Grow 🌱
+  </footer>
+
+</body>
+</html>

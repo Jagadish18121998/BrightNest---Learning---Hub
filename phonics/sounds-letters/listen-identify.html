@@ -1,0 +1,622 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Listen and Identify | BrightNest</title>
+
+<style>
+:root {
+  --navy: #243b63;
+  --blue: #3977d5;
+  --yellow: #ffcf57;
+  --green: #21865b;
+  --red: #d94c4c;
+  --text: #26364d;
+  --muted: #66758b;
+}
+
+* { box-sizing: border-box; }
+
+body {
+  margin: 0;
+  font-family: "Trebuchet MS", Arial, sans-serif;
+  color: var(--text);
+  background: #f3f7fc;
+}
+
+header {
+  background: linear-gradient(120deg, #203b69, #477ed1);
+  color: white;
+  padding: 22px 5%;
+}
+
+.brand { font-size: 24px; font-weight: 800; }
+header p { margin-bottom: 0; color: #e6efff; }
+
+main {
+  max-width: 1000px;
+  margin: auto;
+  padding: 24px 16px 45px;
+}
+
+h1 { color: var(--navy); }
+h2 { color: var(--navy); font-size: 21px; }
+
+.panel {
+  background: white;
+  padding: 22px;
+  border-radius: 18px;
+  border: 1px solid #dfe7f1;
+  box-shadow: 0 5px 18px #263d6410;
+  margin: 18px 0;
+}
+
+.intro { color: var(--muted); line-height: 1.6; }
+
+button, select {
+  font: inherit;
+  padding: 12px 15px;
+  border-radius: 11px;
+}
+
+button {
+  border: 0;
+  background: var(--blue);
+  color: white;
+  font-weight: 700;
+  cursor: pointer;
+  transition: transform .15s;
+}
+
+button:hover { transform: translateY(-1px); }
+button:disabled { opacity: .5; cursor: not-allowed; }
+
+button.secondary { background: #eaf1fb; color: var(--navy); }
+button.yellow { background: var(--yellow); color: #493a11; }
+button.green { background: var(--green); }
+
+.controls {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 10px;
+  margin: 15px 0;
+}
+
+select {
+  border: 1px solid #cbd7e8;
+  background: white;
+  color: var(--text);
+}
+
+.mode-grid, .options-grid {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 14px;
+}
+
+.mode-card {
+  border: 2px solid #e1eaf7;
+  background: #fbfdff;
+  border-radius: 14px;
+  padding: 20px;
+  text-align: center;
+  cursor: pointer;
+}
+
+.mode-card.active {
+  border-color: var(--blue);
+  background: #eff5ff;
+}
+
+.mode-icon { font-size: 38px; margin-bottom: 8px; }
+.mode-card h3 { margin: 4px 0 8px; }
+.mode-card p { color: var(--muted); font-size: 14px; line-height: 1.5; }
+
+.listen-box {
+  text-align: center;
+  background: #f1f6ff;
+  border-radius: 15px;
+  padding: 22px 12px;
+  margin: 16px 0;
+}
+
+.speaker {
+  width: 86px;
+  height: 86px;
+  border-radius: 50%;
+  font-size: 35px;
+  background: var(--yellow);
+  color: #493a11;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.listen-box p { color: var(--muted); }
+
+.options-grid { margin-top: 18px; }
+
+.option {
+  min-height: 125px;
+  background: white;
+  color: var(--text);
+  border: 2px solid #dfe7f1;
+  border-radius: 15px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 7px;
+  padding: 12px;
+  font-size: 22px;
+}
+
+.option:hover { border-color: var(--blue); background: #f4f8ff; }
+.option .picture { font-size: 43px; }
+.option .small { font-size: 15px; font-weight: 600; }
+
+.option.correct {
+  background: #e5f7ed;
+  border-color: var(--green);
+}
+
+.option.wrong {
+  background: #fff0f0;
+  border-color: var(--red);
+}
+
+.option:disabled { opacity: 1; cursor: default; }
+
+.stats {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 10px;
+  margin: 18px 0;
+}
+
+.stat {
+  text-align: center;
+  background: #f6f9fe;
+  padding: 14px 8px;
+  border-radius: 12px;
+}
+
+.stat strong { display: block; font-size: 24px; color: var(--navy); }
+.stat span { font-size: 13px; color: var(--muted); }
+
+.progress {
+  height: 10px;
+  border-radius: 20px;
+  background: #e8eef7;
+  overflow: hidden;
+}
+
+.progress-bar {
+  width: 0;
+  height: 100%;
+  background: var(--green);
+  transition: width .25s;
+}
+
+.feedback {
+  min-height: 52px;
+  border-radius: 11px;
+  padding: 14px;
+  background: #f1f6ff;
+  line-height: 1.5;
+  margin-top: 15px;
+}
+
+.feedback.good { background: #e5f7ed; color: #176541; }
+.feedback.bad { background: #fff0f0; color: #a92d2d; }
+
+.hidden { display: none !important; }
+
+#result { text-align: center; }
+.big-score { font-size: 46px; font-weight: 800; color: var(--green); }
+.note { color: var(--muted); font-size: 14px; line-height: 1.6; }
+
+@media (max-width: 600px) {
+  .mode-grid, .options-grid { grid-template-columns: 1fr 1fr; }
+  .panel { padding: 15px; }
+  .option { min-height: 105px; }
+  .brand { font-size: 21px; }
+}
+</style>
+</head>
+
+<body>
+<header>
+  <div class="brand">🌞 BrightNest Learning Hub</div>
+  <p>Phonics · Listen and Identify</p>
+</header>
+
+<main>
+  <h1>👂 Listen and Identify</h1>
+  <p class="intro">
+    Listen carefully. Recognise the sound and choose the correct letter
+    or picture. You can listen as many times as you need.
+  </p>
+
+  <section class="panel" id="setup">
+    <h2>Choose Your Challenge</h2>
+
+    <div class="mode-grid">
+      <div class="mode-card active" data-mode="letter" role="button" tabindex="0">
+        <div class="mode-icon">🔤</div>
+        <h3>Listen and Find the Letter</h3>
+        <p>Listen to a letter name and select the correct letter.</p>
+      </div>
+
+      <div class="mode-card" data-mode="picture" role="button" tabindex="0">
+        <div class="mode-icon">🖼️</div>
+        <h3>Listen and Find the Picture</h3>
+        <p>Listen to a beginning sound and find a matching picture.</p>
+      </div>
+    </div>
+
+    <div class="controls">
+      <label for="questionCount">Number of questions:</label>
+      <select id="questionCount">
+        <option value="10">10 Questions</option>
+        <option value="20">20 Questions</option>
+        <option value="26">26 Questions</option>
+      </select>
+    </div>
+
+    <p class="note">
+      Teacher tip: Letter-name mode practises names such as “em” for M.
+      Picture mode practises beginning sounds, such as /m/ in moon.
+      The speech synthesiser's pronunciation may vary by device.
+    </p>
+
+    <button class="green" id="startBtn">Start Challenge →</button>
+  </section>
+
+  <section class="panel hidden" id="game">
+    <div class="stats">
+      <div class="stat"><strong id="qNumber">1/10</strong><span>Question</span></div>
+      <div class="stat"><strong id="score">0</strong><span>Correct</span></div>
+      <div class="stat"><strong id="accuracy">—</strong><span>Accuracy</span></div>
+    </div>
+
+    <div class="progress"><div class="progress-bar" id="progressBar"></div></div>
+
+    <div class="listen-box">
+      <button class="speaker" id="listenBtn" aria-label="Listen to the sound">🔊</button>
+      <h2 id="listenTitle">Listen carefully!</h2>
+      <p id="listenHint">Press the speaker to hear the sound.</p>
+    </div>
+
+    <h2 id="questionText">Which letter did you hear?</h2>
+
+    <div class="options-grid" id="options"></div>
+
+    <div class="feedback" id="feedback" aria-live="polite">
+      Choose your answer.
+    </div>
+
+    <div class="controls">
+      <button class="secondary" id="repeatBtn">🔁 Listen Again</button>
+      <button class="green" id="nextBtn" disabled>Next Question →</button>
+      <button class="secondary" id="quitBtn">End Challenge</button>
+    </div>
+  </section>
+
+  <section class="panel hidden" id="result">
+    <div style="font-size:54px">🏆</div>
+    <h2>Challenge Complete!</h2>
+    <p class="intro">Wonderful effort! Here is your result.</p>
+    <div class="big-score" id="finalScore">0/10</div>
+    <p id="finalMessage"></p>
+
+    <div class="stats">
+      <div class="stat"><strong id="finalCorrect">0</strong><span>Correct</span></div>
+      <div class="stat"><strong id="finalWrong">0</strong><span>Needs Practice</span></div>
+      <div class="stat"><strong id="finalAccuracy">0%</strong><span>Accuracy</span></div>
+    </div>
+
+    <button class="green" id="againBtn">Play Again ↻</button>
+    <button class="secondary" id="homeBtn">Choose Another Challenge</button>
+  </section>
+</main>
+
+<script>
+const $ = id => document.getElementById(id);
+
+const alphabet = "ABCDEFGHIJKLMNOPQRSTUVWXYZ".split("");
+
+const pictureBank = [
+  { letter:"A", word:"apple", emoji:"🍎" },
+  { letter:"B", word:"ball", emoji:"⚽" },
+  { letter:"C", word:"cat", emoji:"🐱" },
+  { letter:"D", word:"dog", emoji:"🐶" },
+  { letter:"E", word:"egg", emoji:"🥚" },
+  { letter:"F", word:"fish", emoji:"🐟" },
+  { letter:"G", word:"goat", emoji:"🐐" },
+  { letter:"H", word:"hat", emoji:"🎩" },
+  { letter:"I", word:"igloo", emoji:"🛖" },
+  { letter:"J", word:"jug", emoji:"🫗" },
+  { letter:"K", word:"kite", emoji:"🪁" },
+  { letter:"L", word:"lion", emoji:"🦁" },
+  { letter:"M", word:"moon", emoji:"🌙" },
+  { letter:"N", word:"nest", emoji:"🪺" },
+  { letter:"O", word:"orange", emoji:"🍊" },
+  { letter:"P", word:"parrot", emoji:"🦜" },
+  { letter:"Q", word:"queen", emoji:"👑" },
+  { letter:"R", word:"rabbit", emoji:"🐰" },
+  { letter:"S", word:"sun", emoji:"☀️" },
+  { letter:"T", word:"tiger", emoji:"🐯" },
+  { letter:"U", word:"umbrella", emoji:"☂️" },
+  { letter:"V", word:"van", emoji:"🚐" },
+  { letter:"W", word:"watch", emoji:"⌚" },
+  { letter:"X", word:"xylophone", emoji:"🎼" },
+  { letter:"Y", word:"yak", emoji:"🐂" },
+  { letter:"Z", word:"zebra", emoji:"🦓" }
+];
+
+let mode = "letter";
+let questions = [];
+let current = 0;
+let correct = 0;
+let wrong = 0;
+let answered = false;
+let voiceAvailable = "speechSynthesis" in window;
+
+function shuffle(items) {
+  const arr = [...items];
+  for (let i = arr.length - 1; i > 0; i--) {
+    const j = Math.floor(Math.random() * (i + 1));
+    [arr[i], arr[j]] = [arr[j], arr[i]];
+  }
+  return arr;
+}
+
+document.querySelectorAll(".mode-card").forEach(card => {
+  function selectMode() {
+    mode = card.dataset.mode;
+    document.querySelectorAll(".mode-card").forEach(c =>
+      c.classList.toggle("active", c === card)
+    );
+  }
+
+  card.addEventListener("click", selectMode);
+  card.addEventListener("keydown", e => {
+    if (e.key === "Enter" || e.key === " ") {
+      e.preventDefault();
+      selectMode();
+    }
+  });
+});
+
+function speak(text, kind = "name") {
+  if (!voiceAvailable) {
+    $("feedback").textContent =
+      "Audio playback is not supported by this browser. Try a recent version of Chrome or Edge.";
+    return;
+  }
+
+  window.speechSynthesis.cancel();
+
+  const utterance = new SpeechSynthesisUtterance(text);
+  utterance.lang = "en-IN";
+  utterance.rate = 0.78;
+  utterance.pitch = 1;
+
+  // For picture mode, say the example word so children can identify
+  // its initial sound. This is not a specialised phoneme synthesiser.
+  window.speechSynthesis.speak(utterance);
+}
+
+function letterQuestion(letter) {
+  const wrongChoices = shuffle(alphabet.filter(l => l !== letter)).slice(0, 3);
+  const choices = shuffle([letter, ...wrongChoices]);
+
+  return {
+    answer: letter,
+    choices,
+    prompt: `Which letter did you hear?`,
+    audio: letter,
+    hint: "Listen to the letter name."
+  };
+}
+
+function pictureQuestion(item) {
+  const distractors = shuffle(
+    pictureBank.filter(p => p.letter !== item.letter)
+  ).slice(0, 3);
+
+  const choices = shuffle([item, ...distractors]);
+
+  return {
+    answer: item.letter,
+    choices,
+    prompt: "Which picture begins with the sound you heard?",
+    audio: item.word,
+    hint: "Listen to the word. Think about its first sound.",
+    targetWord: item.word
+  };
+}
+
+function buildQuestions() {
+  const count = Number($("questionCount").value);
+
+  if (mode === "letter") {
+    questions = shuffle(alphabet).slice(0, count).map(letterQuestion);
+  } else {
+    questions = shuffle(pictureBank).slice(0, count).map(pictureQuestion);
+  }
+}
+
+function startGame() {
+  window.speechSynthesis?.cancel();
+
+  buildQuestions();
+  current = 0;
+  correct = 0;
+  wrong = 0;
+  answered = false;
+
+  $("setup").classList.add("hidden");
+  $("result").classList.add("hidden");
+  $("game").classList.remove("hidden");
+
+  showQuestion();
+}
+
+function showQuestion() {
+  answered = false;
+  const q = questions[current];
+
+  $("qNumber").textContent = `${current + 1}/${questions.length}`;
+  $("score").textContent = correct;
+  $("accuracy").textContent =
+    current === 0 ? "—" : Math.round(correct / current * 100) + "%";
+  $("progressBar").style.width = (current / questions.length * 100) + "%";
+
+  $("questionText").textContent = q.prompt;
+  $("listenTitle").textContent = mode === "letter"
+    ? "Listen to the Letter Name"
+    : "Listen to the Beginning Sound";
+  $("listenHint").textContent = q.hint;
+
+  $("feedback").className = "feedback";
+  $("feedback").textContent = "Listen and choose your answer.";
+  $("nextBtn").disabled = true;
+  $("nextBtn").textContent =
+    current === questions.length - 1 ? "See Results →" : "Next Question →";
+
+  $("options").innerHTML = "";
+
+  q.choices.forEach(choice => {
+    const button = document.createElement("button");
+    button.className = "option";
+
+    if (mode === "letter") {
+      button.textContent = choice;
+      button.setAttribute("aria-label", `Letter ${choice}`);
+    } else {
+      button.innerHTML =
+        `<span class="picture">${choice.emoji}</span>` +
+        `<span class="small">Picture ${q.choices.indexOf(choice) + 1}</span>`;
+      button.setAttribute("aria-label", "Picture choice");
+    }
+
+    button.addEventListener("click", () => chooseAnswer(choice, button));
+    $("options").appendChild(button);
+  });
+
+  setTimeout(playQuestionAudio, 250);
+}
+
+function playQuestionAudio() {
+  const q = questions[current];
+  if (!q) return;
+  speak(q.audio);
+}
+
+function chooseAnswer(choice, button) {
+  if (answered) return;
+  answered = true;
+
+  const q = questions[current];
+  const chosenLetter = mode === "letter" ? choice : choice.letter;
+  const isCorrect = chosenLetter === q.answer;
+
+  document.querySelectorAll(".option").forEach(btn => btn.disabled = true);
+
+  if (isCorrect) {
+    correct++;
+    button.classList.add("correct");
+    $("feedback").className = "feedback good";
+    $("feedback").textContent = mode === "letter"
+      ? `Correct! You identified the letter ${q.answer}.`
+      : `Excellent! ${q.targetWord} begins with the /${q.answer.toLowerCase()}/ sound.`;
+  } else {
+    wrong++;
+    button.classList.add("wrong");
+    $("feedback").className = "feedback bad";
+
+    if (mode === "letter") {
+      $("feedback").textContent = `Good try! The correct letter was ${q.answer}. Listen again and practise.`;
+    } else {
+      const correctPicture = pictureBank.find(p => p.letter === q.answer);
+      $("feedback").textContent =
+        `Good try! The answer was ${correctPicture.word}. It begins with /${q.answer.toLowerCase()}/.`;
+    }
+
+    // Highlight the correct option as well.
+    document.querySelectorAll(".option").forEach(btn => {
+      const idx = [...$("options").children].indexOf(btn);
+      const item = q.choices[idx];
+      const itemLetter = mode === "letter" ? item : item.letter;
+
+      if (itemLetter === q.answer) btn.classList.add("correct");
+    });
+  }
+
+  $("score").textContent = correct;
+  $("accuracy").textContent =
+    Math.round(correct / (current + 1) * 100) + "%";
+  $("nextBtn").disabled = false;
+}
+
+function nextQuestion() {
+  if (!answered) return;
+
+  if (current < questions.length - 1) {
+    current++;
+    showQuestion();
+  } else {
+    finishGame();
+  }
+}
+
+function finishGame() {
+  window.speechSynthesis?.cancel();
+
+  $("game").classList.add("hidden");
+  $("result").classList.remove("hidden");
+
+  const total = questions.length;
+  const accuracy = Math.round(correct / total * 100);
+
+  $("finalScore").textContent = `${correct}/${total}`;
+  $("finalCorrect").textContent = correct;
+  $("finalWrong").textContent = wrong;
+  $("finalAccuracy").textContent = accuracy + "%";
+
+  if (accuracy === 100) {
+    $("finalMessage").textContent = "Outstanding! You got every question right!";
+  } else if (accuracy >= 80) {
+    $("finalMessage").textContent = "Excellent work! Keep listening and learning.";
+  } else if (accuracy >= 50) {
+    $("finalMessage").textContent = "Good effort! Practise a little more to improve.";
+  } else {
+    $("finalMessage").textContent = "Keep trying! Listen again and practise with your teacher.";
+  }
+
+  $("progressBar").style.width = "100%";
+}
+
+function returnHome() {
+  window.speechSynthesis?.cancel();
+  $("game").classList.add("hidden");
+  $("result").classList.add("hidden");
+  $("setup").classList.remove("hidden");
+}
+
+$("startBtn").addEventListener("click", startGame);
+$("listenBtn").addEventListener("click", playQuestionAudio);
+$("repeatBtn").addEventListener("click", playQuestionAudio);
+$("nextBtn").addEventListener("click", nextQuestion);
+$("quitBtn").addEventListener("click", finishGame);
+$("againBtn").addEventListener("click", startGame);
+$("homeBtn").addEventListener("click", returnHome);
+
+</script>
+</body>
+</html>

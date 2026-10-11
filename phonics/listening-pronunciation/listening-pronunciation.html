@@ -1,0 +1,340 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Listening & Pronunciation | BrightNest</title>
+
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: "Segoe UI", Arial, sans-serif;
+            background: #f4f8fc;
+            color: #243447;
+        }
+
+        header {
+            background: linear-gradient(135deg, #173f5f, #287ca0);
+            color: white;
+            text-align: center;
+            padding: 28px 20px;
+        }
+
+        header h1 {
+            font-size: 30px;
+            margin-bottom: 8px;
+        }
+
+        header p {
+            font-size: 15px;
+            line-height: 1.6;
+        }
+
+        .back {
+            display: inline-block;
+            margin-top: 16px;
+            padding: 9px 16px;
+            border: 1px solid white;
+            border-radius: 8px;
+            color: white;
+            text-decoration: none;
+        }
+
+        .back:hover {
+            background: white;
+            color: #173f5f;
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: auto;
+            padding: 30px 20px;
+        }
+
+        .intro {
+            text-align: center;
+            margin-bottom: 28px;
+        }
+
+        .intro h2 {
+            color: #173f5f;
+            font-size: 25px;
+            margin-bottom: 10px;
+        }
+
+        .intro p {
+            color: #5c6b7a;
+            line-height: 1.7;
+        }
+
+        .modules {
+            display: grid;
+            grid-template-columns: repeat(3, minmax(0, 1fr));
+            gap: 22px;
+        }
+
+        .module {
+            display: flex;
+            flex-direction: column;
+            min-height: 270px;
+            padding: 22px;
+            background: white;
+            border: 1px solid #e1eaf2;
+            border-radius: 15px;
+            box-shadow: 0 5px 15px rgba(23, 63, 95, 0.07);
+            text-decoration: none;
+            color: inherit;
+            transition: transform 0.2s, box-shadow 0.2s;
+        }
+
+        .module:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 10px 24px rgba(23, 63, 95, 0.14);
+        }
+
+        .module-icon {
+            font-size: 36px;
+            margin-bottom: 13px;
+        }
+
+        .module h3 {
+            font-size: 19px;
+            color: #173f5f;
+            margin-bottom: 10px;
+        }
+
+        .module p {
+            font-size: 14px;
+            line-height: 1.6;
+            color: #5c6b7a;
+            margin-bottom: 12px;
+        }
+
+        .module ul {
+            padding-left: 19px;
+            margin-bottom: 18px;
+            color: #435568;
+            font-size: 13px;
+            line-height: 1.8;
+        }
+
+        .explore {
+            display: inline-block;
+            margin-top: auto;
+            padding: 10px 12px;
+            border-radius: 8px;
+            background: #eaf4fa;
+            color: #17628a;
+            font-size: 14px;
+            font-weight: 600;
+            text-align: center;
+        }
+
+        footer {
+            text-align: center;
+            padding: 22px;
+            color: #657586;
+            font-size: 13px;
+        }
+
+        @media (max-width: 900px) {
+            .modules {
+                grid-template-columns: repeat(2, minmax(0, 1fr));
+            }
+        }
+
+        @media (max-width: 600px) {
+            header h1 {
+                font-size: 24px;
+            }
+
+            .modules {
+                grid-template-columns: 1fr;
+            }
+
+            .container {
+                padding: 22px 14px;
+            }
+        }
+    </style>
+</head>
+
+<body>
+
+<header>
+    <h1>🌞 BrightNest Learning Hub</h1>
+    <p>Phonics Centre | Listening & Pronunciation</p>
+    <a class="back" href="../phonics.html">← Back to Phonics Centre</a>
+</header>
+
+<main class="container">
+
+    <section class="intro">
+        <h2>Listening & Pronunciation 🎧</h2>
+        <p>
+            Listen carefully, recognise speech sounds and practise clear pronunciation.
+            Develop listening accuracy, speech rhythm and confidence through interactive activities.
+        </p>
+    </section>
+
+    <section class="modules">
+
+        <a class="module" href="sound-detective.html">
+            <div class="module-icon">🕵️</div>
+            <h3>1. Sound Detective</h3>
+            <p>Explore and identify sounds from the world around you.</p>
+            <ul>
+                <li>Recognise environmental sounds</li>
+                <li>Identify familiar speech sounds</li>
+                <li>Listen and choose the correct answer</li>
+            </ul>
+            <span class="explore">Start Exploring →</span>
+        </a>
+
+        <a class="module" href="first-middle-last-sounds.html">
+            <div class="module-icon">🔍</div>
+            <h3>2. First, Middle & Last Sounds</h3>
+            <p>Listen for sounds in different positions within words.</p>
+            <ul>
+                <li>Identify beginning sounds</li>
+                <li>Recognise middle vowel sounds</li>
+                <li>Find ending sounds</li>
+            </ul>
+            <span class="explore">Listen & Identify →</span>
+        </a>
+
+        <a class="module" href="sound-difference-lab.html">
+            <div class="module-icon">👂</div>
+            <h3>3. Sound Difference Lab</h3>
+            <p>Learn to distinguish words with similar sounds.</p>
+            <ul>
+                <li>Compare minimal pairs</li>
+                <li>Listen for sound differences</li>
+                <li>Choose the word you hear</li>
+            </ul>
+            <span class="explore">Compare Sounds →</span>
+        </a>
+
+        <a class="module" href="vowel-sound-explorer.html">
+            <div class="module-icon">🎨</div>
+            <h3>4. Vowel Sound Explorer</h3>
+            <p>Listen to and compare English vowel sounds.</p>
+            <ul>
+                <li>Short and long vowels</li>
+                <li>Compare vowel sounds</li>
+                <li>Match sounds with words</li>
+            </ul>
+            <span class="explore">Explore Vowels →</span>
+        </a>
+
+        <a class="module" href="consonant-sound-practice.html">
+            <div class="module-icon">👄</div>
+            <h3>5. Consonant Sound Practice</h3>
+            <p>Practise consonant sounds with clear mouth movements.</p>
+            <ul>
+                <li>Lip and tongue positions</li>
+                <li>Voiced and unvoiced sounds</li>
+                <li>Listen and repeat</li>
+            </ul>
+            <span class="explore">Practise Sounds →</span>
+        </a>
+
+        <a class="module" href="digraph-sound-studio.html">
+            <div class="module-icon">🔤</div>
+            <h3>6. Digraph Sound Studio</h3>
+            <p>Recognise and pronounce common digraph sounds.</p>
+            <ul>
+                <li>SH, CH and TH</li>
+                <li>WH, PH and other patterns</li>
+                <li>Match sounds with words</li>
+            </ul>
+            <span class="explore">Explore Digraphs →</span>
+        </a>
+
+        <a class="module" href="syllable-beats-word-stress.html">
+            <div class="module-icon">👏</div>
+            <h3>7. Syllable Beats & Word Stress</h3>
+            <p>Hear syllables and recognise stressed parts of words.</p>
+            <ul>
+                <li>Clap syllable beats</li>
+                <li>Count syllables</li>
+                <li>Practise word stress</li>
+            </ul>
+            <span class="explore">Find the Beats →</span>
+        </a>
+
+        <a class="module" href="rhythm-intonation.html">
+            <div class="module-icon">🎶</div>
+            <h3>8. Rhythm & Intonation</h3>
+            <p>Explore how voice patterns communicate meaning.</p>
+            <ul>
+                <li>Rising and falling intonation</li>
+                <li>Questions and statements</li>
+                <li>Rhythm in spoken English</li>
+            </ul>
+            <span class="explore">Explore Speech →</span>
+        </a>
+
+        <a class="module" href="listen-repeat.html">
+            <div class="module-icon">🗣️</div>
+            <h3>9. Listen & Repeat</h3>
+            <p>Listen to a model and practise saying words and phrases.</p>
+            <ul>
+                <li>Repeat words and sentences</li>
+                <li>Practise difficult sounds</li>
+                <li>Build speaking confidence</li>
+            </ul>
+            <span class="explore">Start Speaking →</span>
+        </a>
+
+        <a class="module" href="listen-understand.html">
+            <div class="module-icon">💬</div>
+            <h3>10. Listen & Understand</h3>
+            <p>Listen to instructions and spoken sentences.</p>
+            <ul>
+                <li>Follow simple directions</li>
+                <li>Listen for key information</li>
+                <li>Answer listening questions</li>
+            </ul>
+            <span class="explore">Test Listening →</span>
+        </a>
+
+        <a class="module" href="tongue-twisters.html">
+            <div class="module-icon">😄</div>
+            <h3>11. Tongue Twisters & Speaking Fun</h3>
+            <p>Practise tricky sound sequences through playful speaking.</p>
+            <ul>
+                <li>Try age-appropriate tongue twisters</li>
+                <li>Practise clear articulation</li>
+                <li>Improve speech rhythm</li>
+            </ul>
+            <span class="explore">Try a Tongue Twister →</span>
+        </a>
+
+        <a class="module" href="listening-pronunciation-challenge.html">
+            <div class="module-icon">🏆</div>
+            <h3>12. Listening & Pronunciation Challenge</h3>
+            <p>Review listening skills and practise speaking clearly.</p>
+            <ul>
+                <li>Sound recognition quiz</li>
+                <li>Listening comprehension</li>
+                <li>Teacher assessment checklist</li>
+            </ul>
+            <span class="explore">Take the Challenge →</span>
+        </a>
+
+    </section>
+</main>
+
+<footer>
+    BrightNest Learning Hub | Learn • Practise • Grow
+</footer>
+
+</body>
+</html>

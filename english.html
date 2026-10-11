@@ -1,0 +1,235 @@
+```html
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>English Manipulatives | BrightNest Learning Hub</title>
+
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: Arial, sans-serif;
+            background: #f4f7fb;
+            color: #243247;
+        }
+
+        header {
+            background: linear-gradient(135deg, #173b57, #256b80);
+            color: white;
+            padding: 28px 20px;
+            text-align: center;
+        }
+
+        header h1 {
+            font-size: 30px;
+            margin-bottom: 10px;
+        }
+
+        header p {
+            font-size: 16px;
+            line-height: 1.6;
+        }
+
+        .back-link {
+            display: inline-block;
+            margin-top: 18px;
+            color: white;
+            text-decoration: none;
+            border: 1px solid rgba(255,255,255,0.65);
+            padding: 9px 16px;
+            border-radius: 8px;
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: auto;
+            padding: 35px 22px;
+        }
+
+        .section-heading {
+            text-align: center;
+            margin-bottom: 28px;
+        }
+
+        .section-heading h2 {
+            font-size: 25px;
+            margin-bottom: 8px;
+        }
+
+        .section-heading p {
+            color: #65748b;
+            line-height: 1.6;
+        }
+
+        .cards {
+            display: grid;
+            grid-template-columns: repeat(3, minmax(0, 1fr));
+            gap: 22px;
+        }
+
+        .card {
+            display: block;
+            text-decoration: none;
+            color: inherit;
+            background: white;
+            border-radius: 16px;
+            padding: 25px 22px;
+            border: 1px solid #e3eaf2;
+            box-shadow: 0 5px 18px rgba(30, 55, 80, 0.06);
+            transition: transform 0.2s, box-shadow 0.2s;
+        }
+
+        .card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 10px 25px rgba(30, 55, 80, 0.12);
+        }
+
+        .card-icon {
+            font-size: 38px;
+            margin-bottom: 16px;
+        }
+
+        .card h3 {
+            font-size: 20px;
+            margin-bottom: 10px;
+        }
+
+        .card p {
+            color: #65748b;
+            font-size: 14px;
+            line-height: 1.7;
+        }
+
+        .card .explore {
+            display: inline-block;
+            margin-top: 18px;
+            color: #176b87;
+            font-weight: bold;
+            font-size: 14px;
+        }
+
+        footer {
+            text-align: center;
+            padding: 22px;
+            color: #65748b;
+            font-size: 13px;
+        }
+
+        @media (max-width: 850px) {
+            .cards {
+                grid-template-columns: repeat(2, minmax(0, 1fr));
+            }
+        }
+
+        @media (max-width: 520px) {
+            header h1 {
+                font-size: 25px;
+            }
+
+            .cards {
+                grid-template-columns: 1fr;
+            }
+        }
+    </style>
+</head>
+
+<body>
+
+    <header>
+        <h1>🌞 BrightNest Learning Hub</h1>
+        <p>English Manipulatives</p>
+        <p>Explore, discover, build and learn English through interactive tools.</p>
+        <a href="index.html" class="back-link">← Back to Home</a>
+    </header>
+
+    <main class="container">
+
+        <div class="section-heading">
+            <h2>Explore English Learning Tools</h2>
+            <p>
+                Choose a learning centre to explore interactive teaching
+                and learning resources for primary classes.
+            </p>
+        </div>
+
+        <section class="cards">
+
+            <a href="phonics/phonics.html" class="card">
+                <div class="card-icon">🔤</div>
+                <h3>Phonics Centre</h3>
+                <p>
+                    Explore sounds, letters, blending, digraphs, vowel patterns,
+                    syllables, spelling rules and word decoding.
+                </p>
+                <span class="explore">Explore Phonics →</span>
+            </a>
+
+            <a href="vocabulary/vocabulary.html" class="card">
+                <div class="card-icon">📚</div>
+                <h3>Vocabulary Lab</h3>
+                <p>
+                    Discover word meanings, synonyms, antonyms, word families,
+                    homophones and context clues.
+                </p>
+                <span class="explore">Explore Vocabulary →</span>
+            </a>
+
+           
+<a href="vocabulary/grammar/grammar.html" class="card">
+    <div class="card-icon">🧩</div>
+    <h3>Grammar Studio</h3>
+    <p>
+        Learn parts of speech, nouns, pronouns, verbs, adjectives,
+        adverbs, prepositions and tenses.
+    </p>
+    <span class="explore">Explore Grammar →</span>
+</a>
+
+
+            <a href="sentence-construction/sentence-construction.html"
+               class="card">
+                <div class="card-icon">🔗</div>
+                <h3>Sentence Construction</h3>
+                <p>
+                    Build sentences, explore subject and predicate,
+                    connect ideas and expand sentences.
+                </p>
+                <span class="explore">Build Sentences →</span>
+            </a>
+
+            <a href="writing/writing.html" class="card">
+                <div class="card-icon">✍️</div>
+                <h3>Writing Studio</h3>
+                <p>
+                    Practise picture description, paragraph writing,
+                    story planning, dialogue and creative expression.
+                </p>
+                <span class="explore">Explore Writing →</span>
+            </a>
+
+            <a href="punctuation/punctuation.html" class="card">
+                <div class="card-icon">❗</div>
+                <h3>Punctuation & Capitalisation</h3>
+                <p>
+                    Practise capital letters, full stops, commas,
+                    question marks, apostrophes and quotation marks.
+                </p>
+                <span class="explore">Explore Punctuation →</span>
+            </a>
+
+        </section>
+    </main>
+
+    <footer>
+        BrightNest Learning Hub | Interactive English Learning for Primary Classes
+    </footer>
+
+</body>
+</html>
+```

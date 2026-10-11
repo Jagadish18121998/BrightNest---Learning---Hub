@@ -1,0 +1,340 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Reading & Decoding | BrightNest</title>
+
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: "Segoe UI", Arial, sans-serif;
+            background: #f4f8fc;
+            color: #243447;
+        }
+
+        header {
+            background: linear-gradient(135deg, #173f5f, #287ca0);
+            color: white;
+            text-align: center;
+            padding: 28px 20px;
+        }
+
+        header h1 {
+            font-size: 30px;
+            margin-bottom: 8px;
+        }
+
+        header p {
+            font-size: 15px;
+            line-height: 1.6;
+        }
+
+        .back {
+            display: inline-block;
+            margin-top: 16px;
+            padding: 9px 16px;
+            border: 1px solid white;
+            border-radius: 8px;
+            color: white;
+            text-decoration: none;
+        }
+
+        .back:hover {
+            background: white;
+            color: #173f5f;
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: auto;
+            padding: 30px 20px;
+        }
+
+        .intro {
+            text-align: center;
+            margin-bottom: 28px;
+        }
+
+        .intro h2 {
+            color: #173f5f;
+            font-size: 25px;
+            margin-bottom: 10px;
+        }
+
+        .intro p {
+            color: #5c6b7a;
+            line-height: 1.7;
+        }
+
+        .modules {
+            display: grid;
+            grid-template-columns: repeat(3, minmax(0, 1fr));
+            gap: 22px;
+        }
+
+        .module {
+            display: flex;
+            flex-direction: column;
+            min-height: 270px;
+            padding: 22px;
+            background: white;
+            border: 1px solid #e1eaf2;
+            border-radius: 15px;
+            box-shadow: 0 5px 15px rgba(23, 63, 95, 0.07);
+            text-decoration: none;
+            color: inherit;
+            transition: transform 0.2s, box-shadow 0.2s;
+        }
+
+        .module:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 10px 24px rgba(23, 63, 95, 0.14);
+        }
+
+        .module-icon {
+            font-size: 36px;
+            margin-bottom: 13px;
+        }
+
+        .module h3 {
+            font-size: 19px;
+            color: #173f5f;
+            margin-bottom: 10px;
+        }
+
+        .module p {
+            font-size: 14px;
+            line-height: 1.6;
+            color: #5c6b7a;
+            margin-bottom: 12px;
+        }
+
+        .module ul {
+            padding-left: 19px;
+            margin-bottom: 18px;
+            color: #435568;
+            font-size: 13px;
+            line-height: 1.8;
+        }
+
+        .explore {
+            display: inline-block;
+            margin-top: auto;
+            padding: 10px 12px;
+            border-radius: 8px;
+            background: #eaf4fa;
+            color: #17628a;
+            font-size: 14px;
+            font-weight: 600;
+            text-align: center;
+        }
+
+        footer {
+            text-align: center;
+            padding: 22px;
+            color: #657586;
+            font-size: 13px;
+        }
+
+        @media (max-width: 900px) {
+            .modules {
+                grid-template-columns: repeat(2, minmax(0, 1fr));
+            }
+        }
+
+        @media (max-width: 600px) {
+            header h1 {
+                font-size: 24px;
+            }
+
+            .modules {
+                grid-template-columns: 1fr;
+            }
+
+            .container {
+                padding: 22px 14px;
+            }
+        }
+    </style>
+</head>
+
+<body>
+
+<header>
+    <h1>🌞 BrightNest Learning Hub</h1>
+    <p>Phonics Centre | Reading & Decoding</p>
+    <a class="back" href="../phonics.html">← Back to Phonics Centre</a>
+</header>
+
+<main class="container">
+
+    <section class="intro">
+        <h2>Reading & Decoding 📚</h2>
+        <p>
+            Move from sounds to words, sentences and stories.
+            Practise decoding, develop reading fluency and build comprehension skills.
+        </p>
+    </section>
+
+    <section class="modules">
+
+        <a class="module" href="sound-blending-studio.html">
+            <div class="module-icon">🔊</div>
+            <h3>1. Sound Blending Studio</h3>
+            <p>Blend individual sounds to read complete words.</p>
+            <ul>
+                <li>Listen to individual sounds</li>
+                <li>Blend sounds into words</li>
+                <li>Practise sound-by-sound reading</li>
+            </ul>
+            <span class="explore">Start Blending →</span>
+        </a>
+
+        <a class="module" href="read-cvc-words.html">
+            <div class="module-icon">🐱</div>
+            <h3>2. Read CVC Words</h3>
+            <p>Decode simple consonant-vowel-consonant words.</p>
+            <ul>
+                <li>Short vowel words</li>
+                <li>Read and match pictures</li>
+                <li>Build reading accuracy</li>
+            </ul>
+            <span class="explore">Read Words →</span>
+        </a>
+
+        <a class="module" href="digraphs-blends-reading.html">
+            <div class="module-icon">🚂</div>
+            <h3>3. Digraphs & Blends Reading</h3>
+            <p>Read words containing consonant combinations.</p>
+            <ul>
+                <li>SH, CH, TH and WH</li>
+                <li>Beginning and ending blends</li>
+                <li>Decode unfamiliar words</li>
+            </ul>
+            <span class="explore">Practise Reading →</span>
+        </a>
+
+        <a class="module" href="long-vowel-reading.html">
+            <div class="module-icon">🌈</div>
+            <h3>4. Read Long Vowel Words</h3>
+            <p>Recognise long vowels and common spelling patterns.</p>
+            <ul>
+                <li>Magic E words</li>
+                <li>AI, AY, EE, EA and OA</li>
+                <li>Read and sort words</li>
+            </ul>
+            <span class="explore">Explore Words →</span>
+        </a>
+
+        <a class="module" href="multisyllabic-words.html">
+            <div class="module-icon">🧩</div>
+            <h3>5. Decode Multisyllabic Words</h3>
+            <p>Break longer words into manageable parts.</p>
+            <ul>
+                <li>Clap and count syllables</li>
+                <li>Divide words into syllables</li>
+                <li>Blend syllables to read</li>
+            </ul>
+            <span class="explore">Decode Words →</span>
+        </a>
+
+        <a class="module" href="high-frequency-words.html">
+            <div class="module-icon">⭐</div>
+            <h3>6. High-Frequency Words</h3>
+            <p>Recognise common words while developing automaticity.</p>
+            <ul>
+                <li>Common everyday words</li>
+                <li>Read words in sentences</li>
+                <li>Practise tricky spellings</li>
+            </ul>
+            <span class="explore">Practise Words →</span>
+        </a>
+
+        <a class="module" href="read-simple-sentences.html">
+            <div class="module-icon">📝</div>
+            <h3>7. Read Simple Sentences</h3>
+            <p>Combine known words to read meaningful sentences.</p>
+            <ul>
+                <li>Decode sentence by sentence</li>
+                <li>Read with suitable phrasing</li>
+                <li>Answer simple questions</li>
+            </ul>
+            <span class="explore">Read Sentences →</span>
+        </a>
+
+        <a class="module" href="decodable-story-corner.html">
+            <div class="module-icon">📖</div>
+            <h3>8. Decodable Story Corner</h3>
+            <p>Apply phonics knowledge while reading short stories.</p>
+            <ul>
+                <li>Stories with taught patterns</li>
+                <li>Read and discover new words</li>
+                <li>Retell what happened</li>
+            </ul>
+            <span class="explore">Read a Story →</span>
+        </a>
+
+        <a class="module" href="fluency-expression.html">
+            <div class="module-icon">🎭</div>
+            <h3>9. Fluency & Expression</h3>
+            <p>Develop accurate, smooth and expressive reading.</p>
+            <ul>
+                <li>Repeated reading practice</li>
+                <li>Pause at punctuation</li>
+                <li>Read with expression</li>
+            </ul>
+            <span class="explore">Build Fluency →</span>
+        </a>
+
+        <a class="module" href="listen-decode-match.html">
+            <div class="module-icon">🎧</div>
+            <h3>10. Listen, Decode & Match</h3>
+            <p>Connect spoken words with written words and pictures.</p>
+            <ul>
+                <li>Listen carefully</li>
+                <li>Identify the correct word</li>
+                <li>Match words and pictures</li>
+            </ul>
+            <span class="explore">Listen & Learn →</span>
+        </a>
+
+        <a class="module" href="read-understand.html">
+            <div class="module-icon">💡</div>
+            <h3>11. Read & Understand</h3>
+            <p>Develop understanding of words, sentences and passages.</p>
+            <ul>
+                <li>Find information in a text</li>
+                <li>Answer comprehension questions</li>
+                <li>Make simple inferences</li>
+            </ul>
+            <span class="explore">Test Understanding →</span>
+        </a>
+
+        <a class="module" href="reading-challenge-toolkit.html">
+            <div class="module-icon">🏆</div>
+            <h3>12. Reading Challenge & Teacher Toolkit</h3>
+            <p>Practise reading and identify areas needing support.</p>
+            <ul>
+                <li>Decoding and fluency activities</li>
+                <li>Reading assessment checklist</li>
+                <li>Support for different learning levels</li>
+            </ul>
+            <span class="explore">Explore Toolkit →</span>
+        </a>
+
+    </section>
+</main>
+
+<footer>
+    BrightNest Learning Hub | Learn • Practise • Grow
+</footer>
+
+</body>
+</html>

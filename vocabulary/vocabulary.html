@@ -1,0 +1,426 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Vocabulary Lab | BrightNest Learning Hub</title>
+
+<style>
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: "Segoe UI", Arial, sans-serif;
+    background: #f4f8fc;
+    color: #243447;
+}
+
+header {
+    background: linear-gradient(135deg, #173f5f, #287ca0);
+    color: white;
+    text-align: center;
+    padding: 30px 20px;
+}
+
+header h1 {
+    font-size: 30px;
+    margin-bottom: 8px;
+}
+
+header p {
+    line-height: 1.6;
+}
+
+.back {
+    display: inline-block;
+    margin-top: 16px;
+    padding: 9px 16px;
+    border: 1px solid white;
+    border-radius: 8px;
+    color: white;
+    text-decoration: none;
+}
+
+.back:hover {
+    background: white;
+    color: #173f5f;
+}
+
+.container {
+    max-width: 1250px;
+    margin: auto;
+    padding: 30px 20px;
+}
+
+.intro {
+    text-align: center;
+    margin-bottom: 30px;
+}
+
+.intro h2 {
+    font-size: 26px;
+    color: #173f5f;
+    margin-bottom: 10px;
+}
+
+.intro p {
+    color: #5c6b7a;
+    line-height: 1.7;
+    max-width: 850px;
+    margin: auto;
+}
+
+.modules {
+    display: grid;
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+    gap: 22px;
+}
+
+.module {
+    display: flex;
+    flex-direction: column;
+    min-height: 270px;
+    padding: 22px;
+    background: white;
+    border: 1px solid #e1eaf2;
+    border-radius: 15px;
+    box-shadow: 0 5px 15px rgba(23, 63, 95, 0.07);
+    color: inherit;
+    text-decoration: none;
+    transition: transform 0.2s, box-shadow 0.2s;
+}
+
+.module:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 10px 24px rgba(23, 63, 95, 0.14);
+}
+
+.module-icon {
+    font-size: 36px;
+    margin-bottom: 13px;
+}
+
+.module h3 {
+    color: #173f5f;
+    font-size: 19px;
+    margin-bottom: 10px;
+}
+
+.module p {
+    color: #5c6b7a;
+    font-size: 14px;
+    line-height: 1.6;
+    margin-bottom: 12px;
+}
+
+.module ul {
+    padding-left: 19px;
+    margin-bottom: 18px;
+    color: #435568;
+    font-size: 13px;
+    line-height: 1.8;
+}
+
+.explore {
+    display: inline-block;
+    margin-top: auto;
+    padding: 10px 12px;
+    background: #eaf4fa;
+    color: #17628a;
+    border-radius: 8px;
+    font-size: 14px;
+    font-weight: 600;
+    text-align: center;
+}
+
+footer {
+    text-align: center;
+    padding: 24px;
+    color: #657586;
+    font-size: 13px;
+}
+
+@media (max-width: 950px) {
+    .modules {
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+    }
+}
+
+@media (max-width: 600px) {
+    header h1 {
+        font-size: 24px;
+    }
+
+    .modules {
+        grid-template-columns: 1fr;
+    }
+
+    .container {
+        padding: 22px 14px;
+    }
+}
+</style>
+</head>
+
+<body>
+
+<header>
+    <h1>🌞 BrightNest Learning Hub</h1>
+    <p>English Learning | Vocabulary Lab</p>
+    <a class="back" href="../english.html">← Back to English</a>
+</header>
+
+<main class="container">
+
+    <section class="intro">
+        <h2>Vocabulary Lab 📚</h2>
+        <p>
+            Discover new words, explore meanings, understand word relationships
+            and expressions, and strengthen vocabulary through interactive learning,
+            games and challenges.
+        </p>
+    </section>
+
+    <section class="modules">
+
+        <a class="module" href="synonyms-lab.html">
+            <div class="module-icon">🔗</div>
+            <h3>1. Synonyms Lab</h3>
+            <p>Discover words that have similar meanings.</p>
+            <ul>
+                <li>Match words with similar meanings</li>
+                <li>Find the best synonym in a sentence</li>
+                <li>Picture-based vocabulary practice</li>
+            </ul>
+            <span class="explore">Explore Synonyms →</span>
+        </a>
+
+        <a class="module" href="antonyms-lab.html">
+            <div class="module-icon">↔️</div>
+            <h3>2. Antonyms Lab</h3>
+            <p>Explore words with opposite meanings.</p>
+            <ul>
+                <li>Match opposite words</li>
+                <li>Complete sentences</li>
+                <li>Play opposite-word challenges</li>
+            </ul>
+            <span class="explore">Explore Antonyms →</span>
+        </a>
+
+        <a class="module" href="homophones-hub.html">
+            <div class="module-icon">👂</div>
+            <h3>3. Homophones Hub</h3>
+            <p>Learn words that sound alike but have different meanings.</p>
+            <ul>
+                <li>Sun and son</li>
+                <li>See and sea</li>
+                <li>Choose the correct word in context</li>
+            </ul>
+            <span class="explore">Explore Homophones →</span>
+        </a>
+
+        <a class="module" href="homonyms-multiple-meanings.html">
+            <div class="module-icon">🎭</div>
+            <h3>4. Homonyms & Multiple-Meaning Words</h3>
+            <p>Explore words that can express different meanings.</p>
+            <ul>
+                <li>Bat, bark, ring and pupil</li>
+                <li>Understand meanings from context</li>
+                <li>Match words with meanings</li>
+            </ul>
+            <span class="explore">Discover Meanings →</span>
+        </a>
+
+        <a class="module" href="homographs-lab.html">
+            <div class="module-icon">🔍</div>
+            <h3>5. Homographs Lab</h3>
+            <p>Investigate words with the same spelling but different meanings.</p>
+            <ul>
+                <li>Explore words such as lead and tear</li>
+                <li>Notice pronunciation differences</li>
+                <li>Use context to identify meaning</li>
+            </ul>
+            <span class="explore">Investigate Words →</span>
+        </a>
+
+        <a class="module" href="confusing-misused-words.html">
+            <div class="module-icon">🤔</div>
+            <h3>6. Confusing & Commonly Misused Words</h3>
+            <p>Learn to choose the right word for the right situation.</p>
+            <ul>
+                <li>There, their and they're</li>
+                <li>Your and you're</li>
+                <li>Accept and except</li>
+            </ul>
+            <span class="explore">Clear the Confusion →</span>
+        </a>
+
+        <a class="module" href="compound-words.html">
+            <div class="module-icon">🧩</div>
+            <h3>7. Compound Words & Word Building</h3>
+            <p>Combine words to discover new words and meanings.</p>
+            <ul>
+                <li>Sun + flower = sunflower</li>
+                <li>Build compound words</li>
+                <li>Complete missing word parts</li>
+            </ul>
+            <span class="explore">Build Words →</span>
+        </a>
+
+        <a class="module" href="prefixes-suffixes-word-families.html">
+            <div class="module-icon">🧱</div>
+            <h3>8. Prefixes, Suffixes & Word Families</h3>
+            <p>Understand how word parts help form related words.</p>
+            <ul>
+                <li>Prefixes such as un- and re-</li>
+                <li>Suffixes such as -ful and -less</li>
+                <li>Build and sort related words</li>
+            </ul>
+            <span class="explore">Explore Word Building →</span>
+        </a>
+
+        <a class="module" href="one-word-substitution.html">
+            <div class="module-icon">💡</div>
+            <h3>9. One-Word Substitution</h3>
+            <p>Express a phrase using one suitable word.</p>
+            <ul>
+                <li>A person who teaches — teacher</li>
+                <li>Match descriptions with words</li>
+                <li>Practise with sentences</li>
+            </ul>
+            <span class="explore">Find One Word →</span>
+        </a>
+
+        <a class="module" href="collective-nouns-word-groups.html">
+            <div class="module-icon">🐝</div>
+            <h3>10. Collective Nouns & Word Groups</h3>
+            <p>Learn words used for groups of people, animals and things.</p>
+            <ul>
+                <li>A flock of birds</li>
+                <li>A bunch of grapes</li>
+                <li>A team of players</li>
+            </ul>
+            <span class="explore">Explore Word Groups →</span>
+        </a>
+
+        <a class="module" href="describing-words.html">
+            <div class="module-icon">🎨</div>
+            <h3>11. Describing Words & Powerful Vocabulary</h3>
+            <p>Make descriptions clearer, richer and more interesting.</p>
+            <ul>
+                <li>Adjectives and sensory words</li>
+                <li>Choose precise descriptive words</li>
+                <li>Describe people, places and objects</li>
+            </ul>
+            <span class="explore">Describe & Discover →</span>
+        </a>
+
+        <a class="module" href="action-words-expressions.html">
+            <div class="module-icon">🏃</div>
+            <h3>12. Action Words & Expressions</h3>
+            <p>Discover action words and useful everyday expressions.</p>
+            <ul>
+                <li>Explore action verbs</li>
+                <li>Match actions with pictures</li>
+                <li>Use expressions in sentences</li>
+            </ul>
+            <span class="explore">Explore Actions →</span>
+        </a>
+
+        <a class="module" href="idioms-phrases-proverbs.html">
+            <div class="module-icon">📖</div>
+            <h3>13. Idioms, Phrases & Proverbs</h3>
+            <p>Understand expressions that communicate ideas in special ways.</p>
+            <ul>
+                <li>A piece of cake</li>
+                <li>Once in a blue moon</li>
+                <li>Learn through stories and examples</li>
+            </ul>
+            <span class="explore">Discover Expressions →</span>
+        </a>
+
+        <a class="module" href="thematic-vocabulary.html">
+            <div class="module-icon">🌍</div>
+            <h3>14. Thematic Vocabulary Explorer</h3>
+            <p>Build vocabulary around familiar topics and everyday life.</p>
+            <ul>
+                <li>Animals, food and family</li>
+                <li>School, nature and transport</li>
+                <li>Occupations and community</li>
+            </ul>
+            <span class="explore">Explore Themes →</span>
+        </a>
+
+        <a class="module" href="word-meaning-context-clues.html">
+            <div class="module-icon">🕵️</div>
+            <h3>15. Word Meaning & Context Clues</h3>
+            <p>Use surrounding words and sentences to understand meaning.</p>
+            <ul>
+                <li>Picture and sentence clues</li>
+                <li>Guess unfamiliar word meanings</li>
+                <li>Read and understand short passages</li>
+            </ul>
+            <span class="explore">Become a Word Detective →</span>
+        </a>
+
+        <a class="module" href="picture-dictionary-word-explorer.html">
+            <div class="module-icon">🖼️</div>
+            <h3>16. Picture Dictionary & Word Explorer</h3>
+            <p>Discover words through pictures, meanings and examples.</p>
+            <ul>
+                <li>Picture-based word collections</li>
+                <li>Definitions and example sentences</li>
+                <li>Pronunciation and audio support</li>
+            </ul>
+            <span class="explore">Explore New Words →</span>
+        </a>
+
+        <a class="module" href="word-puzzles-games.html">
+            <div class="module-icon">🎲</div>
+            <h3>17. Word Puzzles & Vocabulary Games</h3>
+            <p>Practise vocabulary through playful challenges.</p>
+            <ul>
+                <li>Word searches and scrambled words</li>
+                <li>Matching and odd-one-out games</li>
+                <li>Timed word challenges</li>
+            </ul>
+            <span class="explore">Play & Practise →</span>
+        </a>
+
+        <a class="module" href="vocabulary-quiz-challenge.html">
+            <div class="module-icon">🏆</div>
+            <h3>18. Vocabulary Quiz & Challenge Zone</h3>
+            <p>Test your vocabulary knowledge at different levels.</p>
+            <ul>
+                <li>MCQs and sentence-based questions</li>
+                <li>Competency-based challenges</li>
+                <li>Mixed vocabulary quizzes</li>
+            </ul>
+            <span class="explore">Take the Challenge →</span>
+        </a>
+
+        <a class="module" href="teacher-toolkit-progress.html">
+            <div class="module-icon">📊</div>
+            <h3>19. Teacher Toolkit & Vocabulary Progress</h3>
+            <p>Plan vocabulary learning and monitor student development.</p>
+            <ul>
+                <li>Lesson resources and worksheets</li>
+                <li>Differentiated and remedial activities</li>
+                <li>Assessment and progress records</li>
+            </ul>
+            <span class="explore">Open Teacher Toolkit →</span>
+        </a>
+
+    </section>
+</main>
+
+<footer>
+    BrightNest Learning Hub | Discover • Learn • Practise • Grow
+</footer>
+
+</body>
+</html>

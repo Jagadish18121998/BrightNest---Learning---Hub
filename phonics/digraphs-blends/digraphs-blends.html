@@ -1,0 +1,375 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Digraphs & Blends | BrightNest Learning Hub></title>
+
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    :root {
+      --navy: #173b57;
+      --blue: #256b80;
+      --background: #f4f7fb;
+      --text: #243247;
+      --muted: #65748b;
+      --border: #e2eaf2;
+    }
+
+    body {
+      font-family: Arial, sans-serif;
+      background: var(--background);
+      color: var(--text);
+      line-height: 1.6;
+    }
+
+    header {
+      background: linear-gradient(135deg, var(--navy), var(--blue));
+      color: white;
+      padding: 24px 6%;
+    }
+
+    .brand {
+      font-size: 21px;
+      font-weight: bold;
+      margin-bottom: 18px;
+    }
+
+    .back-link {
+      display: inline-block;
+      color: white;
+      text-decoration: none;
+      border: 1px solid rgba(255,255,255,.6);
+      padding: 8px 14px;
+      border-radius: 8px;
+      margin-bottom: 22px;
+    }
+
+    .hero {
+      text-align: center;
+      padding: 15px 10px 25px;
+    }
+
+    .hero-icon {
+      font-size: 55px;
+      margin-bottom: 8px;
+    }
+
+    .hero h1 {
+      font-size: clamp(28px, 5vw, 43px);
+      margin-bottom: 10px;
+    }
+
+    .hero p {
+      max-width: 700px;
+      margin: auto;
+      color: #e4eef5;
+    }
+
+    main {
+      max-width: 1250px;
+      margin: auto;
+      padding: 35px 22px 50px;
+    }
+
+    .intro {
+      text-align: center;
+      margin-bottom: 35px;
+    }
+
+    .intro h2 {
+      font-size: 26px;
+      margin-bottom: 8px;
+    }
+
+    .intro p,
+    .section-description {
+      color: var(--muted);
+    }
+
+    .section {
+      margin-bottom: 42px;
+    }
+
+    .section-title {
+      font-size: 24px;
+      margin-bottom: 6px;
+    }
+
+    .section-description {
+      margin-bottom: 20px;
+    }
+
+    .cards {
+      display: grid;
+      grid-template-columns: repeat(3, minmax(0, 1fr));
+      gap: 20px;
+    }
+
+    .card {
+      display: block;
+      background: white;
+      color: inherit;
+      text-decoration: none;
+      border: 1px solid var(--border);
+      border-radius: 15px;
+      padding: 22px;
+      box-shadow: 0 4px 15px rgba(30,55,80,.05);
+      transition: transform .2s, box-shadow .2s;
+    }
+
+    .card:hover {
+      transform: translateY(-4px);
+      box-shadow: 0 9px 23px rgba(30,55,80,.1);
+    }
+
+    .card-icon {
+      font-size: 36px;
+      margin-bottom: 10px;
+    }
+
+    .card h3 {
+      font-size: 19px;
+      margin-bottom: 8px;
+    }
+
+    .card p {
+      color: var(--muted);
+      font-size: 14px;
+      margin-bottom: 14px;
+    }
+
+    .examples {
+      background: #f0f6fa;
+      border-radius: 8px;
+      padding: 9px 11px;
+      font-size: 13px;
+      margin-bottom: 15px;
+    }
+
+    .card-link {
+      color: #176b87;
+      font-weight: bold;
+      font-size: 14px;
+    }
+
+    footer {
+      text-align: center;
+      padding: 22px;
+      color: var(--muted);
+      font-size: 13px;
+    }
+
+    @media (max-width: 900px) {
+      .cards {
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+      }
+    }
+
+    @media (max-width: 560px) {
+      .cards {
+        grid-template-columns: 1fr;
+      }
+
+      main {
+        padding-left: 15px;
+        padding-right: 15px;
+      }
+    }
+  </style>
+</head>
+
+<body>
+  <header>
+    <div class="brand">🌞 BrightNest Learning Hub</div>
+
+    <a href="../phonics.html" class="back-link">
+      ← Back to Phonics Centre
+    </a>
+
+    <div class="hero">
+      <div class="hero-icon">🔗</div>
+      <h1>Digraphs & Blends</h1>
+      <p>
+        Discover how letters work together, listen to their sounds,
+        blend words and become a confident reader.
+      </p>
+    </div>
+  </header>
+
+  <main>
+    <section class="intro">
+      <h2>Your Sound Discovery Journey</h2>
+      <p>
+        Learn one pattern at a time through examples, listening,
+        reading and interactive practice.
+      </p>
+    </section>
+
+    <section class="section">
+      <h2 class="section-title">🔤 Part 1: Consonant Digraphs</h2>
+      <p class="section-description">
+        Two letters work together to represent a sound.
+      </p>
+
+      <div class="cards">
+        <a class="card" href="sh-digraph.html">
+          <div class="card-icon">🚢</div>
+          <h3>1. SH Digraph</h3>
+          <p>Explore the sound heard in many words beginning or ending with sh.</p>
+          <div class="examples">ship · shop · fish · shell</div>
+          <span class="card-link">Explore SH →</span>
+        </a>
+
+        <a class="card" href="ch-digraph.html">
+          <div class="card-icon">🪑</div>
+          <h3>2. CH Digraph</h3>
+          <p>Practise the common ch sound in familiar words.</p>
+          <div class="examples">chair · chick · lunch · much</div>
+          <span class="card-link">Explore CH →</span>
+        </a>
+
+        <a class="card" href="th-digraph.html">
+          <div class="card-icon">👍</div>
+          <h3>3. TH Digraph</h3>
+          <p>Listen to the two common th sounds.</p>
+          <div class="examples">thin · thumb · this · that</div>
+          <span class="card-link">Explore TH →</span>
+        </a>
+
+        <a class="card" href="wh-digraph.html">
+          <div class="card-icon">🐋</div>
+          <h3>4. WH Digraph</h3>
+          <p>Recognise wh in words used for questions and objects.</p>
+          <div class="examples">when · wheel · whisk</div>
+          <span class="card-link">Explore WH →</span>
+        </a>
+
+        <a class="card" href="ph-digraph.html">
+          <div class="card-icon">📱</div>
+          <h3>5. PH Digraph</h3>
+          <p>Discover words in which ph represents the /f/ sound.</p>
+          <div class="examples">phone · photo · dolphin</div>
+          <span class="card-link">Explore PH →</span>
+        </a>
+
+        <a class="card" href="ck-digraph.html">
+          <div class="card-icon">🦆</div>
+          <h3>6. CK Pattern</h3>
+          <p>Practise the ck spelling commonly found after a short vowel.</p>
+          <div class="examples">duck · sock · clock</div>
+          <span class="card-link">Explore CK →</span>
+        </a>
+
+        <a class="card" href="ng-digraph.html">
+          <div class="card-icon">🔔</div>
+          <h3>7. NG Pattern</h3>
+          <p>Listen for the sound at the end of words containing ng.</p>
+          <div class="examples">ring · sing · long</div>
+          <span class="card-link">Explore NG →</span>
+        </a>
+
+        <a class="card" href="qu-pattern.html">
+          <div class="card-icon">👑</div>
+          <h3>8. QU Letter Team</h3>
+          <p>Explore the common qu spelling, usually representing /kw/.</p>
+          <div class="examples">queen · quick · quiz</div>
+          <span class="card-link">Explore QU →</span>
+        </a>
+      </div>
+    </section>
+
+    <section class="section">
+      <h2 class="section-title">🧩 Part 2: Beginning Blends</h2>
+      <p class="section-description">
+        Hear each consonant sound as it blends with the next sound.
+      </p>
+
+      <div class="cards">
+        <a class="card" href="l-blends.html">
+          <div class="card-icon">🍃</div>
+          <h3>9. L-Blends</h3>
+          <p>Practise consonant blends containing l.</p>
+          <div class="examples">bl · cl · fl · gl · pl · sl</div>
+          <span class="card-link">Explore L-blends →</span>
+        </a>
+
+        <a class="card" href="r-blends.html">
+          <div class="card-icon">🐸</div>
+          <h3>10. R-Blends</h3>
+          <p>Blend consonants with r at the beginning of words.</p>
+          <div class="examples">br · cr · dr · fr · gr · tr</div>
+          <span class="card-link">Explore R-blends →</span>
+        </a>
+
+        <a class="card" href="s-blends.html">
+          <div class="card-icon">⭐</div>
+          <h3>11. S-Blends</h3>
+          <p>Practise beginning blends that include s.</p>
+          <div class="examples">sc · sk · sm · sn · sp · st · sw</div>
+          <span class="card-link">Explore S-blends →</span>
+        </a>
+
+        <a class="card" href="three-letter-blends.html">
+          <div class="card-icon">🚂</div>
+          <h3>12. Three-Letter Blends</h3>
+          <p>Listen for all three consonant sounds.</p>
+          <div class="examples">scr · spl · spr · str</div>
+          <span class="card-link">Explore three-letter blends →</span>
+        </a>
+      </div>
+    </section>
+
+    <section class="section">
+      <h2 class="section-title">🎯 Part 3: Ending Blends</h2>
+      <p class="section-description">
+        Hear and read consonant blends at the ends of words.
+      </p>
+
+      <div class="cards">
+        <a class="card" href="nd-nt-blends.html">
+          <div class="card-icon">✋</div>
+          <h3>13. ND and NT</h3>
+          <p>Practise hearing both consonant sounds at the end.</p>
+          <div class="examples">hand · sand · tent · plant</div>
+          <span class="card-link">Explore ND/NT →</span>
+        </a>
+
+        <a class="card" href="st-sk-blends.html">
+          <div class="card-icon">🪺</div>
+          <h3>14. ST and SK</h3>
+          <p>Recognise and read common ending blends.</p>
+          <div class="examples">nest · fast · desk · mask</div>
+          <span class="card-link">Explore ST/SK →</span>
+        </a>
+
+        <a class="card" href="mp-nk-blends.html">
+          <div class="card-icon">💡</div>
+          <h3>15. MP and NK</h3>
+          <p>Listen carefully to the sounds in these word endings.</p>
+          <div class="examples">lamp · jump · bank · pink</div>
+          <span class="card-link">Explore MP/NK →</span>
+        </a>
+
+        <a class="card" href="ft-ld-blends.html">
+          <div class="card-icon">🎁</div>
+          <h3>16. FT and LD</h3>
+          <p>Read words with these consonant combinations.</p>
+          <div class="examples">gift · left · cold · held</div>
+          <span class="card-link">Explore FT/LD →</span>
+        </a>
+      </div>
+    </section>
+  </main>
+
+  <footer>
+    BrightNest Learning Hub | Phonics Centre | Learn through sounds 🌱
+  </footer>
+</body>
+</html>

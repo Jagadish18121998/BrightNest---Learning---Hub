@@ -1,0 +1,339 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Teacher Toolkit & Assessment | BrightNest</title>
+
+<style>
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: "Segoe UI", Arial, sans-serif;
+    background: #f4f8fc;
+    color: #243447;
+}
+
+header {
+    background: linear-gradient(135deg, #173f5f, #287ca0);
+    color: white;
+    text-align: center;
+    padding: 28px 20px;
+}
+
+header h1 {
+    font-size: 29px;
+    margin-bottom: 8px;
+}
+
+header p {
+    line-height: 1.6;
+}
+
+.back {
+    display: inline-block;
+    margin-top: 16px;
+    padding: 9px 16px;
+    border: 1px solid white;
+    border-radius: 8px;
+    color: white;
+    text-decoration: none;
+}
+
+.back:hover {
+    background: white;
+    color: #173f5f;
+}
+
+.container {
+    max-width: 1200px;
+    margin: auto;
+    padding: 30px 20px;
+}
+
+.intro {
+    text-align: center;
+    margin-bottom: 28px;
+}
+
+.intro h2 {
+    color: #173f5f;
+    font-size: 25px;
+    margin-bottom: 10px;
+}
+
+.intro p {
+    color: #5c6b7a;
+    line-height: 1.7;
+}
+
+.modules {
+    display: grid;
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+    gap: 22px;
+}
+
+.module {
+    display: flex;
+    flex-direction: column;
+    min-height: 260px;
+    padding: 22px;
+    background: white;
+    border: 1px solid #e1eaf2;
+    border-radius: 15px;
+    box-shadow: 0 5px 15px rgba(23, 63, 95, 0.07);
+    text-decoration: none;
+    color: inherit;
+    transition: transform 0.2s, box-shadow 0.2s;
+}
+
+.module:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 10px 24px rgba(23, 63, 95, 0.14);
+}
+
+.module-icon {
+    font-size: 36px;
+    margin-bottom: 13px;
+}
+
+.module h3 {
+    font-size: 19px;
+    color: #173f5f;
+    margin-bottom: 10px;
+}
+
+.module p {
+    font-size: 14px;
+    line-height: 1.6;
+    color: #5c6b7a;
+    margin-bottom: 12px;
+}
+
+.module ul {
+    padding-left: 19px;
+    margin-bottom: 18px;
+    font-size: 13px;
+    line-height: 1.8;
+    color: #435568;
+}
+
+.explore {
+    display: inline-block;
+    margin-top: auto;
+    padding: 10px 12px;
+    border-radius: 8px;
+    background: #eaf4fa;
+    color: #17628a;
+    font-size: 14px;
+    font-weight: 600;
+    text-align: center;
+}
+
+footer {
+    text-align: center;
+    padding: 22px;
+    color: #657586;
+    font-size: 13px;
+}
+
+@media (max-width: 900px) {
+    .modules {
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+    }
+}
+
+@media (max-width: 600px) {
+    .modules {
+        grid-template-columns: 1fr;
+    }
+
+    header h1 {
+        font-size: 24px;
+    }
+
+    .container {
+        padding: 22px 14px;
+    }
+}
+</style>
+</head>
+
+<body>
+
+<header>
+    <h1>🌞 BrightNest Learning Hub</h1>
+    <p>Phonics Centre | Teacher Toolkit & Assessment</p>
+    <a class="back" href="../phonics.html">← Back to Phonics Centre</a>
+</header>
+
+<main class="container">
+
+    <section class="intro">
+        <h2>Teacher Toolkit & Assessment 📚</h2>
+        <p>
+            A practical resource centre to help teachers plan phonics lessons,
+            assess learning, provide differentiated support and track student progress.
+        </p>
+    </section>
+
+    <section class="modules">
+
+        <a class="module" href="phonics-lesson-planner.html">
+            <div class="module-icon">📝</div>
+            <h3>1. Phonics Lesson Planner</h3>
+            <p>Plan structured phonics lessons with clear learning goals.</p>
+            <ul>
+                <li>Learning objectives and outcomes</li>
+                <li>Teaching steps and activities</li>
+                <li>Resources and reflection</li>
+            </ul>
+            <span class="explore">Plan a Lesson →</span>
+        </a>
+
+        <a class="module" href="phonics-assessment-centre.html">
+            <div class="module-icon">📋</div>
+            <h3>2. Phonics Assessment Centre</h3>
+            <p>Check students' understanding at different stages of learning.</p>
+            <ul>
+                <li>Diagnostic assessment</li>
+                <li>Formative assessment</li>
+                <li>Revision and review questions</li>
+            </ul>
+            <span class="explore">Explore Assessments →</span>
+        </a>
+
+        <a class="module" href="sound-recognition-assessment.html">
+            <div class="module-icon">🔊</div>
+            <h3>3. Sound Recognition Assessment</h3>
+            <p>Assess recognition of letters and their corresponding sounds.</p>
+            <ul>
+                <li>Letter–sound matching</li>
+                <li>Initial and final sounds</li>
+                <li>Vowel sound identification</li>
+            </ul>
+            <span class="explore">Assess Sound Skills →</span>
+        </a>
+
+        <a class="module" href="blending-segmenting-assessment.html">
+            <div class="module-icon">🧩</div>
+            <h3>4. Blending & Segmenting Assessment</h3>
+            <p>Check how learners combine and separate speech sounds.</p>
+            <ul>
+                <li>Blend sounds into words</li>
+                <li>Segment words into sounds</li>
+                <li>Decode simple words</li>
+            </ul>
+            <span class="explore">Assess Word Skills →</span>
+        </a>
+
+        <a class="module" href="reading-fluency-tracker.html">
+            <div class="module-icon">📖</div>
+            <h3>5. Reading Fluency Tracker</h3>
+            <p>Record reading performance and monitor improvement.</p>
+            <ul>
+                <li>Reading accuracy</li>
+                <li>Words read per minute</li>
+                <li>Progress over time</li>
+            </ul>
+            <span class="explore">Track Fluency →</span>
+        </a>
+
+        <a class="module" href="spelling-assessment.html">
+            <div class="module-icon">✏️</div>
+            <h3>6. Spelling Assessment Lab</h3>
+            <p>Assess spelling patterns and word-building skills.</p>
+            <ul>
+                <li>Word dictation</li>
+                <li>Phonics spelling rules</li>
+                <li>Missing-letter activities</li>
+            </ul>
+            <span class="explore">Assess Spelling →</span>
+        </a>
+
+        <a class="module" href="printable-worksheets.html">
+            <div class="module-icon">🖨️</div>
+            <h3>7. Printable Worksheets</h3>
+            <p>Prepare practice activities for classroom and home use.</p>
+            <ul>
+                <li>Sound and word worksheets</li>
+                <li>Blending and spelling practice</li>
+                <li>Revision sheets</li>
+            </ul>
+            <span class="explore">Open Worksheets →</span>
+        </a>
+
+        <a class="module" href="flashcards-word-cards.html">
+            <div class="module-icon">🃏</div>
+            <h3>8. Flashcards & Word Cards</h3>
+            <p>Use visual resources for phonics instruction and revision.</p>
+            <ul>
+                <li>Letter and sound cards</li>
+                <li>Picture and word cards</li>
+                <li>Printable classroom resources</li>
+            </ul>
+            <span class="explore">Explore Cards →</span>
+        </a>
+
+        <a class="module" href="remedial-learning-toolkit.html">
+            <div class="module-icon">🌱</div>
+            <h3>9. Remedial Learning Toolkit</h3>
+            <p>Provide focused practice based on each learner's needs.</p>
+            <ul>
+                <li>Identify learning gaps</li>
+                <li>Short, guided practice tasks</li>
+                <li>Reassessment activities</li>
+            </ul>
+            <span class="explore">Plan Support →</span>
+        </a>
+
+        <a class="module" href="differentiated-learning-plans.html">
+            <div class="module-icon">🎯</div>
+            <h3>10. Differentiated Learning Plans</h3>
+            <p>Adapt phonics activities for different learning levels.</p>
+            <ul>
+                <li>Beginner practice</li>
+                <li>Developing learner activities</li>
+                <li>Extension tasks</li>
+            </ul>
+            <span class="explore">Explore Learning Plans →</span>
+        </a>
+
+        <a class="module" href="progress-tracker-reports.html">
+            <div class="module-icon">📈</div>
+            <h3>11. Progress Tracker & Reports</h3>
+            <p>Record results and identify skills needing more attention.</p>
+            <ul>
+                <li>Student performance records</li>
+                <li>Skill-wise progress</li>
+                <li>Follow-up planning</li>
+            </ul>
+            <span class="explore">Track Progress →</span>
+        </a>
+
+        <a class="module" href="phonics-games-activity-bank.html">
+            <div class="module-icon">🎲</div>
+            <h3>12. Phonics Games & Activity Bank</h3>
+            <p>Find engaging ways to practise phonics in the classroom.</p>
+            <ul>
+                <li>Whole-class games</li>
+                <li>Pair and group activities</li>
+                <li>Quick revision challenges</li>
+            </ul>
+            <span class="explore">Explore Activities →</span>
+        </a>
+
+    </section>
+</main>
+
+<footer>
+    BrightNest Learning Hub | Plan • Assess • Support • Grow
+</footer>
+
+</body>
+</html>

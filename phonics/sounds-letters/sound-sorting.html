@@ -1,0 +1,553 @@
+```html
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Sound Sorting Challenge | BrightNest</title>
+
+<style>
+* { box-sizing: border-box; }
+
+body {
+  margin: 0;
+  font-family: Arial, sans-serif;
+  background: #f1f6ff;
+  color: #24304a;
+}
+
+header {
+  background: linear-gradient(135deg, #174a7e, #4285d4);
+  color: white;
+  padding: 22px 5%;
+}
+
+header a {
+  color: white;
+  text-decoration: none;
+  font-weight: bold;
+}
+
+main {
+  max-width: 1000px;
+  margin: auto;
+  padding: 24px 16px;
+}
+
+.panel {
+  background: white;
+  padding: 22px;
+  margin-bottom: 20px;
+  border-radius: 20px;
+  box-shadow: 0 5px 18px #24304a12;
+  text-align: center;
+}
+
+.instructions {
+  color: #64748b;
+  line-height: 1.6;
+}
+
+.score {
+  color: #245da8;
+  font-weight: bold;
+}
+
+.cards {
+  display: grid;
+  grid-template-columns: repeat(4, minmax(0, 1fr));
+  gap: 12px;
+  margin: 22px 0;
+}
+
+.picture-card {
+  background: #f8fbff;
+  border: 3px solid #d7e5fa;
+  border-radius: 16px;
+  min-height: 125px;
+  padding: 12px 6px;
+  cursor: grab;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+  font-size: 15px;
+  font-weight: bold;
+}
+
+.picture-card .emoji {
+  font-size: 43px;
+}
+
+.picture-card:focus {
+  outline: 3px solid #245da8;
+}
+
+.picture-card.selected {
+  border-color: #245da8;
+  background: #e7f0ff;
+}
+
+.picture-card.correct {
+  border-color: #238636;
+  background: #e8f7eb;
+  cursor: default;
+}
+
+.picture-card.wrong {
+  border-color: #d97706;
+}
+
+.picture-card:active {
+  cursor: grabbing;
+}
+
+.sorting-area {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 14px;
+}
+
+.sound-group {
+  background: #f8fbff;
+  border: 3px dashed #b9cce8;
+  border-radius: 18px;
+  padding: 16px 8px;
+  min-height: 190px;
+  transition: background 0.2s;
+}
+
+.sound-group.drag-over {
+  background: #e1edff;
+  border-color: #245da8;
+}
+
+.sound-heading {
+  font-size: 23px;
+  font-weight: bold;
+  color: #174a7e;
+  margin-bottom: 12px;
+}
+
+.group-items {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 8px;
+}
+
+.group-items .picture-card {
+  min-height: 85px;
+  width: 100%;
+  max-width: 135px;
+  padding: 8px;
+  cursor: default;
+}
+
+.group-items .emoji {
+  font-size: 32px;
+}
+
+button {
+  border: none;
+  border-radius: 12px;
+  padding: 12px 18px;
+  font-size: 16px;
+  font-weight: bold;
+  cursor: pointer;
+}
+
+.primary {
+  background: #245da8;
+  color: white;
+  margin: 5px;
+}
+
+.primary:hover {
+  background: #174578;
+}
+
+.secondary {
+  background: #e7f0ff;
+  color: #174a7e;
+  margin: 5px;
+}
+
+.feedback {
+  min-height: 30px;
+  margin: 16px 0;
+  font-weight: bold;
+  line-height: 1.5;
+}
+
+.hidden { display: none !important; }
+
+@media (max-width: 650px) {
+  .cards { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+  .sorting-area { grid-template-columns: 1fr; }
+  .sound-group { min-height: 130px; }
+  .group-items .picture-card { width: 42%; }
+}
+</style>
+</head>
+
+<body>
+
+<header>
+  <a href="sounds-letters.html">← Back to Sounds & Letters</a>
+  <h1>🎯 Sound Sorting Challenge</h1>
+  <p>Look at each picture and sort it by its beginning sound.</p>
+</header>
+
+<main>
+  <section class="panel" id="gamePanel">
+    <p class="score" id="progress">Round 1 of 100</p>
+    <p class="score" id="score">Score: 0</p>
+
+    <h2>Sort the Picture Cards</h2>
+
+    <p class="instructions">
+      Drag each picture into the group with the matching beginning
+      letter. On a touch screen, tap a picture and then tap a group.
+      You can listen to a picture before sorting it.
+    </p>
+
+    <button class="secondary" onclick="speakAll()">
+      🔊 Listen to All Pictures
+    </button>
+
+    <div class="cards" id="cards"></div>
+
+    <h2>Beginning-Sound Groups</h2>
+
+    <div class="sorting-area" id="sortingArea"></div>
+
+    <div class="feedback" id="feedback" aria-live="polite"></div>
+
+    <button class="primary" onclick="checkRound()">Check My Sorting</button>
+    <button class="primary hidden" id="nextButton" onclick="nextRound()">
+      Next Round →
+    </button>
+  </section>
+</main>
+
+<script>
+const wordBank = [
+  ["APPLE","🍎","A"], ["ANT","🐜","A"], ["BALL","⚽","B"],
+  ["BIRD","🐦","B"], ["CAT","🐱","C"], ["CUP","🥤","C"],
+  ["DOG","🐶","D"], ["DUCK","🦆","D"], ["EGG","🥚","E"],
+  ["ELEPHANT","🐘","E"], ["FISH","🐟","F"], ["FROG","🐸","F"],
+  ["GOAT","🐐","G"], ["GIFT","🎁","G"], ["HAT","🎩","H"],
+  ["HEN","🐔","H"], ["INK","🖋️","I"], ["IGLOO","🧊","I"],
+  ["JUG","🏺","J"], ["JAM","🍓","J"], ["KITE","🪁","K"],
+  ["KEY","🔑","K"], ["LION","🦁","L"], ["LEAF","🍃","L"],
+  ["MANGO","🥭","M"], ["MOON","🌙","M"], ["NEST","🪺","N"],
+  ["NOSE","👃","N"], ["ORANGE","🍊","O"], ["OWL","🦉","O"],
+  ["PEN","🖊️","P"], ["PANDA","🐼","P"], ["QUEEN","👑","Q"],
+  ["QUILT","🛏️","Q"], ["RABBIT","🐇","R"], ["ROSE","🌹","R"],
+  ["SUN","☀️","S"], ["STAR","⭐","S"], ["TIGER","🐯","T"],
+  ["TRAIN","🚆","T"], ["UMBRELLA","☂️","U"], ["UNICORN","🦄","U"],
+  ["VAN","🚐","V"], ["VIOLIN","🎻","V"], ["WHALE","🐋","W"],
+  ["WATCH","⌚","W"], ["BOX","📦","B"], ["FOX","🦊","F"],
+  ["YOYO","🪀","Y"], ["YAK","🐂","Y"], ["ZEBRA","🦓","Z"],
+  ["ZIPPER","🤐","Z"], ["AXE","🪓","A"], ["BOOK","📚","B"],
+  ["CAR","🚗","C"], ["DRUM","🥁","D"], ["FAN","🪭","F"],
+  ["GIRL","👧","G"], ["HOUSE","🏠","H"], ["ICE","🧊","I"],
+  ["JEEP","🚙","J"], ["KANGAROO","🦘","K"], ["LAMP","💡","L"],
+  ["MILK","🥛","M"], ["NUT","🥜","N"], ["OIL","🛢️","O"],
+  ["PIZZA","🍕","P"], ["ROAD","🛣️","R"], ["SHIP","🚢","S"],
+  ["TOMATO","🍅","T"], ["VASE","🏺","V"], ["WATER","💧","W"],
+  ["ARROW","🏹","A"], ["BELL","🔔","B"], ["COW","🐄","C"],
+  ["DESK","🪑","D"], ["FEET","🦶","F"], ["GLASS","🥛","G"],
+  ["JACKET","🧥","J"], ["LADDER","🪜","L"], ["MONKEY","🐒","M"],
+  ["OCEAN","🌊","O"], ["RING","💍","R"], ["SOCK","🧦","S"],
+  ["TURTLE","🐢","T"], ["VEST","🦺","V"], ["YELLOW","🟡","Y"],
+  ["ZOO","🦒","Z"], ["BAT","🏏","B"], ["CAP","🧢","C"],
+  ["HUT","🛖","H"], ["MAP","🗺️","M"], ["NET","🥅","N"],
+  ["POT","🍲","P"], ["RAT","🐀","R"], ["TAP","🚰","T"],
+  ["VAN","🚐","V"], ["WIG","💇","W"], ["ZIP","🤐","Z"]
+];
+
+const LETTERS = ["A", "B", "C", "D", "E", "F", "G", "H",
+                 "I", "J", "K", "L", "M", "N", "O", "P",
+                 "Q", "R", "S", "T", "U", "V", "W", "Y", "Z"];
+
+const TOTAL_ROUNDS = 100;
+let round = 0;
+let totalScore = 0;
+let cardsThisRound = [];
+let selectedCardId = null;
+let checked = false;
+
+function shuffle(array) {
+  const result = [...array];
+  for (let i = result.length - 1; i > 0; i--) {
+    const j = Math.floor(Math.random() * (i + 1));
+    [result[i], result[j]] = [result[j], result[i]];
+  }
+  return result;
+}
+
+function startGame() {
+  round = 0;
+  totalScore = 0;
+  nextRound();
+}
+
+function nextRound() {
+  if (round >= TOTAL_ROUNDS) {
+    showResults();
+    return;
+  }
+
+  round++;
+  checked = false;
+  selectedCardId = null;
+
+  // Pick three different beginning letters for this round.
+  const chosenLetters = shuffle(LETTERS).slice(0, 3);
+
+  // Pick two picture cards for each selected letter.
+  cardsThisRound = [];
+
+  chosenLetters.forEach(letter => {
+    const matching = wordBank.filter(item => item[2] === letter);
+    shuffle(matching).slice(0, 2).forEach(item => {
+      cardsThisRound.push({
+        id: `${round}-${cardsThisRound.length}`,
+        word: item[0],
+        picture: item[1],
+        answer: item[2],
+        placedIn: null,
+        correct: false
+      });
+    });
+  });
+
+  cardsThisRound = shuffle(cardsThisRound);
+
+  document.getElementById("progress").textContent =
+    `Round ${round} of ${TOTAL_ROUNDS}`;
+
+  document.getElementById("score").textContent =
+    `Total correct: ${totalScore}`;
+
+  document.getElementById("feedback").textContent =
+    "Sort all six pictures into the correct groups.";
+
+  document.getElementById("nextButton").classList.add("hidden");
+
+  renderCards(chosenLetters);
+}
+
+function renderCards(chosenLetters) {
+  const cardsContainer = document.getElementById("cards");
+  const groupsContainer = document.getElementById("sortingArea");
+
+  cardsContainer.innerHTML = "";
+  groupsContainer.innerHTML = "";
+
+  cardsThisRound.forEach(card => {
+    const element = document.createElement("button");
+    element.className = "picture-card";
+    element.draggable = true;
+    element.dataset.id = card.id;
+    element.innerHTML = `
+      <span class="emoji">${card.picture}</span>
+      <span>${card.word}</span>
+    `;
+
+    element.setAttribute("aria-label", card.word);
+
+    element.addEventListener("click", () => {
+      if (checked) return;
+
+      selectedCardId = card.id;
+
+      document.querySelectorAll("#cards .picture-card").forEach(item => {
+        item.classList.toggle("selected", item.dataset.id === card.id);
+      });
+
+      document.getElementById("feedback").textContent =
+        `Selected ${card.word}. Now tap its beginning-sound group.`;
+    });
+
+    element.addEventListener("dragstart", event => {
+      if (checked) {
+        event.preventDefault();
+        return;
+      }
+      event.dataTransfer.setData("text/plain", card.id);
+    });
+
+    cardsContainer.appendChild(element);
+  });
+
+  chosenLetters.forEach(letter => {
+    const group = document.createElement("div");
+    group.className = "sound-group";
+    group.dataset.letter = letter;
+
+    group.innerHTML = `
+      <div class="sound-heading">/${letter.toLowerCase()}/</div>
+      <div class="group-items"></div>
+    `;
+
+    group.addEventListener("dragover", event => {
+      if (checked) return;
+      event.preventDefault();
+      group.classList.add("drag-over");
+    });
+
+    group.addEventListener("dragleave", () => {
+      group.classList.remove("drag-over");
+    });
+
+    group.addEventListener("drop", event => {
+      event.preventDefault();
+      group.classList.remove("drag-over");
+      if (checked) return;
+
+      const id = event.dataTransfer.getData("text/plain");
+      placeCard(id, letter);
+    });
+
+    group.addEventListener("click", event => {
+      if (checked || !selectedCardId) return;
+      if (event.target.closest(".picture-card")) return;
+
+      placeCard(selectedCardId, letter);
+    });
+
+    groupsContainer.appendChild(group);
+  });
+}
+
+function placeCard(id, letter) {
+  const card = cardsThisRound.find(item => item.id === id);
+  if (!card || checked) return;
+
+  card.placedIn = letter;
+  selectedCardId = null;
+
+  const group = document.querySelector(
+    `.sound-group[data-letter="${letter}"] .group-items`
+  );
+
+  const original = document.querySelector(
+    `#cards .picture-card[data-id="${id}"]`
+  );
+
+  if (!original || !group) return;
+
+  original.classList.remove("selected");
+  original.classList.add("hidden");
+
+  const placed = document.createElement("div");
+  placed.className = "picture-card";
+  placed.dataset.id = id;
+  placed.innerHTML = `
+    <span class="emoji">${card.picture}</span>
+    <span>${card.word}</span>
+  `;
+
+  group.appendChild(placed);
+
+  document.getElementById("feedback").textContent =
+    `${card.word} placed in /${letter.toLowerCase()}/. Keep sorting!`;
+}
+
+function checkRound() {
+  if (checked) return;
+
+  const unplaced = cardsThisRound.filter(card => !card.placedIn);
+
+  if (unplaced.length > 0) {
+    document.getElementById("feedback").textContent =
+      `Please sort all the pictures first. ${unplaced.length} picture(s) remain.`;
+    return;
+  }
+
+  checked = true;
+  let roundScore = 0;
+
+  cardsThisRound.forEach(card => {
+    card.correct = card.placedIn === card.answer;
+    if (card.correct) roundScore++;
+  });
+
+  totalScore += roundScore;
+
+  document.querySelectorAll(".sound-group").forEach(group => {
+    const letter = group.dataset.letter;
+
+    group.querySelectorAll(".picture-card").forEach(element => {
+      const card = cardsThisRound.find(item => item.id === element.dataset.id);
+      if (!card) return;
+
+      element.classList.add(card.correct ? "correct" : "wrong");
+      element.title = card.correct
+        ? "Correct!"
+        : `Correct group: /${card.answer.toLowerCase()}/`;
+    });
+  });
+
+  document.getElementById("score").textContent =
+    `Total correct: ${totalScore}`;
+
+  document.getElementById("feedback").textContent =
+    `Round complete! You sorted ${roundScore} out of ${cardsThisRound.length} correctly.`;
+
+  const nextButton = document.getElementById("nextButton");
+  nextButton.classList.remove("hidden");
+  nextButton.textContent =
+    round === TOTAL_ROUNDS ? "See Final Results →" : "Next Round →";
+
+  document.querySelectorAll("#cards .picture-card").forEach(card => {
+    card.disabled = true;
+  });
+}
+
+function speakAll() {
+  if (!("speechSynthesis" in window)) {
+    alert("Audio is not supported in this browser.");
+    return;
+  }
+
+  window.speechSynthesis.cancel();
+
+  const words = cardsThisRound.map(card => card.word).join(". ");
+  const speech = new SpeechSynthesisUtterance(words);
+  speech.lang = "en-IN";
+  speech.rate = 0.8;
+
+  window.speechSynthesis.speak(speech);
+}
+
+function showResults() {
+  const maximum = TOTAL_ROUNDS * 6;
+  const percentage = Math.round((totalScore / maximum) * 100);
+
+  document.getElementById("gamePanel").innerHTML = `
+    <div class="picture">🏆</div>
+    <h2>Sound Sorting Results!</h2>
+    <p>You completed ${TOTAL_ROUNDS} rounds.</p>
+    <p class="score">Correct placements: ${totalScore} / ${maximum}</p>
+    <p class="score">Accuracy: ${percentage}%</p>
+    <p>${percentage >= 90
+      ? "Excellent sound sorting!"
+      : percentage >= 70
+      ? "Very good! Keep practising!"
+      : "Good effort. Practice will help you improve!"}</p>
+    <button class="primary" onclick="startGame()">Play Again ↻</button>
+    <p><a href="sounds-letters.html">← Return to Sounds & Letters</a></p>
+  `;
+}
+
+startGame();
+</script>
+
+</body>
+</html>
+```

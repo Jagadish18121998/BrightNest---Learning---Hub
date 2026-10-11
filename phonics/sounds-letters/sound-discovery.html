@@ -1,0 +1,937 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Phonics Sound Discovery Lab | BrightNest</title>
+
+<style>
+:root {
+  --purple: #6948c7;
+  --purple-dark: #49329b;
+  --ink: #26334c;
+  --muted: #65718a;
+  --bg: #f6f5ff;
+  --white: #ffffff;
+  --yellow: #fff0b8;
+  --green: #dcf7e8;
+  --pink: #ffe4ee;
+  --blue: #e3f1ff;
+  --border: #e7e2f6;
+}
+
+* { box-sizing: border-box; }
+
+body {
+  margin: 0;
+  background: var(--bg);
+  color: var(--ink);
+  font-family: "Trebuchet MS", Arial, sans-serif;
+}
+
+button, select { font: inherit; }
+
+button {
+  cursor: pointer;
+  border: 1px solid var(--border);
+  background: white;
+  color: var(--ink);
+  padding: 10px 14px;
+  border-radius: 12px;
+  transition: transform .15s, background .15s;
+}
+
+button:hover { transform: translateY(-2px); }
+
+button:focus-visible, select:focus-visible {
+  outline: 3px solid #a995ff;
+  outline-offset: 3px;
+}
+
+button:disabled { opacity: .5; cursor: not-allowed; }
+
+header {
+  color: white;
+  background: linear-gradient(125deg, #5036a7, #a083ee);
+  padding: 18px 5%;
+}
+
+nav {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 12px;
+  flex-wrap: wrap;
+}
+
+nav a {
+  color: white;
+  text-decoration: none;
+  font-weight: bold;
+}
+
+.logo { font-size: 1.1rem; }
+
+.hero {
+  text-align: center;
+  padding: 28px 12px 18px;
+}
+
+.hero h1 {
+  font-size: clamp(1.8rem, 4vw, 3rem);
+  margin: 0 0 10px;
+}
+
+.hero p {
+  max-width: 760px;
+  margin: auto;
+  line-height: 1.7;
+}
+
+main {
+  width: min(1150px, 94%);
+  margin: auto;
+  padding: 22px 0 45px;
+}
+
+.panel {
+  background: var(--white);
+  border: 1px solid var(--border);
+  border-radius: 22px;
+  padding: 22px;
+  margin-bottom: 20px;
+  box-shadow: 0 5px 20px #2d245008;
+}
+
+h2 { margin: 0 0 16px; }
+
+.muted { color: var(--muted); line-height: 1.65; }
+
+.toolbar {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  flex-wrap: wrap;
+  margin-bottom: 16px;
+}
+
+.toolbar label { font-weight: bold; }
+
+select {
+  padding: 10px;
+  border-radius: 10px;
+  border: 1px solid var(--border);
+  background: white;
+}
+
+.primary {
+  color: white;
+  background: var(--purple);
+  border-color: var(--purple);
+  font-weight: bold;
+}
+
+.primary:hover { background: var(--purple-dark); }
+
+.soft { background: #f0ebff; }
+
+.teacher-toggle[aria-pressed="true"] {
+  background: #27344d;
+  color: white;
+}
+
+.alphabet {
+  display: grid;
+  grid-template-columns: repeat(13, minmax(0, 1fr));
+  gap: 7px;
+}
+
+.letter {
+  padding: 12px 2px;
+  font-size: 1.35rem;
+  font-weight: bold;
+  background: var(--blue);
+  border: 2px solid transparent;
+}
+
+.letter:nth-child(4n + 2) { background: var(--yellow); }
+.letter:nth-child(4n + 3) { background: var(--green); }
+.letter:nth-child(4n) { background: var(--pink); }
+
+.letter.active {
+  color: white;
+  background: var(--purple);
+  border-color: var(--purple-dark);
+}
+
+.sound-layout {
+  display: grid;
+  grid-template-columns: minmax(180px, .8fr) minmax(0, 1.6fr);
+  gap: 24px;
+  align-items: stretch;
+}
+
+.letter-display {
+  border-radius: 20px;
+  background: linear-gradient(145deg, #eee8ff, #f9f6ff);
+  text-align: center;
+  padding: 20px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+
+.letter-display .upper {
+  font-size: clamp(5rem, 12vw, 8rem);
+  line-height: .95;
+  color: var(--purple-dark);
+  font-weight: 900;
+}
+
+.letter-display .lower {
+  font-size: 3.5rem;
+  color: var(--purple);
+  font-weight: bold;
+}
+
+.tag {
+  display: inline-block;
+  padding: 7px 11px;
+  border-radius: 10px;
+  background: var(--yellow);
+  font-weight: bold;
+  margin: 5px 0;
+}
+
+.sound-title { margin: 4px 0 10px; }
+
+.sound-symbol {
+  font-size: 1.7rem;
+  color: var(--purple-dark);
+  font-weight: bold;
+}
+
+.mouth-guide {
+  background: #fff8dc;
+  padding: 15px;
+  border-radius: 16px;
+  margin: 12px 0;
+  line-height: 1.65;
+}
+
+.mouth-guide h3 { margin: 0 0 6px; }
+
+.word-grid {
+  display: grid;
+  grid-template-columns: repeat(5, minmax(0, 1fr));
+  gap: 10px;
+}
+
+.word-card {
+  background: #f7f5ff;
+  border: 1px solid var(--border);
+  padding: 12px 6px;
+  border-radius: 15px;
+  text-align: center;
+  min-width: 0;
+}
+
+.word-card .emoji { font-size: 2.4rem; }
+
+.word-card .word {
+  font-size: 1rem;
+  font-weight: bold;
+  overflow-wrap: anywhere;
+  margin: 5px 0;
+}
+
+.word-card .position {
+  color: var(--muted);
+  font-size: .78rem;
+}
+
+.word-card button { padding: 6px 8px; margin-top: 7px; }
+
+.word-card.target {
+  background: var(--green);
+  border-color: #9bd9b5;
+}
+
+.steps {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 12px;
+}
+
+.step {
+  border-radius: 15px;
+  padding: 15px;
+  background: var(--blue);
+  line-height: 1.6;
+}
+
+.step:nth-child(2) { background: var(--pink); }
+.step:nth-child(3) { background: var(--green); }
+
+.step strong { display: block; margin-bottom: 5px; }
+
+.quiz-box {
+  padding: 18px;
+  background: #f4f0ff;
+  border-radius: 16px;
+}
+
+.quiz-word {
+  font-size: 2rem;
+  font-weight: bold;
+  margin: 8px 0 14px;
+}
+
+.quiz-options {
+  display: flex;
+  gap: 10px;
+  flex-wrap: wrap;
+}
+
+.feedback {
+  min-height: 26px;
+  font-weight: bold;
+  margin: 12px 0 0;
+}
+
+.teacher-content {
+  display: none;
+  background: #eef7ff;
+  border-radius: 16px;
+  padding: 18px;
+  margin-top: 14px;
+  line-height: 1.7;
+}
+
+.teacher-content.show { display: block; }
+
+footer {
+  text-align: center;
+  padding: 24px;
+  color: var(--muted);
+}
+
+@media (max-width: 800px) {
+  .alphabet { grid-template-columns: repeat(7, minmax(0, 1fr)); }
+  .sound-layout { grid-template-columns: 1fr; }
+  .letter-display { min-height: 210px; }
+  .letter-display .upper { font-size: 5rem; }
+  .word-grid { grid-template-columns: repeat(3, minmax(0, 1fr)); }
+}
+
+@media (max-width: 480px) {
+  .panel { padding: 15px; }
+  .word-grid { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+  .steps { grid-template-columns: 1fr; }
+  .alphabet { grid-template-columns: repeat(6, minmax(0, 1fr)); }
+}
+</style>
+</head>
+
+<body>
+<header>
+  <nav>
+    <a class="logo" href="../../index.html">🌞 BrightNest Learning Hub</a>
+    <a href="../phonics.html">← Phonics Centre</a>
+  </nav>
+
+  <section class="hero">
+    <h1>🔤 Phonics Sound Discovery Lab</h1>
+    <p>
+      See the letter. Explore its sound. Learn how your mouth makes it.
+      Discover words, listen, practise and teach with confidence.
+    </p>
+  </section>
+</header>
+
+<main>
+  <section class="panel">
+    <h2>1. Choose a Letter</h2>
+
+    <div class="toolbar">
+      <label for="letterGroup">Show:</label>
+      <select id="letterGroup">
+        <option value="all">All letters</option>
+        <option value="vowels">Vowels</option>
+        <option value="consonants">Consonants</option>
+      </select>
+
+      <button id="teacherToggle" class="teacher-toggle" aria-pressed="false">
+        👩‍🏫 Teacher Mode: Off
+      </button>
+    </div>
+
+    <div id="alphabet" class="alphabet"></div>
+    <p class="muted">Choose any letter to explore its common sound and example words.</p>
+  </section>
+
+  <section class="panel">
+    <h2>2. Meet the Letter and Sound</h2>
+
+    <div class="sound-layout">
+      <div class="letter-display">
+        <span id="upper" class="upper">A</span>
+        <span id="lower" class="lower">a</span>
+        <div id="letterType" class="tag">Vowel</div>
+        <div id="soundSymbol" class="sound-symbol">/ă/</div>
+        <button class="primary" id="hearSound">🔊 Hear Example Word</button>
+      </div>
+
+      <div>
+        <h3 id="soundTitle" class="sound-title">The short A sound</h3>
+        <p id="soundDescription" class="muted"></p>
+
+        <div class="mouth-guide">
+          <h3>👄 Mouth &amp; Pronunciation Guide</h3>
+          <p id="mouthPosition"></p>
+          <p><strong>Memory shortcut:</strong> <span id="memoryTip"></span></p>
+          <p><strong>Voice check:</strong> <span id="voiceTip"></span></p>
+        </div>
+
+        <p class="muted">
+          Remember: the letter name and its sound are different.
+          Practise the sound briefly without adding an extra “uh”.
+        </p>
+      </div>
+    </div>
+  </section>
+
+  <section class="panel">
+    <h2>3. Explore Five Words</h2>
+    <p class="muted" id="wordInstruction">
+      Listen to each word. Say it aloud and notice the target sound.
+    </p>
+    <div id="wordGrid" class="word-grid"></div>
+  </section>
+
+  <section class="panel">
+    <h2>4. Practise Like a Phonics Explorer</h2>
+    <div class="steps">
+      <div class="step">
+        <strong>👀 LOOK</strong>
+        Look at the letter. Notice its uppercase and lowercase forms.
+      </div>
+      <div class="step">
+        <strong>👄 SAY</strong>
+        Use the mouth guide. Make the sound and repeat an example word.
+      </div>
+      <div class="step">
+        <strong>👂 LISTEN</strong>
+        Listen for the target sound. Try to identify it in another word.
+      </div>
+    </div>
+  </section>
+
+  <section class="panel">
+    <h2>5. Sound Detective Challenge</h2>
+    <p class="muted">Which sound does the highlighted word begin with?</p>
+    <div class="quiz-box">
+      <div id="quizEmoji" style="font-size:3rem" aria-hidden="true">🍎</div>
+      <div id="quizWord" class="quiz-word">Apple</div>
+      <p id="quizQuestion" class="muted">Choose the beginning sound.</p>
+      <div id="quizOptions" class="quiz-options"></div>
+      <p id="quizFeedback" class="feedback" aria-live="polite"></p>
+      <button id="nextQuiz" class="primary">Next Challenge →</button>
+    </div>
+  </section>
+
+  <section class="panel">
+    <h2>👩‍🏫 Teacher Toolkit</h2>
+    <p class="muted">
+      Turn on Teacher Mode for classroom prompts and pronunciation reminders.
+    </p>
+
+    <div id="teacherContent" class="teacher-content">
+      <h3>Suggested classroom routine</h3>
+      <ol>
+        <li>Display the selected letter and say its name.</li>
+        <li>Model the common sound clearly. Avoid adding an extra vowel to a consonant sound.</li>
+        <li>Demonstrate the mouth position. Invite children to observe in a mirror.</li>
+        <li>Say the five example words and ask learners to identify the shared sound.</li>
+        <li>Ask children to suggest another word. Accept suitable words and discuss different sounds when relevant.</li>
+      </ol>
+
+      <h3>Support for learners who need more practice</h3>
+      <ul>
+        <li>Begin with just two contrasting sounds.</li>
+        <li>Use a mirror and picture cards.</li>
+        <li>Repeat a short listen–say–identify routine.</li>
+        <li>Move from recognising a sound to saying it, then to finding it in words.</li>
+      </ul>
+
+      <p><strong>Pronunciation reminder:</strong> These guides are simplified classroom cues. English sounds vary by accent, and a written letter does not always represent the same sound.</p>
+    </div>
+  </section>
+</main>
+
+<footer>BrightNest Learning Hub · Listen · Discover · Practise</footer>
+
+<script>
+const data = [
+{
+  l:"A", vowel:true, sound:"/ă/", title:"Short A",
+  desc:"A can represent different sounds. These examples focus on the short A sound heard in apple.",
+  mouth:"Open your mouth comfortably. Keep your tongue low and toward the front. The exact vowel quality varies by accent.",
+  tip:"Say “apple” and notice the first sound. Keep it short.",
+  voice:"Vowels are voiced: your throat vibrates.",
+  words:[["🍎","apple"],["🐜","ant"],["🪓","axe"],["🐊","alligator"],["⚓","anchor"]]
+},
+{
+  l:"B",sound:"/b/",title:"B sound",
+  desc:"These words begin with the common sound represented by B.",
+  mouth:"Close both lips briefly, build a little air pressure, then release the lips. Use your voice.",
+  tip:"Say “ball”. Feel your lips close and open.",
+  voice:"Voiced: your throat vibrates.",
+  words:[["⚽","ball"],["🐻","bear"],["🚌","bus"],["🍌","banana"],["🛏️","bed"]]
+},
+{
+  l:"C",sound:"/k/ or /s/",title:"Two common C sounds",
+  desc:"C has more than one common sound. It often represents /k/ in cat and /s/ in city.",
+  mouth:"For /k/, the back of your tongue briefly touches the soft palate. For /s/, bring the teeth close and let air hiss through.",
+  tip:"Cat starts with /k/. City starts with /s/. Compare both words.",
+  voice:"Both /k/ and /s/ are unvoiced.",
+  words:[["🐱","cat"],["🚗","car"],["🥤","cup"],["🌆","city"],["🥣","cereal"]]
+},
+{
+  l:"D",sound:"/d/",title:"D sound",
+  desc:"D is commonly pronounced /d/ at the beginning of these words.",
+  mouth:"Place the tongue tip just behind the upper front teeth. Release it while using your voice.",
+  tip:"Say “dog” slowly. Notice where your tongue touches.",
+  voice:"Voiced: your throat vibrates.",
+  words:[["🐕","dog"],["🦆","duck"],["🚪","door"],["🦌","deer"],["🥁","drum"]]
+},
+{
+  l:"E",vowel:true,sound:"/ĕ/",title:"Short E",
+  desc:"These examples focus on the short E sound.",
+  mouth:"Keep the mouth slightly open. The tongue is toward the front and the lips are relaxed.",
+  tip:"Say “egg”. Keep the vowel short.",
+  voice:"Vowels are voiced.",
+  words:[["🥚","egg"],["🐘","elephant"],["🦅","eagle"],["🛏️","end"],["🧝","elf"]]
+},
+{
+  l:"F",sound:"/f/",title:"F sound",
+  desc:"F is a continuous, unvoiced sound made by moving air through a narrow gap.",
+  mouth:"Rest your upper front teeth gently on your lower lip and blow air.",
+  tip:"Pretend to blow out a candle without using your voice: /ffff/.",
+  voice:"Unvoiced: no throat vibration.",
+  words:[["🐟","fish"],["🪭","fan"],["🦊","fox"],["🦶","foot"],["🌸","flower"]]
+},
+{
+  l:"G",sound:"/g/ or /j/",title:"Two common G sounds",
+  desc:"G often represents /g/ in goat and /j/ in giraffe. The spelling pattern and word help determine the sound.",
+  mouth:"For /g/, the back of the tongue briefly touches the soft palate. For /j/, the tongue is raised near the front of the mouth.",
+  tip:"Compare “goat” and “giraffe”. Listen for the different beginnings.",
+  voice:"Both sounds are voiced.",
+  words:[["🐐","goat"],["🍇","grapes"],["🎁","gift"],["🦒","giraffe"],["💎","gem"]]
+},
+{
+  l:"H",sound:"/h/",title:"H sound",
+  desc:"H often represents a gentle breath at the beginning of a word.",
+  mouth:"Keep the mouth ready for the following vowel and let air pass through the open throat.",
+  tip:"Warm your hand with a gentle breath: /h/. Do not force it.",
+  voice:"Usually unvoiced.",
+  words:[["🏠","house"],["🎩","hat"],["🐎","horse"],["✋","hand"],["❤️","heart"]]
+},
+{
+  l:"I",vowel:true,sound:"/ĭ/",title:"Short I",
+  desc:"These words illustrate the short I sound.",
+  mouth:"Keep your mouth slightly open. Raise the tongue toward the front without making the vowel tense.",
+  tip:"Say “insect” or “igloo” with a short first vowel.",
+  voice:"Vowels are voiced.",
+  words:[["🦎","igloo"],["🐜","insect"],["🖋️","ink"],["👿","imp"],["🏝️","island"]]
+},
+{
+  l:"J",sound:"/j/",title:"J sound",
+  desc:"J commonly represents the sound heard at the beginning of jam.",
+  mouth:"Bring the tongue near the ridge behind the upper teeth, briefly stop the air, then release it with voice.",
+  tip:"Say “jam”. Notice the short, bouncy beginning sound.",
+  voice:"Voiced.",
+  words:[["🍯","jam"],["🧃","juice"],["🧥","jacket"],["🪼","jellyfish"],["🚙","jeep"]]
+},
+{
+  l:"K",sound:"/k/",title:"K sound",
+  desc:"K commonly represents /k/, as in kite.",
+  mouth:"Raise the back of your tongue to the soft palate and release the air without using your voice.",
+  tip:"Say “kite”. Keep the sound crisp, without adding “uh”.",
+  voice:"Unvoiced.",
+  words:[["🪁","kite"],["🔑","key"],["👑","king"],["🐨","koala"],["🦵","knee"]]
+},
+{
+  l:"L",sound:"/l/",title:"L sound",
+  desc:"L is a voiced sound made with the tongue tip near the ridge behind the upper front teeth.",
+  mouth:"Touch your tongue tip just behind your upper front teeth. Let the air flow around the sides of the tongue.",
+  tip:"Say “llllion” slowly, then say “lion” naturally.",
+  voice:"Voiced.",
+  words:[["🦁","lion"],["🍃","leaf"],["🪔","lamp"],["🦎","lizard"],["🦵","leg"]]
+},
+{
+  l:"M",sound:"/m/",title:"M sound",
+  desc:"M is a continuous nasal sound. The lips close while air flows through the nose.",
+  mouth:"Close your lips gently and hum. You should feel vibration around your lips and nose.",
+  tip:"Say “Mmm, yummy!” and hold the /m/ sound.",
+  voice:"Voiced and nasal.",
+  words:[["🌙","moon"],["🥭","mango"],["🪞","mirror"],["🐒","monkey"],["🥛","milk"]]
+},
+{
+  l:"N",sound:"/n/",title:"N sound",
+  desc:"N is a voiced nasal sound, made with the tongue at the ridge behind the upper teeth.",
+  mouth:"Place the tongue tip behind the upper front teeth. Keep the mouth slightly open and let air flow through the nose.",
+  tip:"Say “nnn” as in “no”. Feel the sound resonate through your nose.",
+  voice:"Voiced and nasal.",
+  words:[["🪺","nest"],["🥜","nut"],["👃","nose"],["🌃","night"],["📰","news"]]
+},
+{
+  l:"O",vowel:true,sound:"/ŏ/",title:"Short O",
+  desc:"These examples focus on the short O sound. Its exact quality varies across English accents.",
+  mouth:"Round the lips slightly and keep the mouth open. The tongue is relatively low and toward the back.",
+  tip:"Say “octopus” and listen to the first vowel.",
+  voice:"Vowels are voiced.",
+  words:[["🐙","octopus"],["🐂","ox"],["🦦","otter"],["🧡","orange"],["🧅","onion"]]
+},
+{
+  l:"P",sound:"/p/",title:"P sound",
+  desc:"P is an unvoiced sound made by closing the lips and releasing a small puff of air.",
+  mouth:"Close both lips, briefly stop the air, and release them. Do not use your voice.",
+  tip:"Hold a tissue in front of your mouth and say “pin”. Watch it move.",
+  voice:"Unvoiced.",
+  words:[["✏️","pencil"],["🐼","panda"],["🐷","pig"],["🍕","pizza"],["🖊️","pen"]]
+},
+{
+  l:"Q",sound:"/kw/",title:"Q and QU",
+  desc:"In many common English words, Q is followed by U and the letters QU represent /kw/.",
+  mouth:"Begin with the back-of-the-tongue /k/, then move quickly into the rounded-lip /w/ sound.",
+  tip:"Say “queen” slowly: /k/ followed by /w/. Blend the sounds smoothly.",
+  voice:"/k/ is unvoiced; /w/ is voiced.",
+  words:[["👑","queen"],["🪶","quill"],["❓","question"],["🛏️","quilt"],["⚡","quick"]]
+},
+{
+  l:"R",sound:"/r/",title:"R sound",
+  desc:"English R is pronounced differently in different accents. These examples use the common English initial R sound.",
+  mouth:"Usually curl or bunch the tongue slightly without letting it touch the roof of the mouth. Keep the lips relaxed or slightly rounded.",
+  tip:"Say “red” slowly. Avoid adding an extra vowel before or after R.",
+  voice:"Voiced.",
+  words:[["🤖","robot"],["🌧️","rain"],["🐇","rabbit"],["🌹","rose"],["🚀","rocket"]]
+},
+{
+  l:"S",sound:"/s/",title:"S sound",
+  desc:"S commonly represents the unvoiced hiss /s/ at the beginning of these words.",
+  mouth:"Bring the teeth close together and let air flow through a narrow channel near the front of the tongue.",
+  tip:"Make a quiet snake sound: /ssss/. Keep your voice off.",
+  voice:"Unvoiced.",
+  words:[["☀️","sun"],["🐍","snake"],["🧦","sock"],["⭐","star"],["🥄","spoon"]]
+},
+{
+  l:"T",sound:"/t/",title:"T sound",
+  desc:"T commonly represents an unvoiced sound made by briefly stopping the air with the tongue.",
+  mouth:"Place the tongue tip at the ridge behind the upper front teeth, then release the air.",
+  tip:"Say “top” with a crisp beginning sound, not “tuh-op”.",
+  voice:"Unvoiced.",
+  words:[["🐯","tiger"],["🌳","tree"],["🚂","train"],["🐢","turtle"],["🍅","tomato"]]
+},
+{
+  l:"U",vowel:true,sound:"/ŭ/",title:"Short U",
+  desc:"These examples focus on the short U sound in many English accents.",
+  mouth:"Keep the lips relaxed and the mouth slightly open. The tongue is central and relatively low.",
+  tip:"Say “umbrella” and keep the first vowel short. The sound is not the letter name “you”.",
+  voice:"Vowels are voiced.",
+  words:[["☂️","umbrella"],["🚌","under"],["🦄","uncle"],["👕","uniform"],["🧑‍⚖️","umpire"]]
+},
+{
+  l:"V",sound:"/v/",title:"V sound",
+  desc:"V is a voiced sound made when air passes through a narrow gap between the upper teeth and lower lip.",
+  mouth:"Rest the upper front teeth lightly on the lower lip and let the sound buzz.",
+  tip:"Compare /ffff/ and /vvvv/. Feel your throat vibrate for /v/.",
+  voice:"Voiced.",
+  words:[["🚐","van"],["🦺","vest"],["🎻","violin"],["🌋","volcano"],["🥦","vegetable"]]
+},
+{
+  l:"W",sound:"/w/",title:"W sound",
+  desc:"W begins with rounded lips and a smooth movement into the next vowel.",
+  mouth:"Round your lips as if beginning to say “oo”, then move quickly into the vowel that follows.",
+  tip:"Say “we” slowly. Round your lips at the beginning.",
+  voice:"Voiced.",
+  words:[["⌚","watch"],["💧","water"],["🌬️","wind"],["🐺","wolf"],["🪟","window"]]
+},
+{
+  l:"X",sound:"/ks/ or /z/",title:"X has different sounds",
+  desc:"X often represents /ks/ at the end of words such as box. In xylophone, it represents /z/ at the beginning.",
+  mouth:"For /ks/, move from /k/ into /s/. For /z/, use a voiced buzzing sound similar to /s/ with throat vibration.",
+  tip:"Compare “box” and “xylophone”. Notice where the letter appears and which sound you hear.",
+  voice:"/ks/ is unvoiced; /z/ is voiced.",
+  words:[["📦","box"],["🦊","fox"],["🧺","wax"],["🎼","xylophone"],["🩻","X-ray"]]
+},
+{
+  l:"Y",sound:"/y/",title:"Y as a consonant",
+  desc:"At the beginning of yo-yo and yes, Y represents the consonant sound /j/ (the sound at the start of English “yes”). Y can also represent vowel sounds in words such as happy and my.",
+  mouth:"Raise the middle of the tongue toward the roof of the mouth without fully blocking the air, then move into the following vowel.",
+  tip:"Say “yes”. Keep the start smooth. Later, compare Y in “yes”, “happy” and “my”.",
+  voice:"Voiced.",
+  words:[["🪀","yo-yo"],["🥛","yogurt"],["🛥️","yacht"],["💛","yellow"],["🧶","yarn"]]
+},
+{
+  l:"Z",sound:"/z/",title:"Z sound",
+  desc:"Z commonly represents a voiced buzzing sound.",
+  mouth:"Bring your teeth close together and let air flow through a narrow channel, as with /s/, but turn your voice on.",
+  tip:"Say /ssss/, then /zzzz/. Feel your throat vibrate for /z/.",
+  voice:"Voiced.",
+  words:[["🦓","zebra"],["🦁","zoo"],["0️⃣","zero"],["⚡","zip"],["🤐","zipper"]]
+}
+];
+
+// Correct examples of the target sound can occur in different word positions.
+// The sound-position notes below are intentionally approximate for young learners.
+const extraNotes = {
+  A:"Short A examples here begin with the target vowel sound.",
+  E:"Short E examples here begin with the target vowel sound.",
+  I:"Short I examples here begin with the target vowel sound.",
+  O:"Short O examples here begin with the target vowel sound.",
+  U:"Short U examples here begin with the target vowel sound.",
+  C:"Listen carefully: C has different sounds in different words.",
+  G:"Listen carefully: G has different sounds in different words.",
+  Q:"QU usually represents two sounds blended together.",
+  X:"X can represent /ks/ or /z/, depending on the word.",
+  Y:"Y can represent a consonant sound or a vowel sound."
+};
+
+let current = 0;
+let teacherMode = false;
+let quizItem = null;
+let answered = false;
+
+const $ = id => document.getElementById(id);
+const isVowel = item => !!item.vowel;
+
+/*
+  NEW FEATURE:
+  These are child-friendly text-to-speech prompts for the letter sounds.
+  The browser's voice may pronounce some sounds imperfectly.
+*/
+const pronunciations = {
+  A: "Ahhh",
+  B: "Buh",
+  C: "Kuh",
+  D: "Duh",
+  E: "Eh",
+  F: "Fffff",
+  G: "Guh",
+  H: "Hhhh",
+  I: "Ih",
+  J: "Juh",
+  K: "Kuh",
+  L: "Lllll",
+  M: "Mmmmm",
+  N: "Nnnnn",
+  O: "O as in hot",
+  P: "Puh",
+  Q: "K w",
+  R: "Rrrrr",
+  S: "Sssss",
+  T: "Tuh",
+  U: "Uh",
+  V: "Vvvvv",
+  W: "Wuh",
+  X: "K s",
+  Y: "Yuh",
+  Z: "Zzzzz"
+};
+
+
+function speak(text, rate = 0.82) {
+  if (!("speechSynthesis" in window)) {
+    alert("Audio is not supported in this browser.");
+    return;
+  }
+
+  window.speechSynthesis.cancel();
+
+  const utterance = new SpeechSynthesisUtterance(text);
+  utterance.lang = "en-IN";
+  utterance.rate = rate;
+  utterance.pitch = 1;
+
+  window.speechSynthesis.speak(utterance);
+}
+
+function speakLetterSound(letter) {
+  const sounds = {
+    A: "ah",
+    B: "buh",
+    C: "k",
+    D: "duh",
+    E: "eh",
+    F: "fa",  // Changed to give a long, sustained /f/ sound
+    G: "guh",
+    H: "ha",
+    I: "ih",
+    J: "juh",
+    K: "kuh",
+    L: "luh",
+    M: "ma",  // Optional: extended for a longer hum sound
+    N: "na",  // Optional: extended for a longer nasal sound
+    O: "ah",
+    P: "puh",
+    Q: "kwuh",
+    R: "ruh",
+    S: "sa",  // Optional: extended for a longer hiss sound
+    T: "ta",
+    U: "uh",
+    V: "vuh",
+    W: "wuh",
+    X: "ksa",
+    Y: "ya",
+    Z: "za"   // Optional: extended for a longer buzz sound
+  };
+
+  speak(sounds[letter] || letter, 0.65);
+}
+
+
+function renderAlphabet() {
+  const filter = $("letterGroup").value;
+  $("alphabet").innerHTML = "";
+
+  data.forEach((item, index) => {
+    if (filter === "vowels" && !isVowel(item)) return;
+    if (filter === "consonants" && isVowel(item)) return;
+
+    const btn = document.createElement("button");
+    btn.className = "letter" + (current === index ? " active" : "");
+    btn.textContent = item.l;
+    btn.setAttribute("aria-label", "Explore letter " + item.l);
+    btn.setAttribute("aria-pressed", String(current === index));
+
+    btn.addEventListener("click", () => {
+      current = index;
+      renderAlphabet();
+      renderLetter();
+
+      // NEW: pronounce the selected letter's sound when clicked.
+     speakLetterSound(item.l);
+    });
+
+    $("alphabet").appendChild(btn);
+  });
+}
+
+function renderLetter() {
+  const item = data[current];
+
+  $("upper").textContent = item.l;
+  $("lower").textContent = item.l.toLowerCase();
+  $("letterType").textContent = isVowel(item) ? "Vowel" : "Consonant";
+  $("soundSymbol").textContent = item.sound;
+  $("soundTitle").textContent = item.title;
+  $("soundDescription").textContent = item.desc;
+  $("mouthPosition").textContent = item.mouth;
+  $("memoryTip").textContent = item.tip;
+  $("voiceTip").textContent = item.voice;
+  $("wordInstruction").textContent =
+    "Explore these words. Notice the target sound and practise saying each word.";
+
+  $("wordGrid").innerHTML = "";
+
+  item.words.forEach(([emoji, word]) => {
+    const card = document.createElement("div");
+    card.className = "word-card";
+    card.innerHTML = `
+      <div class="emoji" aria-hidden="true">${emoji}</div>
+      <div class="word"></div>
+      <div class="position">Listen &amp; say</div>
+      <button type="button" aria-label="Hear ${word}">🔊 Hear</button>
+    `;
+
+    card.querySelector(".word").textContent = word;
+    card.querySelector("button").addEventListener("click", () => speak(word));
+    $("wordGrid").appendChild(card);
+  });
+
+  $("hearSound").textContent = "🔊 Hear " + item.words[0][1];
+  $("hearSound").onclick = () => speak(item.words[0][1]);
+
+  if (teacherMode) {
+    $("teacherContent").classList.add("show");
+  }
+}
+
+$("letterGroup").addEventListener("change", () => {
+  const filter = $("letterGroup").value;
+
+  if (filter === "vowels" && !isVowel(data[current])) {
+    current = 0;
+  }
+
+  if (filter === "consonants" && isVowel(data[current])) {
+    current = 1;
+  }
+
+  renderAlphabet();
+  renderLetter();
+});
+
+$("teacherToggle").addEventListener("click", () => {
+  teacherMode = !teacherMode;
+  $("teacherToggle").setAttribute("aria-pressed", String(teacherMode));
+  $("teacherToggle").textContent =
+    teacherMode ? "👩‍🏫 Teacher Mode: On" : "👩‍🏫 Teacher Mode: Off";
+  $("teacherContent").classList.toggle("show", teacherMode);
+});
+
+function newQuiz() {
+  quizItem = data[Math.floor(Math.random() * data.length)];
+  answered = false;
+
+  $("quizEmoji").textContent = quizItem.words[0][0];
+  $("quizWord").textContent = quizItem.words[0][1];
+  $("quizQuestion").textContent =
+    "Which letter represents the beginning sound in this word?";
+  $("quizFeedback").textContent = "";
+  $("quizOptions").innerHTML = "";
+
+  let choices = [quizItem.l];
+
+  while (choices.length < 3) {
+    const candidate = data[Math.floor(Math.random() * data.length)].l;
+    if (!choices.includes(candidate)) choices.push(candidate);
+  }
+
+  choices.sort(() => Math.random() - 0.5);
+
+  choices.forEach(letter => {
+    const button = document.createElement("button");
+    button.textContent = letter;
+    button.className = "primary";
+
+    button.addEventListener("click", () => {
+      if (answered) return;
+
+      if (letter === quizItem.l) {
+        answered = true;
+        $("quizFeedback").textContent = "⭐ Correct! " +
+          quizItem.words[0][1] + " begins with the sound represented by " +
+          quizItem.l + ".";
+        button.textContent = "✓ " + letter;
+      } else {
+        $("quizFeedback").textContent =
+          "Try again. Say the word slowly and listen to its first sound.";
+      }
+    });
+
+    $("quizOptions").appendChild(button);
+  });
+}
+
+$("nextQuiz").addEventListener("click", newQuiz);
+
+renderAlphabet();
+renderLetter();
+newQuiz();
+</script>
+</body>
+</html>

@@ -1,0 +1,349 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Silent Letters & Tricky Words | BrightNest</title>
+
+<style>
+* {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+}
+
+body {
+    font-family: Arial, sans-serif;
+    background: #f4f8fc;
+    color: #263449;
+    line-height: 1.6;
+}
+
+header {
+    background: linear-gradient(135deg, #173f5f, #287ca0);
+    color: white;
+    padding: 30px 20px;
+    text-align: center;
+}
+
+.logo {
+    font-size: 15px;
+    font-weight: bold;
+    margin-bottom: 12px;
+}
+
+header h1 {
+    font-size: clamp(26px, 4vw, 38px);
+    margin-bottom: 10px;
+}
+
+header p {
+    max-width: 720px;
+    margin: auto;
+    color: #e2f1fa;
+}
+
+.container {
+    max-width: 1200px;
+    margin: 30px auto;
+    padding: 0 20px;
+}
+
+.intro {
+    background: white;
+    padding: 22px;
+    border-radius: 14px;
+    margin-bottom: 28px;
+    box-shadow: 0 3px 12px #173f5f10;
+}
+
+.intro h2,
+.section-title {
+    color: #173f5f;
+}
+
+.intro h2 {
+    margin-bottom: 8px;
+}
+
+.section-title {
+    font-size: 23px;
+    margin: 28px 0 16px;
+}
+
+.card-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(245px, 1fr));
+    gap: 20px;
+}
+
+.card {
+    display: flex;
+    flex-direction: column;
+    background: white;
+    padding: 22px;
+    border: 1px solid #e2eaf2;
+    border-radius: 15px;
+    text-decoration: none;
+    color: inherit;
+    box-shadow: 0 4px 12px #173f5f0b;
+    transition: transform 0.2s, box-shadow 0.2s;
+}
+
+.card:hover {
+    transform: translateY(-4px);
+    box-shadow: 0 8px 20px #173f5f18;
+}
+
+.card-icon {
+    font-size: 36px;
+    margin-bottom: 12px;
+}
+
+.card h3 {
+    font-size: 18px;
+    color: #173f5f;
+    margin-bottom: 9px;
+}
+
+.card p {
+    font-size: 14px;
+    color: #5d6b7b;
+    margin-bottom: 14px;
+}
+
+.topics {
+    padding-left: 19px;
+    margin-bottom: 18px;
+    font-size: 13px;
+    color: #526174;
+}
+
+.explore {
+    display: inline-block;
+    margin-top: auto;
+    background: #e7f4fb;
+    color: #17658c;
+    font-size: 13px;
+    font-weight: bold;
+    padding: 8px 12px;
+    border-radius: 8px;
+    text-align: center;
+}
+
+.note {
+    margin-top: 30px;
+    padding: 18px;
+    border-left: 4px solid #287ca0;
+    background: #eaf5fb;
+    border-radius: 8px;
+    font-size: 14px;
+}
+
+footer {
+    text-align: center;
+    padding: 25px 15px;
+    color: #64748b;
+    font-size: 13px;
+}
+
+@media (max-width: 500px) {
+    .container {
+        padding: 0 14px;
+    }
+
+    .card-grid {
+        grid-template-columns: 1fr;
+    }
+}
+</style>
+</head>
+
+<body>
+
+<header>
+    <div class="logo">🌞 BrightNest Learning Hub</div>
+    <h1>Silent Letters & Tricky Words</h1>
+    <p>
+        Discover silent letters, understand unusual spellings
+        and learn to recognize tricky English words.
+    </p>
+</header>
+
+<main class="container">
+
+<section class="intro">
+    <h2>Welcome to the Word Discovery Centre!</h2>
+    <p>
+        Some English words contain letters that are written but not
+        pronounced. Other words have unexpected spellings or sound alike
+        but have different meanings. Explore each lesson, listen carefully,
+        practise spelling and test your understanding.
+    </p>
+</section>
+
+<h2 class="section-title">Explore the Learning Zones</h2>
+
+<div class="card-grid">
+
+<a class="card" href="silent-k.html">
+    <div class="card-icon">🔪</div>
+    <h3>1. Silent K</h3>
+    <p>Discover words where k is silent before n.</p>
+    <ul class="topics">
+        <li>knee and knife</li>
+        <li>know and knot</li>
+        <li>Read and complete words</li>
+    </ul>
+    <span class="explore">Explore Silent K →</span>
+</a>
+
+<a class="card" href="silent-w.html">
+    <div class="card-icon">✍️</div>
+    <h3>2. Silent W</h3>
+    <p>Learn common words where w is not pronounced.</p>
+    <ul class="topics">
+        <li>write and wrist</li>
+        <li>wrong and wrap</li>
+        <li>Recognize the pattern</li>
+    </ul>
+    <span class="explore">Explore Silent W →</span>
+</a>
+
+<a class="card" href="silent-b.html">
+    <div class="card-icon">🐑</div>
+    <h3>3. Silent B</h3>
+    <p>Explore words with a silent b.</p>
+    <ul class="topics">
+        <li>lamb and thumb</li>
+        <li>comb and climb</li>
+        <li>Practise pronunciation</li>
+    </ul>
+    <span class="explore">Explore Silent B →</span>
+</a>
+
+<a class="card" href="silent-l.html">
+    <div class="card-icon">🚶</div>
+    <h3>4. Silent L</h3>
+    <p>Recognize common words where l is silent.</p>
+    <ul class="topics">
+        <li>walk and talk</li>
+        <li>half and calm</li>
+        <li>Listen and identify</li>
+    </ul>
+    <span class="explore">Explore Silent L →</span>
+</a>
+
+<a class="card" href="silent-g.html">
+    <div class="card-icon">🌿</div>
+    <h3>5. Silent G</h3>
+    <p>Explore silent g in common spelling patterns.</p>
+    <ul class="topics">
+        <li>gnome and sign</li>
+        <li>design and align</li>
+        <li>Find the silent letter</li>
+    </ul>
+    <span class="explore">Explore Silent G →</span>
+</a>
+
+<a class="card" href="silent-h.html">
+    <div class="card-icon">⏰</div>
+    <h3>6. Silent H</h3>
+    <p>Learn words where h is not pronounced.</p>
+    <ul class="topics">
+        <li>honest and hour</li>
+        <li>heir</li>
+        <li>Compare pronunciation</li>
+    </ul>
+    <span class="explore">Explore Silent H →</span>
+</a>
+
+<a class="card" href="other-silent-letters.html">
+    <div class="card-icon">🔎</div>
+    <h3>7. Other Silent Letters</h3>
+    <p>Discover other examples of silent letters in English.</p>
+    <ul class="topics">
+        <li>listen and castle</li>
+        <li>whistle and Christmas</li>
+        <li>Identify silent letters in words</li>
+    </ul>
+    <span class="explore">Explore More →</span>
+</a>
+
+<a class="card" href="common-tricky-words.html">
+    <div class="card-icon">🧠</div>
+    <h3>8. Common Tricky Words</h3>
+    <p>Practise frequently used words with unexpected spellings.</p>
+    <ul class="topics">
+        <li>because and people</li>
+        <li>friend and said</li>
+        <li>does and could</li>
+    </ul>
+    <span class="explore">Learn Tricky Words →</span>
+</a>
+
+<a class="card" href="commonly-confused-words.html">
+    <div class="card-icon">🔀</div>
+    <h3>9. Commonly Confused Words</h3>
+    <p>Understand words that sound alike or are easily confused.</p>
+    <ul class="topics">
+        <li>there and their</li>
+        <li>here and hear</li>
+        <li>to, too and two</li>
+    </ul>
+    <span class="explore">Compare Words →</span>
+</a>
+
+<a class="card" href="unusual-spellings.html">
+    <div class="card-icon">📖</div>
+    <h3>10. Unusual Spellings</h3>
+    <p>Explore words whose spelling is difficult to predict from their sounds.</p>
+    <ul class="topics">
+        <li>one and once</li>
+        <li>two and answer</li>
+        <li>Learn through examples</li>
+    </ul>
+    <span class="explore">Explore Spellings →</span>
+</a>
+
+<a class="card" href="missing-letter.html">
+    <div class="card-icon">🧩</div>
+    <h3>11. Find the Missing Letter</h3>
+    <p>Complete words and identify letters that are silent.</p>
+    <ul class="topics">
+        <li>Complete the spelling</li>
+        <li>Find silent letters</li>
+        <li>Get instant feedback</li>
+    </ul>
+    <span class="explore">Start Practising →</span>
+</a>
+
+<a class="card" href="word-challenge.html">
+    <div class="card-icon">🏆</div>
+    <h3>12. Silent Letters & Tricky Words Challenge</h3>
+    <p>Test your knowledge through interactive challenges.</p>
+    <ul class="topics">
+        <li>Multiple-choice questions</li>
+        <li>Spelling correction</li>
+        <li>Mixed word challenges</li>
+    </ul>
+    <span class="explore">Start Challenge →</span>
+</a>
+
+</div>
+
+<section class="note">
+    <strong>Learning tip:</strong>
+    Say each word aloud, listen carefully and compare its pronunciation
+    with its spelling. Remember that pronunciation can vary between accents.
+</section>
+
+</main>
+
+<footer>
+    BrightNest Learning Hub | Learn · Practise · Discover
+</footer>
+
+</body>
+</html>

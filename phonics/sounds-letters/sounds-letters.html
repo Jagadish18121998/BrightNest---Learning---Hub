@@ -1,0 +1,248 @@
+```html
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Sounds & Letters | BrightNest</title>
+
+<style>
+* {
+  box-sizing: border-box;
+}
+
+body {
+  margin: 0;
+  font-family: Arial, sans-serif;
+  background: #f4f7ff;
+  color: #24304a;
+}
+
+header {
+  background: linear-gradient(135deg, #174a7e, #4285d4);
+  color: white;
+  padding: 24px 6%;
+}
+
+header a {
+  color: white;
+  text-decoration: none;
+  font-weight: bold;
+}
+
+.header-top {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 15px;
+  flex-wrap: wrap;
+}
+
+header h1 {
+  margin: 25px 0 8px;
+  font-size: clamp(28px, 5vw, 42px);
+}
+
+header p {
+  line-height: 1.7;
+  max-width: 700px;
+  margin-bottom: 5px;
+}
+
+main {
+  max-width: 1200px;
+  margin: auto;
+  padding: 30px 5%;
+}
+
+.section-heading {
+  text-align: center;
+  margin-bottom: 25px;
+}
+
+.section-heading h2 {
+  margin-bottom: 8px;
+  font-size: 28px;
+}
+
+.section-heading p {
+  color: #64748b;
+  line-height: 1.6;
+}
+
+.activities {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+  gap: 22px;
+}
+
+.card {
+  background: white;
+  border-radius: 18px;
+  padding: 24px;
+  box-shadow: 0 5px 18px rgba(30, 64, 120, 0.08);
+  border: 1px solid #e3eaf7;
+  display: flex;
+  flex-direction: column;
+  transition: transform 0.2s, box-shadow 0.2s;
+}
+
+.card:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 10px 24px rgba(30, 64, 120, 0.15);
+}
+
+.icon {
+  font-size: 43px;
+  margin-bottom: 12px;
+}
+
+.card h3 {
+  margin: 0 0 10px;
+  font-size: 21px;
+}
+
+.card p {
+  color: #64748b;
+  line-height: 1.6;
+  flex-grow: 1;
+}
+
+.card a {
+  display: block;
+  text-align: center;
+  text-decoration: none;
+  background: #245da8;
+  color: white;
+  padding: 12px;
+  border-radius: 10px;
+  font-weight: bold;
+  margin-top: 15px;
+}
+
+.card a:hover {
+  background: #174578;
+}
+
+footer {
+  text-align: center;
+  padding: 25px;
+  color: #64748b;
+  font-size: 14px;
+}
+
+@media (max-width: 500px) {
+  main {
+    padding: 24px 16px;
+  }
+
+  .card {
+    padding: 20px;
+  }
+}
+</style>
+</head>
+
+<body>
+
+<header>
+  <div class="header-top">
+    <strong>🌞 BrightNest Learning Hub</strong>
+    <a href="../phonics.html">← Back to Phonics Centre</a>
+  </div>
+
+  <h1>🔤 Sounds & Letters</h1>
+  <p>
+    Discover the world of letters and sounds through interactive
+    games, picture activities, listening challenges and guided practice.
+  </p>
+</header>
+
+<main>
+  <div class="section-heading">
+    <h2>Choose Your Learning Activity</h2>
+    <p>
+      Explore each activity, practise at your own pace and become
+      a confident reader.
+    </p>
+  </div>
+
+  <section class="activities">
+
+    <article class="card">
+      <div class="icon">🔠</div>
+      <h3>1. Sound Discovery Lab</h3>
+      <p>
+        Explore the 26 letters, learn their sounds, discover mouth
+        movements and practise with example words.
+      </p>
+      <a href="sound-discovery.html">Explore Sounds</a>
+    </article>
+
+    <article class="card">
+      <div class="icon">🔍</div>
+      <h3>2. Beginning, Middle & Ending Sounds</h3>
+      <p>
+        Identify the first, middle and final sounds in simple words
+        such as sun, cat and pen.
+      </p>
+     <a href="sound-position.html">Start Activity</a>
+    </article>
+
+    <article class="card">
+      <div class="icon">🖼️</div>
+      <h3>3. Letter–Picture Match</h3>
+      <p>
+        Match letters to familiar pictures and words such as
+        A–apple, B–ball and C–cat.
+      </p>
+     <a href="letter-picture-match.html">Start Activity</a>
+    </article>
+
+    <article class="card">
+      <div class="icon">🧩</div>
+      <h3>4. Sound Sorting Challenge</h3>
+      <p>
+        Sort pictures and words according to their beginning
+        sounds and discover words that sound alike.
+      </p>
+      <a href="sound-sorting.html">Start Activity</a>
+    </article>
+
+    <article class="card">
+      <div class="icon">✍️</div>
+      <h3>5. Letter Formation Studio</h3>
+      <p>
+        Practise writing uppercase and lowercase letters through
+        guided tracing and letter formation activities.
+      </p>
+      <a href="letter-formation.html">Start Activity</a>
+    </article>
+
+    <article class="card">
+      <div class="icon">👂</div>
+      <h3>6. Listen & Identify</h3>
+      <p>
+        Listen to a word, recognise its sound and choose the
+        correct letter. Build listening and sound recognition skills.
+      </p>
+     <a href="listen-identify.html">Start Activity</a>
+    </article>
+
+  </section>
+</main>
+
+<footer>
+  BrightNest Learning Hub | Learn • Explore • Practise • Grow
+</footer>
+
+<script>
+function comingSoon(event) {
+  event.preventDefault();
+  alert("This activity will be available soon. Keep exploring BrightNest!");
+}
+</script>
+
+</body>
+</html>
+```

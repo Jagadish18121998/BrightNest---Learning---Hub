@@ -1,0 +1,326 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>Sentence Construction Studio | BrightNest Learning Hub</title>
+
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: Arial, sans-serif;
+            background: #f4f7fb;
+            color: #243247;
+        }
+
+        header {
+            background: linear-gradient(135deg, #173b57, #256b80);
+            color: white;
+            padding: 28px 20px;
+            text-align: center;
+        }
+
+        header h1 {
+            font-size: 30px;
+            margin-bottom: 10px;
+        }
+
+        header p {
+            font-size: 16px;
+            line-height: 1.6;
+        }
+
+        .back-link {
+            display: inline-block;
+            margin-top: 18px;
+            color: white;
+            text-decoration: none;
+            border: 1px solid rgba(255,255,255,0.65);
+            padding: 9px 16px;
+            border-radius: 8px;
+            transition: background 0.2s;
+        }
+
+        .back-link:hover {
+            background: rgba(255,255,255,0.15);
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: auto;
+            padding: 35px 22px;
+        }
+
+        .section-heading {
+            text-align: center;
+            margin-bottom: 28px;
+        }
+
+        .section-heading h2 {
+            font-size: 25px;
+            margin-bottom: 8px;
+        }
+
+        .section-heading p {
+            color: #65748b;
+            line-height: 1.6;
+        }
+
+        .cards {
+            display: grid;
+            grid-template-columns: repeat(3, minmax(0, 1fr));
+            gap: 22px;
+        }
+
+        .card {
+            display: flex;
+            flex-direction: column;
+            align-items: flex-start;
+            text-decoration: none;
+            color: inherit;
+            background: white;
+            border-radius: 16px;
+            padding: 25px 22px;
+            border: 1px solid #e3eaf2;
+            box-shadow: 0 5px 18px rgba(30,55,80,0.06);
+            transition: transform 0.2s, box-shadow 0.2s;
+            min-height: 235px;
+        }
+
+        .card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 10px 25px rgba(30,55,80,0.12);
+        }
+
+        .card:focus-visible {
+            outline: 3px solid #287ca0;
+            outline-offset: 3px;
+        }
+
+        .card-icon {
+            font-size: 38px;
+            margin-bottom: 16px;
+        }
+
+        .card h3 {
+            font-size: 19px;
+            line-height: 1.4;
+            margin-bottom: 10px;
+        }
+
+        .card p {
+            color: #65748b;
+            font-size: 14px;
+            line-height: 1.7;
+        }
+
+        .explore {
+            display: inline-block;
+            margin-top: auto;
+            padding-top: 18px;
+            color: #176b87;
+            font-weight: bold;
+            font-size: 14px;
+        }
+
+        footer {
+            text-align: center;
+            padding: 22px;
+            color: #65748b;
+            font-size: 13px;
+            line-height: 1.6;
+        }
+
+        @media (max-width: 850px) {
+            .cards {
+                grid-template-columns: repeat(2, minmax(0, 1fr));
+            }
+        }
+
+        @media (max-width: 520px) {
+            header h1 {
+                font-size: 25px;
+            }
+
+            .container {
+                padding: 25px 16px;
+            }
+
+            .cards {
+                grid-template-columns: 1fr;
+                gap: 16px;
+            }
+
+            .card {
+                min-height: auto;
+            }
+        }
+    </style>
+</head>
+
+<body>
+
+<header>
+    <h1>🌞 BrightNest Learning Hub</h1>
+    <p>Sentence Construction Studio</p>
+    <p>Arrange, build, expand and connect sentences through interactive learning.</p>
+
+    <a href="../english.html" class="back-link">
+        ← Back to English Manipulatives
+    </a>
+</header>
+
+<main class="container">
+
+    <div class="section-heading">
+        <h2>Explore Sentence Construction</h2>
+        <p>
+            Choose a learning centre and develop your sentence-building
+            skills through engaging activities.
+        </p>
+    </div>
+
+    <section class="cards">
+
+        <a href="word-order-builder.html" class="card">
+            <div class="card-icon">🔤</div>
+            <h3>1. Word Order Builder</h3>
+            <p>Arrange scrambled words to make meaningful sentences.</p>
+            <span class="explore">Build Sentences →</span>
+        </a>
+
+        <a href="subject-predicate-builder.html" class="card">
+            <div class="card-icon">🧩</div>
+            <h3>2. Subject and Predicate</h3>
+            <p>Identify who or what a sentence is about and what is said about it.</p>
+            <span class="explore">Explore →</span>
+        </a>
+
+        <a href="sentence-pattern-lab.html" class="card">
+            <div class="card-icon">🧱</div>
+            <h3>3. Sentence Pattern Lab</h3>
+            <p>Practise sentence patterns using subjects, verbs, objects and complements.</p>
+            <span class="explore">Explore Patterns →</span>
+        </a>
+
+        <a href="picture-to-sentence.html" class="card">
+            <div class="card-icon">🖼️</div>
+            <h3>4. Picture-to-Sentence Studio</h3>
+            <p>Look at pictures and create sentences about people, places and actions.</p>
+            <span class="explore">Describe a Picture →</span>
+        </a>
+
+        <a href="sentence-expander.html" class="card">
+            <div class="card-icon">🌱</div>
+            <h3>5. Sentence Expander</h3>
+            <p>Make simple sentences more interesting by adding descriptive details.</p>
+            <span class="explore">Expand Sentences →</span>
+        </a>
+
+        <a href="question-maker.html" class="card">
+            <div class="card-icon">❓</div>
+            <h3>6. Question Maker</h3>
+            <p>Form questions using who, what, where, when, why and how.</p>
+            <span class="explore">Make Questions →</span>
+        </a>
+
+        <a href="sentence-types.html" class="card">
+            <div class="card-icon">💬</div>
+            <h3>7. Sentence Types</h3>
+            <p>Explore statements, questions, commands and exclamations.</p>
+            <span class="explore">Explore Types →</span>
+        </a>
+
+        <a href="sentence-joining-station.html" class="card">
+            <div class="card-icon">🔗</div>
+            <h3>8. Sentence Joining Station</h3>
+            <p>Join ideas using and, but, because, so and or.</p>
+            <span class="explore">Join Ideas →</span>
+        </a>
+
+        <a href="simple-compound-complex.html" class="card">
+            <div class="card-icon">🏗️</div>
+            <h3>9. Simple, Compound and Complex</h3>
+            <p>Discover different sentence structures through examples and practice.</p>
+            <span class="explore">Explore Structures →</span>
+        </a>
+
+        <a href="tense-sentence-builder.html" class="card">
+            <div class="card-icon">⏳</div>
+            <h3>10. Tense-Based Sentence Builder</h3>
+            <p>Construct sentences about the past, present and future.</p>
+            <span class="explore">Build Sentences →</span>
+        </a>
+
+        <a href="sentence-correction-lab.html" class="card">
+            <div class="card-icon">🔍</div>
+            <h3>11. Sentence Correction Lab</h3>
+            <p>Find and correct mistakes in word order, verbs and sentence structure.</p>
+            <span class="explore">Correct Sentences →</span>
+        </a>
+
+        <a href="missing-word-challenge.html" class="card">
+            <div class="card-icon">📝</div>
+            <h3>12. Missing Word Challenge</h3>
+            <p>Complete sentences using suitable words and context clues.</p>
+            <span class="explore">Complete Sentences →</span>
+        </a>
+
+        <a href="sentence-transformation.html" class="card">
+            <div class="card-icon">🔄</div>
+            <h3>13. Sentence Transformation</h3>
+            <p>Change sentence forms while preserving their intended meaning.</p>
+            <span class="explore">Transform Sentences →</span>
+        </a>
+
+        <a href="sentence-to-paragraph.html" class="card">
+            <div class="card-icon">📚</div>
+            <h3>14. Sentence-to-Paragraph Builder</h3>
+            <p>Arrange connected sentences to create a meaningful paragraph.</p>
+            <span class="explore">Build a Paragraph →</span>
+        </a>
+
+        <a href="story-sequence-retelling.html" class="card">
+            <div class="card-icon">📖</div>
+            <h3>15. Story Sequence and Retelling</h3>
+            <p>Sequence picture events and retell stories in your own sentences.</p>
+            <span class="explore">Retell a Story →</span>
+        </a>
+
+        <a href="dialogue-builder.html" class="card">
+            <div class="card-icon">🗣️</div>
+            <h3>16. Dialogue Builder</h3>
+            <p>Create conversations using suitable questions and responses.</p>
+            <span class="explore">Build Dialogues →</span>
+        </a>
+
+        <a href="competency-challenge.html" class="card">
+            <div class="card-icon">🎯</div>
+            <h3>17. Competency Challenge</h3>
+            <p>Apply sentence-building skills to pictures and everyday situations.</p>
+            <span class="explore">Take the Challenge →</span>
+        </a>
+
+        <a href="sentence-games-arena.html" class="card">
+            <div class="card-icon">🎮</div>
+            <h3>18. Sentence Games Arena</h3>
+            <p>Play sentence puzzles, word-order races and error-detection games.</p>
+            <span class="explore">Play Games →</span>
+        </a>
+
+    </section>
+</main>
+
+<footer>
+    BrightNest Learning Hub | Interactive English Learning for Classes 1–5
+</footer>
+
+</body>
+</html>

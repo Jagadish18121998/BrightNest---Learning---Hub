@@ -1,0 +1,324 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Writing Studio | BrightNest Learning Hub</title>
+
+<style>
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: Arial, sans-serif;
+    background: #f4f7fb;
+    color: #243247;
+}
+
+header {
+    background: linear-gradient(135deg, #173b57, #256b80);
+    color: white;
+    padding: 28px 20px;
+    text-align: center;
+}
+
+header h1 {
+    font-size: 30px;
+    margin-bottom: 10px;
+}
+
+header p {
+    font-size: 16px;
+    line-height: 1.6;
+}
+
+.back-link {
+    display: inline-block;
+    margin-top: 18px;
+    color: white;
+    text-decoration: none;
+    border: 1px solid rgba(255,255,255,0.65);
+    padding: 9px 16px;
+    border-radius: 8px;
+    transition: background 0.2s;
+}
+
+.back-link:hover {
+    background: rgba(255,255,255,0.15);
+}
+
+.container {
+    max-width: 1200px;
+    margin: auto;
+    padding: 35px 22px;
+}
+
+.section-heading {
+    text-align: center;
+    margin-bottom: 28px;
+}
+
+.section-heading h2 {
+    font-size: 25px;
+    margin-bottom: 8px;
+}
+
+.section-heading p {
+    color: #65748b;
+    line-height: 1.6;
+}
+
+.cards {
+    display: grid;
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+    gap: 22px;
+}
+
+.card {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    text-decoration: none;
+    color: inherit;
+    background: white;
+    border-radius: 16px;
+    padding: 25px 22px;
+    border: 1px solid #e3eaf2;
+    box-shadow: 0 5px 18px rgba(30,55,80,0.06);
+    transition: transform 0.2s, box-shadow 0.2s;
+    min-height: 235px;
+}
+
+.card:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 10px 25px rgba(30,55,80,0.12);
+}
+
+.card:focus-visible {
+    outline: 3px solid #287ca0;
+    outline-offset: 3px;
+}
+
+.card-icon {
+    font-size: 38px;
+    margin-bottom: 16px;
+}
+
+.card h3 {
+    font-size: 19px;
+    line-height: 1.4;
+    margin-bottom: 10px;
+}
+
+.card p {
+    color: #65748b;
+    font-size: 14px;
+    line-height: 1.7;
+}
+
+.explore {
+    display: inline-block;
+    margin-top: auto;
+    padding-top: 18px;
+    color: #176b87;
+    font-weight: bold;
+    font-size: 14px;
+}
+
+footer {
+    text-align: center;
+    padding: 22px;
+    color: #65748b;
+    font-size: 13px;
+    line-height: 1.6;
+}
+
+@media (max-width: 850px) {
+    .cards {
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+    }
+}
+
+@media (max-width: 520px) {
+    header h1 {
+        font-size: 25px;
+    }
+
+    .container {
+        padding: 25px 16px;
+    }
+
+    .cards {
+        grid-template-columns: 1fr;
+        gap: 16px;
+    }
+
+    .card {
+        min-height: auto;
+    }
+}
+</style>
+</head>
+
+<body>
+
+<header>
+    <h1>🌞 BrightNest Learning Hub</h1>
+    <p>Writing Studio</p>
+    <p>Imagine, express, create and communicate through writing.</p>
+    <a href="../english.html" class="back-link">
+        ← Back to English Manipulatives
+    </a>
+</header>
+
+<main class="container">
+
+<div class="section-heading">
+    <h2>Explore Writing Activities</h2>
+    <p>
+        Develop handwriting, descriptive writing, composition and creative
+        expression through guided activities for Classes 1–5.
+    </p>
+</div>
+
+<section class="cards">
+
+<a href="handwriting-copywriting.html" class="card">
+    <div class="card-icon">✍️</div>
+    <h3>1. Handwriting and Copywriting Corner</h3>
+    <p>Practise letter formation, spacing, neat handwriting and copying sentences.</p>
+    <span class="explore">Start Writing →</span>
+</a>
+
+<a href="picture-description.html" class="card">
+    <div class="card-icon">🖼️</div>
+    <h3>2. Picture Description Studio</h3>
+    <p>Observe pictures and write meaningful sentences about people, places and actions.</p>
+    <span class="explore">Describe a Picture →</span>
+</a>
+
+<a href="paragraph-writing.html" class="card">
+    <div class="card-icon">📝</div>
+    <h3>3. Paragraph Writing Workshop</h3>
+    <p>Organise ideas and write paragraphs with a beginning, supporting details and an ending.</p>
+    <span class="explore">Write a Paragraph →</span>
+</a>
+
+<a href="creative-story-writing.html" class="card">
+    <div class="card-icon">📖</div>
+    <h3>4. Creative Story Writing</h3>
+    <p>Create original stories using characters, settings, problems and interesting endings.</p>
+    <span class="explore">Create a Story →</span>
+</a>
+
+<a href="diary-journal.html" class="card">
+    <div class="card-icon">📔</div>
+    <h3>5. My Diary and Journal</h3>
+    <p>Express feelings, personal experiences, daily activities and memorable events.</p>
+    <span class="explore">Write My Diary →</span>
+</a>
+
+<a href="letter-writing.html" class="card">
+    <div class="card-icon">✉️</div>
+    <h3>6. Letter Writing Lab</h3>
+    <p>Practise friendly letters, invitations, thank-you notes and simple formal messages.</p>
+    <span class="explore">Write a Letter →</span>
+</a>
+
+<a href="my-day-writing.html" class="card">
+    <div class="card-icon">🌞</div>
+    <h3>7. My Day Writing</h3>
+    <p>Write about daily routines, school activities and special occasions.</p>
+    <span class="explore">Describe My Day →</span>
+</a>
+
+<a href="notice-message-writing.html" class="card">
+    <div class="card-icon">📢</div>
+    <h3>8. Notice and Message Writing</h3>
+    <p>Learn to write short notices, reminders, invitations and messages.</p>
+    <span class="explore">Write a Message →</span>
+</a>
+
+<a href="story-completion.html" class="card">
+    <div class="card-icon">🧩</div>
+    <h3>9. Story Completion</h3>
+    <p>Continue unfinished stories using picture clues, prompts and suggested endings.</p>
+    <span class="explore">Complete a Story →</span>
+</a>
+
+<a href="guided-writing.html" class="card">
+    <div class="card-icon">🪜</div>
+    <h3>10. Guided Writing with Prompts</h3>
+    <p>Use word banks, sentence starters, guiding questions and picture clues to write.</p>
+    <span class="explore">Start Guided Writing →</span>
+</a>
+
+<a href="my-favourite-things.html" class="card">
+    <div class="card-icon">⭐</div>
+    <h3>11. My Favourite Things</h3>
+    <p>Write about favourite books, animals, people, festivals, places and games.</p>
+    <span class="explore">Express My Ideas →</span>
+</a>
+
+<a href="dialogue-writing.html" class="card">
+    <div class="card-icon">🗣️</div>
+    <h3>12. Dialogue and Conversation Writing</h3>
+    <p>Create conversations between friends, teachers, shopkeepers and other characters.</p>
+    <span class="explore">Write a Dialogue →</span>
+</a>
+
+<a href="instructions-process-writing.html" class="card">
+    <div class="card-icon">📋</div>
+    <h3>13. Instructions and Process Writing</h3>
+    <p>Explain how to make something, play a game or complete a task step by step.</p>
+    <span class="explore">Explain a Process →</span>
+</a>
+
+<a href="report-event-writing.html" class="card">
+    <div class="card-icon">📰</div>
+    <h3>14. Report and Event Writing</h3>
+    <p>Write short accounts of school events, celebrations, visits and classroom activities.</p>
+    <span class="explore">Write a Report →</span>
+</a>
+
+<a href="poem-rhyme-creator.html" class="card">
+    <div class="card-icon">🎵</div>
+    <h3>15. Poem and Rhyme Creator</h3>
+    <p>Create short poems, rhyming lines and descriptive verses using word prompts.</p>
+    <span class="explore">Create a Poem →</span>
+</a>
+
+<a href="editing-improving-writing.html" class="card">
+    <div class="card-icon">🔍</div>
+    <h3>16. Editing and Improving My Writing</h3>
+    <p>Find spelling, punctuation and clarity problems and learn to improve a draft.</p>
+    <span class="explore">Improve My Writing →</span>
+</a>
+
+<a href="competency-writing-challenge.html" class="card">
+    <div class="card-icon">🎯</div>
+    <h3>17. Competency-Based Writing Challenge</h3>
+    <p>Respond to real-life situations, interpret pictures and communicate ideas clearly.</p>
+    <span class="explore">Take the Challenge →</span>
+</a>
+
+<a href="writing-games-arena.html" class="card">
+    <div class="card-icon">🎮</div>
+    <h3>18. Writing Games Arena</h3>
+    <p>Play story-building games, timed writing challenges and creative word games.</p>
+    <span class="explore">Play Writing Games →</span>
+</a>
+
+</section>
+</main>
+
+<footer>
+    BrightNest Learning Hub | Creative Writing for Primary Classes 1–5
+</footer>
+
+</body>
+</html>

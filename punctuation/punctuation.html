@@ -1,0 +1,324 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Punctuation & Capitalisation | BrightNest</title>
+
+<style>
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: Arial, sans-serif;
+    background: #f4f7fb;
+    color: #243247;
+}
+
+header {
+    background: linear-gradient(135deg, #173b57, #256b80);
+    color: white;
+    padding: 28px 20px;
+    text-align: center;
+}
+
+header h1 {
+    font-size: 30px;
+    margin-bottom: 10px;
+}
+
+header p {
+    font-size: 16px;
+    line-height: 1.6;
+}
+
+.back-link {
+    display: inline-block;
+    margin-top: 18px;
+    color: white;
+    text-decoration: none;
+    border: 1px solid rgba(255,255,255,0.65);
+    padding: 9px 16px;
+    border-radius: 8px;
+    transition: background 0.2s;
+}
+
+.back-link:hover {
+    background: rgba(255,255,255,0.15);
+}
+
+.container {
+    max-width: 1200px;
+    margin: auto;
+    padding: 35px 22px;
+}
+
+.section-heading {
+    text-align: center;
+    margin-bottom: 28px;
+}
+
+.section-heading h2 {
+    font-size: 25px;
+    margin-bottom: 8px;
+}
+
+.section-heading p {
+    color: #65748b;
+    line-height: 1.6;
+}
+
+.cards {
+    display: grid;
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+    gap: 22px;
+}
+
+.card {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    text-decoration: none;
+    color: inherit;
+    background: white;
+    border-radius: 16px;
+    padding: 25px 22px;
+    border: 1px solid #e3eaf2;
+    box-shadow: 0 5px 18px rgba(30,55,80,0.06);
+    transition: transform 0.2s, box-shadow 0.2s;
+    min-height: 235px;
+}
+
+.card:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 10px 25px rgba(30,55,80,0.12);
+}
+
+.card:focus-visible {
+    outline: 3px solid #287ca0;
+    outline-offset: 3px;
+}
+
+.card-icon {
+    font-size: 38px;
+    margin-bottom: 16px;
+}
+
+.card h3 {
+    font-size: 19px;
+    line-height: 1.4;
+    margin-bottom: 10px;
+}
+
+.card p {
+    color: #65748b;
+    font-size: 14px;
+    line-height: 1.7;
+}
+
+.explore {
+    display: inline-block;
+    margin-top: auto;
+    padding-top: 18px;
+    color: #176b87;
+    font-weight: bold;
+    font-size: 14px;
+}
+
+footer {
+    text-align: center;
+    padding: 22px;
+    color: #65748b;
+    font-size: 13px;
+    line-height: 1.6;
+}
+
+@media (max-width: 850px) {
+    .cards {
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+    }
+}
+
+@media (max-width: 520px) {
+    header h1 {
+        font-size: 25px;
+    }
+
+    .container {
+        padding: 25px 16px;
+    }
+
+    .cards {
+        grid-template-columns: 1fr;
+        gap: 16px;
+    }
+
+    .card {
+        min-height: auto;
+    }
+}
+</style>
+</head>
+
+<body>
+
+<header>
+    <h1>🌞 BrightNest Learning Hub</h1>
+    <p>Punctuation & Capitalisation Studio</p>
+    <p>Make every sentence clear, correct and meaningful.</p>
+    <a href="../english.html" class="back-link">
+        ← Back to English Manipulatives
+    </a>
+</header>
+
+<main class="container">
+
+<div class="section-heading">
+    <h2>Explore Punctuation & Capitalisation</h2>
+    <p>
+        Learn to use punctuation marks and capital letters through
+        examples, interactive practice and challenges.
+    </p>
+</div>
+
+<section class="cards">
+
+<a href="capital-letters-lab.html" class="card">
+    <div class="card-icon">🔠</div>
+    <h3>1. Capital Letters Lab</h3>
+    <p>Practise capital letters at the beginning of sentences and in names.</p>
+    <span class="explore">Practise Capital Letters →</span>
+</a>
+
+<a href="full-stop-station.html" class="card">
+    <div class="card-icon">🔴</div>
+    <h3>2. Full Stop Station</h3>
+    <p>Learn where to put full stops to complete statements correctly.</p>
+    <span class="explore">Add Full Stops →</span>
+</a>
+
+<a href="question-mark-quest.html" class="card">
+    <div class="card-icon">❓</div>
+    <h3>3. Question Mark Quest</h3>
+    <p>Identify questions and add question marks in the correct places.</p>
+    <span class="explore">Explore Questions →</span>
+</a>
+
+<a href="exclamation-mark-adventure.html" class="card">
+    <div class="card-icon">❗</div>
+    <h3>4. Exclamation Mark Adventure</h3>
+    <p>Express strong feelings, surprise, excitement and warnings.</p>
+    <span class="explore">Express Feelings →</span>
+</a>
+
+<a href="comma-clinic.html" class="card">
+    <div class="card-icon">🟠</div>
+    <h3>5. Comma Clinic</h3>
+    <p>Use commas in lists and practise pauses in suitable sentences.</p>
+    <span class="explore">Practise Commas →</span>
+</a>
+
+<a href="apostrophe-adventure.html" class="card">
+    <div class="card-icon">✍️</div>
+    <h3>6. Apostrophe Adventure</h3>
+    <p>Explore apostrophes in contractions and simple possessive forms.</p>
+    <span class="explore">Explore Apostrophes →</span>
+</a>
+
+<a href="quotation-marks-studio.html" class="card">
+    <div class="card-icon">💬</div>
+    <h3>7. Quotation Marks Studio</h3>
+    <p>Recognise and practise quotation marks in simple dialogue.</p>
+    <span class="explore">Practise Dialogue →</span>
+</a>
+
+<a href="punctuation-detective.html" class="card">
+    <div class="card-icon">🔎</div>
+    <h3>8. Punctuation Detective</h3>
+    <p>Find missing and incorrectly used punctuation marks in sentences.</p>
+    <span class="explore">Solve the Clues →</span>
+</a>
+
+<a href="sentence-endings.html" class="card">
+    <div class="card-icon">🛑</div>
+    <h3>9. Sentence Ending Sorter</h3>
+    <p>Choose the correct ending mark for statements, questions and exclamations.</p>
+    <span class="explore">Sort Sentences →</span>
+</a>
+
+<a href="capitalisation-rules.html" class="card">
+    <div class="card-icon">📚</div>
+    <h3>10. Capitalisation Rules</h3>
+    <p>Practise capitals for names, places, days, months and the pronoun I.</p>
+    <span class="explore">Learn the Rules →</span>
+</a>
+
+<a href="punctuate-the-paragraph.html" class="card">
+    <div class="card-icon">📝</div>
+    <h3>11. Punctuate the Paragraph</h3>
+    <p>Add missing capital letters and punctuation marks to short paragraphs.</p>
+    <span class="explore">Fix the Paragraph →</span>
+</a>
+
+<a href="dialogue-punctuation.html" class="card">
+    <div class="card-icon">🗣️</div>
+    <h3>12. Dialogue Punctuation</h3>
+    <p>Practise punctuation and capitalisation in conversations.</p>
+    <span class="explore">Punctuate Dialogue →</span>
+</a>
+
+<a href="list-punctuation.html" class="card">
+    <div class="card-icon">📋</div>
+    <h3>13. Lists and Commas</h3>
+    <p>Use commas to separate items in lists and descriptions.</p>
+    <span class="explore">Practise Lists →</span>
+</a>
+
+<a href="punctuation-error-correction.html" class="card">
+    <div class="card-icon">🛠️</div>
+    <h3>14. Punctuation Error Correction</h3>
+    <p>Correct errors in capitalisation, commas and sentence-ending marks.</p>
+    <span class="explore">Correct the Errors →</span>
+</a>
+
+<a href="punctuation-picture-challenge.html" class="card">
+    <div class="card-icon">🖼️</div>
+    <h3>15. Picture-Based Challenge</h3>
+    <p>Write and punctuate sentences based on pictures and everyday situations.</p>
+    <span class="explore">Try the Challenge →</span>
+</a>
+
+<a href="punctuation-levels.html" class="card">
+    <div class="card-icon">🎯</div>
+    <h3>16. Punctuation Levels</h3>
+    <p>Progress from beginner to advanced practice through graded activities.</p>
+    <span class="explore">Choose a Level →</span>
+</a>
+
+<a href="punctuation-assessment.html" class="card">
+    <div class="card-icon">✅</div>
+    <h3>17. Punctuation Assessment</h3>
+    <p>Check your understanding through short quizzes and competency questions.</p>
+    <span class="explore">Take the Quiz →</span>
+</a>
+
+<a href="punctuation-games.html" class="card">
+    <div class="card-icon">🎮</div>
+    <h3>18. Punctuation Games Arena</h3>
+    <p>Play punctuation puzzles, sentence-fixing games and timed challenges.</p>
+    <span class="explore">Play Games →</span>
+</a>
+
+</section>
+</main>
+
+<footer>
+    BrightNest Learning Hub | Punctuation & Capitalisation for Classes 1–5
+</footer>
+
+</body>
+</html>
